@@ -22,6 +22,7 @@ export function FeedbackWidget() {
   const [uiRating, setUiRating] = useState<number | null>(null);
   const [likedMost, setLikedMost] = useState("");
   const [hatedMost, setHatedMost] = useState("");
+  const [wiggling, setWiggling] = useState(false);
   const [missingFeatures, setMissingFeatures] = useState("");
 
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -64,7 +65,7 @@ export function FeedbackWidget() {
 
     const handleInvoiceCreated = () => {
       if (!hasSubmitted) {
-        setTimeout(() => setIsOpen(true), 1500);
+        setTimeout(() => setWiggling(true), 1500);
       }
     };
 
@@ -156,12 +157,23 @@ export function FeedbackWidget() {
   const StickyButton = (
     <div className="fixed bottom-6 left-6 z-40">
       <button
-        onClick={() => setIsOpen(true)}
-        className="flex items-center justify-center w-12 h-12 md:w-auto md:h-auto md:px-4 md:py-3 bg-[#7f2dfb] hover:bg-[#6c26d9] text-white rounded-full shadow-lg transition-all hover:scale-105 active:scale-95 group"
+        onClick={() => {
+          setIsOpen(true);
+          setWiggling(false);
+        }}
+        className={`flex items-center justify-center w-12 h-12 md:w-auto md:h-auto md:px-4 md:py-3 bg-[#7f2dfb] hover:bg-[#6c26d9] text-white rounded-full shadow-lg transition-all hover:scale-105 active:scale-95 group ${
+          wiggling ? "animate-bounce ring-4 ring-[#7f2dfb]/50 ring-offset-2" : ""
+        }`}
         aria-label="شاركني رأيك"
       >
-        <MessageSquare className="w-5 h-5 md:ml-2" />
+        <MessageSquare className={`w-5 h-5 md:ml-2 ${wiggling ? "animate-pulse" : ""}`} />
         <span className="hidden md:block font-medium">شاركني رأيك</span>
+        {wiggling && (
+          <span className="absolute -top-1 -right-1 flex h-3 w-3">
+            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-400 opacity-75"></span>
+            <span className="relative inline-flex rounded-full h-3 w-3 bg-red-500 border border-white"></span>
+          </span>
+        )}
       </button>
     </div>
   );
