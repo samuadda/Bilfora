@@ -13,7 +13,6 @@ import {
 	Users,
 	Settings,
 	LogOut,
-	HelpCircle,
 	ShoppingCart,
 	BarChart3,
 	ChevronRight,
@@ -105,7 +104,6 @@ export default function Sidebar() {
 
 	const bottomNavItems = [
 		{ href: "/dashboard/settings", label: "الإعدادات", icon: Settings },
-		{ href: "/dashboard/help", label: "المساعدة", icon: HelpCircle },
 	];
 
 	return (

@@ -16,7 +16,9 @@ import {
 	Trash2,
 	Download,
 	Building2,
-	MapPin
+	MapPin,
+	MessageSquare,
+	HelpCircle
 } from "lucide-react";
 import { supabasePersistent } from "@/lib/supabase-clients";
 import { Profile, UpdateProfileInput, Gender, AccountType } from "@/types/database";
@@ -555,6 +557,33 @@ export default function GeneralSettingsPage() {
 			</div>
 
 
+
+			{/* Contact Us */}
+			<div className="bg-white rounded-2xl border border-gray-100 p-6 shadow-sm">
+				<h2 className="text-lg font-bold text-[#012d46] mb-5 flex items-center gap-2">
+					<HelpCircle className="text-[#7f2dfb]" size={20} />
+					تواصل معنا
+				</h2>
+				<div className="space-y-4">
+					<a
+						href="mailto:saddiq0musa@gmail.com"
+						className="flex items-center gap-3 p-3 rounded-xl hover:bg-purple-50 group transition-colors border border-transparent hover:border-purple-100"
+					>
+						<div className="p-2 bg-purple-100 text-[#7f2dfb] rounded-lg group-hover:bg-white group-hover:shadow-sm transition-all">
+							<Mail size={18} />
+						</div>
+						<div>
+							<span className="text-xs text-gray-500 block">البريد الإلكتروني</span>
+							<span className="text-sm font-bold text-gray-900">saddiq0musa@gmail.com</span>
+						</div>
+					</a>
+					<div className="pt-4 border-t border-gray-100">
+						<a href="https://wa.me/966540358526" target="_blank" rel="noopener noreferrer" className="w-full py-3 rounded-xl bg-[#25D366] hover:bg-[#128C7E] text-white text-sm font-bold transition-all flex items-center justify-center gap-2 shadow-lg shadow-green-100">
+							<MessageSquare size={18} /> تواصل عبر واتساب
+						</a>
+					</div>
+				</div>
+			</div>
 
 			{/* Danger Zone */}
 			<div className="bg-white rounded-2xl border border-red-100 p-6 shadow-sm">
