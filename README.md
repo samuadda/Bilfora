@@ -1,8 +1,38 @@
-# Bilfora — Invoicing SaaS for the Saudi Market
+<div align="center">
 
-A full-stack invoicing platform built for Arabic-speaking freelancers and SMBs in Saudi Arabia. Supports multi-type invoice generation, client management, payment tracking, and business analytics — with ZATCA e-invoicing compliance groundwork in place.
+<img src="public/logoPNG.png" alt="Bilfora" width="140" />
+
+# Bilfora
+
+**Arabic-first invoicing SaaS for freelancers and SMBs in Saudi Arabia**
+
+[![Live Demo](https://img.shields.io/badge/demo-bilfora.com-000?style=flat-square)](https://www.bilfora.com)
+[![Next.js](https://img.shields.io/badge/Next.js-15-black?style=flat-square&logo=next.js)](https://nextjs.org/)
+[![React](https://img.shields.io/badge/React-19-149eca?style=flat-square&logo=react)](https://react.dev/)
+[![TypeScript](https://img.shields.io/badge/TypeScript-5-3178c6?style=flat-square&logo=typescript)](https://www.typescriptlang.org/)
+[![Supabase](https://img.shields.io/badge/Supabase-3ecf8e?style=flat-square&logo=supabase&logoColor=white)](https://supabase.com/)
+[![TailwindCSS](https://img.shields.io/badge/Tailwind-4-38bdf8?style=flat-square&logo=tailwindcss&logoColor=white)](https://tailwindcss.com/)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg?style=flat-square)](LICENSE)
+
+[**Live Demo →**](https://www.bilfora.com)
+
+</div>
+
+---
+
+A full-stack invoicing platform built for Arabic-speaking freelancers and SMBs in Saudi Arabia. Multi-type invoice generation, client management, payment tracking, and business analytics — with ZATCA e-invoicing compliance groundwork in place.
 
 > **Status:** Beta MVP — core invoicing flow is production-functional. See [Roadmap](#roadmap) for planned features.
+
+---
+
+## Preview
+
+<div align="center">
+  <img src="public/dashboardDemo.png" alt="Bilfora dashboard" width="100%" />
+  <br /><br />
+  <img src="public/phoneDashboardDemo.png" alt="Bilfora mobile" width="280" />
+</div>
 
 ---
 
@@ -125,8 +155,8 @@ supabase/
 ### 1. Clone & install
 
 ```bash
-git clone https://github.com/your-username/bilfora.git
-cd bilfora
+git clone https://github.com/samuadda/Bilfora.git
+cd Bilfora
 npm install
 ```
 
@@ -208,6 +238,15 @@ Invoices are rendered as HTML with the same CSS used in the web UI, then convert
 
 ---
 
+## Contact
+
+Built by [Saddiq Musa](https://github.com/samuadda) — feedback, issues, and PRs welcome.
+
+- Live: [bilfora.com](https://www.bilfora.com)
+- Issues: [GitHub Issues](https://github.com/samuadda/Bilfora/issues)
+
+---
+
 ## License
 
-MIT
+[MIT](LICENSE) © 2026 Saddiq Musa
