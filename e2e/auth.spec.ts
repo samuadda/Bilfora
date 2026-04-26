@@ -10,8 +10,7 @@ test.describe('Authentication', () => {
             page.getByRole('link', { name: 'تسجيل الدخول' }).first().click(),
         ]);
 
-        // "مرحباً بعودتك" matches the actual h2 in login/page.tsx
-        await expect(page.getByRole('heading', { name: 'مرحباً بعودتك' })).toBeVisible();
+        await expect(page.getByRole('heading', { name: 'أهلاً من جديد!' })).toBeVisible();
     });
 
     test('should show validation error on empty login submit', async ({ page }) => {

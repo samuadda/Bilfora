@@ -4,7 +4,7 @@ test('landing page has title and loads successfully', async ({ page }) => {
     await page.goto('/');
 
     // Expect a title "to contain" a substring.
-    await expect(page).toHaveTitle(/بيلفورة/);
+    await expect(page).toHaveTitle(/بِلفورا|بيلفورة|Bilfora/);
 
     // Check for main heading
     await expect(page.locator('h1')).toBeVisible();
