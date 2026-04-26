@@ -3,6 +3,8 @@ import { getInvoiceSettings } from "@/features/settings/data/settings.repo";
 import { redirect } from "next/navigation";
 import InvoicingSettingsClient from "./InvoicingSettingsClient";
 
+export const dynamic = "force-dynamic";
+
 export const metadata = {
 	title: "إعدادات الفواتير | الإعدادات | بيلفورة",
 	description: "إعدادات الترقيم والضرائب وبيانات الدفع",
