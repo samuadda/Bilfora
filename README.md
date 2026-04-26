@@ -20,9 +20,9 @@
 
 ---
 
-A full-stack invoicing platform built for Arabic-speaking freelancers and SMBs in Saudi Arabia. Multi-type invoice generation, client management, payment tracking, and business analytics — with ZATCA e-invoicing compliance groundwork in place.
+A full-stack invoicing platform built for Arabic-speaking freelancers and SMBs in Saudi Arabia. Multi-type invoice generation, client management, payment tracking, and business analytics with ZATCA e-invoicing compliance groundwork in place.
 
-> **Status:** Beta MVP — core invoicing flow is production-functional. See [Roadmap](#roadmap) for planned features.
+> **Status:** Beta MVP core invoicing flow is production-functional. See [Roadmap](#roadmap) for planned features.
 
 ---
 
