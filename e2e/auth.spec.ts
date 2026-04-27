@@ -15,9 +15,8 @@ test.describe('Authentication', () => {
 
     test('should show validation error on empty login submit', async ({ page }) => {
         await page.goto('/login');
-        await page.getByRole('button', { name: 'تسجيل الدخول' }).click();
+        await page.getByRole('button', { name: 'دخول' }).click();
 
-        // Validating the email input using HTML5 validation or simple visibility check
         const emailInput = page.getByPlaceholder('name@example.com');
         await expect(emailInput).toBeVisible();
     });
