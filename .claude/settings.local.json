@@ -1,0 +1,15 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(git add *)",
+      "Bash(git commit -m ' *)",
+      "Bash(gh run *)",
+      "Bash(gh pr *)",
+      "Bash(git merge *)",
+      "Bash(npx eslint *)",
+      "Bash(git stash *)",
+      "Bash(git pull *)",
+      "Bash(git push *)"
+    ]
+  }
+}
