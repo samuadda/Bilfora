@@ -63,10 +63,10 @@
     "@types/react": "^19",
     "@types/react-dom": "^19",
     "daisyui": "^5.5.19",
-    "eslint": "^9",
-    "eslint-config-next": "16.2.4",
-    "shadcn": "^4.6.0",
-    "supabase": "^2.95.6",
+    "eslint": "^10",
+    "eslint-config-next": "16.2.6",
+    "shadcn": "^4.7.0",
+    "supabase": "^2.98.2",
     "tailwindcss": "^4",
     "typescript": "^6"
   }
