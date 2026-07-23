@@ -16,7 +16,7 @@ import { m } from "framer-motion";
 const statusConfig: Record<InvoiceStatus, { label: string; color: string; icon: typeof CheckCircle }> = {
 	draft: {
 		label: "مسودة",
-		color: "bg-gray-100 text-gray-600 border-gray-200",
+		color: "bg-surface-inset text-muted-foreground border-border",
 		icon: FileText,
 	},
 	sent: {
@@ -118,10 +118,10 @@ export default function ClientDetailPage() {
 	if (!client) {
 		return (
 			<div className="flex flex-col items-center justify-center py-16">
-				<p className="text-gray-500 mb-4">العميل غير موجود</p>
+				<p className="text-subtle mb-4">العميل غير موجود</p>
 				<button
 					onClick={() => router.push("/dashboard/clients")}
-					className="px-6 py-2 bg-[#7f2dfb] text-white rounded-xl"
+					className="px-6 py-2 bg-brand text-white rounded-xl"
 				>
 					العودة للعملاء
 				</button>
@@ -143,13 +143,13 @@ export default function ClientDetailPage() {
 			<div className="flex items-center gap-4">
 				<button
 					onClick={() => router.push("/dashboard/clients")}
-					className="p-2 hover:bg-gray-100 rounded-lg transition-colors"
+					className="p-2 hover:bg-surface-inset rounded-lg transition-colors"
 				>
-					<ArrowRight size={20} className="text-gray-600" />
+					<ArrowRight size={20} className="text-muted-foreground" />
 				</button>
 				<div>
-					<h1 className="text-3xl font-bold text-[#012d46]">{client.name}</h1>
-					<p className="text-gray-500 mt-1">تفاصيل العميل والفواتير</p>
+					<h1 className="text-3xl font-bold text-foreground">{client.name}</h1>
+					<p className="text-subtle mt-1">تفاصيل العميل والفواتير</p>
 				</div>
 			</div>
 
@@ -157,77 +157,77 @@ export default function ClientDetailPage() {
 			<m.div
 				initial={{ opacity: 0, y: 20 }}
 				animate={{ opacity: 1, y: 0 }}
-				className="bg-white rounded-3xl border border-gray-100 shadow-sm p-8"
+				className="bg-surface rounded-3xl border border-border shadow-sm p-8"
 			>
-				<h2 className="text-xl font-bold text-gray-900 mb-6">معلومات العميل</h2>
+				<h2 className="text-xl font-bold text-foreground mb-6">معلومات العميل</h2>
 				<div className="grid grid-cols-1 md:grid-cols-2 gap-6">
 					<div className="flex items-start gap-3">
 						<div className="w-10 h-10 rounded-full bg-blue-50 text-blue-600 flex items-center justify-center font-bold text-sm flex-shrink-0">
 							{client.name.charAt(0).toUpperCase()}
 						</div>
 						<div>
-							<p className="text-sm text-gray-500 mb-1">الاسم</p>
-							<p className="font-bold text-gray-900">{client.name}</p>
+							<p className="text-sm text-subtle mb-1">الاسم</p>
+							<p className="font-bold text-foreground">{client.name}</p>
 						</div>
 					</div>
 					<div className="flex items-start gap-3">
-						<Mail className="w-5 h-5 text-gray-400 mt-1 flex-shrink-0" />
+						<Mail className="w-5 h-5 text-disabled mt-1 flex-shrink-0" />
 						<div>
-							<p className="text-sm text-gray-500 mb-1">البريد الإلكتروني</p>
-							<p className="font-medium text-gray-900">{client.email}</p>
+							<p className="text-sm text-subtle mb-1">البريد الإلكتروني</p>
+							<p className="font-medium text-foreground">{client.email}</p>
 						</div>
 					</div>
 					<div className="flex items-start gap-3">
-						<Phone className="w-5 h-5 text-gray-400 mt-1 flex-shrink-0" />
+						<Phone className="w-5 h-5 text-disabled mt-1 flex-shrink-0" />
 						<div>
-							<p className="text-sm text-gray-500 mb-1">الهاتف</p>
-							<p className="font-medium text-gray-900">{client.phone}</p>
+							<p className="text-sm text-subtle mb-1">الهاتف</p>
+							<p className="font-medium text-foreground">{client.phone}</p>
 						</div>
 					</div>
 					{client.company_name && (
 						<div className="flex items-start gap-3">
-							<Building2 className="w-5 h-5 text-gray-400 mt-1 flex-shrink-0" />
+							<Building2 className="w-5 h-5 text-disabled mt-1 flex-shrink-0" />
 							<div>
-								<p className="text-sm text-gray-500 mb-1">اسم الشركة</p>
-								<p className="font-medium text-gray-900">{client.company_name}</p>
+								<p className="text-sm text-subtle mb-1">اسم الشركة</p>
+								<p className="font-medium text-foreground">{client.company_name}</p>
 							</div>
 						</div>
 					)}
 					{client.tax_number && (
 						<div className="flex items-start gap-3">
-							<FileText className="w-5 h-5 text-gray-400 mt-1 flex-shrink-0" />
+							<FileText className="w-5 h-5 text-disabled mt-1 flex-shrink-0" />
 							<div>
-								<p className="text-sm text-gray-500 mb-1">الرقم الضريبي</p>
-								<p className="font-medium text-gray-900">{client.tax_number}</p>
+								<p className="text-sm text-subtle mb-1">الرقم الضريبي</p>
+								<p className="font-medium text-foreground">{client.tax_number}</p>
 							</div>
 						</div>
 					)}
 					{client.address && (
 						<div className="flex items-start gap-3">
-							<MapPin className="w-5 h-5 text-gray-400 mt-1 flex-shrink-0" />
+							<MapPin className="w-5 h-5 text-disabled mt-1 flex-shrink-0" />
 							<div>
-								<p className="text-sm text-gray-500 mb-1">العنوان</p>
-								<p className="font-medium text-gray-900">{client.address}</p>
+								<p className="text-sm text-subtle mb-1">العنوان</p>
+								<p className="font-medium text-foreground">{client.address}</p>
 							</div>
 						</div>
 					)}
 					<div className="flex items-start gap-3">
-						<Calendar className="w-5 h-5 text-gray-400 mt-1 flex-shrink-0" />
+						<Calendar className="w-5 h-5 text-disabled mt-1 flex-shrink-0" />
 						<div>
-							<p className="text-sm text-gray-500 mb-1">تاريخ الإضافة</p>
-							<p className="font-medium text-gray-900">{formatDate(client.created_at)}</p>
+							<p className="text-sm text-subtle mb-1">تاريخ الإضافة</p>
+							<p className="font-medium text-foreground">{formatDate(client.created_at)}</p>
 						</div>
 					</div>
 					<div className="flex items-start gap-3">
 						<div className="w-5 h-5 flex-shrink-0" />
 						<div>
-							<p className="text-sm text-gray-500 mb-1">الحالة</p>
+							<p className="text-sm text-subtle mb-1">الحالة</p>
 							<span
 								className={cn(
 									"inline-flex items-center px-3 py-1 rounded-full text-xs font-bold border",
 									client.status === "active"
 										? "bg-green-50 text-green-700 border-green-100"
-										: "bg-gray-50 text-gray-700 border-gray-100"
+										: "bg-surface-2 text-muted-foreground border-border"
 								)}
 							>
 								{client.status === "active" ? "نشط" : "غير نشط"}
@@ -239,20 +239,20 @@ export default function ClientDetailPage() {
 
 			{/* Stats Cards */}
 			<div className="grid grid-cols-1 md:grid-cols-4 gap-5">
-				<div className="bg-white rounded-3xl border border-gray-100 shadow-sm p-6">
-					<p className="text-sm text-gray-500 mb-2">إجمالي الفواتير</p>
-					<p className="text-2xl font-bold text-gray-900">{invoices.length}</p>
+				<div className="bg-surface rounded-3xl border border-border shadow-sm p-6">
+					<p className="text-sm text-subtle mb-2">إجمالي الفواتير</p>
+					<p className="text-2xl font-bold text-foreground">{invoices.length}</p>
 				</div>
-				<div className="bg-white rounded-3xl border border-gray-100 shadow-sm p-6">
-					<p className="text-sm text-gray-500 mb-2">إجمالي المبلغ</p>
-					<p className="text-2xl font-bold text-gray-900">{formatCurrency(totalInvoiced)}</p>
+				<div className="bg-surface rounded-3xl border border-border shadow-sm p-6">
+					<p className="text-sm text-subtle mb-2">إجمالي المبلغ</p>
+					<p className="text-2xl font-bold text-foreground">{formatCurrency(totalInvoiced)}</p>
 				</div>
-				<div className="bg-white rounded-3xl border border-gray-100 shadow-sm p-6">
-					<p className="text-sm text-gray-500 mb-2">المبلغ المدفوع</p>
+				<div className="bg-surface rounded-3xl border border-border shadow-sm p-6">
+					<p className="text-sm text-subtle mb-2">المبلغ المدفوع</p>
 					<p className="text-2xl font-bold text-green-600">{formatCurrency(totalPaid)}</p>
 				</div>
-				<div className="bg-white rounded-3xl border border-gray-100 shadow-sm p-6">
-					<p className="text-sm text-gray-500 mb-2">المبلغ المستحق</p>
+				<div className="bg-surface rounded-3xl border border-border shadow-sm p-6">
+					<p className="text-sm text-subtle mb-2">المبلغ المستحق</p>
 					<p className="text-2xl font-bold text-orange-600">{formatCurrency(totalPending)}</p>
 				</div>
 			</div>
@@ -262,46 +262,46 @@ export default function ClientDetailPage() {
 				initial={{ opacity: 0, y: 20 }}
 				animate={{ opacity: 1, y: 0 }}
 				transition={{ delay: 0.2 }}
-				className="bg-white rounded-3xl border border-gray-100 shadow-sm overflow-hidden"
+				className="bg-surface rounded-3xl border border-border shadow-sm overflow-hidden"
 			>
-				<div className="p-6 border-b border-gray-100">
-					<h2 className="text-xl font-bold text-gray-900">الفواتير</h2>
+				<div className="p-6 border-b border-border">
+					<h2 className="text-xl font-bold text-foreground">الفواتير</h2>
 				</div>
 				<div className="overflow-x-auto">
 					<table className="w-full">
-						<thead className="bg-gray-50/50">
+						<thead className="bg-surface-2">
 							<tr>
-								<th className="px-6 py-4 text-right text-xs font-bold text-gray-500 uppercase tracking-wider">
+								<th className="px-6 py-4 text-right text-xs font-bold text-subtle uppercase tracking-wider">
 									رقم الفاتورة
 								</th>
-								<th className="px-6 py-4 text-right text-xs font-bold text-gray-500 uppercase tracking-wider">
+								<th className="px-6 py-4 text-right text-xs font-bold text-subtle uppercase tracking-wider">
 									تاريخ الإصدار
 								</th>
-								<th className="px-6 py-4 text-right text-xs font-bold text-gray-500 uppercase tracking-wider">
+								<th className="px-6 py-4 text-right text-xs font-bold text-subtle uppercase tracking-wider">
 									تاريخ الاستحقاق
 								</th>
-								<th className="px-6 py-4 text-center text-xs font-bold text-gray-500 uppercase tracking-wider">
+								<th className="px-6 py-4 text-center text-xs font-bold text-subtle uppercase tracking-wider">
 									الحالة
 								</th>
-								<th className="px-6 py-4 text-right text-xs font-bold text-gray-500 uppercase tracking-wider">
+								<th className="px-6 py-4 text-right text-xs font-bold text-subtle uppercase tracking-wider">
 									المبلغ
 								</th>
-								<th className="px-6 py-4 text-right text-xs font-bold text-gray-500 uppercase tracking-wider">
+								<th className="px-6 py-4 text-right text-xs font-bold text-subtle uppercase tracking-wider">
 									الإجراءات
 								</th>
 							</tr>
 						</thead>
-						<tbody className="divide-y divide-gray-50">
+						<tbody className="divide-y divide-border">
 							{invoices.map((invoice) => {
 								const statusInfo = statusConfig[invoice.status];
 								const StatusIcon = statusInfo.icon;
 								return (
-									<tr key={invoice.id} className="hover:bg-gray-50/50 transition-colors">
+									<tr key={invoice.id} className="hover:bg-surface-2 transition-colors">
 										<td className="px-6 py-4">
-											<span className="font-bold text-[#012d46]">{invoice.invoice_number}</span>
+											<span className="font-bold text-foreground">{invoice.invoice_number}</span>
 										</td>
-										<td className="px-6 py-4 text-sm text-gray-600">{formatDate(invoice.issue_date)}</td>
-										<td className="px-6 py-4 text-sm text-gray-600">{formatDate(invoice.due_date)}</td>
+										<td className="px-6 py-4 text-sm text-muted-foreground">{formatDate(invoice.issue_date)}</td>
+										<td className="px-6 py-4 text-sm text-muted-foreground">{formatDate(invoice.due_date)}</td>
 										<td className="px-6 py-4 text-center">
 											<span
 												className={cn(
@@ -314,14 +314,14 @@ export default function ClientDetailPage() {
 											</span>
 										</td>
 										<td className="px-6 py-4">
-											<span className="font-bold text-gray-900">
+											<span className="font-bold text-foreground">
 												{formatCurrency(invoice.total_amount)}
 											</span>
 										</td>
 										<td className="px-6 py-4">
 											<button
 												onClick={() => router.push(`/dashboard/invoices/${invoice.id}`)}
-												className="text-[#7f2dfb] hover:text-[#6a1fd8] font-medium text-sm"
+												className="text-brand hover:text-brand-hover font-medium text-sm"
 											>
 												عرض
 											</button>
@@ -333,11 +333,11 @@ export default function ClientDetailPage() {
 					</table>
 					{invoices.length === 0 && (
 						<div className="flex flex-col items-center justify-center py-16 text-center">
-							<div className="w-16 h-16 bg-gray-50 rounded-full flex items-center justify-center mb-4">
-								<FileText className="w-8 h-8 text-gray-300" />
+							<div className="w-16 h-16 bg-surface-2 rounded-full flex items-center justify-center mb-4">
+								<FileText className="w-8 h-8 text-disabled" />
 							</div>
-							<h3 className="text-gray-900 font-bold mb-1">لا توجد فواتير</h3>
-							<p className="text-gray-500 text-sm">لم يتم إصدار أي فواتير لهذا العميل بعد</p>
+							<h3 className="text-foreground font-bold mb-1">لا توجد فواتير</h3>
+							<p className="text-subtle text-sm">لم يتم إصدار أي فواتير لهذا العميل بعد</p>
 						</div>
 					)}
 				</div>

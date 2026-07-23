@@ -224,13 +224,13 @@ export default function InvoiceDetailClient({
 
 	return (
 		<>
-			<div className="min-h-screen bg-gray-50 p-4 md:p-8">
+			<div className="min-h-screen bg-surface-2 p-4 md:p-8">
 				<div className="max-w-6xl mx-auto">
 					{/* Header */}
 					<div className="mb-6 no-print">
 						<Link
 							href="/dashboard/invoices"
-							className="inline-flex items-center gap-2 text-gray-600 hover:text-[#7f2dfb] transition-colors mb-4"
+							className="inline-flex items-center gap-2 text-muted-foreground hover:text-brand transition-colors mb-4"
 						>
 							<ArrowLeft className="w-4 h-4" />
 							العودة إلى قائمة الفواتير
@@ -238,17 +238,17 @@ export default function InvoiceDetailClient({
 						<div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
 							<div>
 								<div className="flex items-center gap-3 mb-2">
-									<h1 className="text-2xl md:text-3xl font-bold text-[#012d46]">
+									<h1 className="text-2xl md:text-3xl font-bold text-foreground">
 										{getTitle()} #{invoice.invoice_number || invoice.id}
 									</h1>
 									{IS_ZATCA_ENABLED && (
-										<span className="px-3 py-1 bg-purple-100 text-purple-700 rounded-lg text-sm font-medium">
+										<span className="px-3 py-1 bg-brand-soft-2 text-brand rounded-lg text-sm font-medium">
 											{getInvoiceTypeLabel(invoiceType)}
 										</span>
 									)}
 								</div>
 								{isCredit && invoice?.related_invoice_id && (
-									<p className="text-sm text-gray-500 mt-1">
+									<p className="text-sm text-subtle mt-1">
 										هذا إشعار دائن متعلق بالفاتورة رقم{" "}
 										{invoice.invoice_number || invoice.id}
 									</p>
@@ -267,7 +267,7 @@ export default function InvoiceDetailClient({
 								<button
 									onClick={handleDuplicate}
 									disabled={isDuplicating}
-									className="inline-flex items-center gap-2 px-4 py-2 bg-white text-gray-700 border border-gray-200 rounded-lg hover:bg-gray-50 transition-colors disabled:opacity-50"
+									className="inline-flex items-center gap-2 px-4 py-2 bg-surface text-muted-foreground border border-border rounded-lg hover:bg-surface-2 transition-colors disabled:opacity-50"
 								>
 									{isDuplicating ? (
 										<Loader2 className="w-4 h-4 animate-spin" />
@@ -281,7 +281,7 @@ export default function InvoiceDetailClient({
 									<a
 										href={`/api/invoices/${invoice.id}/pdf`}
 										target="_blank"
-										className="inline-flex items-center gap-2 px-4 py-2 bg-[#7f2dfb] text-white rounded-lg hover:bg-[#6b1fd9] transition-colors"
+										className="inline-flex items-center gap-2 px-4 py-2 bg-brand text-white rounded-lg hover:bg-[#6b1fd9] transition-colors"
 									>
 										<Printer className="w-4 h-4" />
 										تحميل PDF
@@ -289,7 +289,7 @@ export default function InvoiceDetailClient({
 								) : (
 									<button
 										disabled
-										className="inline-flex items-center gap-2 px-4 py-2 bg-gray-300 text-gray-500 rounded-lg cursor-not-allowed"
+										className="inline-flex items-center gap-2 px-4 py-2 bg-gray-300 text-subtle rounded-lg cursor-not-allowed"
 									>
 										<Printer className="w-4 h-4" />
 										{isSettingsReady
@@ -319,7 +319,7 @@ export default function InvoiceDetailClient({
 									<div className="mt-2">
 										<Link
 											href="/dashboard/invoices-settings"
-											className="text-[#7f2dfb] hover:underline font-medium"
+											className="text-brand hover:underline font-medium"
 										>
 											الانتقال إلى إعدادات الفواتير
 										</Link>
@@ -336,7 +336,7 @@ export default function InvoiceDetailClient({
 
 					{/* Print Header */}
 					<div className="print-header mb-6">
-						<h1 className="text-2xl font-bold text-[#012d46] text-center mb-4">
+						<h1 className="text-2xl font-bold text-foreground text-center mb-4">
 							{getTitle()} #{invoice.invoice_number || invoice.id}
 						</h1>
 					</div>
@@ -345,7 +345,7 @@ export default function InvoiceDetailClient({
 					<m.div
 						initial={{ opacity: 0, y: 20 }}
 						animate={{ opacity: 1, y: 0 }}
-						className="print-invoice bg-white shadow-sm"
+						className="print-invoice bg-surface shadow-sm"
 						style={{
 							borderRadius: INVOICE_TOKENS.radius,
 							color: INVOICE_TOKENS.textDark,
@@ -442,14 +442,14 @@ export default function InvoiceDetailClient({
 									مِن (البائع)
 								</h3>
 								<div className="flex flex-col gap-1 mt-2">
-									<div className="font-bold text-gray-900">{sellerName}</div>
-									{sellerAddress && <div className="text-gray-600 text-sm">{sellerAddress}</div>}
-									{sellerPhone && <div className="text-gray-600 text-sm ltr-iso text-right">{sellerPhone}</div>}
+									<div className="font-bold text-foreground">{sellerName}</div>
+									{sellerAddress && <div className="text-muted-foreground text-sm">{sellerAddress}</div>}
+									{sellerPhone && <div className="text-muted-foreground text-sm ltr-iso text-right">{sellerPhone}</div>}
 									{IS_ZATCA_ENABLED && sellerTaxNumber && (
-										<div className="text-gray-500 text-sm mt-1">الرقم الضريبي: <span className="ltr-iso">{sellerTaxNumber}</span></div>
+										<div className="text-subtle text-sm mt-1">الرقم الضريبي: <span className="ltr-iso">{sellerTaxNumber}</span></div>
 									)}
 									{!IS_ZATCA_ENABLED && sellerCrNumber && (
-										<div className="text-gray-500 text-sm mt-1">س.ت: <span className="ltr-iso">{sellerCrNumber}</span></div>
+										<div className="text-subtle text-sm mt-1">س.ت: <span className="ltr-iso">{sellerCrNumber}</span></div>
 									)}
 								</div>
 							</div>
@@ -469,11 +469,11 @@ export default function InvoiceDetailClient({
 									إلى (العميل)
 								</h3>
 								<div className="flex flex-col gap-1 mt-2">
-									<div className="font-bold text-gray-900">{buyerName}</div>
-									{buyerAddress && <div className="text-gray-600 text-sm">{buyerAddress}</div>}
-									{buyerPhone && <div className="text-gray-600 text-sm ltr-iso text-right">{buyerPhone}</div>}
+									<div className="font-bold text-foreground">{buyerName}</div>
+									{buyerAddress && <div className="text-muted-foreground text-sm">{buyerAddress}</div>}
+									{buyerPhone && <div className="text-muted-foreground text-sm ltr-iso text-right">{buyerPhone}</div>}
 									{IS_ZATCA_ENABLED && isTax && buyerTaxNumber && (
-										<div className="text-gray-500 text-sm mt-1">الرقم الضريبي: <span className="ltr-iso">{buyerTaxNumber}</span></div>
+										<div className="text-subtle text-sm mt-1">الرقم الضريبي: <span className="ltr-iso">{buyerTaxNumber}</span></div>
 									)}
 								</div>
 							</div>
@@ -502,16 +502,16 @@ export default function InvoiceDetailClient({
 									تفاصيل الفاتورة
 								</h3>
 								<div className="flex justify-between items-center mb-1">
-									<span className="font-semibold text-gray-500 text-[13px]">
+									<span className="font-semibold text-subtle text-[13px]">
 										تاريخ الإصدار:
 									</span>
 									<span className="ltr-iso">
 										{formatDate(invoice.issue_date)}
-										{issueTime && <span className="text-gray-400 text-sm mr-2 font-medium">{issueTime}</span>}
+										{issueTime && <span className="text-disabled text-sm mr-2 font-medium">{issueTime}</span>}
 									</span>
 								</div>
 								<div className="flex justify-between items-center mb-1">
-									<span className="font-semibold text-gray-500 text-[13px]">
+									<span className="font-semibold text-subtle text-[13px]">
 										تاريخ الاستحقاق:
 									</span>
 									<span className="ltr-iso">{formatDate(invoice.due_date)}</span>
@@ -784,8 +784,8 @@ export default function InvoiceDetailClient({
 
 						{/* Dashboard-only widgets (Payments) */}
 						{payments.length > 0 && (
-							<div className="mt-8 pt-8 border-t border-gray-100 no-print">
-								<h3 className="text-lg font-semibold text-[#012d46] mb-4">
+							<div className="mt-8 pt-8 border-t border-border no-print">
+								<h3 className="text-lg font-semibold text-foreground mb-4">
 									سجل الدفعات
 								</h3>
 								<InvoicePaymentsList payments={payments} />
@@ -804,33 +804,33 @@ export default function InvoiceDetailClient({
 						/>
 						{/* PAYMENT & NOTES & FOOTER */}
 						{(sellerBankName || sellerIban) && (
-							<div className="mt-12 p-6 bg-[#f8fafc] border border-gray-200 rounded-lg break-inside-avoid">
-								<h4 className="text-[11px] font-bold text-gray-500 uppercase tracking-wider mb-4">
+							<div className="mt-12 p-6 bg-[#f8fafc] border border-border rounded-lg break-inside-avoid">
+								<h4 className="text-[11px] font-bold text-subtle uppercase tracking-wider mb-4">
 									تفاصيل الحساب البنكي
 								</h4>
 								{sellerBankName && (
-									<div className="flex justify-between py-2 border-b border-gray-200 text-sm">
-										<span className="text-gray-500">اسم البنك</span>
-										<span className="font-semibold text-gray-900">{sellerBankName}</span>
+									<div className="flex justify-between py-2 border-b border-border text-sm">
+										<span className="text-subtle">اسم البنك</span>
+										<span className="font-semibold text-foreground">{sellerBankName}</span>
 									</div>
 								)}
 								{sellerIban && (
-									<div className="flex justify-between py-2 border-b border-gray-200 text-sm">
-										<span className="text-gray-500">IBAN</span>
-										<span className="font-semibold text-gray-900 ltr-iso font-mono">{sellerIban}</span>
+									<div className="flex justify-between py-2 border-b border-border text-sm">
+										<span className="text-subtle">IBAN</span>
+										<span className="font-semibold text-foreground ltr-iso font-mono">{sellerIban}</span>
 									</div>
 								)}
 							</div>
 						)}
 
 						{invoiceFooter && (
-							<div className="mt-6 text-center text-[13px] text-gray-500">
+							<div className="mt-6 text-center text-[13px] text-subtle">
 								{invoiceFooter}
 							</div>
 						)}
 
-						<div className="mt-12 pt-6 border-t border-gray-200 text-center text-xs text-gray-500">
-							تم الإنشاء بواسطة منصة <span className="font-bold text-[#7f2dfb]">Bilfora</span> للفواتير الإلكترونية
+						<div className="mt-12 pt-6 border-t border-border text-center text-xs text-subtle">
+							تم الإنشاء بواسطة منصة <span className="font-bold text-brand">Bilfora</span> للفواتير الإلكترونية
 						</div>
 
 					</m.div>

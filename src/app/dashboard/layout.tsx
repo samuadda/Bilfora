@@ -7,7 +7,6 @@ import Sidebar from "@/components/dashboard/sideBar";
 import { useSidebar } from "@/components/dashboard/sidebar/SidebarContext";
 import SidebarProvider from "@/components/dashboard/SidebarProvider";
 import LoadingState from "@/components/LoadingState";
-import { Toaster } from "@/components/ui/sonner";
 import { m } from "framer-motion";
 import { cn } from "@/lib/utils";
 
@@ -22,8 +21,8 @@ function DashboardContent({ children }: { children: ReactNode }) {
 	return (
 		<main
 			className={cn(
-				"flex-1 min-h-screen bg-[#f8f9fc] transition-[margin] duration-300 w-full max-w-full overflow-x-hidden",
-				isCollapsed ? "md:mr-[80px]" : "md:mr-[280px]"
+				"flex-1 min-h-screen bg-background transition-[margin] duration-300 w-full max-w-full overflow-x-hidden",
+				isCollapsed ? "md:mr-[80px]" : "md:mr-[264px]"
 			)}
 		>
 			<div className="p-4 md:p-8 pt-20 md:pt-8 max-w-[1600px] mx-auto">
@@ -171,11 +170,11 @@ function AuthWrapper({ children }: { children: ReactNode }) {
 	// 🔴 Connection error state
 	if (connectionError) {
 		return (
-			<div className="fixed inset-0 z-50 bg-white/80 backdrop-blur-sm flex items-center justify-center p-4">
+			<div className="fixed inset-0 z-50 bg-surface/80 backdrop-blur-sm flex items-center justify-center p-4">
 				<m.div
 					initial={{ opacity: 0, scale: 0.9 }}
 					animate={{ opacity: 1, scale: 1 }}
-					className="bg-white rounded-2xl p-8 max-w-md w-full shadow-2xl border border-red-100"
+					className="bg-surface rounded-2xl p-8 max-w-md w-full shadow-2xl border border-red-100"
 				>
 					<div className="flex flex-col items-center gap-6 text-center">
 						<div className="w-16 h-16 bg-red-100 rounded-full flex items-center justify-center">
@@ -184,25 +183,25 @@ function AuthWrapper({ children }: { children: ReactNode }) {
 							</svg>
 						</div>
 						<div>
-							<h2 className="text-2xl font-bold text-[#012d46] mb-2">
+							<h2 className="text-2xl font-bold text-foreground mb-2">
 								فشل الاتصال بالخادم
 							</h2>
-							<p className="text-gray-600 mb-1">
+							<p className="text-muted-foreground mb-1">
 								لا يمكن الاتصال بخادم Supabase
 							</p>
-							<p className="text-sm text-gray-500">
+							<p className="text-sm text-subtle">
 								يرجى التحقق من اتصالك بالإنترنت والمحاولة مرة أخرى
 							</p>
 						</div>
 						<button
 							onClick={() => checkAuth()}
-							className="w-full px-6 py-3 bg-[#7f2dfb] text-white rounded-xl font-semibold hover:bg-[#6a1fd8] transition-colors"
+							className="w-full px-6 py-3 bg-brand text-white rounded-xl font-semibold hover:bg-brand-hover transition-colors"
 						>
 							إعادة المحاولة
 						</button>
 						<button
 							onClick={() => router.push("/login")}
-							className="text-sm text-gray-500 hover:text-[#7f2dfb] transition-colors"
+							className="text-sm text-subtle hover:text-brand transition-colors"
 						>
 							العودة إلى صفحة تسجيل الدخول
 						</button>
@@ -217,7 +216,7 @@ function AuthWrapper({ children }: { children: ReactNode }) {
 
 	return (
 		<SidebarProvider>
-			<div className="min-h-screen flex flex-col md:flex-row bg-[#f8f9fc]">
+			<div className="min-h-screen flex flex-col md:flex-row bg-background">
 				<Sidebar />
 				<DashboardContent>{children}</DashboardContent>
 			</div>
@@ -234,7 +233,6 @@ export default function DashboardLayoutWrapper({
 	return (
 		<>
 			<AuthWrapper>{children}</AuthWrapper>
-			<Toaster />
 			<FeedbackWidget />
 		</>
 	);

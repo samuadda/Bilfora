@@ -72,8 +72,8 @@ export function Pagination({
             className={cn(
               "w-8 h-8 flex items-center justify-center rounded-lg text-sm font-medium transition-colors",
               currentPage === page
-                ? "bg-[#7f2dfb] text-white shadow-sm hover:bg-[#6a1fd8]"
-                : "text-gray-600 hover:bg-gray-100"
+                ? "bg-brand text-white shadow-sm hover:bg-brand-hover"
+                : "text-muted-foreground hover:bg-surface-inset"
             )}
           >
             {page}

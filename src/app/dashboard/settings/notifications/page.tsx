@@ -102,67 +102,67 @@ export default function NotificationsSettingsPage() {
 	return (
 		<div className="space-y-6 pb-24">
 			{/* Channels */}
-			<div className="bg-white rounded-2xl border border-gray-100 p-6 shadow-sm">
+			<div className="bg-surface rounded-2xl border border-border p-6 shadow-sm">
 				<div className="flex items-center justify-between mb-5">
-					<h2 className="text-lg font-bold text-[#012d46] flex items-center gap-2">
-						<Bell className="text-[#7f2dfb]" size={20} />
+					<h2 className="text-lg font-bold text-foreground flex items-center gap-2">
+						<Bell className="text-brand" size={20} />
 						قنوات التواصل
 					</h2>
 					<div className="flex items-center gap-2">
-						<button onClick={selectAll} className="inline-flex items-center gap-1 px-3 py-1.5 rounded-lg border border-gray-200 text-xs font-bold hover:bg-gray-50 transition-colors">
+						<button onClick={selectAll} className="inline-flex items-center gap-1 px-3 py-1.5 rounded-lg border border-border text-xs font-bold hover:bg-surface-2 transition-colors">
 							<CheckCircle size={14} /> تحديد الكل
 						</button>
-						<button onClick={resetDefaults} className="inline-flex items-center gap-1 px-3 py-1.5 rounded-lg border border-gray-200 text-xs font-bold hover:bg-gray-50 transition-colors">
+						<button onClick={resetDefaults} className="inline-flex items-center gap-1 px-3 py-1.5 rounded-lg border border-border text-xs font-bold hover:bg-surface-2 transition-colors">
 							<RotateCcw size={14} /> استعادة
 						</button>
 					</div>
 				</div>
 				<div className="space-y-4">
 					{/* Email Channel */}
-					<div className="flex items-center justify-between p-4 rounded-xl border border-gray-100 bg-gray-50/50">
+					<div className="flex items-center justify-between p-4 rounded-xl border border-border bg-surface-2">
 						<div className="flex items-center gap-3">
-							<div className="p-2 bg-purple-100 text-[#7f2dfb] rounded-lg"><Mail size={20} /></div>
+							<div className="p-2 bg-brand-soft-2 text-brand rounded-lg"><Mail size={20} /></div>
 							<div>
 								<div className="flex items-center gap-2">
-									<p className="font-bold text-gray-900 text-sm">البريد الإلكتروني</p>
+									<p className="font-bold text-foreground text-sm">البريد الإلكتروني</p>
 									{state.verified.email ? (
 										<span className="inline-flex items-center gap-1 text-green-700 bg-green-100 px-2 py-0.5 rounded-full text-[10px] font-bold border border-green-200"><BadgeCheck size={10} /> موثق</span>
 									) : (
 										<button className="inline-flex items-center gap-1 text-amber-700 bg-amber-100 px-2 py-0.5 rounded-full text-[10px] font-bold border border-amber-200 hover:bg-amber-200"><AlertTriangle size={10} /> تحقق</button>
 									)}
 								</div>
-								<p className="text-xs text-gray-500 mt-0.5">استلام الفواتير والتنبيهات الهامة</p>
+								<p className="text-xs text-subtle mt-0.5">استلام الفواتير والتنبيهات الهامة</p>
 							</div>
 						</div>
 						<div className="flex items-center gap-3">
-							<button className="hidden md:inline-flex items-center gap-1 px-3 py-1.5 rounded-lg border border-gray-200 text-xs font-medium hover:bg-white transition-colors"><Send size={12} /> اختبار</button>
+							<button className="hidden md:inline-flex items-center gap-1 px-3 py-1.5 rounded-lg border border-border text-xs font-medium hover:bg-surface transition-colors"><Send size={12} /> اختبار</button>
 							<label className="relative inline-flex items-center cursor-pointer">
 								<input type="checkbox" checked={state.channels.email} onChange={(e) => setChannel("email", e.target.checked)} className="sr-only peer" />
-								<div className="w-11 h-6 bg-gray-200 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-[#7f2dfb]"></div>
+								<div className="w-11 h-6 bg-surface-inset peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-surface after:border-border-strong after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-brand"></div>
 							</label>
 						</div>
 					</div>
 					{/* SMS Channel */}
-					<div className="flex items-center justify-between p-4 rounded-xl border border-gray-100 bg-gray-50/50">
+					<div className="flex items-center justify-between p-4 rounded-xl border border-border bg-surface-2">
 						<div className="flex items-center gap-3">
 							<div className="p-2 bg-blue-100 text-blue-600 rounded-lg"><MessageSquare size={20} /></div>
 							<div>
 								<div className="flex items-center gap-2">
-									<p className="font-bold text-gray-900 text-sm">الرسائل القصيرة (SMS)</p>
+									<p className="font-bold text-foreground text-sm">الرسائل القصيرة (SMS)</p>
 									{state.verified.sms ? (
 										<span className="inline-flex items-center gap-1 text-green-700 bg-green-100 px-2 py-0.5 rounded-full text-[10px] font-bold border border-green-200"><BadgeCheck size={10} /> موثق</span>
 									) : (
 										<button className="inline-flex items-center gap-1 text-amber-700 bg-amber-100 px-2 py-0.5 rounded-full text-[10px] font-bold border border-amber-200 hover:bg-amber-200"><AlertTriangle size={10} /> تحقق</button>
 									)}
 								</div>
-								<p className="text-xs text-gray-500 mt-0.5">تنبيهات فورية ورموز التحقق</p>
+								<p className="text-xs text-subtle mt-0.5">تنبيهات فورية ورموز التحقق</p>
 							</div>
 						</div>
 						<div className="flex items-center gap-3">
-							<button className="hidden md:inline-flex items-center gap-1 px-3 py-1.5 rounded-lg border border-gray-200 text-xs font-medium hover:bg-white transition-colors"><Send size={12} /> اختبار</button>
+							<button className="hidden md:inline-flex items-center gap-1 px-3 py-1.5 rounded-lg border border-border text-xs font-medium hover:bg-surface transition-colors"><Send size={12} /> اختبار</button>
 							<label className="relative inline-flex items-center cursor-pointer">
 								<input type="checkbox" checked={state.channels.sms} onChange={(e) => setChannel("sms", e.target.checked)} className="sr-only peer" />
-								<div className="w-11 h-6 bg-gray-200 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-[#7f2dfb]"></div>
+								<div className="w-11 h-6 bg-surface-inset peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-surface after:border-border-strong after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-brand"></div>
 							</label>
 						</div>
 					</div>
@@ -170,40 +170,40 @@ export default function NotificationsSettingsPage() {
 			</div>
 
 			{/* Matrix */}
-			<div className="bg-white rounded-2xl border border-gray-100 p-6 shadow-sm">
-				<h2 className="text-lg font-bold text-[#012d46] mb-5 flex items-center gap-2">
-					<CheckCircle className="text-[#7f2dfb]" size={20} />
+			<div className="bg-surface rounded-2xl border border-border p-6 shadow-sm">
+				<h2 className="text-lg font-bold text-foreground mb-5 flex items-center gap-2">
+					<CheckCircle className="text-brand" size={20} />
 					تخصيص التنبيهات
 				</h2>
 				<div className="overflow-x-auto">
 					<table className="w-full text-sm">
 						<thead>
-							<tr className="border-b border-gray-100">
-								<th className="text-right px-4 py-3 font-bold text-gray-500 w-1/2">نوع التنبيه</th>
-								<th className="text-center px-4 py-3 font-bold text-gray-500">Email</th>
-								<th className="text-center px-4 py-3 font-bold text-gray-500">SMS</th>
+							<tr className="border-b border-border">
+								<th className="text-right px-4 py-3 font-bold text-subtle w-1/2">نوع التنبيه</th>
+								<th className="text-center px-4 py-3 font-bold text-subtle">Email</th>
+								<th className="text-center px-4 py-3 font-bold text-subtle">SMS</th>
 							</tr>
 						</thead>
-						<tbody className="divide-y divide-gray-50">
+						<tbody className="divide-y divide-border">
 							{([
 								{ key: "newInvoice", labelIcon: <FileText size={16} className="text-blue-600" />, label: "فواتير جديدة صادرة" },
 								{ key: "paymentReceived", labelIcon: <CheckCircle size={16} className="text-green-600" />, label: "استلام دفعة مالية" },
 								{ key: "overdueReminder", labelIcon: <AlertCircle size={16} className="text-orange-600" />, label: "تذكير بفاتورة مستحقة" },
-								{ key: "systemAlerts", labelIcon: <Bell size={16} className="text-gray-600" />, label: "تحديثات النظام" },
-								{ key: "securityAlerts", labelIcon: <ShieldCheck size={16} className="text-purple-600" />, label: "تنبيهات الأمان" },
+								{ key: "systemAlerts", labelIcon: <Bell size={16} className="text-muted-foreground" />, label: "تحديثات النظام" },
+								{ key: "securityAlerts", labelIcon: <ShieldCheck size={16} className="text-brand" />, label: "تنبيهات الأمان" },
 							] as { key: TypeKey; labelIcon: React.ReactNode; label: string }[]).map((row) => (
-								<tr key={row.key} className="hover:bg-gray-50/50 transition-colors">
+								<tr key={row.key} className="hover:bg-surface-2 transition-colors">
 									<td className="px-4 py-4">
-										<span className="inline-flex items-center gap-3 font-medium text-gray-700">
-											<div className="p-2 bg-gray-50 rounded-lg">{row.labelIcon}</div>
+										<span className="inline-flex items-center gap-3 font-medium text-muted-foreground">
+											<div className="p-2 bg-surface-2 rounded-lg">{row.labelIcon}</div>
 											{row.label}
 										</span>
 									</td>
 									<td className="px-4 py-4 text-center">
-										<input type="checkbox" checked={state[row.key].email} onChange={(e) => setTypeChannel(row.key, "email", e.target.checked)} disabled={emailDisabled} className="w-5 h-5 rounded border-gray-300 focus:ring-[#7f2dfb] disabled:opacity-40 cursor-pointer accent-[#7f2dfb]" />
+										<input type="checkbox" checked={state[row.key].email} onChange={(e) => setTypeChannel(row.key, "email", e.target.checked)} disabled={emailDisabled} className="w-5 h-5 rounded border-border-strong focus:ring-brand disabled:opacity-40 cursor-pointer accent-brand" />
 									</td>
 									<td className="px-4 py-4 text-center">
-										<input type="checkbox" checked={state[row.key].sms} onChange={(e) => setTypeChannel(row.key, "sms", e.target.checked)} disabled={smsDisabled} className="w-5 h-5 rounded border-gray-300 focus:ring-[#7f2dfb] disabled:opacity-40 cursor-pointer accent-[#7f2dfb]" />
+										<input type="checkbox" checked={state[row.key].sms} onChange={(e) => setTypeChannel(row.key, "sms", e.target.checked)} disabled={smsDisabled} className="w-5 h-5 rounded border-border-strong focus:ring-brand disabled:opacity-40 cursor-pointer accent-brand" />
 									</td>
 								</tr>
 							))}
@@ -213,16 +213,16 @@ export default function NotificationsSettingsPage() {
 			</div>
 
 			{/* Advanced */}
-			<div className="bg-white rounded-2xl border border-gray-100 p-6 shadow-sm">
-				<h2 className="text-lg font-bold text-[#012d46] mb-5 flex items-center gap-2">
-					<Clock4 className="text-[#7f2dfb]" size={20} />
+			<div className="bg-surface rounded-2xl border border-border p-6 shadow-sm">
+				<h2 className="text-lg font-bold text-foreground mb-5 flex items-center gap-2">
+					<Clock4 className="text-brand" size={20} />
 					إعدادات متقدمة
 				</h2>
 				<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
 					<div className="space-y-2">
-						<label className="text-sm font-bold text-gray-700 block">تكرار التنبيهات</label>
+						<label className="text-sm font-bold text-muted-foreground block">تكرار التنبيهات</label>
 						<Select value={state.frequency} onValueChange={(val) => setState((s) => ({ ...s, frequency: val as Frequency }))}>
-							<SelectTrigger className="w-full h-11 bg-white border-gray-200"><SelectValue /></SelectTrigger>
+							<SelectTrigger className="w-full h-11 bg-surface border-border"><SelectValue /></SelectTrigger>
 							<SelectContent>
 								<SelectItem value="immediate">فوري (ينصح به)</SelectItem>
 								<SelectItem value="daily">ملخص يومي</SelectItem>
@@ -233,15 +233,15 @@ export default function NotificationsSettingsPage() {
 
 					<div className="space-y-2">
 						<div className="flex items-center justify-between">
-							<label className="text-sm font-bold text-gray-700">وضع عدم الإزعاج</label>
+							<label className="text-sm font-bold text-muted-foreground">وضع عدم الإزعاج</label>
 							<label className="relative inline-flex items-center cursor-pointer scale-75 origin-left">
 								<input type="checkbox" checked={state.dnd.enabled} onChange={(e) => setState((s) => ({ ...s, dnd: { ...s.dnd, enabled: e.target.checked } }))} className="sr-only peer" />
-								<div className="w-11 h-6 bg-gray-200 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-[#7f2dfb]"></div>
+								<div className="w-11 h-6 bg-surface-inset peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-surface after:border-border-strong after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-brand"></div>
 							</label>
 						</div>
 						<div className="flex items-center gap-2">
 							<Select value={state.dnd.start} onValueChange={(val) => setState((s) => ({ ...s, dnd: { ...s.dnd, start: val } }))} disabled={!state.dnd.enabled}>
-								<SelectTrigger className="flex-1 h-11 bg-white border-gray-200"><SelectValue placeholder="من" /></SelectTrigger>
+								<SelectTrigger className="flex-1 h-11 bg-surface border-border"><SelectValue placeholder="من" /></SelectTrigger>
 								<SelectContent>
 									{Array.from({ length: 24 }, (_, i) => {
 										const h = String(i).padStart(2, "0");
@@ -249,9 +249,9 @@ export default function NotificationsSettingsPage() {
 									})}
 								</SelectContent>
 							</Select>
-							<span className="text-gray-400 font-medium text-sm">إلى</span>
+							<span className="text-disabled font-medium text-sm">إلى</span>
 							<Select value={state.dnd.end} onValueChange={(val) => setState((s) => ({ ...s, dnd: { ...s.dnd, end: val } }))} disabled={!state.dnd.enabled}>
-								<SelectTrigger className="flex-1 h-11 bg-white border-gray-200"><SelectValue placeholder="إلى" /></SelectTrigger>
+								<SelectTrigger className="flex-1 h-11 bg-surface border-border"><SelectValue placeholder="إلى" /></SelectTrigger>
 								<SelectContent>
 									{Array.from({ length: 24 }, (_, i) => {
 										const h = String(i).padStart(2, "0");
@@ -266,7 +266,7 @@ export default function NotificationsSettingsPage() {
 						<label className="flex items-center gap-3 cursor-pointer">
 							<div className="relative inline-flex items-center cursor-pointer">
 								<input type="checkbox" checked={state.pausedAll} onChange={(e) => setState((s) => ({ ...s, pausedAll: e.target.checked }))} className="sr-only peer" />
-								<div className="w-11 h-6 bg-gray-200 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-red-500"></div>
+								<div className="w-11 h-6 bg-surface-inset peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-surface after:border-border-strong after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-red-500"></div>
 							</div>
 							<span className="text-sm font-bold text-red-800">إيقاف جميع الإشعارات مؤقتاً</span>
 						</label>
@@ -283,8 +283,8 @@ export default function NotificationsSettingsPage() {
 					<div className="bg-gray-900 text-white shadow-2xl rounded-2xl p-4 flex items-center justify-between gap-4 border border-gray-800 backdrop-blur-md bg-opacity-95">
 						<div className="text-sm font-medium pr-2">لديك تغييرات غير محفوظة</div>
 						<div className="flex items-center gap-2">
-							<button onClick={onDiscard} className="px-4 py-2 rounded-xl text-gray-300 text-sm font-bold hover:bg-white/10 transition-colors">تجاهل</button>
-							<button onClick={onSave} disabled={saving} className="px-6 py-2 rounded-xl bg-[#7f2dfb] text-white text-sm font-bold hover:bg-[#6a1fd8] shadow-lg shadow-purple-900/50 transition-all flex items-center gap-2">
+							<button onClick={onDiscard} className="px-4 py-2 rounded-xl text-disabled text-sm font-bold hover:bg-surface/10 transition-colors">تجاهل</button>
+							<button onClick={onSave} disabled={saving} className="px-6 py-2 rounded-xl bg-brand text-white text-sm font-bold hover:bg-brand-hover shadow-lg shadow-brand transition-all flex items-center gap-2">
 								{saving ? "جارٍ الحفظ..." : "حفظ التغييرات"}
 							</button>
 						</div>

@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import { Logo } from "@/components/brand/Logo";
 import Link from "next/link";
 import { ChevronUp, Zap, Globe, Gift, Shield } from "lucide-react";
 import { m, AnimatePresence } from "framer-motion";
@@ -47,7 +48,7 @@ export default function LandingPageClient() {
 
 	return (
 		<>
-			<div className="relative bg-white overflow-hidden" id="home">
+			<div className="relative bg-surface overflow-hidden" id="home">
 				<Navbar />
 
 				{/* Scroll to top button */}
@@ -55,7 +56,7 @@ export default function LandingPageClient() {
 					{showScrollButton && (
 						<m.button
 							onClick={scrollToTop}
-							className="fixed bottom-8 right-8 z-50 p-3 bg-[#7f2dfb] text-white rounded-full shadow-lg hover:bg-[#6a1fd8] hover:shadow-xl transition-all duration-200 hover:scale-110"
+							className="fixed bottom-8 right-8 z-50 p-3 bg-brand text-white rounded-full shadow-lg hover:bg-brand-hover hover:shadow-xl transition-all duration-200 hover:scale-110"
 							initial={{ opacity: 0, scale: 0 }}
 							animate={{ opacity: 1, scale: 1 }}
 							exit={{ opacity: 0, scale: 0 }}
@@ -70,8 +71,8 @@ export default function LandingPageClient() {
 
 				{/* hero section */}
 				<section className="relative flex justify-center items-center pt-32 pb-20 lg:pt-40 lg:pb-32 overflow-hidden">
-					<div className="absolute inset-0 -z-10 h-full w-full bg-white bg-[linear-gradient(to_right,#8080800a_1px,transparent_1px),linear-gradient(to_bottom,#8080800a_1px,transparent_1px)] bg-[size:14px_24px]">
-						<div className="absolute left-0 right-0 top-0 -z-10 m-auto h-[310px] w-[310px] rounded-full bg-[#7f2dfb] opacity-20 blur-[100px]"></div>
+					<div className="absolute inset-0 -z-10 h-full w-full bg-surface bg-[linear-gradient(to_right,#8080800a_1px,transparent_1px),linear-gradient(to_bottom,#8080800a_1px,transparent_1px)] bg-[size:14px_24px]">
+						<div className="absolute left-0 right-0 top-0 -z-10 m-auto h-[310px] w-[310px] rounded-full bg-brand opacity-20 blur-[100px]"></div>
 					</div>
 
 					<Container className="relative z-20">
@@ -81,7 +82,7 @@ export default function LandingPageClient() {
 								<TypewriterEffect
 									words={heroWords}
 									className="text-5xl leading-tight font-bold sm:text-6xl sm:leading-tight md:text-7xl md:leading-tight lg:text-8xl lg:leading-tight tracking-tight"
-									cursorClassName="bg-[#ff5291]"
+									cursorClassName="bg-brand-accent"
 								/>
 							</h1>
 							<m.div
@@ -109,15 +110,15 @@ export default function LandingPageClient() {
 								<Link href="/register">
 									<MainButton
 										text="ابدأ بإصدار فواتيرك مجاناً"
-										bgColor="bg-[#7f2dfb]"
+										bgColor="bg-brand"
 										textColor="text-white"
-										className="w-full sm:w-auto px-10 py-5 text-xl shadow-purple-200 shadow-xl hover:shadow-2xl transition-all hover:scale-105 font-bold"
+										className="w-full sm:w-auto px-10 py-5 text-xl shadow-brand shadow-xl hover:shadow-2xl transition-all hover:scale-105 font-bold"
 									/>
 								</Link>
-								<p className="text-sm text-gray-500 mt-2 flex items-center gap-2">
+								<p className="text-sm text-subtle mt-2 flex items-center gap-2">
 									<span className="w-1.5 h-1.5 rounded-full bg-green-500"></span>
 									بدون بطاقة ائتمان
-									<span className="text-gray-300 mx-1">|</span>
+									<span className="text-disabled mx-1">|</span>
 									<span className="w-1.5 h-1.5 rounded-full bg-green-500"></span>
 									مصمم للمستقلين والشركات
 								</p>
@@ -159,7 +160,7 @@ export default function LandingPageClient() {
 								as="h2"
 								animation="blurIn"
 								once={true}
-								className="text-4xl font-bold md:text-5xl text-[#012d46]"
+								className="text-4xl font-bold md:text-5xl text-foreground"
 							>
 								بلفرها من جوالك أو لابتوبك في ثوانٍ
 							</TextAnimate>
@@ -179,7 +180,7 @@ export default function LandingPageClient() {
 								className="w-full max-w-[300px] h-auto shadow-2xl rounded-[3rem]"
 								src="/phoneDashboardDemo.png"
 							/>
-							<div className="w-full max-w-2xl shadow-2xl rounded-xl overflow-hidden border border-gray-200">
+							<div className="w-full max-w-2xl shadow-2xl rounded-xl overflow-hidden border border-border">
 								<Safari
 									className="w-full h-auto"
 									url="bilfora.com/dashboard"
@@ -201,8 +202,8 @@ export default function LandingPageClient() {
 							className={cn("mt-16 grid sm:grid-cols-2 lg:grid-cols-4", layout.gap.large)}
 						>
 							<Card padding="standard" className="text-center">
-								<div className="h-10 w-10 rounded-full bg-purple-100 flex items-center justify-center mx-auto mb-3">
-									<Zap className="h-5 w-5 text-[#7f2dfb]" />
+								<div className="h-10 w-10 rounded-full bg-brand-soft-2 flex items-center justify-center mx-auto mb-3">
+									<Zap className="h-5 w-5 text-brand" />
 								</div>
 								<Text variant="body-small" className="font-semibold text-slate-800 mb-1">
 									90 ثانية
@@ -251,7 +252,7 @@ export default function LandingPageClient() {
 				{/* how does it work ? */}
 				<Section
 					padding="large"
-					className="bg-gradient-to-b from-white to-gray-50"
+					className="bg-gradient-to-b from-white to-surface-2"
 					id="how-to"
 				>
 					<div className="text-center mb-16">
@@ -259,7 +260,7 @@ export default function LandingPageClient() {
 							as="h2"
 							animation="blurIn"
 							once={true}
-							className="text-4xl font-bold md:text-5xl text-[#012d46]"
+							className="text-4xl font-bold md:text-5xl text-foreground"
 						>
 							كيف تبلفرها ؟
 						</TextAnimate>
@@ -297,7 +298,7 @@ export default function LandingPageClient() {
 							شركاء النجاح 💜
 						</Heading>
 						<Text variant="body-large" color="muted">
-							انضم لأكثر من 500+ مبدع ومستقل يعتمدون على بِلفورا
+							انضم لأكثر من 500+ مبدع ومستقل يعتمدون على بلفورا
 						</Text>
 					</m.div>
 					<Marquee pauseOnHover className="[--duration:40s]">
@@ -335,7 +336,7 @@ export default function LandingPageClient() {
 						whileInView={{ opacity: 1, y: 0 }}
 						viewport={{ once: true, amount: 0.4 }}
 						transition={{ duration: 0.6, ease: "easeOut" }}
-						className="max-w-6xl mx-auto px-4 relative flex flex-col justify-center mb-24 items-center gap-8 text-center py-16 lg:py-24 rounded-3xl bg-[#7f2dfb] overflow-hidden shadow-2xl mx-4 lg:mx-auto"
+						className="max-w-6xl mx-auto px-4 relative flex flex-col justify-center mb-24 items-center gap-8 text-center py-16 lg:py-24 rounded-3xl bg-brand overflow-hidden shadow-2xl mx-4 lg:mx-auto"
 					>
 						<Ripple
 							mainCircleSize={500}
@@ -346,7 +347,7 @@ export default function LandingPageClient() {
 						<h2 className="relative z-10 text-3xl md:text-5xl text-white font-bold max-w-4xl leading-tight mb-8">
 							ابدأ رحلتك المالية مجاناً
 							<br />
-							<span className="text-purple-200 text-2xl md:text-3xl mt-4 block font-medium">
+							<span className="text-teal-100 text-2xl md:text-3xl mt-4 block font-medium">
 								وخلص أول فاتورة في دقيقة
 							</span>
 						</h2>
@@ -357,7 +358,7 @@ export default function LandingPageClient() {
 									variant="secondary"
 									size="lg"
 									pill
-									className="px-12 py-8 text-xl bg-white text-[#7f2dfb] hover:shadow-lg transform hover:-translate-y-1 font-bold"
+									className="px-12 py-8 text-xl bg-surface text-brand hover:shadow-lg transform hover:-translate-y-1 font-bold"
 								>
 									ابدأ مجاناً الآن
 								</Button>
@@ -372,11 +373,9 @@ export default function LandingPageClient() {
 								{/* Company Info */}
 								<div className="space-y-6">
 									<Link href="/" className="inline-block">
-										<span className="text-3xl font-black text-white tracking-tighter hover:opacity-80 transition-opacity">
-											بِلفورا
-										</span>
+										<Logo size={30} color="onDark" />
 									</Link>
-									<p className="text-gray-400 text-sm leading-relaxed">
+									<p className="text-disabled text-sm leading-relaxed">
 										منصة ذكية لإصدار الفواتير الإلكترونية
 										للمستقلين وأصحاب الأعمال. أنشئ فواتيرك
 										بسهولة واحترافية في ثوانٍ.
@@ -386,7 +385,7 @@ export default function LandingPageClient() {
 											href="https://x.com/samuadda"
 											target="_blank"
 											rel="noopener noreferrer"
-											className="text-gray-400 hover:text-[#7f2dfb] transition-colors p-1"
+											className="text-disabled hover:text-brand transition-colors p-1"
 										>
 											<svg
 												className="h-5 w-5"
@@ -400,7 +399,7 @@ export default function LandingPageClient() {
 											href="https://linkedin.com/in/saddiq-daut/"
 											target="_blank"
 											rel="noopener noreferrer"
-											className="text-gray-400 hover:text-[#7f2dfb] transition-colors p-1"
+											className="text-disabled hover:text-brand transition-colors p-1"
 										>
 											<svg
 												className="h-5 w-5"
@@ -422,7 +421,7 @@ export default function LandingPageClient() {
 										<li>
 											<Link
 												href="/register"
-												className="text-gray-400 hover:text-[#7f2dfb] transition-colors text-sm"
+												className="text-disabled hover:text-brand transition-colors text-sm"
 											>
 												لوحة التحكم
 											</Link>
@@ -430,7 +429,7 @@ export default function LandingPageClient() {
 										<li>
 											<Link
 												href="/register"
-												className="text-gray-400 hover:text-[#7f2dfb] transition-colors text-sm"
+												className="text-disabled hover:text-brand transition-colors text-sm"
 											>
 												إنشاء الفواتير
 											</Link>
@@ -438,7 +437,7 @@ export default function LandingPageClient() {
 										<li>
 											<Link
 												href="/#pricing"
-												className="text-gray-400 hover:text-[#7f2dfb] transition-colors text-sm"
+												className="text-disabled hover:text-brand transition-colors text-sm"
 											>
 												الأسعار
 											</Link>
@@ -455,7 +454,7 @@ export default function LandingPageClient() {
 										<li>
 											<Link
 												href="/contact"
-												className="text-gray-400 hover:text-[#7f2dfb] transition-colors text-sm"
+												className="text-disabled hover:text-brand transition-colors text-sm"
 											>
 												مركز المساعدة
 											</Link>
@@ -463,7 +462,7 @@ export default function LandingPageClient() {
 										<li>
 											<Link
 												href="/contact"
-												className="text-gray-400 hover:text-[#7f2dfb] transition-colors text-sm"
+												className="text-disabled hover:text-brand transition-colors text-sm"
 											>
 												تواصل معنا
 											</Link>
@@ -471,7 +470,7 @@ export default function LandingPageClient() {
 										<li>
 											<Link
 												href="/#faq"
-												className="text-gray-400 hover:text-[#7f2dfb] transition-colors text-sm"
+												className="text-disabled hover:text-brand transition-colors text-sm"
 											>
 												الأسئلة الشائعة
 											</Link>
@@ -488,7 +487,7 @@ export default function LandingPageClient() {
 										<li>
 											<Link
 												href="/about"
-												className="text-gray-400 hover:text-[#7f2dfb] transition-colors text-sm"
+												className="text-disabled hover:text-brand transition-colors text-sm"
 											>
 												من نحن
 											</Link>
@@ -496,7 +495,7 @@ export default function LandingPageClient() {
 										<li>
 											<Link
 												href="/privacy"
-												className="text-gray-400 hover:text-[#7f2dfb] transition-colors text-sm"
+												className="text-disabled hover:text-brand transition-colors text-sm"
 											>
 												سياسة الخصوصية
 											</Link>
@@ -504,7 +503,7 @@ export default function LandingPageClient() {
 										<li>
 											<Link
 												href="/terms"
-												className="text-gray-400 hover:text-[#7f2dfb] transition-colors text-sm"
+												className="text-disabled hover:text-brand transition-colors text-sm"
 											>
 												شروط الاستخدام
 											</Link>
@@ -519,7 +518,7 @@ export default function LandingPageClient() {
 									<h3 className="text-lg font-semibold mb-2 text-white">
 										ابق على اطلاع
 									</h3>
-									<p className="text-gray-400 text-sm mb-6">
+									<p className="text-disabled text-sm mb-6">
 										اشترك في نشرتنا الإخبارية للحصول على آخر
 										التحديثات والنصائح
 									</p>
@@ -527,7 +526,7 @@ export default function LandingPageClient() {
 										<input
 											type="email"
 											placeholder="بريدك الإلكتروني"
-											className="flex-1 px-4 py-2.5 bg-gray-800/50 border border-gray-700 rounded-xl text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-[#7f2dfb] focus:border-transparent transition-all"
+											className="flex-1 px-4 py-2.5 bg-gray-800/50 border border-gray-700 rounded-xl text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-brand focus:border-transparent transition-all"
 										/>
 										<Button
 											variant="primary"
@@ -545,19 +544,19 @@ export default function LandingPageClient() {
 						<div className="bg-[#0b1120] border-t border-gray-800/50">
 							<div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
 								<div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
-									<div className="text-gray-500 text-sm">
-										© 2025 بِلفورا. جميع الحقوق محفوظة.
+									<div className="text-subtle text-sm">
+										© 2025 بلفورا. جميع الحقوق محفوظة.
 									</div>
 									<div className="flex items-center gap-8 text-sm">
 										<Link
 											href="/privacy"
-											className="text-gray-500 hover:text-white transition-colors"
+											className="text-subtle hover:text-white transition-colors"
 										>
 											الخصوصية
 										</Link>
 										<Link
 											href="/terms"
-											className="text-gray-500 hover:text-white transition-colors"
+											className="text-subtle hover:text-white transition-colors"
 										>
 											الشروط
 										</Link>

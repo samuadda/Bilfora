@@ -340,8 +340,8 @@ export default function GeneralSettingsPage() {
 			)}
 
 			{/* Avatar & Name Header */}
-			<div className="bg-white rounded-2xl border border-gray-100 p-6 shadow-sm flex items-center gap-5">
-				<div className="relative w-20 h-20 rounded-full overflow-hidden border-2 border-white shadow-lg bg-gray-50 shrink-0">
+			<div className="bg-surface rounded-2xl border border-border p-6 shadow-sm flex items-center gap-5">
+				<div className="relative w-20 h-20 rounded-full overflow-hidden border-2 border-white shadow-lg bg-surface-2 shrink-0">
 					<Image
 						src={profile?.avatar_url || "/symbol-shadowNoBg.png"}
 						alt="Avatar"
@@ -349,7 +349,7 @@ export default function GeneralSettingsPage() {
 						sizes="80px"
 						className="object-cover"
 					/>
-					<div className="absolute inset-0 bg-black/30 opacity-0 hover:opacity-100 transition-opacity flex items-center justify-center">
+					<div className="absolute inset-0 bg-overlay opacity-0 hover:opacity-100 transition-opacity flex items-center justify-center">
 						<label className="cursor-pointer text-white flex flex-col items-center">
 							<Camera size={18} />
 							<span className="text-[10px] font-bold mt-0.5">تغيير</span>
@@ -369,9 +369,9 @@ export default function GeneralSettingsPage() {
 			</div>
 
 			{/* Personal Info */}
-			<form onSubmit={handleSavePersonalInfo} className="bg-white rounded-2xl border border-gray-100 p-6 shadow-sm">
-				<h2 className="text-lg font-bold text-[#012d46] mb-5 flex items-center gap-2">
-					<User className="text-[#7f2dfb]" size={20} />
+			<form onSubmit={handleSavePersonalInfo} className="bg-surface rounded-2xl border border-border p-6 shadow-sm">
+				<h2 className="text-lg font-bold text-foreground mb-5 flex items-center gap-2">
+					<User className="text-brand" size={20} />
 					المعلومات الشخصية
 				</h2>
 				{personalInfoError && (
@@ -379,30 +379,30 @@ export default function GeneralSettingsPage() {
 				)}
 				<div className="grid grid-cols-1 md:grid-cols-2 gap-5">
 					<div className="space-y-2">
-						<label className="block text-sm font-medium text-gray-700">الاسم الكامل *</label>
+						<label className="block text-sm font-medium text-muted-foreground">الاسم الكامل *</label>
 						<div className="relative">
-							<User className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400" size={18} />
-							<input name="full_name" value={formData.full_name} onChange={handleInputChange} className="w-full rounded-xl border border-gray-200 pr-10 pl-4 py-3 text-sm focus:border-[#7f2dfb] focus:ring-[#7f2dfb] transition-all" placeholder="أدخل اسمك" required />
+							<User className="absolute right-3 top-1/2 -translate-y-1/2 text-disabled" size={18} />
+							<input name="full_name" value={formData.full_name} onChange={handleInputChange} className="w-full rounded-xl border border-border pr-10 pl-4 py-3 text-sm focus:border-brand focus:ring-brand transition-all" placeholder="أدخل اسمك" required />
 						</div>
 					</div>
 					<div className="space-y-2">
-						<label className="block text-sm font-medium text-gray-700">رقم الجوال *</label>
+						<label className="block text-sm font-medium text-muted-foreground">رقم الجوال *</label>
 						<div className="relative">
-							<Phone className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400" size={18} />
-							<input name="phone" value={formData.phone} onChange={handleInputChange} className="w-full rounded-xl border border-gray-200 pr-10 pl-4 py-3 text-sm focus:border-[#7f2dfb] focus:ring-[#7f2dfb] transition-all" placeholder="9665xxxxxxxx" required />
+							<Phone className="absolute right-3 top-1/2 -translate-y-1/2 text-disabled" size={18} />
+							<input name="phone" value={formData.phone} onChange={handleInputChange} className="w-full rounded-xl border border-border pr-10 pl-4 py-3 text-sm focus:border-brand focus:ring-brand transition-all" placeholder="9665xxxxxxxx" required />
 						</div>
 					</div>
 					<div className="space-y-2">
-						<label className="block text-sm font-medium text-gray-700">تاريخ الميلاد *</label>
+						<label className="block text-sm font-medium text-muted-foreground">تاريخ الميلاد *</label>
 						<div className="relative">
-							<Calendar className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400" size={18} />
-							<input name="dob" type="date" value={formData.dob} onChange={handleInputChange} className="w-full rounded-xl border border-gray-200 pr-10 pl-4 py-3 text-sm focus:border-[#7f2dfb] focus:ring-[#7f2dfb] transition-all" required />
+							<Calendar className="absolute right-3 top-1/2 -translate-y-1/2 text-disabled" size={18} />
+							<input name="dob" type="date" value={formData.dob} onChange={handleInputChange} className="w-full rounded-xl border border-border pr-10 pl-4 py-3 text-sm focus:border-brand focus:ring-brand transition-all" required />
 						</div>
 					</div>
 					<div className="space-y-2">
-						<label className="block text-sm font-medium text-gray-700">الجنس</label>
+						<label className="block text-sm font-medium text-muted-foreground">الجنس</label>
 						<Select value={formData.gender || ""} onValueChange={(val) => { setFormData(prev => ({ ...prev, gender: val as Gender })); setError(null); setSuccess(null); }}>
-							<SelectTrigger className="w-full h-11 bg-white border-gray-200"><SelectValue placeholder="اختر الجنس" /></SelectTrigger>
+							<SelectTrigger className="w-full h-11 bg-surface border-border"><SelectValue placeholder="اختر الجنس" /></SelectTrigger>
 							<SelectContent>
 								<SelectItem value="male">ذكر</SelectItem>
 								<SelectItem value="female">أنثى</SelectItem>
@@ -411,7 +411,7 @@ export default function GeneralSettingsPage() {
 					</div>
 				</div>
 				<div className="flex justify-end mt-5 pt-5 border-t border-gray-50">
-					<button type="submit" disabled={saving} className="px-6 py-2.5 rounded-xl bg-[#7f2dfb] text-white text-sm font-bold hover:bg-[#6a1fd8] shadow-lg shadow-purple-200 transition-all flex items-center gap-2">
+					<button type="submit" disabled={saving} className="px-6 py-2.5 rounded-xl bg-brand text-white text-sm font-bold hover:bg-brand-hover shadow-lg shadow-brand transition-all flex items-center gap-2">
 						{saving ? <Loader2 size={18} className="animate-spin" /> : <Save size={18} />}
 						حفظ المعلومات
 					</button>
@@ -419,16 +419,16 @@ export default function GeneralSettingsPage() {
 			</form>
 
 			{/* Profile Business Info */}
-			<div className="bg-white rounded-2xl border border-gray-100 p-6 shadow-sm">
-				<h2 className="text-lg font-bold text-[#012d46] mb-5 flex items-center gap-2">
-					<Building2 className="text-[#7f2dfb]" size={20} />
+			<div className="bg-surface rounded-2xl border border-border p-6 shadow-sm">
+				<h2 className="text-lg font-bold text-foreground mb-5 flex items-center gap-2">
+					<Building2 className="text-brand" size={20} />
 					الحساب والمنشأة
 				</h2>
 				<div className="grid grid-cols-1 md:grid-cols-2 gap-5">
 					<div className="space-y-2">
-						<label className="block text-sm font-medium text-gray-700">نوع الحساب *</label>
+						<label className="block text-sm font-medium text-muted-foreground">نوع الحساب *</label>
 						<Select value={accountType} onValueChange={(val) => setAccountType(val as AccountType)}>
-							<SelectTrigger className="w-full h-11 bg-white border-gray-200"><SelectValue /></SelectTrigger>
+							<SelectTrigger className="w-full h-11 bg-surface border-border"><SelectValue /></SelectTrigger>
 							<SelectContent>
 								<SelectItem value="individual">فرد</SelectItem>
 								<SelectItem value="business">مؤسسة</SelectItem>
@@ -439,19 +439,19 @@ export default function GeneralSettingsPage() {
 					{accountType === "business" && (
 						<>
 							<div className="space-y-2">
-								<label className="block text-sm font-medium text-gray-700">اسم الشركة</label>
+								<label className="block text-sm font-medium text-muted-foreground">اسم الشركة</label>
 								<div className="relative">
-									<Building2 className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400" size={18} />
-									<input value={companyName} onChange={(e) => setCompanyName(e.target.value)} className="w-full rounded-xl border border-gray-200 pr-10 pl-4 py-3 text-sm focus:border-[#7f2dfb] focus:ring-[#7f2dfb] transition-all" placeholder="اسم الشركة" />
+									<Building2 className="absolute right-3 top-1/2 -translate-y-1/2 text-disabled" size={18} />
+									<input value={companyName} onChange={(e) => setCompanyName(e.target.value)} className="w-full rounded-xl border border-border pr-10 pl-4 py-3 text-sm focus:border-brand focus:ring-brand transition-all" placeholder="اسم الشركة" />
 								</div>
 							</div>
 							<div className="space-y-2">
-								<label className="block text-sm font-medium text-gray-700">
+								<label className="block text-sm font-medium text-muted-foreground">
 									{IS_ZATCA_ENABLED ? "الرقم الضريبي" : "السجل التجاري"}
 								</label>
 								<div className="relative">
-									<Building2 className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400" size={18} />
-									<input value={taxNumber} onChange={(e) => setTaxNumber(e.target.value)} className="w-full rounded-xl border border-gray-200 pr-10 pl-4 py-3 text-sm focus:border-[#7f2dfb] focus:ring-[#7f2dfb] transition-all" placeholder={IS_ZATCA_ENABLED ? "3xxxxxxxxxxxxx3" : "1010xxxxxx"} />
+									<Building2 className="absolute right-3 top-1/2 -translate-y-1/2 text-disabled" size={18} />
+									<input value={taxNumber} onChange={(e) => setTaxNumber(e.target.value)} className="w-full rounded-xl border border-border pr-10 pl-4 py-3 text-sm focus:border-brand focus:ring-brand transition-all" placeholder={IS_ZATCA_ENABLED ? "3xxxxxxxxxxxxx3" : "1010xxxxxx"} />
 								</div>
 							</div>
 						</>
@@ -460,37 +460,37 @@ export default function GeneralSettingsPage() {
 			</div>
 
 			{/* Address */}
-			<div className="bg-white rounded-2xl border border-gray-100 p-6 shadow-sm">
-				<h2 className="text-lg font-bold text-[#012d46] mb-5 flex items-center gap-2">
-					<MapPin className="text-[#7f2dfb]" size={20} />
+			<div className="bg-surface rounded-2xl border border-border p-6 shadow-sm">
+				<h2 className="text-lg font-bold text-foreground mb-5 flex items-center gap-2">
+					<MapPin className="text-brand" size={20} />
 					العنوان
 				</h2>
 				<div className="grid grid-cols-1 md:grid-cols-2 gap-5">
 					<div className="space-y-2">
-						<label className="text-sm font-medium text-gray-700">المدينة (الملف الشخصي)</label>
+						<label className="text-sm font-medium text-muted-foreground">المدينة (الملف الشخصي)</label>
 						<div className="relative">
-							<MapPin className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400" size={18} />
-							<input value={city} onChange={(e) => setCity(e.target.value)} className="w-full rounded-xl border border-gray-200 pr-10 pl-4 py-3 text-sm focus:border-[#7f2dfb] focus:ring-[#7f2dfb] transition-all" placeholder="الرياض" />
+							<MapPin className="absolute right-3 top-1/2 -translate-y-1/2 text-disabled" size={18} />
+							<input value={city} onChange={(e) => setCity(e.target.value)} className="w-full rounded-xl border border-border pr-10 pl-4 py-3 text-sm focus:border-brand focus:ring-brand transition-all" placeholder="الرياض" />
 						</div>
 					</div>
 					<div className="space-y-2">
-						<label className="text-sm font-medium text-gray-700">العنوان التفصيلي (الملف الشخصي)</label>
-						<input value={address} onChange={(e) => setAddress(e.target.value)} className="w-full rounded-xl border border-gray-200 px-4 py-3 text-sm focus:border-[#7f2dfb] focus:ring-[#7f2dfb] transition-all" placeholder="اسم الشارع، رقم المبنى، الحي" />
+						<label className="text-sm font-medium text-muted-foreground">العنوان التفصيلي (الملف الشخصي)</label>
+						<input value={address} onChange={(e) => setAddress(e.target.value)} className="w-full rounded-xl border border-border px-4 py-3 text-sm focus:border-brand focus:ring-brand transition-all" placeholder="اسم الشارع، رقم المبنى، الحي" />
 					</div>
 					<div className="space-y-2">
-						<label className="text-sm font-medium text-gray-700">المدينة (على الفاتورة)</label>
-						<input value={invoiceCity} onChange={(e) => setInvoiceCity(e.target.value)} className="w-full rounded-xl border border-gray-200 px-4 py-3 text-sm focus:border-[#7f2dfb] focus:ring-[#7f2dfb] transition-all" placeholder="الرياض" />
+						<label className="text-sm font-medium text-muted-foreground">المدينة (على الفاتورة)</label>
+						<input value={invoiceCity} onChange={(e) => setInvoiceCity(e.target.value)} className="w-full rounded-xl border border-border px-4 py-3 text-sm focus:border-brand focus:ring-brand transition-all" placeholder="الرياض" />
 					</div>
 					<div className="md:col-span-2 space-y-2">
-						<label className="text-sm font-medium text-gray-700">عنوان الفاتورة</label>
+						<label className="text-sm font-medium text-muted-foreground">عنوان الفاتورة</label>
 						<div className="relative">
-							<MapPin className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400" size={18} />
-							<input value={addressLine} onChange={(e) => setAddressLine(e.target.value)} className="w-full rounded-xl border border-gray-200 pr-10 pl-4 py-3 text-sm focus:border-[#7f2dfb] focus:ring-[#7f2dfb] transition-all" placeholder="الشارع، الحي، رقم المبنى" />
+							<MapPin className="absolute right-3 top-1/2 -translate-y-1/2 text-disabled" size={18} />
+							<input value={addressLine} onChange={(e) => setAddressLine(e.target.value)} className="w-full rounded-xl border border-border pr-10 pl-4 py-3 text-sm focus:border-brand focus:ring-brand transition-all" placeholder="الشارع، الحي، رقم المبنى" />
 						</div>
 					</div>
 				</div>
 				<div className="flex justify-end mt-5 pt-5 border-t border-gray-50">
-					<button onClick={handleSaveBusinessInfo} disabled={saving} className="px-6 py-2.5 rounded-xl bg-[#7f2dfb] text-white text-sm font-bold hover:bg-[#6a1fd8] shadow-lg shadow-purple-200 transition-all flex items-center gap-2">
+					<button onClick={handleSaveBusinessInfo} disabled={saving} className="px-6 py-2.5 rounded-xl bg-brand text-white text-sm font-bold hover:bg-brand-hover shadow-lg shadow-brand transition-all flex items-center gap-2">
 						{saving ? <Loader2 size={18} className="animate-spin" /> : <Save size={18} />}
 						حفظ بيانات المنشأة
 					</button>
@@ -500,9 +500,9 @@ export default function GeneralSettingsPage() {
 			{/* Email & Password side by side */}
 			<div className="grid grid-cols-1 md:grid-cols-2 gap-6">
 				{/* Email */}
-				<form onSubmit={handleEmailUpdate} className="bg-white rounded-2xl border border-gray-100 p-6 shadow-sm">
-					<h2 className="text-lg font-bold text-[#012d46] mb-5 flex items-center gap-2">
-						<Mail className="text-[#7f2dfb]" size={20} />
+				<form onSubmit={handleEmailUpdate} className="bg-surface rounded-2xl border border-border p-6 shadow-sm">
+					<h2 className="text-lg font-bold text-foreground mb-5 flex items-center gap-2">
+						<Mail className="text-brand" size={20} />
 						البريد الإلكتروني
 					</h2>
 					{emailError && (
@@ -513,20 +513,20 @@ export default function GeneralSettingsPage() {
 					)}
 					<div className="space-y-4">
 						<div className="space-y-2">
-							<label className="block text-sm font-medium text-gray-700">البريد الجديد</label>
-							<input value={emailInput} onChange={(e) => setEmailInput(e.target.value)} className="w-full rounded-xl border border-gray-200 px-4 py-3 text-sm focus:border-[#7f2dfb] focus:ring-[#7f2dfb] transition-all" type="email" required disabled={emailSaving} placeholder="example@domain.com" />
-							<p className="text-xs text-gray-500">سيتم إرسال رابط تأكيد إلى البريد الجديد</p>
+							<label className="block text-sm font-medium text-muted-foreground">البريد الجديد</label>
+							<input value={emailInput} onChange={(e) => setEmailInput(e.target.value)} className="w-full rounded-xl border border-border px-4 py-3 text-sm focus:border-brand focus:ring-brand transition-all" type="email" required disabled={emailSaving} placeholder="example@domain.com" />
+							<p className="text-xs text-subtle">سيتم إرسال رابط تأكيد إلى البريد الجديد</p>
 						</div>
-						<button type="submit" disabled={emailSaving} className="w-full py-2.5 rounded-xl bg-[#7f2dfb] text-white text-sm font-bold hover:bg-[#6a1fd8] shadow-lg shadow-purple-200 transition-all flex items-center justify-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed">
+						<button type="submit" disabled={emailSaving} className="w-full py-2.5 rounded-xl bg-brand text-white text-sm font-bold hover:bg-brand-hover shadow-lg shadow-brand transition-all flex items-center justify-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed">
 							{emailSaving ? <><Loader2 size={18} className="animate-spin" />جاري التحديث...</> : <><Save size={18} />تحديث البريد</>}
 						</button>
 					</div>
 				</form>
 
 				{/* Password */}
-				<form onSubmit={handlePasswordChange} className="bg-white rounded-2xl border border-gray-100 p-6 shadow-sm">
-					<h2 className="text-lg font-bold text-[#012d46] mb-5 flex items-center gap-2">
-						<Lock className="text-[#7f2dfb]" size={20} />
+				<form onSubmit={handlePasswordChange} className="bg-surface rounded-2xl border border-border p-6 shadow-sm">
+					<h2 className="text-lg font-bold text-foreground mb-5 flex items-center gap-2">
+						<Lock className="text-brand" size={20} />
 						تغيير كلمة المرور
 					</h2>
 					{passwordError && (
@@ -537,19 +537,19 @@ export default function GeneralSettingsPage() {
 					)}
 					<div className="space-y-4">
 						<div className="space-y-2">
-							<label className="block text-sm font-medium text-gray-700">كلمة المرور الحالية</label>
-							<input type="password" value={passwords.current} onChange={(e) => setPasswords(p => ({ ...p, current: e.target.value }))} className="w-full rounded-xl border border-gray-200 px-4 py-3 text-sm focus:border-[#7f2dfb] focus:ring-[#7f2dfb] transition-all" required disabled={passwordSaving} />
+							<label className="block text-sm font-medium text-muted-foreground">كلمة المرور الحالية</label>
+							<input type="password" value={passwords.current} onChange={(e) => setPasswords(p => ({ ...p, current: e.target.value }))} className="w-full rounded-xl border border-border px-4 py-3 text-sm focus:border-brand focus:ring-brand transition-all" required disabled={passwordSaving} />
 						</div>
 						<div className="space-y-2">
-							<label className="block text-sm font-medium text-gray-700">الجديدة</label>
-							<input type="password" value={passwords.newPass} onChange={(e) => setPasswords(p => ({ ...p, newPass: e.target.value }))} className="w-full rounded-xl border border-gray-200 px-4 py-3 text-sm focus:border-[#7f2dfb] focus:ring-[#7f2dfb] transition-all" required disabled={passwordSaving} placeholder="8 أحرف على الأقل، حرف ورقم" />
-							<p className="text-xs text-gray-500">يجب أن تكون 8 خانات على الأقل، وتحتوي على حرف ورقم على الأقل</p>
+							<label className="block text-sm font-medium text-muted-foreground">الجديدة</label>
+							<input type="password" value={passwords.newPass} onChange={(e) => setPasswords(p => ({ ...p, newPass: e.target.value }))} className="w-full rounded-xl border border-border px-4 py-3 text-sm focus:border-brand focus:ring-brand transition-all" required disabled={passwordSaving} placeholder="8 أحرف على الأقل، حرف ورقم" />
+							<p className="text-xs text-subtle">يجب أن تكون 8 خانات على الأقل، وتحتوي على حرف ورقم على الأقل</p>
 						</div>
 						<div className="space-y-2">
-							<label className="block text-sm font-medium text-gray-700">تأكيد الجديدة</label>
-							<input type="password" value={passwords.confirm} onChange={(e) => setPasswords(p => ({ ...p, confirm: e.target.value }))} className="w-full rounded-xl border border-gray-200 px-4 py-3 text-sm focus:border-[#7f2dfb] focus:ring-[#7f2dfb] transition-all" required disabled={passwordSaving} />
+							<label className="block text-sm font-medium text-muted-foreground">تأكيد الجديدة</label>
+							<input type="password" value={passwords.confirm} onChange={(e) => setPasswords(p => ({ ...p, confirm: e.target.value }))} className="w-full rounded-xl border border-border px-4 py-3 text-sm focus:border-brand focus:ring-brand transition-all" required disabled={passwordSaving} />
 						</div>
-						<button type="submit" disabled={passwordSaving} className="w-full py-2.5 rounded-xl bg-[#7f2dfb] text-white text-sm font-bold hover:bg-[#6a1fd8] shadow-lg shadow-purple-200 transition-all flex items-center justify-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed">
+						<button type="submit" disabled={passwordSaving} className="w-full py-2.5 rounded-xl bg-brand text-white text-sm font-bold hover:bg-brand-hover shadow-lg shadow-brand transition-all flex items-center justify-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed">
 							{passwordSaving ? <><Loader2 size={18} className="animate-spin" />جاري الحفظ...</> : <><Save size={18} />حفظ كلمة المرور</>}
 						</button>
 					</div>
@@ -559,25 +559,25 @@ export default function GeneralSettingsPage() {
 
 
 			{/* Contact Us */}
-			<div className="bg-white rounded-2xl border border-gray-100 p-6 shadow-sm">
-				<h2 className="text-lg font-bold text-[#012d46] mb-5 flex items-center gap-2">
-					<HelpCircle className="text-[#7f2dfb]" size={20} />
+			<div className="bg-surface rounded-2xl border border-border p-6 shadow-sm">
+				<h2 className="text-lg font-bold text-foreground mb-5 flex items-center gap-2">
+					<HelpCircle className="text-brand" size={20} />
 					تواصل معنا
 				</h2>
 				<div className="space-y-4">
 					<a
 						href="mailto:saddiq0musa@gmail.com"
-						className="flex items-center gap-3 p-3 rounded-xl hover:bg-purple-50 group transition-colors border border-transparent hover:border-purple-100"
+						className="flex items-center gap-3 p-3 rounded-xl hover:bg-brand-soft group transition-colors border border-transparent hover:border-brand-soft-2"
 					>
-						<div className="p-2 bg-purple-100 text-[#7f2dfb] rounded-lg group-hover:bg-white group-hover:shadow-sm transition-all">
+						<div className="p-2 bg-brand-soft-2 text-brand rounded-lg group-hover:bg-surface group-hover:shadow-sm transition-all">
 							<Mail size={18} />
 						</div>
 						<div>
-							<span className="text-xs text-gray-500 block">البريد الإلكتروني</span>
-							<span className="text-sm font-bold text-gray-900">saddiq0musa@gmail.com</span>
+							<span className="text-xs text-subtle block">البريد الإلكتروني</span>
+							<span className="text-sm font-bold text-foreground">saddiq0musa@gmail.com</span>
 						</div>
 					</a>
-					<div className="pt-4 border-t border-gray-100">
+					<div className="pt-4 border-t border-border">
 						<a href="https://wa.me/966540358526" target="_blank" rel="noopener noreferrer" className="w-full py-3 rounded-xl bg-[#25D366] hover:bg-[#128C7E] text-white text-sm font-bold transition-all flex items-center justify-center gap-2 shadow-lg shadow-green-100">
 							<MessageSquare size={18} /> تواصل عبر واتساب
 						</a>
@@ -586,9 +586,9 @@ export default function GeneralSettingsPage() {
 			</div>
 
 			{/* Danger Zone */}
-			<div className="bg-white rounded-2xl border border-red-100 p-6 shadow-sm">
+			<div className="bg-surface rounded-2xl border border-red-100 p-6 shadow-sm">
 				<h2 className="text-lg font-bold text-red-600 mb-2">منطقة الخطر</h2>
-				<p className="text-sm text-gray-500 mb-5">الرجاء استخدام هذه الإجراءات بحذر، لا يمكن التراجع عنها.</p>
+				<p className="text-sm text-subtle mb-5">الرجاء استخدام هذه الإجراءات بحذر، لا يمكن التراجع عنها.</p>
 				<div className="flex flex-col sm:flex-row gap-3">
 					<button className="px-5 py-2.5 rounded-xl border border-red-200 text-red-600 text-sm font-bold hover:bg-red-50 transition-colors flex items-center justify-center gap-2">
 						<Trash2 size={16} />
@@ -604,7 +604,7 @@ export default function GeneralSettingsPage() {
 							a.click();
 							URL.revokeObjectURL(url);
 						}}
-						className="px-5 py-2.5 rounded-xl border border-gray-200 text-gray-600 text-sm font-bold hover:bg-gray-50 transition-colors flex items-center justify-center gap-2"
+						className="px-5 py-2.5 rounded-xl border border-border text-muted-foreground text-sm font-bold hover:bg-surface-2 transition-colors flex items-center justify-center gap-2"
 					>
 						<Download size={16} />
 						تصدير كل البيانات

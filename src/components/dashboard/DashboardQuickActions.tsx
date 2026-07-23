@@ -20,7 +20,7 @@ export default function DashboardQuickActions({
 				whileHover={{ scale: 1.02 }}
 				whileTap={{ scale: 0.98 }}
 				onClick={onCreateInvoice}
-				className="inline-flex items-center gap-2 rounded-xl bg-brand-primary text-white px-5 py-2.5 text-sm font-bold shadow-lg shadow-purple-200 hover:shadow-xl hover:bg-brand-primaryHover transition-all"
+				className="inline-flex items-center gap-2 rounded-xl bg-brand text-white px-5 py-2.5 text-sm font-bold shadow-lg shadow-brand hover:shadow-xl hover:bg-brand-primaryHover transition-all"
 			>
 				<Plus size={18} strokeWidth={2.5} />
 				<span>إنشاء فاتورة جديدة</span>
@@ -29,7 +29,7 @@ export default function DashboardQuickActions({
 				whileHover={{ scale: 1.02 }}
 				whileTap={{ scale: 0.98 }}
 				onClick={onCreateClient}
-				className="inline-flex items-center gap-2 rounded-xl bg-white text-gray-700 px-5 py-2.5 text-sm font-medium border border-gray-200 hover:bg-gray-50 transition-all"
+				className="inline-flex items-center gap-2 rounded-xl bg-surface text-muted-foreground px-5 py-2.5 text-sm font-medium border border-border hover:bg-surface-2 transition-all"
 			>
 				<UserPlus size={18} strokeWidth={2.5} />
 				<span>إضافة عميل</span>
@@ -38,7 +38,7 @@ export default function DashboardQuickActions({
 				whileHover={{ scale: 1.02 }}
 				whileTap={{ scale: 0.98 }}
 				onClick={onCreateProduct}
-				className="inline-flex items-center gap-2 rounded-xl bg-white text-gray-700 px-5 py-2.5 text-sm font-medium border border-gray-200 hover:bg-gray-50 transition-all"
+				className="inline-flex items-center gap-2 rounded-xl bg-surface text-muted-foreground px-5 py-2.5 text-sm font-medium border border-border hover:bg-surface-2 transition-all"
 			>
 				<Package size={18} strokeWidth={2.5} />
 				<span>إضافة منتج</span>

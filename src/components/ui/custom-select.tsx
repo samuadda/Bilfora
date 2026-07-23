@@ -22,11 +22,11 @@ const SelectTrigger = React.forwardRef<
     ref={ref}
     className={cn(
       // Base styles with RTL-friendly alignment
-      "w-full rounded-xl border border-gray-200 bg-white text-sm px-4 py-2.5 transition-all outline-none",
+      "w-full rounded-xl border border-border bg-surface text-sm px-4 py-2.5 transition-all outline-none",
       // RTL alignment: naturally puts icon on left (end), text on right (start) in flex-row
       "flex items-center justify-between text-right",
-      "text-gray-900 placeholder:text-gray-500 disabled:cursor-not-allowed disabled:opacity-50 [&>span]:line-clamp-1",
-      "focus:border-[#7f2dfb] focus:ring-2 focus:ring-[#7f2dfb]/20",
+      "text-foreground placeholder:text-subtle disabled:cursor-not-allowed disabled:opacity-50 [&>span]:line-clamp-1",
+      "focus:border-brand focus:ring-2 focus:ring-brand/20",
       className
     )}
     {...props}
@@ -82,7 +82,7 @@ const SelectContent = React.forwardRef<
     <SelectPrimitive.Content
       ref={ref}
       className={cn(
-        "relative z-[9999] max-h-96 min-w-[8rem] overflow-hidden rounded-xl border border-gray-200 bg-white text-gray-950 shadow-md data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2",
+        "relative z-[9999] max-h-96 min-w-[8rem] overflow-hidden rounded-xl border border-border bg-surface text-gray-950 shadow-md data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2",
         position === "popper" &&
         "data-[side=bottom]:translate-y-1 data-[side=left]:-translate-x-1 data-[side=right]:translate-x-1 data-[side=top]:-translate-y-1",
         className
@@ -128,10 +128,10 @@ const SelectItem = React.forwardRef<
       // Base styles - ensure clickable
       "relative flex w-full cursor-pointer pointer-events-auto select-none items-center rounded-sm py-1.5 pl-8 pr-2 text-sm outline-none",
       // Text color - ensure dark and visible
-      "text-gray-900",
+      "text-foreground",
       // Hover and focus states
-      "hover:bg-[#7f2dfb]/10 hover:text-[#7f2dfb]",
-      "focus:bg-[#7f2dfb]/10 focus:text-[#7f2dfb]",
+      "hover:bg-brand/10 hover:text-brand",
+      "focus:bg-brand/10 focus:text-brand",
       // Only disable if explicitly disabled
       "data-[disabled=true]:pointer-events-none data-[disabled=true]:opacity-50",
       className
@@ -155,7 +155,7 @@ const SelectSeparator = React.forwardRef<
 >(({ className, ...props }, ref) => (
   <SelectPrimitive.Separator
     ref={ref}
-    className={cn("-mx-1 my-1 h-px bg-gray-100", className)}
+    className={cn("-mx-1 my-1 h-px bg-surface-inset", className)}
     {...props}
   />
 ))

@@ -45,7 +45,7 @@ export function InvoiceItemsTable({
                     variant="ghost"
                     size="sm"
                     onClick={onAddItem}
-                    className="text-brand-primary hover:bg-purple-50"
+                    className="text-brand hover:bg-brand-soft"
                 >
                     <Plus size={16} />
                     إضافة عنصر
@@ -58,12 +58,12 @@ export function InvoiceItemsTable({
                         key={index}
                         initial={{ opacity: 0, y: 10 }}
                         animate={{ opacity: 1, y: 0 }}
-                        className="grid grid-cols-12 gap-3 p-4 bg-gray-50 rounded-2xl border border-gray-100 group relative"
+                        className="grid grid-cols-12 gap-3 p-4 bg-surface-2 rounded-2xl border border-border group relative"
                     >
                         <button
                             type="button"
                             onClick={() => onRemoveItem(index)}
-                            className="absolute -left-2 -top-2 bg-white text-red-500 p-1.5 rounded-full shadow-md opacity-0 group-hover:opacity-100 transition-opacity border border-gray-100"
+                            className="absolute -left-2 -top-2 bg-surface text-red-500 p-1.5 rounded-full shadow-md opacity-0 group-hover:opacity-100 transition-opacity border border-border"
                             disabled={items.length === 1}
                             title="حذف العنصر"
                         >
@@ -71,7 +71,7 @@ export function InvoiceItemsTable({
                         </button>
 
                         <div className="col-span-12 md:col-span-5 space-y-1">
-                            <label className="text-xs font-medium text-gray-500">
+                            <label className="text-xs font-medium text-subtle">
                                 المنتج / الوصف
                             </label>
                             <div className={layout.stack.tight}>
@@ -104,7 +104,7 @@ export function InvoiceItemsTable({
                                                         type="button"
                                                         variant="secondary"
                                                         onClick={onAddNewProduct}
-                                                        className="shrink-0 h-[42px] w-[42px] p-0 flex items-center justify-center bg-purple-50 text-[#7f2dfb] border-purple-100 hover:bg-purple-100"
+                                                        className="shrink-0 h-[42px] w-[42px] p-0 flex items-center justify-center bg-brand-soft text-brand border-brand-soft-2 hover:bg-brand-soft-2"
                                                     >
                                                         <Plus size={20} />
                                                     </Button>
@@ -131,7 +131,7 @@ export function InvoiceItemsTable({
                         </div>
 
                         <div className="col-span-4 md:col-span-2 space-y-1">
-                            <label className="text-xs font-medium text-gray-500">الكمية</label>
+                            <label className="text-xs font-medium text-subtle">الكمية</label>
                             <Input
                                 type="number"
                                 min="1"
@@ -149,7 +149,7 @@ export function InvoiceItemsTable({
                         </div>
 
                         <div className="col-span-4 md:col-span-2 space-y-1">
-                            <label className="text-xs font-medium text-gray-500">
+                            <label className="text-xs font-medium text-subtle">
                                 {IS_ZATCA_ENABLED ? "سعر الوحدة (غير شامل)" : "سعر الوحدة"}
                             </label>
                             <Input
@@ -169,12 +169,12 @@ export function InvoiceItemsTable({
                         </div>
 
                         <div className="col-span-4 md:col-span-3 space-y-1">
-                            <label className="text-xs font-medium text-gray-500">الإجمالي</label>
-                            <div className="w-full h-[38px] flex items-center px-3 bg-gray-100 rounded-xl">
+                            <label className="text-xs font-medium text-subtle">الإجمالي</label>
+                            <div className="w-full h-[38px] flex items-center px-3 bg-surface-inset rounded-xl">
                                 <Price
                                     amount={(Number(item.quantity) || 0) * (Number(item.unit_price) || 0)}
                                     size="sm"
-                                    className="text-gray-700"
+                                    className="text-muted-foreground"
                                 />
                             </div>
                         </div>

@@ -57,7 +57,7 @@ export function NavigationMenu({
 	return (
 		<>
 			{/* Mobile Menu Button */}
-			<div className="fixed top-4 left-4 z-[100] md:hidden bg-[#7f2dfb] rounded-md shadow-md">
+			<div className="fixed top-4 left-4 z-[100] md:hidden bg-brand rounded-md shadow-md">
 				<Button
 					variant="ghost"
 					size="icon"
@@ -80,7 +80,7 @@ export function NavigationMenu({
 			{/* Mobile Menu Overlay */}
 			<div
 				className={cn(
-					"fixed inset-0 backdrop-blur-md bg-white/30 z-40 transition-opacity duration-300",
+					"fixed inset-0 backdrop-blur-md bg-surface/30 z-40 transition-opacity duration-300",
 					isOpen ? "opacity-100" : "opacity-0 pointer-events-none"
 				)}
 				aria-hidden="true"
@@ -91,7 +91,7 @@ export function NavigationMenu({
 				ref={menuRef}
 				id="mobile-menu"
 				className={cn(
-					"fixed inset-0 sm:inset-y-0 sm:right-0 w-full sm:w-80 bg-white z-50 shadow-xl transform transition-transform duration-300 ease-in-out",
+					"fixed inset-0 sm:inset-y-0 sm:right-0 w-full sm:w-80 bg-surface z-50 shadow-xl transform transition-transform duration-300 ease-in-out",
 					isOpen ? "translate-x-0" : "translate-x-full"
 				)}
 				role="dialog"
@@ -105,7 +105,7 @@ export function NavigationMenu({
 								<Link
 									key={item.name}
 									href={item.href}
-									className="text-xl font-medium text-gray-800 hover:text-gray-900 transition-colors "
+									className="text-xl font-medium text-foreground hover:text-foreground transition-colors "
 									onClick={() => setIsOpen(false)}
 								>
 									{item.name}
@@ -113,10 +113,10 @@ export function NavigationMenu({
 							))}
 						</nav>
 					</div>
-					<div className="pt-6 border-t border-gray-200">
+					<div className="pt-6 border-t border-border">
 						<MainButton
 							text={MainButtonText}
-							className="w-full bg-[#7f2dfb] text-white"
+							className="w-full bg-brand text-white"
 							onClick={() => setIsOpen(false)}
 						/>
 					</div>

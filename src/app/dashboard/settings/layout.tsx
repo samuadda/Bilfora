@@ -29,7 +29,7 @@ export default function SettingsLayout({ children }: { children: React.ReactNode
 				className="flex flex-col gap-1"
 			>
 				<Heading variant="h1">الإعدادات</Heading>
-				<p className="text-gray-500">إدارة حسابك، منشأتك، فواتيرك، وإشعاراتك</p>
+				<p className="text-subtle">إدارة حسابك، منشأتك، فواتيرك، وإشعاراتك</p>
 			</m.div>
 
 			{/* 2-column layout */}
@@ -41,7 +41,7 @@ export default function SettingsLayout({ children }: { children: React.ReactNode
 					transition={{ delay: 0.05 }}
 					className="w-full md:w-64 shrink-0"
 				>
-					<div className="bg-white rounded-2xl border border-gray-100 p-2 shadow-sm sticky top-6 space-y-1">
+					<div className="bg-surface rounded-2xl border border-border p-2 shadow-sm sticky top-6 space-y-1">
 						{SETTINGS_TABS.map((tab) => {
 							const { href, label, icon: Icon } = tab;
 							const exact = "exact" in tab && tab.exact;
@@ -52,7 +52,7 @@ export default function SettingsLayout({ children }: { children: React.ReactNode
 
 							const content = (
 								<>
-									<Icon size={18} className={cn(disabled ? "text-gray-400" : active ? "text-[#7f2dfb]" : "text-gray-400")} />
+									<Icon size={18} className={cn(disabled ? "text-disabled" : active ? "text-brand" : "text-disabled")} />
 									<span className="flex-1 text-right">{label}</span>
 									{disabled && (
 										<span className="inline-flex items-center rounded-full bg-blue-50 px-2 py-0.5 text-xs font-semibold text-blue-600 ring-1 ring-inset ring-blue-600/10">
@@ -64,10 +64,10 @@ export default function SettingsLayout({ children }: { children: React.ReactNode
 
 							const className = cn(
 								"flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium transition-all duration-200",
-								disabled ? "opacity-60 cursor-not-allowed bg-gray-50 text-gray-500" :
+								disabled ? "opacity-60 cursor-not-allowed bg-surface-2 text-subtle" :
 								active
-									? "bg-[#7f2dfb]/10 text-[#7f2dfb] font-bold"
-									: "text-gray-600 hover:bg-gray-50 hover:text-gray-900"
+									? "bg-brand/10 text-brand font-bold"
+									: "text-muted-foreground hover:bg-surface-2 hover:text-foreground"
 							);
 
 							if (disabled) {

@@ -54,7 +54,7 @@ export function InvoiceSimplifiedPDF({
 						{sellerInfo.logoUrl ? (
 							<Image src={sellerInfo.logoUrl} style={{ width: 80, height: 80, marginBottom: 10, borderRadius: 4 }} />
 						) : (
-							<View style={{ width: 60, height: 60, backgroundColor: "#012d46", borderRadius: 4, marginBottom: 10 }} />
+							<View style={{ width: 60, height: 60, backgroundColor: "#082e2c", borderRadius: 4, marginBottom: 10 }} />
 						)}
 						<Text style={[s.textXl, s.bold, s.textPrimary]}>{safeText(sellerInfo.name)}</Text>
 						<Text style={s.textSecondary}>{safeText(sellerInfo.address)}</Text>

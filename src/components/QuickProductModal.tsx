@@ -225,7 +225,7 @@ export default function QuickProductModal({
 	);
 
 	const inputBaseClasses = "w-full rounded-xl border text-sm px-4 py-2.5 transition-all outline-none";
-	const inputNormalClasses = "border-gray-200 focus:border-[#7f2dfb] focus:ring-2 focus:ring-[#7f2dfb]/20";
+	const inputNormalClasses = "border-border focus:border-brand focus:ring-2 focus:ring-brand/20";
 	const inputErrorClasses = "border-red-300 focus:border-red-500 focus:ring-2 focus:ring-red-100";
 
 	return (
@@ -236,18 +236,18 @@ export default function QuickProductModal({
 						initial={{ opacity: 0 }}
 						animate={{ opacity: 1 }}
 						exit={{ opacity: 0 }}
-						className="fixed inset-0 bg-black/40 backdrop-blur-sm"
+						className="fixed inset-0 bg-overlay backdrop-blur-sm"
 						onClick={handleClose}
 					/>
 					<m.div
 						initial={{ opacity: 0, scale: 0.95, y: 20 }}
 						animate={{ opacity: 1, scale: 1, y: 0 }}
 						exit={{ opacity: 0, scale: 0.95, y: 20 }}
-						className="bg-white rounded-3xl w-full max-w-lg shadow-2xl z-10 overflow-hidden max-h-[90vh] flex flex-col"
+						className="bg-surface rounded-3xl w-full max-w-lg shadow-2xl z-10 overflow-hidden max-h-[90vh] flex flex-col"
 						onClick={(e) => e.stopPropagation()}
 					>
 						{/* Header */}
-						<div className="flex items-center justify-between p-6 border-b border-gray-100 bg-white shrink-0">
+						<div className="flex items-center justify-between p-6 border-b border-border bg-surface shrink-0">
 							<div>
 								<Heading variant="h3">{product ? "تعديل" : "إضافة"} {type === "service" ? "خدمة" : "منتج"} {product ? "" : "جديد"}</Heading>
 								<Text variant="body-small" color="muted" className="mt-1">
@@ -257,7 +257,7 @@ export default function QuickProductModal({
 							<button
 								type="button"
 								onClick={handleClose}
-								className="p-2 hover:bg-gray-100 rounded-full transition-colors text-gray-500 hover:text-gray-900"
+								className="p-2 hover:bg-surface-inset rounded-full transition-colors text-subtle hover:text-foreground"
 							>
 								<X size={24} />
 							</button>
@@ -268,13 +268,13 @@ export default function QuickProductModal({
 							<form id="product-form" onSubmit={handleSubmit((data) => onSubmit(data as unknown as ProductFormValues))} className="space-y-5">
 
 								{/* 1. Type Toggle */}
-								<div className="bg-gray-100 p-1 rounded-xl flex">
+								<div className="bg-surface-inset p-1 rounded-xl flex">
 									<button
 										type="button"
 										onClick={() => setValue("type", "service")}
 										className={`flex-1 flex items-center justify-center gap-2 py-2.5 rounded-lg transition-all text-sm font-medium ${type === "service"
-											? "bg-white shadow-sm text-[#7f2dfb]"
-											: "text-gray-600 hover:text-gray-800"
+											? "bg-surface shadow-sm text-brand"
+											: "text-muted-foreground hover:text-foreground"
 											}`}
 									>
 										خدمة (Service)
@@ -283,8 +283,8 @@ export default function QuickProductModal({
 										type="button"
 										onClick={() => setValue("type", "product")}
 										className={`flex-1 flex items-center justify-center gap-2 py-2.5 rounded-lg transition-all text-sm font-medium ${type === "product"
-											? "bg-white shadow-sm text-[#7f2dfb]"
-											: "text-gray-600 hover:text-gray-800"
+											? "bg-surface shadow-sm text-brand"
+											: "text-muted-foreground hover:text-foreground"
 											}`}
 									>
 										منتج (Product)
@@ -293,7 +293,7 @@ export default function QuickProductModal({
 
 								{/* 2. Name */}
 								<div>
-									<label className="block text-sm font-medium text-gray-700 mb-1">
+									<label className="block text-sm font-medium text-muted-foreground mb-1">
 										الاسم <span className="text-red-500">*</span>
 									</label>
 									<input
@@ -314,7 +314,7 @@ export default function QuickProductModal({
 								<div className="grid grid-cols-2 gap-4">
 									{/* Selling Price */}
 									<div>
-										<label className="block text-sm font-medium text-gray-700 mb-1">
+										<label className="block text-sm font-medium text-muted-foreground mb-1">
 											{IS_ZATCA_ENABLED ? "سعر البيع (غير شامل الضريبة)" : "سعر البيع"} <span className="text-red-500">*</span>
 										</label>
 										<input
@@ -332,16 +332,16 @@ export default function QuickProductModal({
 									</div>
 									{/* Cost Price */}
 									<div>
-										<label className="block text-sm font-medium text-gray-700 mb-1 flex items-center justify-between">
+										<label className="block text-sm font-medium text-muted-foreground mb-1 flex items-center justify-between">
 											<span>سعر التكلفة</span>
-											<span className="text-[10px] text-gray-400 bg-gray-50 px-1.5 rounded-md">اختياري</span>
+											<span className="text-[10px] text-disabled bg-surface-2 px-1.5 rounded-md">اختياري</span>
 										</label>
 										<input
 											type="number"
 											step="any"
 											{...register("cost_price", { valueAsNumber: true })}
 											placeholder="0"
-											className={`${inputBaseClasses} ${errors.cost_price ? inputErrorClasses : inputNormalClasses} bg-gray-50/50`}
+											className={`${inputBaseClasses} ${errors.cost_price ? inputErrorClasses : inputNormalClasses} bg-surface-2`}
 										/>
 										{errors.cost_price && (
 											<p className="mt-1 text-xs text-red-600 flex items-center gap-1">
@@ -356,7 +356,7 @@ export default function QuickProductModal({
 								<div className="grid grid-cols-2 gap-4 items-start">
 									{/* Unit */}
 									<div className="relative">
-										<label className="block text-sm font-medium text-gray-700 mb-1">
+										<label className="block text-sm font-medium text-muted-foreground mb-1">
 											الوحدة
 										</label>
 										<div className="relative">
@@ -380,9 +380,9 @@ export default function QuickProductModal({
 											<button
 												type="button"
 												onClick={() => setIsUnitDropdownOpen(!isUnitDropdownOpen)}
-												className="absolute left-2 top-1/2 -translate-y-1/2 p-1 hover:bg-gray-100 rounded-lg transition-colors"
+												className="absolute left-2 top-1/2 -translate-y-1/2 p-1 hover:bg-surface-inset rounded-lg transition-colors"
 											>
-												<ChevronDown size={16} className="text-gray-400" />
+												<ChevronDown size={16} className="text-disabled" />
 											</button>
 										</div>
 										<AnimatePresence>
@@ -392,7 +392,7 @@ export default function QuickProductModal({
 													initial={{ opacity: 0, y: -5 }}
 													animate={{ opacity: 1, y: 0 }}
 													exit={{ opacity: 0, y: -5 }}
-													className="absolute top-full left-0 right-0 mt-1 bg-white border border-gray-200 rounded-xl shadow-lg z-20 overflow-hidden max-h-40 overflow-y-auto"
+													className="absolute top-full left-0 right-0 mt-1 bg-surface border border-border rounded-xl shadow-lg z-20 overflow-hidden max-h-40 overflow-y-auto"
 												>
 													{filteredPresets.map((preset) => (
 														<button
@@ -402,10 +402,10 @@ export default function QuickProductModal({
 																setValue("unit", preset.value);
 																setIsUnitDropdownOpen(false);
 															}}
-															className="w-full px-4 py-2 text-sm text-right hover:bg-purple-50 hover:text-[#7f2dfb] transition-colors flex items-center justify-between"
+															className="w-full px-4 py-2 text-sm text-right hover:bg-brand-soft hover:text-brand transition-colors flex items-center justify-between"
 														>
 															<span className="font-medium">{preset.value}</span>
-															<span className="text-xs text-gray-400">{preset.label.split("(")[1]?.replace(")", "")}</span>
+															<span className="text-xs text-disabled">{preset.label.split("(")[1]?.replace(")", "")}</span>
 														</button>
 													))}
 												</m.div>
@@ -429,10 +429,10 @@ export default function QuickProductModal({
 													{...register("price_includes_vat")}
 													className="sr-only peer"
 												/>
-												<div className="w-9 h-5 bg-gray-200 rounded-full peer-focus:ring-2 peer-focus:ring-[#7f2dfb]/20 peer-checked:bg-[#7f2dfb] transition-all" />
-												<div className="absolute top-1 left-1 w-3 h-3 bg-white rounded-full shadow-md transition-transform peer-checked:translate-x-4" />
+												<div className="w-9 h-5 bg-surface-inset rounded-full peer-focus:ring-2 peer-focus:ring-brand/20 peer-checked:bg-brand transition-all" />
+												<div className="absolute top-1 left-1 w-3 h-3 bg-surface rounded-full shadow-md transition-transform peer-checked:translate-x-4" />
 											</div>
-											<span className="text-xs font-medium text-gray-600 group-hover:text-gray-800 transition-colors">
+											<span className="text-xs font-medium text-muted-foreground group-hover:text-foreground transition-colors">
 												شامل الضريبة (15%)
 											</span>
 										</label>
@@ -442,7 +442,7 @@ export default function QuickProductModal({
 
 								{/* 5. Smart Category */}
 								<div className="relative">
-									<label className="block text-sm font-medium text-gray-700 mb-1">
+									<label className="block text-sm font-medium text-muted-foreground mb-1">
 										الفئة
 									</label>
 									<div className="relative">
@@ -465,9 +465,9 @@ export default function QuickProductModal({
 										<button
 											type="button"
 											onClick={() => setIsCategoryDropdownOpen(!isCategoryDropdownOpen)}
-											className="absolute left-2 top-1/2 -translate-y-1/2 p-1 hover:bg-gray-100 rounded-lg transition-colors"
+											className="absolute left-2 top-1/2 -translate-y-1/2 p-1 hover:bg-surface-inset rounded-lg transition-colors"
 										>
-											<ChevronDown size={16} className="text-gray-400" />
+											<ChevronDown size={16} className="text-disabled" />
 										</button>
 									</div>
 									<AnimatePresence>
@@ -477,7 +477,7 @@ export default function QuickProductModal({
 												initial={{ opacity: 0, y: -5 }}
 												animate={{ opacity: 1, y: 0 }}
 												exit={{ opacity: 0, y: -5 }}
-												className="absolute top-full left-0 right-0 mt-1 bg-white border border-gray-200 rounded-xl shadow-lg z-20 overflow-hidden max-h-40 overflow-y-auto"
+												className="absolute top-full left-0 right-0 mt-1 bg-surface border border-border rounded-xl shadow-lg z-20 overflow-hidden max-h-40 overflow-y-auto"
 											>
 												{filteredCategories.length > 0 ? (
 													filteredCategories.map((cat) => (
@@ -488,7 +488,7 @@ export default function QuickProductModal({
 																setValue("category", cat);
 																setIsCategoryDropdownOpen(false);
 															}}
-															className="w-full px-4 py-2 text-sm text-right hover:bg-purple-50 hover:text-[#7f2dfb] transition-colors"
+															className="w-full px-4 py-2 text-sm text-right hover:bg-brand-soft hover:text-brand transition-colors"
 														>
 															{cat}
 														</button>
@@ -498,7 +498,7 @@ export default function QuickProductModal({
 														<button
 															type="button"
 															onClick={() => setIsCategoryDropdownOpen(false)}
-															className="w-full px-4 py-2 text-sm text-right text-[#7f2dfb] bg-purple-50 font-medium"
+															className="w-full px-4 py-2 text-sm text-right text-brand bg-brand-soft font-medium"
 														>
 															إضافة &quot;{category}&quot; كفئة جديدة
 														</button>
@@ -517,7 +517,7 @@ export default function QuickProductModal({
 
 								{/* 6. Description */}
 								<div>
-									<label className="block text-sm font-medium text-gray-700 mb-1">
+									<label className="block text-sm font-medium text-muted-foreground mb-1">
 										الوصف
 									</label>
 									<textarea
@@ -538,11 +538,11 @@ export default function QuickProductModal({
 						</div>
 
 						{/* Footer */}
-						<div className="p-6 border-t border-gray-100 bg-gray-50/50 flex gap-3 shrink-0">
+						<div className="p-6 border-t border-border bg-surface-2 flex gap-3 shrink-0">
 							<button
 								type="button"
 								onClick={handleClose}
-								className="flex-1 px-4 py-2.5 rounded-xl border border-gray-200 text-gray-700 font-medium hover:bg-gray-50 transition-all text-sm"
+								className="flex-1 px-4 py-2.5 rounded-xl border border-border text-muted-foreground font-medium hover:bg-surface-2 transition-all text-sm"
 							>
 								إلغاء
 							</button>
@@ -550,7 +550,7 @@ export default function QuickProductModal({
 								type="submit"
 								form="product-form"
 								disabled={isSubmitting}
-								className="flex-1 px-4 py-2.5 rounded-xl bg-[#7f2dfb] text-white font-medium hover:bg-[#6b24d4] shadow-lg shadow-purple-200 transition-all text-sm flex items-center justify-center gap-2 disabled:opacity-70 disabled:cursor-not-allowed"
+								className="flex-1 px-4 py-2.5 rounded-xl bg-brand text-white font-medium hover:bg-[#6b24d4] shadow-lg shadow-brand transition-all text-sm flex items-center justify-center gap-2 disabled:opacity-70 disabled:cursor-not-allowed"
 							>
 								{isSubmitting ? (
 									<>

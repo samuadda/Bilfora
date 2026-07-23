@@ -37,7 +37,7 @@ export function SidebarNavItem({
                 "group relative flex items-center gap-3 rounded-xl px-4 py-3 text-sm font-medium transition-all duration-200",
                 active
                     ? `bg-gradient-to-l from-[${colors.brand.primary}]/10 to-transparent text-[${colors.brand.primary}]`
-                    : "text-gray-600 hover:bg-gray-50 hover:text-gray-900"
+                    : "text-muted-foreground hover:bg-surface-2 hover:text-foreground"
             )}
         >
             {active && (

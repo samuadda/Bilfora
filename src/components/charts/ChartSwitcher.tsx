@@ -21,7 +21,7 @@ export default function ChartSwitcher({
 	];
 
 	return (
-		<div className="flex items-center gap-1 bg-gray-100 rounded-xl p-1">
+		<div className="flex items-center gap-1 bg-surface-inset rounded-xl p-1">
 			{options.map((option) => {
 				const Icon = option.icon;
 				return (
@@ -31,8 +31,8 @@ export default function ChartSwitcher({
 						className={cn(
 							"flex items-center gap-2 px-3 py-1.5 rounded-lg text-sm font-medium transition-all",
 							chartType === option.type
-								? "bg-white text-purple-600 shadow-sm"
-								: "text-gray-600 hover:text-gray-900"
+								? "bg-surface text-brand shadow-sm"
+								: "text-muted-foreground hover:text-foreground"
 						)}
 						title={option.label}
 					>

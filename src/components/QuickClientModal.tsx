@@ -174,7 +174,7 @@ export default function QuickClientModal({
 	};
 
 	const inputBaseClasses = "w-full py-2.5 rounded-xl border text-sm transition-all focus:ring-2";
-	const inputNormalClasses = "border-gray-200 focus:border-[#7f2dfb] focus:ring-purple-100";
+	const inputNormalClasses = "border-border focus:border-brand focus:ring-brand-soft-2";
 	const inputErrorClasses = "border-red-300 focus:border-red-500 focus:ring-red-100";
 
 	return (
@@ -185,18 +185,18 @@ export default function QuickClientModal({
 						initial={{ opacity: 0 }}
 						animate={{ opacity: 1 }}
 						exit={{ opacity: 0 }}
-						className="fixed inset-0 bg-black/40 backdrop-blur-sm"
+						className="fixed inset-0 bg-overlay backdrop-blur-sm"
 						onClick={handleClose}
 					/>
 					<m.div
 						initial={{ opacity: 0, scale: 0.95, y: 20 }}
 						animate={{ opacity: 1, scale: 1, y: 0 }}
 						exit={{ opacity: 0, scale: 0.95, y: 20 }}
-						className="bg-white rounded-3xl w-full max-w-2xl shadow-2xl z-10 overflow-hidden max-h-[90vh] flex flex-col"
+						className="bg-surface rounded-3xl w-full max-w-2xl shadow-2xl z-10 overflow-hidden max-h-[90vh] flex flex-col"
 						onClick={(e) => e.stopPropagation()}
 					>
 						{/* Header */}
-						<div className="flex items-center justify-between p-6 border-b border-gray-100 bg-white">
+						<div className="flex items-center justify-between p-6 border-b border-border bg-surface">
 							<div>
 								<Heading variant="h3">إضافة عميل جديد</Heading>
 								<Text variant="body-small" color="muted" className="mt-1">
@@ -206,7 +206,7 @@ export default function QuickClientModal({
 							<button
 								type="button"
 								onClick={handleClose}
-								className="p-2 hover:bg-gray-100 rounded-full transition-colors text-gray-500 hover:text-gray-900"
+								className="p-2 hover:bg-surface-inset rounded-full transition-colors text-subtle hover:text-foreground"
 							>
 								<X size={24} />
 							</button>
@@ -216,11 +216,11 @@ export default function QuickClientModal({
 						<form onSubmit={handleSubmit(onSubmit)} className="p-6 space-y-5 overflow-y-auto flex-1">
 							{/* ── Client Type Toggle (ZATCA only) ─────────────────────── */}
 							{IS_ZATCA_ENABLED && (
-							<div className="bg-gray-100 p-1 rounded-xl flex">
+							<div className="bg-surface-inset p-1 rounded-xl flex">
 								<label
 									className={`flex-1 flex items-center justify-center gap-2 py-2.5 rounded-lg cursor-pointer transition-all text-sm font-medium ${!isOrganization
-										? "bg-white shadow-sm text-[#7f2dfb]"
-										: "text-gray-600 hover:text-gray-800"
+										? "bg-surface shadow-sm text-brand"
+										: "text-muted-foreground hover:text-foreground"
 										}`}
 								>
 									<input
@@ -234,8 +234,8 @@ export default function QuickClientModal({
 								</label>
 								<label
 									className={`flex-1 flex items-center justify-center gap-2 py-2.5 rounded-lg cursor-pointer transition-all text-sm font-medium ${isOrganization
-										? "bg-white shadow-sm text-[#7f2dfb]"
-										: "text-gray-600 hover:text-gray-800"
+										? "bg-surface shadow-sm text-brand"
+										: "text-muted-foreground hover:text-foreground"
 										}`}
 								>
 									<input
@@ -252,15 +252,15 @@ export default function QuickClientModal({
 
 							{/* ── Name Field ─────────────────────────────────────────── */}
 							<div>
-								<label className="block text-sm font-medium text-gray-700 mb-1.5">
+								<label className="block text-sm font-medium text-muted-foreground mb-1.5">
 									{isOrganization ? "اسم المنشأة" : "الاسم الكامل"}{" "}
 									<span className="text-red-500">*</span>
 								</label>
 								<div className="relative">
 									{isOrganization ? (
-										<Building2 className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400" size={18} />
+										<Building2 className="absolute right-3 top-1/2 -translate-y-1/2 text-disabled" size={18} />
 									) : (
-										<User className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400" size={18} />
+										<User className="absolute right-3 top-1/2 -translate-y-1/2 text-disabled" size={18} />
 									)}
 									<input
 										type="text"
@@ -280,11 +280,11 @@ export default function QuickClientModal({
 							{/* ── Phone & Landline Row ──────────────────────────────────────── */}
 							<div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
 								<div>
-									<label className="block text-sm font-medium text-gray-700 mb-1.5">
-										رقم الجوال <span className="text-gray-400 font-normal">(اختياري)</span>
+									<label className="block text-sm font-medium text-muted-foreground mb-1.5">
+										رقم الجوال <span className="text-disabled font-normal">(اختياري)</span>
 									</label>
 									<div className="relative">
-										<Phone className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400" size={16} />
+										<Phone className="absolute right-3 top-1/2 -translate-y-1/2 text-disabled" size={16} />
 										<input
 											type="tel"
 											{...register("phone")}
@@ -303,11 +303,11 @@ export default function QuickClientModal({
 								</div>
 
 								<div>
-									<label className="block text-sm font-medium text-gray-700 mb-1.5">
-										رقم الهاتف <span className="text-gray-400 font-normal">(اختياري)</span>
+									<label className="block text-sm font-medium text-muted-foreground mb-1.5">
+										رقم الهاتف <span className="text-disabled font-normal">(اختياري)</span>
 									</label>
 									<div className="relative">
-										<Phone className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400" size={16} />
+										<Phone className="absolute right-3 top-1/2 -translate-y-1/2 text-disabled" size={16} />
 										<input
 											type="tel"
 											{...register("landline")}
@@ -321,11 +321,11 @@ export default function QuickClientModal({
 
 							{/* ── Email Field ────────────────────────────────────────── */}
 							<div>
-								<label className="block text-sm font-medium text-gray-700 mb-1.5">
-									البريد الإلكتروني <span className="text-gray-400 font-normal">(اختياري)</span>
+								<label className="block text-sm font-medium text-muted-foreground mb-1.5">
+									البريد الإلكتروني <span className="text-disabled font-normal">(اختياري)</span>
 								</label>
 								<div className="relative">
-									<Mail className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400" size={18} />
+									<Mail className="absolute right-3 top-1/2 -translate-y-1/2 text-disabled" size={18} />
 									<input
 										type="email"
 										{...register("email")}
@@ -344,13 +344,13 @@ export default function QuickClientModal({
 
 							{/* ── Address Section (Simple) ────────────────────────────── */}
 							<div>
-								<label className="block text-sm font-medium text-gray-700 mb-1.5 flex items-center gap-2">
-									<MapPin size={16} className="text-[#7f2dfb]" />
+								<label className="block text-sm font-medium text-muted-foreground mb-1.5 flex items-center gap-2">
+									<MapPin size={16} className="text-brand" />
 									العنوان{" "}
 									{isOrganization ? (
-										<span className="text-gray-400 font-normal">(اختياري)</span>
+										<span className="text-disabled font-normal">(اختياري)</span>
 									) : (
-										<span className="text-gray-400 font-normal">(اختياري)</span>
+										<span className="text-disabled font-normal">(اختياري)</span>
 									)}
 								</label>
 								<textarea
@@ -373,11 +373,11 @@ export default function QuickClientModal({
 									>
 										{/* Tax Number */}
 										<div>
-											<label className="block text-sm font-medium text-gray-700 mb-1.5">
-												الرقم الضريبي <span className="text-gray-400 font-normal">(اختياري)</span>
+											<label className="block text-sm font-medium text-muted-foreground mb-1.5">
+												الرقم الضريبي <span className="text-disabled font-normal">(اختياري)</span>
 											</label>
 											<div className="relative">
-												<Hash className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400" size={18} />
+												<Hash className="absolute right-3 top-1/2 -translate-y-1/2 text-disabled" size={18} />
 												<input
 													type="text"
 													{...register("tax_number")}
@@ -397,11 +397,11 @@ export default function QuickClientModal({
 
 										{/* Commercial Registration */}
 										<div>
-											<label className="block text-sm font-medium text-gray-700 mb-1.5">
-												السجل التجاري <span className="text-gray-400 font-normal">(اختياري)</span>
+											<label className="block text-sm font-medium text-muted-foreground mb-1.5">
+												السجل التجاري <span className="text-disabled font-normal">(اختياري)</span>
 											</label>
 											<div className="relative">
-												<FileText className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400" size={18} />
+												<FileText className="absolute right-3 top-1/2 -translate-y-1/2 text-disabled" size={18} />
 												<input
 													type="text"
 													{...register("commercial_registration")}
@@ -422,14 +422,14 @@ export default function QuickClientModal({
 								<button
 									type="button"
 									onClick={handleClose}
-									className="flex-1 px-4 py-2.5 rounded-xl border border-gray-200 text-gray-700 font-medium hover:bg-gray-50 transition-all text-sm"
+									className="flex-1 px-4 py-2.5 rounded-xl border border-border text-muted-foreground font-medium hover:bg-surface-2 transition-all text-sm"
 								>
 									إلغاء
 								</button>
 								<button
 									type="submit"
 									disabled={saving}
-									className="flex-1 px-4 py-2.5 rounded-xl bg-[#7f2dfb] text-white font-medium hover:bg-[#6b24d6] shadow-lg shadow-purple-200 transition-all text-sm flex items-center justify-center gap-2 disabled:opacity-70 disabled:cursor-not-allowed"
+									className="flex-1 px-4 py-2.5 rounded-xl bg-brand text-white font-medium hover:bg-[#6b24d6] shadow-lg shadow-brand transition-all text-sm flex items-center justify-center gap-2 disabled:opacity-70 disabled:cursor-not-allowed"
 								>
 									{saving ? (
 										<>

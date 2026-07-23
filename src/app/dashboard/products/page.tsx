@@ -581,13 +581,13 @@ export default function ProductsPage() {
 				<div className="flex flex-col lg:flex-row gap-4 items-center justify-between">
 					{/* Search */}
 					<div className="relative w-full lg:w-96">
-						<Search className="absolute right-4 top-1/2 -translate-y-1/2 text-gray-400" size={20} />
+						<Search className="absolute right-4 top-1/2 -translate-y-1/2 text-disabled" size={20} />
 						<Input
 							type="text"
 							placeholder="ابحث عن اسم المنتج، الوصف، أو الكود..."
 							value={searchTerm}
 							onChange={(e: React.ChangeEvent<HTMLInputElement>) => setSearchTerm(e.target.value)}
-							className="pr-12 bg-gray-50"
+							className="pr-12 bg-surface-2"
 						/>
 					</div>
 
@@ -709,15 +709,15 @@ export default function ProductsPage() {
 				{/* Products Table */}
 				{filteredProducts.length === 0 ? (
 					<div className="flex flex-col items-center justify-center py-16 text-center">
-						<div className="w-16 h-16 bg-gray-50 rounded-full flex items-center justify-center mb-4">
-							<Package className="w-8 h-8 text-gray-300" />
+						<div className="w-16 h-16 bg-surface-2 rounded-full flex items-center justify-center mb-4">
+							<Package className="w-8 h-8 text-disabled" />
 						</div>
-						<h3 className="text-gray-900 font-bold mb-1 text-lg">
+						<h3 className="text-foreground font-bold mb-1 text-lg">
 							{products.length === 0
 								? "لا توجد منتجات حتى الآن"
 								: "لا توجد نتائج"}
 						</h3>
-						<p className="text-gray-500 text-sm mb-6">
+						<p className="text-subtle text-sm mb-6">
 							{products.length === 0
 								? "ابدأ بإضافة أول منتج ليسهل عليك إنشاء الفواتير."
 								: "حاول تغيير البحث أو الفلاتر"}
@@ -727,7 +727,7 @@ export default function ProductsPage() {
 								whileHover={{ scale: 1.02 }}
 								whileTap={{ scale: 0.98 }}
 								onClick={openNew}
-								className="inline-flex items-center gap-2 rounded-xl bg-[#7f2dfb] text-white px-6 py-3 text-base font-bold shadow-lg shadow-purple-200 hover:shadow-xl hover:bg-[#6a1fd8] transition-all"
+								className="inline-flex items-center gap-2 rounded-xl bg-brand text-white px-6 py-3 text-base font-bold shadow-lg shadow-brand hover:shadow-xl hover:bg-brand-hover transition-all"
 							>
 								<Plus size={20} strokeWidth={2.5} /> إضافة منتج
 							</m.button>
@@ -737,106 +737,106 @@ export default function ProductsPage() {
 					<>
 						<div className="overflow-x-auto">
 							<table className="w-full">
-								<thead className="bg-gray-50/50">
+								<thead className="bg-surface-2">
 									<tr>
 										<th className="p-4 text-center w-12">
 											<button
 												type="button"
 												onClick={toggleSelectAll}
-												className="p-1 hover:bg-gray-200 rounded transition-colors"
+												className="p-1 hover:bg-surface-inset rounded transition-colors"
 												title="تحديد الكل"
 											>
 												{allSelected ? (
-													<Check className="w-5 h-5 text-[#7f2dfb]" />
+													<Check className="w-5 h-5 text-brand" />
 												) : (
-													<div className="w-5 h-5 border-2 border-gray-300 rounded" />
+													<div className="w-5 h-5 border-2 border-border-strong rounded" />
 												)}
 											</button>
 										</th>
-										<th className="p-5 text-right text-xs font-bold text-gray-500 uppercase tracking-wider">
+										<th className="p-5 text-right text-xs font-bold text-subtle uppercase tracking-wider">
 											الاسم
 										</th>
-										<th className="p-5 text-right text-xs font-bold text-gray-500 uppercase tracking-wider">
+										<th className="p-5 text-right text-xs font-bold text-subtle uppercase tracking-wider">
 											الفئة
 										</th>
-										<th className="p-5 text-right text-xs font-bold text-gray-500 uppercase tracking-wider">
+										<th className="p-5 text-right text-xs font-bold text-subtle uppercase tracking-wider">
 											الوحدة
 										</th>
-										<th className="p-5 text-right text-xs font-bold text-gray-500 uppercase tracking-wider">
+										<th className="p-5 text-right text-xs font-bold text-subtle uppercase tracking-wider">
 											السعر
 										</th>
-										<th className="p-5 text-center text-xs font-bold text-gray-500 uppercase tracking-wider">
+										<th className="p-5 text-center text-xs font-bold text-subtle uppercase tracking-wider">
 											الحالة
 										</th>
-										<th className="p-5 text-right text-xs font-bold text-gray-500 uppercase tracking-wider">
+										<th className="p-5 text-right text-xs font-bold text-subtle uppercase tracking-wider">
 											تاريخ الإنشاء
 										</th>
-										<th className="p-5 text-right text-xs font-bold text-gray-500 uppercase tracking-wider">
+										<th className="p-5 text-right text-xs font-bold text-subtle uppercase tracking-wider">
 											الإجراءات
 										</th>
 									</tr>
 								</thead>
-								<tbody className="divide-y divide-gray-50">
+								<tbody className="divide-y divide-border">
 									{paginatedProducts.map((p) => {
 										const isSelected = selectedIds.has(p.id);
 										return (
 											<tr
 												key={p.id}
 												className={cn(
-													"hover:bg-gray-50/80 transition-colors group",
-													isSelected && "bg-purple-50/50"
+													"hover:bg-surface-2 transition-colors group",
+													isSelected && "bg-brand-soft/50"
 												)}
 											>
 												<td className="p-4 text-center">
 													<button
 														type="button"
 														onClick={() => toggleSelect(p.id)}
-														className="p-1 hover:bg-gray-200 rounded transition-colors"
+														className="p-1 hover:bg-surface-inset rounded transition-colors"
 													>
 														{isSelected ? (
-															<Check className="w-5 h-5 text-[#7f2dfb]" />
+															<Check className="w-5 h-5 text-brand" />
 														) : (
-															<div className="w-5 h-5 border-2 border-gray-300 rounded" />
+															<div className="w-5 h-5 border-2 border-border-strong rounded" />
 														)}
 													</button>
 												</td>
 												<td className="p-5">
 													<div className="flex items-center gap-3">
-														<div className="w-10 h-10 rounded-xl bg-purple-50 text-[#7f2dfb] flex items-center justify-center flex-shrink-0">
+														<div className="w-10 h-10 rounded-xl bg-brand-soft text-brand flex items-center justify-center flex-shrink-0">
 															<Box size={20} />
 														</div>
 														<div className="min-w-0">
-															<p className="font-bold text-gray-900 text-sm">
+															<p className="font-bold text-foreground text-sm">
 																{p.name}
 															</p>
 															{p.description && (
-																<p className="text-xs text-gray-500 truncate max-w-[200px]">
+																<p className="text-xs text-subtle truncate max-w-[200px]">
 																	{p.description}
 																</p>
 															)}
 														</div>
 													</div>
 												</td>
-												<td className="p-5 text-sm text-gray-600">
+												<td className="p-5 text-sm text-muted-foreground">
 													{p.category ? (
 														<span className="bg-blue-50 text-blue-700 px-2 py-1 rounded-lg text-xs font-medium">
 															{p.category}
 														</span>
 													) : (
-														<span className="text-gray-400">—</span>
+														<span className="text-disabled">—</span>
 													)}
 												</td>
-												<td className="p-5 text-sm text-gray-600">
+												<td className="p-5 text-sm text-muted-foreground">
 													{p.unit ? (
-														<span className="bg-gray-100 px-2 py-1 rounded-lg text-xs font-medium">
+														<span className="bg-surface-inset px-2 py-1 rounded-lg text-xs font-medium">
 															{p.unit}
 														</span>
 													) : (
-														<span className="text-gray-400">—</span>
+														<span className="text-disabled">—</span>
 													)}
 												</td>
 												<td className="p-5">
-													<Price amount={Number(p.unit_price)} size="sm" className="text-gray-900" />
+													<Price amount={Number(p.unit_price)} size="sm" className="text-foreground" />
 												</td>
 												<td className="p-5 text-center">
 													<span
@@ -844,13 +844,13 @@ export default function ProductsPage() {
 															"inline-flex items-center px-2.5 py-1 rounded-full text-xs font-bold border",
 															p.active
 																? "bg-green-50 text-green-700 border-green-100"
-																: "bg-gray-50 text-gray-700 border-gray-100"
+																: "bg-surface-2 text-muted-foreground border-border"
 														)}
 													>
 														{p.active ? "نشط" : "معطّل"}
 													</span>
 												</td>
-												<td className="p-5 text-sm text-gray-600">
+												<td className="p-5 text-sm text-muted-foreground">
 													{formatDate(p.created_at)}
 												</td>
 												<td className="p-5">
@@ -858,7 +858,7 @@ export default function ProductsPage() {
 														<button
 															type="button"
 															onClick={() => openEdit(p)}
-															className="p-2 text-gray-500 hover:text-[#7f2dfb] hover:bg-purple-50 rounded-lg transition-colors"
+															className="p-2 text-subtle hover:text-brand hover:bg-brand-soft rounded-lg transition-colors"
 															title="تعديل"
 														>
 															<Edit size={16} />
@@ -866,7 +866,7 @@ export default function ProductsPage() {
 														<button
 															type="button"
 															onClick={() => duplicateProduct(p)}
-															className="p-2 text-gray-500 hover:text-blue-600 hover:bg-blue-50 rounded-lg transition-colors"
+															className="p-2 text-subtle hover:text-blue-600 hover:bg-blue-50 rounded-lg transition-colors"
 															title="نسخ"
 														>
 															<Copy size={16} />
@@ -909,9 +909,9 @@ export default function ProductsPage() {
 
 						{/* Pagination */}
 						{totalPages > 1 && (
-							<div className="p-6 border-t border-gray-100 flex flex-col sm:flex-row items-center justify-between gap-4 bg-gray-50/30">
+							<div className="p-6 border-t border-border flex flex-col sm:flex-row items-center justify-between gap-4 bg-surface-2">
 								<div className="flex items-center gap-2">
-									<span className="text-sm text-gray-600">عدد العناصر في الصفحة:</span>
+									<span className="text-sm text-muted-foreground">عدد العناصر في الصفحة:</span>
 									<Select
 										value={String(pageSize)}
 										onValueChange={(val) => {
@@ -934,11 +934,11 @@ export default function ProductsPage() {
 										type="button"
 										onClick={() => setCurrentPage((p) => Math.max(1, p - 1))}
 										disabled={currentPage === 1}
-										className="p-2 rounded-lg border border-gray-200 hover:bg-white disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
+										className="p-2 rounded-lg border border-border hover:bg-surface disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
 									>
 										<ChevronRight size={18} />
 									</button>
-									<span className="text-sm text-gray-600 px-3">
+									<span className="text-sm text-muted-foreground px-3">
 										صفحة {currentPage} من {totalPages}
 									</span>
 									<button
@@ -947,7 +947,7 @@ export default function ProductsPage() {
 											setCurrentPage((p) => Math.min(totalPages, p + 1))
 										}
 										disabled={currentPage === totalPages}
-										className="p-2 rounded-lg border border-gray-200 hover:bg-white disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
+										className="p-2 rounded-lg border border-border hover:bg-surface disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
 									>
 										<ChevronLeft size={18} />
 									</button>
@@ -972,7 +972,7 @@ export default function ProductsPage() {
 					<DialogHeader>
 						<DialogTitle>تأكيد الحذف</DialogTitle>
 					</DialogHeader>
-					<p className="text-gray-600">
+					<p className="text-muted-foreground">
 						هل أنت متأكد من حذف {selectedIds.size} منتج؟ لا يمكن التراجع عن هذا الإجراء.
 					</p>
 					<DialogFooter>

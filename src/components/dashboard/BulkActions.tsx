@@ -33,11 +33,11 @@ export function BulkActions({
                             {/* Selection Info (Right in RTL) */}
                             <div className="flex items-center gap-4 w-full sm:w-auto justify-between sm:justify-start">
                                 <div className="flex items-center gap-3">
-                                    <div className="flex items-center justify-center w-8 h-8 rounded-full bg-[#F4E7FF] text-[#7f2dfb]">
+                                    <div className="flex items-center justify-center w-8 h-8 rounded-full bg-[#F4E7FF] text-brand">
                                         <Check size={16} strokeWidth={3} />
                                     </div>
                                     <div className="flex flex-col">
-                                        <Text className="font-bold text-[#7f2dfb] text-sm">
+                                        <Text className="font-bold text-brand text-sm">
                                             تم تحديد {selectedCount} {itemLabel}
                                         </Text>
                                         <Text variant="body-small" className="text-[#a484c9] text-xs">
@@ -55,7 +55,7 @@ export function BulkActions({
 
                                 <button
                                     onClick={onClearSelection}
-                                    className="flex items-center justify-center gap-1.5 px-3 py-1.5 rounded-lg text-gray-500 hover:text-gray-700 hover:bg-black/5 transition-colors text-sm font-medium whitespace-nowrap"
+                                    className="flex items-center justify-center gap-1.5 px-3 py-1.5 rounded-lg text-subtle hover:text-muted-foreground hover:bg-overlay transition-colors text-sm font-medium whitespace-nowrap"
                                 >
                                     <span>إلغاء</span>
                                     <X size={16} />
@@ -82,7 +82,7 @@ export function BulkActionButton({
     ...props
 }: BulkActionButtonProps) {
     const variants = {
-        default: "bg-white text-gray-700 hover:bg-gray-50 border-gray-200",
+        default: "bg-surface text-muted-foreground hover:bg-surface-2 border-border",
         delete: "bg-red-50 text-red-700 hover:bg-red-100 border-red-200",
         success: "bg-green-50 text-green-700 hover:bg-green-100 border-green-200",
         warning: "bg-orange-50 text-orange-700 hover:bg-orange-100 border-orange-200",

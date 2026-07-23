@@ -60,7 +60,7 @@ export default function SettingsClient({ initialSettings }: SettingsClientProps)
 	const [autoSend, setAutoSend] = useState(false);
 	const [allowPartials, setAllowPartials] = useState(true);
 	const [template, setTemplate] = useState<"classic" | "compact" | "modern">("classic");
-	const [primaryColor, setPrimaryColor] = useState("#7f2dfb");
+	const [primaryColor, setPrimaryColor] = useState("var(--brand)");
 	const [qrValue, setQrValue] = useState(""); // This is typically generated, not saved as value?
 
 	const onLogoChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -130,8 +130,8 @@ export default function SettingsClient({ initialSettings }: SettingsClientProps)
 				animate={{ opacity: 1, y: 0 }}
 				className="flex flex-col gap-2"
 			>
-				<h1 className="text-3xl font-bold text-[#012d46]">إعدادات الفواتير</h1>
-				<p className="text-gray-500">تخصيص مظهر الفواتير، الضرائب، وخيارات الدفع</p>
+				<h1 className="text-3xl font-bold text-foreground">إعدادات الفواتير</h1>
+				<p className="text-subtle">تخصيص مظهر الفواتير، الضرائب، وخيارات الدفع</p>
 			</m.div>
 
 			{/* Business info */}
@@ -139,21 +139,21 @@ export default function SettingsClient({ initialSettings }: SettingsClientProps)
 				initial={{ opacity: 0, y: 20 }}
 				animate={{ opacity: 1, y: 0 }}
 				transition={{ delay: 0.1 }}
-				className="bg-white rounded-3xl border border-gray-100 p-6 md:p-8 shadow-sm"
+				className="bg-surface rounded-3xl border border-border p-6 md:p-8 shadow-sm"
 			>
-				<h2 className="text-xl font-bold text-[#012d46] mb-6 flex items-center gap-2">
-					<Building2 className="text-[#7f2dfb]" size={24} />
+				<h2 className="text-xl font-bold text-foreground mb-6 flex items-center gap-2">
+					<Building2 className="text-brand" size={24} />
 					بيانات النشاط التجاري
 				</h2>
 				<div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
 					<div className="space-y-2">
-						<label className="text-sm font-medium text-gray-700">
+						<label className="text-sm font-medium text-muted-foreground">
 							اسم المنشأة
 						</label>
 						<input
 							value={sellerName}
 							onChange={(e) => setSellerName(e.target.value)}
-							className="w-full rounded-xl border border-gray-200 px-4 py-3 text-sm focus:border-[#7f2dfb] focus:ring-[#7f2dfb] transition-all"
+							className="w-full rounded-xl border border-border px-4 py-3 text-sm focus:border-brand focus:ring-brand transition-all"
 							placeholder="اسم متجرك أو شركتك"
 						/>
 					</div>
@@ -162,29 +162,29 @@ export default function SettingsClient({ initialSettings }: SettingsClientProps)
 				<div className="grid grid-cols-1 md:grid-cols-3 gap-6">
 					{IS_ZATCA_ENABLED && (
 					<div className="space-y-2">
-						<label className="text-sm font-medium text-gray-700">
+						<label className="text-sm font-medium text-muted-foreground">
 							الرقم الضريبي (VAT)
 						</label>
 						<div className="relative">
 							<Receipt
-								className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400"
+								className="absolute right-3 top-1/2 -translate-y-1/2 text-disabled"
 								size={18}
 							/>
 							<input
 								value={vatNumber}
 								onChange={(e) => setVatNumber(e.target.value)}
-								className="w-full rounded-xl border border-gray-200 pr-10 pl-4 py-3 text-sm focus:border-[#7f2dfb] focus:ring-[#7f2dfb] transition-all"
+								className="w-full rounded-xl border border-border pr-10 pl-4 py-3 text-sm focus:border-brand focus:ring-brand transition-all"
 								placeholder="3xxxxxxxxxxxxx3"
 							/>
 						</div>
 					</div>
 					)}
 					<div className="space-y-2">
-						<label className="text-sm font-medium text-gray-700">
+						<label className="text-sm font-medium text-muted-foreground">
 							شعار الفواتير
 						</label>
 						<div className="flex items-center gap-4">
-							<div className="relative w-14 h-14 rounded-xl overflow-hidden border border-gray-200 bg-gray-50 flex items-center justify-center">
+							<div className="relative w-14 h-14 rounded-xl overflow-hidden border border-border bg-surface-2 flex items-center justify-center">
 								{businessLogo ? (
 									<Image
 										src={businessLogo}
@@ -193,10 +193,10 @@ export default function SettingsClient({ initialSettings }: SettingsClientProps)
 										className="object-contain"
 									/>
 								) : (
-									<Building2 className="text-gray-300" size={24} />
+									<Building2 className="text-disabled" size={24} />
 								)}
 							</div>
-							<label className="px-4 py-2 rounded-xl bg-purple-50 text-[#7f2dfb] text-sm font-bold hover:bg-purple-100 cursor-pointer transition-colors">
+							<label className="px-4 py-2 rounded-xl bg-brand-soft text-brand text-sm font-bold hover:bg-brand-soft-2 cursor-pointer transition-colors">
 								رفع شعار
 								<input
 									type="file"
@@ -210,30 +210,30 @@ export default function SettingsClient({ initialSettings }: SettingsClientProps)
 				</div>
 				<div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-6">
 					<div className="md:col-span-2 space-y-2">
-						<label className="text-sm font-medium text-gray-700">
+						<label className="text-sm font-medium text-muted-foreground">
 							العنوان
 						</label>
 						<div className="relative">
 							<MapPin
-								className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400"
+								className="absolute right-3 top-1/2 -translate-y-1/2 text-disabled"
 								size={18}
 							/>
 							<input
 								value={addressLine}
 								onChange={(e) => setAddressLine(e.target.value)}
-								className="w-full rounded-xl border border-gray-200 pr-10 pl-4 py-3 text-sm focus:border-[#7f2dfb] focus:ring-[#7f2dfb] transition-all"
+								className="w-full rounded-xl border border-border pr-10 pl-4 py-3 text-sm focus:border-brand focus:ring-brand transition-all"
 								placeholder="الشارع، الحي، رقم المبنى"
 							/>
 						</div>
 					</div>
 					<div className="space-y-2">
-						<label className="text-sm font-medium text-gray-700">
+						<label className="text-sm font-medium text-muted-foreground">
 							المدينة
 						</label>
 						<input
 							value={city}
 							onChange={(e) => setCity(e.target.value)}
-							className="w-full rounded-xl border border-gray-200 px-4 py-3 text-sm focus:border-[#7f2dfb] focus:ring-[#7f2dfb] transition-all"
+							className="w-full rounded-xl border border-border px-4 py-3 text-sm focus:border-brand focus:ring-brand transition-all"
 							placeholder="الرياض"
 						/>
 					</div>
@@ -245,48 +245,48 @@ export default function SettingsClient({ initialSettings }: SettingsClientProps)
 				initial={{ opacity: 0, y: 20 }}
 				animate={{ opacity: 1, y: 0 }}
 				transition={{ delay: 0.2 }}
-				className="bg-white rounded-3xl border border-gray-100 p-6 md:p-8 shadow-sm"
+				className="bg-surface rounded-3xl border border-border p-6 md:p-8 shadow-sm"
 			>
-				<h2 className="text-xl font-bold text-[#012d46] mb-6 flex items-center gap-2">
-					<Hash className="text-[#7f2dfb]" size={24} />
+				<h2 className="text-xl font-bold text-foreground mb-6 flex items-center gap-2">
+					<Hash className="text-brand" size={24} />
 					إعدادات الترقيم
 				</h2>
 				<div className="grid grid-cols-1 md:grid-cols-3 gap-6">
 					<div className="space-y-2">
-						<label className="text-sm font-medium text-gray-700">
+						<label className="text-sm font-medium text-muted-foreground">
 							بداية الفاتورة
 						</label>
 						<div className="relative">
 							<Hash
-								className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400"
+								className="absolute right-3 top-1/2 -translate-y-1/2 text-disabled"
 								size={18}
 							/>
 							<input
 								value={prefix}
 								onChange={(e) => setPrefix(e.target.value)}
-								className="w-full rounded-xl border border-gray-200 pr-10 pl-4 py-3 text-sm focus:border-[#7f2dfb] focus:ring-[#7f2dfb] transition-all"
+								className="w-full rounded-xl border border-border pr-10 pl-4 py-3 text-sm focus:border-brand focus:ring-brand transition-all"
 								placeholder="INV-"
 							/>
 						</div>
 					</div>
 					<div className="space-y-2">
-						<label className="text-sm font-medium text-gray-700">
+						<label className="text-sm font-medium text-muted-foreground">
 							الرقم التالي (تجريبي)
 						</label>
 						<input
 							type="number"
 							value={nextNumber}
 							disabled
-							className="w-full rounded-xl border border-gray-200 px-4 py-3 text-sm bg-gray-50 text-gray-500 cursor-not-allowed"
+							className="w-full rounded-xl border border-border px-4 py-3 text-sm bg-surface-2 text-subtle cursor-not-allowed"
 						/>
 					</div>
 					<div className="space-y-2">
-						<label className="text-sm font-medium text-gray-700">
+						<label className="text-sm font-medium text-muted-foreground">
 							فترة الاستحقاق (أيام - تجريبي)
 						</label>
 						<div className="relative">
 							<CalendarClock
-								className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400"
+								className="absolute right-3 top-1/2 -translate-y-1/2 text-disabled"
 								size={18}
 							/>
 							<input
@@ -294,7 +294,7 @@ export default function SettingsClient({ initialSettings }: SettingsClientProps)
 								value={dueDays}
 								onChange={(e) => setDueDays(parseInt(e.target.value || "0", 10))}
 								disabled
-								className="w-full rounded-xl border border-gray-200 pr-10 pl-4 py-3 text-sm bg-gray-50 text-gray-500 cursor-not-allowed"
+								className="w-full rounded-xl border border-border pr-10 pl-4 py-3 text-sm bg-surface-2 text-subtle cursor-not-allowed"
 							/>
 						</div>
 					</div>
@@ -306,63 +306,63 @@ export default function SettingsClient({ initialSettings }: SettingsClientProps)
 				initial={{ opacity: 0, y: 20 }}
 				animate={{ opacity: 1, y: 0 }}
 				transition={{ delay: 0.3 }}
-				className="bg-white rounded-3xl border border-gray-100 p-6 md:p-8 shadow-sm"
+				className="bg-surface rounded-3xl border border-border p-6 md:p-8 shadow-sm"
 			>
-				<h2 className="text-xl font-bold text-[#012d46] mb-6 flex items-center gap-2">
+				<h2 className="text-xl font-bold text-foreground mb-6 flex items-center gap-2">
 					{IS_ZATCA_ENABLED ? (
-						<><Percent className="text-[#7f2dfb]" size={24} />الضرائب والشروط</>
+						<><Percent className="text-brand" size={24} />الضرائب والشروط</>
 					) : (
-						<><FileText className="text-[#7f2dfb]" size={24} />إعدادات الفاتورة</>
+						<><FileText className="text-brand" size={24} />إعدادات الفاتورة</>
 					)}
 				</h2>
 				<div className="grid grid-cols-1 md:grid-cols-3 gap-6">
 					{IS_ZATCA_ENABLED && (
 					<div className="space-y-2">
-						<label className="text-sm font-medium text-gray-700">
+						<label className="text-sm font-medium text-muted-foreground">
 							نسبة الضريبة (%)
 						</label>
 						<div className="relative">
 							<Percent
-								className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400"
+								className="absolute right-3 top-1/2 -translate-y-1/2 text-disabled"
 								size={18}
 							/>
 							<input
 								type="number"
 								value={taxRate}
 								onChange={(e) => setTaxRate(parseFloat(e.target.value || "0"))}
-								className="w-full rounded-xl border border-gray-200 pr-10 pl-4 py-3 text-sm focus:border-[#7f2dfb] focus:ring-[#7f2dfb] transition-all"
+								className="w-full rounded-xl border border-border pr-10 pl-4 py-3 text-sm focus:border-brand focus:ring-brand transition-all"
 							/>
 						</div>
 					</div>
 					)}
-					<label className="flex items-center justify-between p-4 rounded-xl border border-gray-200 hover:bg-gray-50 transition-all cursor-pointer bg-white">
-						<span className="flex items-center gap-2 text-sm font-medium text-gray-700">
-							<Send size={18} className="text-[#7f2dfb]" /> إرسال تلقائي
+					<label className="flex items-center justify-between p-4 rounded-xl border border-border hover:bg-surface-2 transition-all cursor-pointer bg-surface">
+						<span className="flex items-center gap-2 text-sm font-medium text-muted-foreground">
+							<Send size={18} className="text-brand" /> إرسال تلقائي
 						</span>
 						<div className="relative inline-flex items-center cursor-pointer">
 							<input type="checkbox" checked={autoSend} onChange={(e) => setAutoSend(e.target.checked)} className="sr-only peer" />
-							<div className="w-11 h-6 bg-gray-200 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-[#7f2dfb]"></div>
+							<div className="w-11 h-6 bg-surface-inset peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-surface after:border-border-strong after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-brand"></div>
 						</div>
 					</label>
-					<label className="flex items-center justify-between p-4 rounded-xl border border-gray-200 hover:bg-gray-50 transition-all cursor-pointer bg-white">
-						<span className="flex items-center gap-2 text-sm font-medium text-gray-700">
-							<FileText size={18} className="text-[#7f2dfb]" /> دفع جزئي
+					<label className="flex items-center justify-between p-4 rounded-xl border border-border hover:bg-surface-2 transition-all cursor-pointer bg-surface">
+						<span className="flex items-center gap-2 text-sm font-medium text-muted-foreground">
+							<FileText size={18} className="text-brand" /> دفع جزئي
 						</span>
 						<div className="relative inline-flex items-center cursor-pointer">
 							<input type="checkbox" checked={allowPartials} onChange={(e) => setAllowPartials(e.target.checked)} className="sr-only peer" />
-							<div className="w-11 h-6 bg-gray-200 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-[#7f2dfb]"></div>
+							<div className="w-11 h-6 bg-surface-inset peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-surface after:border-border-strong after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-brand"></div>
 						</div>
 					</label>
 				</div>
 				<div className="mt-6 space-y-2">
-					<label className="text-sm font-medium text-gray-700">
+					<label className="text-sm font-medium text-muted-foreground">
 						ملاحظة تذييل الفاتورة
 					</label>
 					<textarea
 						rows={3}
 						value={footerNote}
 						onChange={(e) => setFooterNote(e.target.value)}
-						className="w-full rounded-xl border border-gray-200 px-4 py-3 text-sm focus:border-[#7f2dfb] focus:ring-[#7f2dfb] transition-all resize-none"
+						className="w-full rounded-xl border border-border px-4 py-3 text-sm focus:border-brand focus:ring-brand transition-all resize-none"
 						placeholder="مثال: شكراً لتعاملكم معنا، يرجى التحويل خلال 30 يوم"
 					/>
 				</div>
@@ -373,24 +373,24 @@ export default function SettingsClient({ initialSettings }: SettingsClientProps)
 				initial={{ opacity: 0, y: 20 }}
 				animate={{ opacity: 1, y: 0 }}
 				transition={{ delay: 0.4 }}
-				className="bg-white rounded-3xl border border-gray-100 p-6 md:p-8 shadow-sm"
+				className="bg-surface rounded-3xl border border-border p-6 md:p-8 shadow-sm"
 			>
-				<h2 className="text-xl font-bold text-[#012d46] mb-6 flex items-center gap-2">
-					<Palette className="text-[#7f2dfb]" size={24} />
+				<h2 className="text-xl font-bold text-foreground mb-6 flex items-center gap-2">
+					<Palette className="text-brand" size={24} />
 					التصميم (قريباً)
 				</h2>
 				<div className="grid grid-cols-1 md:grid-cols-3 gap-6 opacity-50 pointer-events-none">
 					{/* ... preserved existing UI code ... */}
 					<div className="space-y-2">
-						<label className="flex items-center gap-1.5 text-sm font-medium text-gray-700">
-							<LayoutTemplate size={15} className="text-gray-400" />
+						<label className="flex items-center gap-1.5 text-sm font-medium text-muted-foreground">
+							<LayoutTemplate size={15} className="text-disabled" />
 							القالب
 						</label>
 						<Select
 							value={template}
 							onValueChange={(val) => setTemplate(val as "classic" | "compact" | "modern")}
 						>
-							<SelectTrigger className="w-full h-11 bg-white border-gray-200">
+							<SelectTrigger className="w-full h-11 bg-surface border-border">
 								<SelectValue placeholder="اختر القالب" />
 							</SelectTrigger>
 							<SelectContent>
@@ -401,7 +401,7 @@ export default function SettingsClient({ initialSettings }: SettingsClientProps)
 						</Select>
 					</div>
 					<div className="space-y-2">
-						<label className="text-sm font-medium text-gray-700">
+						<label className="text-sm font-medium text-muted-foreground">
 							اللون الأساسي
 						</label>
 						<div className="relative flex items-center">
@@ -409,7 +409,7 @@ export default function SettingsClient({ initialSettings }: SettingsClientProps)
 								type="color"
 								value={primaryColor}
 								onChange={(e) => setPrimaryColor(e.target.value)}
-								className="w-full h-12 rounded-xl border border-gray-200 p-1 cursor-pointer"
+								className="w-full h-12 rounded-xl border border-border p-1 cursor-pointer"
 							/>
 						</div>
 					</div>
@@ -421,40 +421,40 @@ export default function SettingsClient({ initialSettings }: SettingsClientProps)
 				initial={{ opacity: 0, y: 20 }}
 				animate={{ opacity: 1, y: 0 }}
 				transition={{ delay: 0.5 }}
-				className="bg-white rounded-3xl border border-gray-100 p-6 md:p-8 shadow-sm"
+				className="bg-surface rounded-3xl border border-border p-6 md:p-8 shadow-sm"
 			>
-				<h2 className="text-xl font-bold text-[#012d46] mb-6 flex items-center gap-2">
-					<CreditCard className="text-[#7f2dfb]" size={24} />
+				<h2 className="text-xl font-bold text-foreground mb-6 flex items-center gap-2">
+					<CreditCard className="text-brand" size={24} />
 					بيانات الدفع
 				</h2>
 				<div className="grid grid-cols-1 md:grid-cols-2 gap-6">
 					<div className="space-y-2">
-						<label className="text-sm font-medium text-gray-700">
+						<label className="text-sm font-medium text-muted-foreground">
 							رقم الآيبان (IBAN)
 						</label>
 						<div className="relative">
-							<Globe className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400" size={18} />
+							<Globe className="absolute right-3 top-1/2 -translate-y-1/2 text-disabled" size={18} />
 							<input
 								value={iban}
 								onChange={(e) => setIban(e.target.value)}
-								className="w-full rounded-xl border border-gray-200 pr-10 pl-4 py-3 text-sm focus:border-[#7f2dfb] focus:ring-[#7f2dfb] transition-all"
+								className="w-full rounded-xl border border-border pr-10 pl-4 py-3 text-sm focus:border-brand focus:ring-brand transition-all"
 								placeholder="SAxx xxxx xxxx xxxx xxxx xx"
 							/>
 						</div>
 					</div>
 					<div className="space-y-2">
-						<label className="text-sm font-medium text-gray-700">
+						<label className="text-sm font-medium text-muted-foreground">
 							رابط QR أو نص للدفع (غير مفعل)
 						</label>
 						<div className="relative">
 							<QrCode
-								className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400"
+								className="absolute right-3 top-1/2 -translate-y-1/2 text-disabled"
 								size={18}
 							/>
 							<input
 								value={qrValue}
 								onChange={(e) => setQrValue(e.target.value)}
-								className="w-full rounded-xl border border-gray-200 pr-10 pl-4 py-3 text-sm focus:border-[#7f2dfb] focus:ring-[#7f2dfb] transition-all"
+								className="w-full rounded-xl border border-border pr-10 pl-4 py-3 text-sm focus:border-brand focus:ring-brand transition-all"
 								placeholder="رابط بوابة الدفع أو تعليمات"
 								disabled
 							/>
@@ -465,7 +465,7 @@ export default function SettingsClient({ initialSettings }: SettingsClientProps)
 					<button
 						onClick={handleSave}
 						disabled={isLoading}
-						className="px-8 py-3 rounded-xl bg-[#7f2dfb] text-white text-base font-bold hover:bg-[#6a1fd8] shadow-lg shadow-purple-200 transition-all flex items-center gap-2 disabled:opacity-70 disabled:cursor-not-allowed"
+						className="px-8 py-3 rounded-xl bg-brand text-white text-base font-bold hover:bg-brand-hover shadow-lg shadow-brand transition-all flex items-center gap-2 disabled:opacity-70 disabled:cursor-not-allowed"
 					>
 						{isLoading && <Loader2 className="animate-spin w-4 h-4" />}
 						حفظ الإعدادات

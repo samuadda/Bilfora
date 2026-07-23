@@ -61,7 +61,7 @@ export function Section({
       className={cn(
         paddingClass,
         backgroundClass,
-        divider && "border-t border-gray-200",
+        divider && "border-t border-border",
         className
       )}
     >

@@ -6,7 +6,7 @@ import InvoicingSettingsClient from "./InvoicingSettingsClient";
 export const dynamic = "force-dynamic";
 
 export const metadata = {
-	title: "إعدادات الفواتير | الإعدادات | بيلفورة",
+	title: "إعدادات الفواتير | الإعدادات | بلفورا",
 	description: "إعدادات الترقيم والضرائب وبيانات الدفع",
 };
 

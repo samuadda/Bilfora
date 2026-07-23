@@ -131,8 +131,8 @@ export function Text({
 const labelVariants = cva("", {
   variants: {
     variant: {
-      label: "text-sm font-medium text-gray-700",
-      overline: "text-xs font-semibold text-gray-500 uppercase tracking-wide",
+      label: "text-sm font-medium text-muted-foreground",
+      overline: "text-xs font-semibold text-subtle uppercase tracking-wide",
     },
   },
   defaultVariants: {

@@ -4,7 +4,7 @@ import MainButton from "@/components/MainButton";
 
 export default function CareersPage() {
 	return (
-		<div className="min-h-screen bg-white">
+		<div className="min-h-screen bg-surface">
 			<Navbar />
 			<main className="pt-32 pb-20 px-4 max-w-4xl mx-auto">
 				<div className="text-center mb-16">
@@ -12,20 +12,20 @@ export default function CareersPage() {
 						as="h1"
 						animation="blurIn"
 						once={true}
-						className="text-4xl font-bold md:text-5xl text-[#012d46] mb-6"
+						className="text-4xl font-bold md:text-5xl text-foreground mb-6"
 					>
-						انضم لفريق بِلفورا
+						انضم لفريق بلفورا
 					</TextAnimate>
-					<p className="text-xl text-gray-600 max-w-2xl mx-auto">
+					<p className="text-xl text-muted-foreground max-w-2xl mx-auto">
 						نحن نبحث دائماً عن الموهوبين والشغوفين لبناء مستقبل الفواتير الرقمية معنا.
 					</p>
 				</div>
 
-                <div className="bg-gray-50 rounded-2xl p-8 md:p-12 text-center border border-gray-100">
-                    <h2 className="text-2xl font-bold text-[#012d46] mb-4">
+                <div className="bg-surface-2 rounded-2xl p-8 md:p-12 text-center border border-border">
+                    <h2 className="text-2xl font-bold text-foreground mb-4">
                         لا توجد شواغر حالياً
                     </h2>
-                    <p className="text-gray-600 mb-8 max-w-lg mx-auto">
+                    <p className="text-muted-foreground mb-8 max-w-lg mx-auto">
                         للأسف، لا توجد وظائف شاغرة في الوقت الحالي. ولكننا نكبر بسرعة! تابعنا على لينكد إن لتبقى على اطلاع بأحدث الفرص.
                     </p>
                     <a 

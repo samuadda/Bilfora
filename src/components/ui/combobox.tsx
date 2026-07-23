@@ -15,7 +15,7 @@ const Command = React.forwardRef<
   <CommandPrimitive
     ref={ref}
     className={cn(
-      "flex h-full w-full flex-col overflow-hidden rounded-md bg-white text-gray-950",
+      "flex h-full w-full flex-col overflow-hidden rounded-md bg-surface text-gray-950",
       className
     )}
     {...props}
@@ -32,7 +32,7 @@ const CommandInput = React.forwardRef<
     <CommandPrimitive.Input
       ref={ref}
       className={cn(
-        "flex h-11 w-full rounded-md bg-transparent py-3 text-sm outline-none placeholder:text-gray-500 disabled:cursor-not-allowed disabled:opacity-50 text-right",
+        "flex h-11 w-full rounded-md bg-transparent py-3 text-sm outline-none placeholder:text-subtle disabled:cursor-not-allowed disabled:opacity-50 text-right",
         className
       )}
       {...props}
@@ -75,10 +75,10 @@ const CommandItem = React.forwardRef<
       // Base styles - ensure clickable and visible text
       "relative flex cursor-pointer pointer-events-auto select-none items-center rounded-sm px-2 py-1.5 text-sm outline-none",
       // Text color - ensure it's dark and visible
-      "text-gray-900",
+      "text-foreground",
       // Hover and selected states
-      "hover:bg-[#7f2dfb]/10 hover:text-[#7f2dfb]",
-      "aria-selected:bg-[#7f2dfb]/10 aria-selected:text-[#7f2dfb]",
+      "hover:bg-brand/10 hover:text-brand",
+      "aria-selected:bg-brand/10 aria-selected:text-brand",
       // Only disable if explicitly disabled
       "data-[disabled=true]:pointer-events-none data-[disabled=true]:opacity-50",
       className
@@ -134,19 +134,19 @@ export function Combobox({
           disabled={disabled}
           className={cn(
             // Base styles
-            "w-full rounded-xl border border-gray-200 bg-white text-sm px-4 py-2.5 transition-all outline-none",
+            "w-full rounded-xl border border-border bg-surface text-sm px-4 py-2.5 transition-all outline-none",
             // RTL alignment: naturally puts icon on left, text on right
             "flex items-center justify-between text-right",
-            "text-gray-900 group hover:border-[#7f2dfb]/50",
-            "focus:border-[#7f2dfb] focus:ring-2 focus:ring-[#7f2dfb]/20",
+            "text-foreground group hover:border-brand/50",
+            "focus:border-brand focus:ring-2 focus:ring-brand/20",
             disabled && "opacity-50 cursor-not-allowed",
             className
           )}
         >
-          <span className={cn(!value && "text-gray-500", "truncate flex items-center gap-2")}>
+          <span className={cn(!value && "text-subtle", "truncate flex items-center gap-2")}>
             {value ? (
               <>
-                {selectedOption?.icon && <span className="text-gray-400 group-hover:text-[#7f2dfb] transition-colors">{selectedOption.icon}</span>}
+                {selectedOption?.icon && <span className="text-disabled group-hover:text-brand transition-colors">{selectedOption.icon}</span>}
                 {selectedOption?.label}
               </>
             ) : placeholder}
@@ -171,12 +171,12 @@ export function Combobox({
               >
                 <Check
                   className={cn(
-                    "mr-2 h-4 w-4 text-[#7f2dfb]",
+                    "mr-2 h-4 w-4 text-brand",
                     value === option.value ? "opacity-100" : "opacity-0"
                   )}
                 />
                 <div className="flex items-center gap-2 flex-1">
-                  {option.icon && <span className="text-gray-400 group-data-[selected=true]:text-[#7f2dfb]">{option.icon}</span>}
+                  {option.icon && <span className="text-disabled group-data-[selected=true]:text-brand">{option.icon}</span>}
                   <span>{option.label}</span>
                 </div>
               </CommandItem>

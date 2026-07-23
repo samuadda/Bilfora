@@ -17,7 +17,7 @@ export default function DashboardError({
     return (
         <div className="flex h-[50vh] flex-col items-center justify-center p-4 text-center">
             <h2 className="text-xl font-bold mb-4">تعذر تحميل المحتوى</h2>
-            <p className="text-gray-600 mb-6">
+            <p className="text-muted-foreground mb-6">
                 حدث خطأ أثناء تحميل لوحة التحكم.
             </p>
             <button

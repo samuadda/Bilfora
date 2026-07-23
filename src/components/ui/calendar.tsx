@@ -22,10 +22,10 @@ function Calendar({
 					"flex h-8 items-center justify-center text-sm font-medium",
 					classNames?.month_caption
 				),
-				today: cn("bg-purple-50 text-[#7f2dfb] font-bold rounded-md", classNames?.today),
+				today: cn("bg-brand-soft text-brand font-bold rounded-md", classNames?.today),
 				week: cn("flex justify-center py-0.5", classNames?.week),
 				day: cn(
-					"flex size-8 items-center justify-center rounded-md text-sm font-normal transition-colors hover:bg-purple-50 hover:text-[#7f2dfb] focus:bg-purple-50 focus:text-[#7f2dfb] focus:outline-none",
+					"flex size-8 items-center justify-center rounded-md text-sm font-normal transition-colors hover:bg-brand-soft hover:text-brand focus:bg-brand-soft focus:text-brand focus:outline-none",
 					classNames?.day
 				),
 				day_button: cn(
@@ -42,24 +42,24 @@ function Calendar({
 					classNames?.outside
 				),
 				selected: cn(
-					"bg-[#7f2dfb]! text-white! hover:bg-[#6b24d6]! focus:bg-[#6b24d6]!",
+					"bg-brand! text-white! hover:bg-[#6b24d6]! focus:bg-[#6b24d6]!",
 					classNames?.selected
 				),
 				range_middle: cn(
-					"bg-purple-50! text-[#7f2dfb]! rounded-none first:rounded-l-md last:rounded-r-md hover:bg-purple-100! hover:text-[#7f2dfb]!",
+					"bg-brand-soft! text-brand! rounded-none first:rounded-l-md last:rounded-r-md hover:bg-brand-soft-2! hover:text-brand!",
 					classNames?.range_middle
 				),
 				range_start: cn(
 					props.mode === "range" &&
 						props.selected?.from?.getTime() !== props.selected?.to?.getTime()
-						? "not-last:rounded-r-none bg-purple-50! [&>button]:bg-[#7f2dfb]! [&>button]:text-white!"
+						? "not-last:rounded-r-none bg-brand-soft! [&>button]:bg-brand! [&>button]:text-white!"
 						: "",
 					classNames?.range_start
 				),
 				range_end: cn(
 					props.mode === "range" &&
 						props.selected?.from?.getTime() !== props.selected?.to?.getTime()
-						? "not-first:rounded-l-none bg-purple-50! [&>button]:bg-[#7f2dfb]! [&>button]:text-white!"
+						? "not-first:rounded-l-none bg-brand-soft! [&>button]:bg-brand! [&>button]:text-white!"
 						: "",
 					classNames?.range_end
 				),

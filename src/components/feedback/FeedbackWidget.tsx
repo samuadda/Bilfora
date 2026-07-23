@@ -161,8 +161,8 @@ export function FeedbackWidget() {
           setIsOpen(true);
           setWiggling(false);
         }}
-        className={`flex items-center justify-center w-12 h-12 md:w-auto md:h-auto md:px-4 md:py-3 bg-[#7f2dfb] hover:bg-[#6c26d9] text-white rounded-full shadow-lg transition-all hover:scale-105 active:scale-95 group ${
-          wiggling ? "animate-bounce ring-4 ring-[#7f2dfb]/50 ring-offset-2" : ""
+        className={`flex items-center justify-center w-12 h-12 md:w-auto md:h-auto md:px-4 md:py-3 bg-brand hover:bg-[#6c26d9] text-white rounded-full shadow-lg transition-all hover:scale-105 active:scale-95 group ${
+          wiggling ? "animate-bounce ring-4 ring-brand/50 ring-offset-2" : ""
         }`}
         aria-label="شاركني رأيك"
       >
@@ -183,8 +183,8 @@ export function FeedbackWidget() {
       case 1:
         return (
           <div className="animate-in slide-in-from-right-4 fade-in duration-300">
-            <h3 className="text-xl font-bold text-gray-900 mb-2">كيف تقيم تصميم الواجهة؟</h3>
-            <p className="text-gray-500 mb-6 text-sm">أريد أن أعرف مدى سهولة استخدامك للنظام وشعورك العام نحو التصميم.</p>
+            <h3 className="text-xl font-bold text-foreground mb-2">كيف تقيم تصميم الواجهة؟</h3>
+            <p className="text-subtle mb-6 text-sm">أريد أن أعرف مدى سهولة استخدامك للنظام وشعورك العام نحو التصميم.</p>
             <div className="flex justify-center flex-row-reverse gap-4 my-8">
               {[1, 2, 3, 4, 5].map((rating) => (
                 <button
@@ -192,8 +192,8 @@ export function FeedbackWidget() {
                   onClick={() => setUiRating(rating)}
                   className={`w-14 h-14 rounded-full flex items-center justify-center transition-all font-bold text-2xl border-2 ${
                     uiRating === rating 
-                      ? "bg-[#7f2dfb] text-white scale-110 shadow-md border-[#7f2dfb]" 
-                      : "bg-white text-gray-400 border-gray-100 hover:border-[#7f2dfb]/50 hover:text-[#7f2dfb]"
+                      ? "bg-brand text-white scale-110 shadow-md border-brand" 
+                      : "bg-surface text-disabled border-border hover:border-brand/50 hover:text-brand"
                   }`}
                 >
                   {rating}
@@ -205,42 +205,42 @@ export function FeedbackWidget() {
       case 2:
         return (
           <div className="animate-in slide-in-from-right-4 fade-in duration-300">
-            <h3 className="text-xl font-bold text-gray-900 mb-2">ما أكثر شيء أعجبك؟</h3>
-            <p className="text-gray-500 mb-4 text-sm">أخبرني عن الميزات أو الأجزاء التي نالت إعجابك وتجدها مفيدة.</p>
+            <h3 className="text-xl font-bold text-foreground mb-2">ما أكثر شيء أعجبك؟</h3>
+            <p className="text-subtle mb-4 text-sm">أخبرني عن الميزات أو الأجزاء التي نالت إعجابك وتجدها مفيدة.</p>
             <textarea
               rows={4}
               value={likedMost}
               onChange={(e) => setLikedMost(e.target.value)}
               placeholder="اكتب هنا..."
-              className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:ring-2 focus:ring-[#7f2dfb]/20 focus:border-[#7f2dfb] transition-all resize-none outline-none"
+              className="w-full px-4 py-3 rounded-xl border border-border focus:ring-2 focus:ring-brand/20 focus:border-brand transition-all resize-none outline-none"
             />
           </div>
         );
       case 3:
         return (
           <div className="animate-in slide-in-from-right-4 fade-in duration-300">
-            <h3 className="text-xl font-bold text-gray-900 mb-2">ما أكثر شيء أزعجك أو لم يعجبك؟</h3>
-            <p className="text-gray-500 mb-4 text-sm">أنا أقدر صراحتك. ما الذي يسبب لك إحباطاً أو صعوبة في الاستخدام؟</p>
+            <h3 className="text-xl font-bold text-foreground mb-2">ما أكثر شيء أزعجك أو لم يعجبك؟</h3>
+            <p className="text-subtle mb-4 text-sm">أنا أقدر صراحتك. ما الذي يسبب لك إحباطاً أو صعوبة في الاستخدام؟</p>
             <textarea
               rows={4}
               value={hatedMost}
               onChange={(e) => setHatedMost(e.target.value)}
               placeholder="اكتب هنا..."
-              className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:ring-2 focus:ring-[#7f2dfb]/20 focus:border-[#7f2dfb] transition-all resize-none outline-none"
+              className="w-full px-4 py-3 rounded-xl border border-border focus:ring-2 focus:ring-brand/20 focus:border-brand transition-all resize-none outline-none"
             />
           </div>
         );
       case 4:
         return (
           <div className="animate-in slide-in-from-right-4 fade-in duration-300">
-            <h3 className="text-xl font-bold text-gray-900 mb-2">هل هناك ميزة تمنيت وجودها ولم تجدها؟</h3>
-            <p className="text-gray-500 mb-4 text-sm">إذا كان هناك أداة أو ميزة ستجعل حياتك أسهل، أخبرني بها!</p>
+            <h3 className="text-xl font-bold text-foreground mb-2">هل هناك ميزة تمنيت وجودها ولم تجدها؟</h3>
+            <p className="text-subtle mb-4 text-sm">إذا كان هناك أداة أو ميزة ستجعل حياتك أسهل، أخبرني بها!</p>
             <textarea
               rows={4}
               value={missingFeatures}
               onChange={(e) => setMissingFeatures(e.target.value)}
               placeholder="اكتب هنا..."
-              className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:ring-2 focus:ring-[#7f2dfb]/20 focus:border-[#7f2dfb] transition-all resize-none outline-none"
+              className="w-full px-4 py-3 rounded-xl border border-border focus:ring-2 focus:ring-brand/20 focus:border-brand transition-all resize-none outline-none"
             />
           </div>
         );
@@ -257,12 +257,12 @@ export function FeedbackWidget() {
       {isOpen && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6">
           <div 
-            className="absolute inset-0 bg-black/40 backdrop-blur-sm transition-opacity" 
+            className="absolute inset-0 bg-overlay backdrop-blur-sm transition-opacity" 
             onClick={() => !isSubmitting && !showSuccess && setIsOpen(false)}
           />
 
           <div 
-            className="relative w-full max-w-lg bg-white rounded-2xl shadow-xl overflow-hidden transform transition-all"
+            className="relative w-full max-w-lg bg-surface rounded-2xl shadow-xl overflow-hidden transform transition-all"
             role="dialog"
             aria-modal="true"
             dir="rtl"
@@ -272,22 +272,22 @@ export function FeedbackWidget() {
                 <div className="w-16 h-16 rounded-full bg-green-100 flex items-center justify-center mb-2">
                   <CheckCircle2 className="w-8 h-8 text-green-600" />
                 </div>
-                <h3 className="text-2xl font-bold text-gray-900">شكراً لك!</h3>
-                <p className="text-gray-500 text-lg">
+                <h3 className="text-2xl font-bold text-foreground">شكراً لك!</h3>
+                <p className="text-subtle text-lg">
                   ملاحظاتك تهمني وتساعدني في تحسين بلفورا باستمرار.
                 </p>
               </div>
             ) : (
               <div className="flex flex-col h-full">
                 {/* Header */}
-                <div className="flex items-center justify-between px-6 py-4 border-b border-gray-100">
+                <div className="flex items-center justify-between px-6 py-4 border-b border-border">
                   <div className="flex items-center gap-2">
-                    <span className="text-sm font-semibold text-[#7f2dfb] bg-[#7f2dfb]/10 px-3 py-1 rounded-full">الخطوة {step} من 4</span>
+                    <span className="text-sm font-semibold text-brand bg-brand/10 px-3 py-1 rounded-full">الخطوة {step} من 4</span>
                   </div>
                   <button
                     onClick={() => setIsOpen(false)}
                     disabled={isSubmitting}
-                    className="text-gray-400 hover:text-gray-500 transition-colors p-2 rounded-full hover:bg-gray-100"
+                    className="text-disabled hover:text-subtle transition-colors p-2 rounded-full hover:bg-surface-inset"
                   >
                     <X className="w-5 h-5" />
                   </button>
@@ -299,13 +299,13 @@ export function FeedbackWidget() {
                 </div>
 
                 {/* Footer Controls */}
-                <div className="px-6 py-4 border-t border-gray-100 bg-gray-50 flex justify-between items-center rounded-b-2xl">
+                <div className="px-6 py-4 border-t border-border bg-surface-2 flex justify-between items-center rounded-b-2xl">
                   {step > 1 ? (
                     <Button
                       variant="ghost"
                       onClick={() => setStep(s => s - 1)}
                       disabled={isSubmitting}
-                      className="text-gray-500 hover:text-gray-900 flex items-center gap-1"
+                      className="text-subtle hover:text-foreground flex items-center gap-1"
                     >
                       <ChevronRight className="w-4 h-4" />
                       رجوع
@@ -326,7 +326,7 @@ export function FeedbackWidget() {
                         }
                         setStep(s => s + 1);
                       }}
-                      className="bg-[#7f2dfb] hover:bg-[#6c26d9] text-white rounded-xl px-6 flex items-center gap-1"
+                      className="bg-brand hover:bg-[#6c26d9] text-white rounded-xl px-6 flex items-center gap-1"
                     >
                       التالي
                       <ChevronLeft className="w-4 h-4" />
@@ -344,7 +344,7 @@ export function FeedbackWidget() {
                         handleSubmit();
                       }}
                       disabled={isSubmitting}
-                      className="bg-[#7f2dfb] hover:bg-[#6c26d9] text-white rounded-xl px-6 flex items-center gap-2"
+                      className="bg-brand hover:bg-[#6c26d9] text-white rounded-xl px-6 flex items-center gap-2"
                     >
                       {isSubmitting ? (
                         <>

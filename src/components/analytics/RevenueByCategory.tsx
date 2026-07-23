@@ -65,7 +65,7 @@ export default function RevenueByCategory({ categories }: RevenueByCategoryProps
               initial={{ opacity: 0, x: -20 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ delay: index * 0.1 }}
-              className="bg-white p-6 rounded-2xl border border-gray-100 shadow-sm"
+              className="bg-surface p-6 rounded-2xl border border-border shadow-sm"
             >
               <div className="flex items-center justify-between mb-3">
                 <div className="flex items-center gap-3">
@@ -73,15 +73,15 @@ export default function RevenueByCategory({ categories }: RevenueByCategoryProps
                     className="w-4 h-4 rounded-full"
                     style={{ backgroundColor: category.color }}
                   />
-                  <span className="font-bold text-gray-900">{category.name}</span>
+                  <span className="font-bold text-foreground">{category.name}</span>
                 </div>
-                <span className="text-sm text-gray-500">{percentage.toFixed(1)}%</span>
+                <span className="text-sm text-subtle">{percentage.toFixed(1)}%</span>
               </div>
               <div className="flex items-center justify-between">
-                <span className="text-2xl font-extrabold text-gray-900">
+                <span className="text-2xl font-extrabold text-foreground">
                   {formatCurrency(category.value)}
                 </span>
-                <div className="w-32 h-2 bg-gray-100 rounded-full overflow-hidden">
+                <div className="w-32 h-2 bg-surface-inset rounded-full overflow-hidden">
                   <div
                     className="h-full transition-all duration-500"
                     style={{
@@ -100,7 +100,7 @@ export default function RevenueByCategory({ categories }: RevenueByCategoryProps
       <m.div
         initial={{ opacity: 0, scale: 0.9 }}
         animate={{ opacity: 1, scale: 1 }}
-        className="bg-white p-6 rounded-2xl border border-gray-100 shadow-sm flex items-center justify-center"
+        className="bg-surface p-6 rounded-2xl border border-border shadow-sm flex items-center justify-center"
       >
         <div className="w-full h-[300px]">
           <ChartContainer config={chartConfig} className="mx-auto aspect-square max-h-[300px]">

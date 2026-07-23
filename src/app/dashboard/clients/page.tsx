@@ -32,7 +32,7 @@ import QuickClientModal from "@/components/QuickClientModal";
 
 const statusConfig = {
 	active: { label: "نشط", className: "bg-green-50 text-green-700 border-green-100" },
-	inactive: { label: "غير نشط", className: "bg-gray-50 text-gray-700 border-gray-100" },
+	inactive: { label: "غير نشط", className: "bg-surface-2 text-muted-foreground border-border" },
 	deleted: { label: "محذوف", className: "bg-red-50 text-red-700 border-red-100" },
 };
 
@@ -620,13 +620,13 @@ export default function ClientsPage() {
 			<Card padding="standard">
 				<div className="flex flex-col lg:flex-row gap-4 items-center justify-between">
 					<div className="relative w-full lg:w-96">
-						<Search className="absolute right-4 top-1/2 -translate-y-1/2 text-gray-400" size={20} />
+						<Search className="absolute right-4 top-1/2 -translate-y-1/2 text-disabled" size={20} />
 						<Input
 							type="text"
 							placeholder="ابحث بالاسم، الشركة، البريد، الهاتف، الرقم الضريبي..."
 							value={searchTerm}
 							onChange={(e) => setSearchTerm(e.target.value)}
-							className="pr-12 bg-gray-50"
+							className="pr-12 bg-surface-2"
 						/>
 					</div>
 					<div className="flex flex-wrap items-center gap-3 w-full lg:w-auto">
@@ -697,51 +697,51 @@ export default function ClientsPage() {
 			<Card padding="none" className="overflow-hidden">
 				<div className="overflow-x-auto">
 					<table className="w-full">
-						<thead className="bg-gray-50/50">
+						<thead className="bg-surface-2">
 							<tr>
 								<th className="px-4 py-4 text-center w-12">
 									<button
 										type="button"
 										onClick={toggleSelectAll}
-										className="p-1 hover:bg-gray-200 rounded transition-colors"
+										className="p-1 hover:bg-surface-inset rounded transition-colors"
 										title="تحديد الكل"
 									>
 										{allSelected ? (
-											<Check className="w-5 h-5 text-[#7f2dfb]" />
+											<Check className="w-5 h-5 text-brand" />
 										) : (
-											<div className="w-5 h-5 border-2 border-gray-300 rounded" />
+											<div className="w-5 h-5 border-2 border-border-strong rounded" />
 										)}
 									</button>
 								</th>
-								<th className="p-5 text-right text-xs font-bold text-gray-500 uppercase tracking-wider">العميل</th>
-								<th className="p-5 text-right text-xs font-bold text-gray-500 uppercase tracking-wider">الشركة</th>
-								<th className="p-5 text-center text-xs font-bold text-gray-500 uppercase tracking-wider">الفواتير</th>
-								<th className="p-5 text-center text-xs font-bold text-gray-500 uppercase tracking-wider">الحالة</th>
-								<th className="p-5 text-right text-xs font-bold text-gray-500 uppercase tracking-wider">تاريخ الإضافة</th>
-								<th className="p-5 text-right text-xs font-bold text-gray-500 uppercase tracking-wider">الإجراءات</th>
+								<th className="p-5 text-right text-xs font-bold text-subtle uppercase tracking-wider">العميل</th>
+								<th className="p-5 text-right text-xs font-bold text-subtle uppercase tracking-wider">الشركة</th>
+								<th className="p-5 text-center text-xs font-bold text-subtle uppercase tracking-wider">الفواتير</th>
+								<th className="p-5 text-center text-xs font-bold text-subtle uppercase tracking-wider">الحالة</th>
+								<th className="p-5 text-right text-xs font-bold text-subtle uppercase tracking-wider">تاريخ الإضافة</th>
+								<th className="p-5 text-right text-xs font-bold text-subtle uppercase tracking-wider">الإجراءات</th>
 							</tr>
 						</thead>
-						<tbody className="divide-y divide-gray-50">
+						<tbody className="divide-y divide-border">
 							{paginatedClients.map((client) => {
 								const isSelected = selectedClientIds.has(client.id);
 								return (
 									<tr
 										key={client.id}
 										className={cn(
-											"hover:bg-gray-50/80 transition-colors group",
-											isSelected && "bg-purple-50/50"
+											"hover:bg-surface-2 transition-colors group",
+											isSelected && "bg-brand-soft/50"
 										)}
 									>
 										<td className="px-4 py-4 text-center">
 											<button
 												type="button"
 												onClick={() => toggleSelect(client.id)}
-												className="p-1 hover:bg-gray-200 rounded transition-colors"
+												className="p-1 hover:bg-surface-inset rounded transition-colors"
 											>
 												{isSelected ? (
-													<Check className="w-5 h-5 text-[#7f2dfb]" />
+													<Check className="w-5 h-5 text-brand" />
 												) : (
-													<div className="w-5 h-5 border-2 border-gray-300 rounded" />
+													<div className="w-5 h-5 border-2 border-border-strong rounded" />
 												)}
 											</button>
 										</td>
@@ -751,28 +751,28 @@ export default function ClientsPage() {
 													{client.name.charAt(0).toUpperCase()}
 												</div>
 												<div>
-													<p className="font-bold text-gray-900 text-sm">{client.name}</p>
-													<p className="text-xs text-gray-500">{client.email}</p>
-													<p className="text-xs text-gray-400 mt-0.5">
+													<p className="font-bold text-foreground text-sm">{client.name}</p>
+													<p className="text-xs text-subtle">{client.email}</p>
+													<p className="text-xs text-disabled mt-0.5">
 														{formatRelativeTime(client.last_invoice_date)}
 													</p>
 												</div>
 											</div>
 										</td>
 										<td className="p-5">
-											<div className="flex items-center gap-2 text-sm text-gray-600">
+											<div className="flex items-center gap-2 text-sm text-muted-foreground">
 												{client.company_name ? (
 													<>
-														<Building2 size={16} className="text-gray-400" />
+														<Building2 size={16} className="text-disabled" />
 														{client.company_name}
 													</>
 												) : (
-													<span className="text-gray-400">—</span>
+													<span className="text-disabled">—</span>
 												)}
 											</div>
 										</td>
 										<td className="p-5 text-center">
-											<span className="inline-flex items-center justify-center bg-gray-100 text-gray-700 rounded-lg px-2.5 py-1 text-xs font-bold">
+											<span className="inline-flex items-center justify-center bg-surface-inset text-muted-foreground rounded-lg px-2.5 py-1 text-xs font-bold">
 												{client.invoice_count || 0} فواتير
 											</span>
 										</td>
@@ -793,21 +793,21 @@ export default function ClientsPage() {
 												)}
 											</div>
 										</td>
-										<td className="p-5 text-sm text-gray-500">
+										<td className="p-5 text-sm text-subtle">
 											{formatDate(client.created_at)}
 										</td>
 										<td className="p-5">
 											<div className="flex items-center gap-2">
 												<button
 													onClick={() => router.push(`/dashboard/clients/${client.id}`)}
-													className="p-2 text-gray-500 hover:text-blue-600 hover:bg-blue-50 rounded-lg transition-colors"
+													className="p-2 text-subtle hover:text-blue-600 hover:bg-blue-50 rounded-lg transition-colors"
 													title="عرض"
 												>
 													<Eye size={16} />
 												</button>
 												<button
 													onClick={() => openEditModal(client)}
-													className="p-2 text-gray-500 hover:text-[#7f2dfb] hover:bg-purple-50 rounded-lg transition-colors"
+													className="p-2 text-subtle hover:text-brand hover:bg-brand-soft rounded-lg transition-colors"
 													title="تعديل"
 												>
 													<Edit size={16} />
@@ -828,20 +828,20 @@ export default function ClientsPage() {
 					</table>
 					{filteredClients.length === 0 && (
 						<div className="flex flex-col items-center justify-center py-16 text-center">
-							<div className="w-16 h-16 bg-gray-50 rounded-full flex items-center justify-center mb-4">
-								<Users className="w-8 h-8 text-gray-300" />
+							<div className="w-16 h-16 bg-surface-2 rounded-full flex items-center justify-center mb-4">
+								<Users className="w-8 h-8 text-disabled" />
 							</div>
-							<h3 className="text-gray-900 font-bold mb-1">لا يوجد عملاء</h3>
-							<p className="text-gray-500 text-sm">حاول تغيير معايير البحث أو أضف عميلاً جديداً</p>
+							<h3 className="text-foreground font-bold mb-1">لا يوجد عملاء</h3>
+							<p className="text-subtle text-sm">حاول تغيير معايير البحث أو أضف عميلاً جديداً</p>
 						</div>
 					)}
 				</div>
 
 				{/* Pagination */}
 				{filteredTotalPages > 1 && (
-					<div className="p-6 border-t border-gray-100 flex flex-col sm:flex-row items-center justify-between gap-4 bg-gray-50/30">
+					<div className="p-6 border-t border-border flex flex-col sm:flex-row items-center justify-between gap-4 bg-surface-2">
 						<div className="flex items-center gap-2">
-							<span className="text-sm text-gray-600">عدد العناصر في الصفحة:</span>
+							<span className="text-sm text-muted-foreground">عدد العناصر في الصفحة:</span>
 							<Select
 								value={String(pageSize)}
 								onValueChange={(val) => {
@@ -865,18 +865,18 @@ export default function ClientsPage() {
 								type="button"
 								onClick={() => setCurrentPage((p) => Math.max(1, p - 1))}
 								disabled={currentPage === 1}
-								className="p-2 rounded-lg border border-gray-200 hover:bg-white disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
+								className="p-2 rounded-lg border border-border hover:bg-surface disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
 							>
 								<ChevronRight size={18} />
 							</button>
-							<span className="text-sm text-gray-600 px-3">
+							<span className="text-sm text-muted-foreground px-3">
 								صفحة {currentPage} من {filteredTotalPages}
 							</span>
 							<button
 								type="button"
 								onClick={() => setCurrentPage((p) => Math.min(filteredTotalPages, p + 1))}
 								disabled={currentPage === filteredTotalPages}
-								className="p-2 rounded-lg border border-gray-200 hover:bg-white disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
+								className="p-2 rounded-lg border border-border hover:bg-surface disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
 							>
 								<ChevronLeft size={18} />
 							</button>
@@ -900,29 +900,29 @@ export default function ClientsPage() {
 							initial={{ opacity: 0 }}
 							animate={{ opacity: 1 }}
 							exit={{ opacity: 0 }}
-							className="fixed inset-0 bg-black/40 backdrop-blur-sm"
+							className="fixed inset-0 bg-overlay backdrop-blur-sm"
 							onClick={() => setShowModal(false)}
 						/>
 						<m.div
 							initial={{ opacity: 0, scale: 0.95, y: 20 }}
 							animate={{ opacity: 1, scale: 1, y: 0 }}
 							exit={{ opacity: 0, scale: 0.95, y: 20 }}
-							className="bg-white rounded-3xl w-full max-w-2xl shadow-2xl z-10 overflow-hidden max-h-[90vh] flex flex-col"
+							className="bg-surface rounded-3xl w-full max-w-2xl shadow-2xl z-10 overflow-hidden max-h-[90vh] flex flex-col"
 						>
-							<div className="p-6 border-b border-gray-100 bg-gray-50/50">
+							<div className="p-6 border-b border-border bg-surface-2">
 								<div className="flex items-center justify-between">
-									<h2 className="text-xl font-bold text-gray-900">
+									<h2 className="text-xl font-bold text-foreground">
 										تعديل بيانات العميل
 									</h2>
 									<button
 										onClick={() => setShowModal(false)}
-										className="p-2 hover:bg-gray-200 rounded-full transition-colors text-gray-500"
+										className="p-2 hover:bg-surface-inset rounded-full transition-colors text-subtle"
 									>
 										<XCircle size={24} />
 									</button>
 								</div>
 								{!editingClient && (
-									<p className="text-sm text-gray-500 mt-1">
+									<p className="text-sm text-subtle mt-1">
 										أضِف بيانات العميل الجديد لبدء إنشاء الفواتير بسهولة.
 									</p>
 								)}
@@ -932,14 +932,14 @@ export default function ClientsPage() {
 								<div className="grid grid-cols-1 md:grid-cols-2 gap-6">
 									{/* Name - Required */}
 									<div className="space-y-2">
-										<label className="text-sm font-medium text-gray-700">
+										<label className="text-sm font-medium text-muted-foreground">
 											الاسم الكامل <span className="text-red-500">*</span>
 										</label>
 										<input
 											name="name"
 											value={formData.name || ""}
 											onChange={handleInputChange}
-											className="w-full px-4 py-2.5 rounded-xl border border-gray-200 focus:border-[#7f2dfb] focus:ring-[#7f2dfb] text-sm"
+											className="w-full px-4 py-2.5 rounded-xl border border-border focus:border-brand focus:ring-brand text-sm"
 											placeholder="مثال: محمد السعدي"
 											required
 										/>
@@ -947,16 +947,16 @@ export default function ClientsPage() {
 
 									{/* Phone - Required */}
 									<div className="space-y-2">
-										<label className="text-sm font-medium text-gray-700">
+										<label className="text-sm font-medium text-muted-foreground">
 											رقم الجوال <span className="text-red-500">*</span>
 										</label>
 										<div className="relative">
-											<Phone className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400" size={18} />
+											<Phone className="absolute right-3 top-1/2 -translate-y-1/2 text-disabled" size={18} />
 											<input
 												name="phone"
 												value={formData.phone || ""}
 												onChange={handleInputChange}
-												className="w-full pr-10 pl-4 py-2.5 rounded-xl border border-gray-200 focus:border-[#7f2dfb] focus:ring-[#7f2dfb] text-sm"
+												className="w-full pr-10 pl-4 py-2.5 rounded-xl border border-border focus:border-brand focus:ring-brand text-sm"
 												placeholder="05xxxxxxxx"
 												dir="ltr"
 												required
@@ -966,17 +966,17 @@ export default function ClientsPage() {
 
 									{/* Email - Optional */}
 									<div className="space-y-2">
-										<label className="text-sm font-medium text-gray-700">
-											البريد الإلكتروني <span className="text-gray-400 font-normal">(اختياري)</span>
+										<label className="text-sm font-medium text-muted-foreground">
+											البريد الإلكتروني <span className="text-disabled font-normal">(اختياري)</span>
 										</label>
 										<div className="relative">
-											<Mail className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400" size={18} />
+											<Mail className="absolute right-3 top-1/2 -translate-y-1/2 text-disabled" size={18} />
 											<input
 												name="email"
 												type="email"
 												value={formData.email || ""}
 												onChange={handleInputChange}
-												className="w-full pr-10 pl-4 py-2.5 rounded-xl border border-gray-200 focus:border-[#7f2dfb] focus:ring-[#7f2dfb] text-sm"
+												className="w-full pr-10 pl-4 py-2.5 rounded-xl border border-border focus:border-brand focus:ring-brand text-sm"
 												placeholder="example@domain.com"
 												dir="ltr"
 											/>
@@ -985,28 +985,28 @@ export default function ClientsPage() {
 
 									{/* Company Name - Optional */}
 									<div className="space-y-2">
-										<label className="text-sm font-medium text-gray-700">
-											اسم الشركة <span className="text-gray-400 font-normal">(اختياري)</span>
+										<label className="text-sm font-medium text-muted-foreground">
+											اسم الشركة <span className="text-disabled font-normal">(اختياري)</span>
 										</label>
 										<input
 											name="company_name"
 											value={formData.company_name || ""}
 											onChange={handleInputChange}
-											className="w-full px-4 py-2.5 rounded-xl border border-gray-200 focus:border-[#7f2dfb] focus:ring-[#7f2dfb] text-sm"
+											className="w-full px-4 py-2.5 rounded-xl border border-border focus:border-brand focus:ring-brand text-sm"
 											placeholder="مثال: شركة الريّان"
 										/>
 									</div>
 
 									{/* Tax Number - Optional */}
 									<div className="space-y-2">
-										<label className="text-sm font-medium text-gray-700">
-											الرقم الضريبي <span className="text-gray-400 font-normal">(اختياري)</span>
+										<label className="text-sm font-medium text-muted-foreground">
+											الرقم الضريبي <span className="text-disabled font-normal">(اختياري)</span>
 										</label>
 										<input
 											name="tax_number"
 											value={formData.tax_number || ""}
 											onChange={handleInputChange}
-											className="w-full px-4 py-2.5 rounded-xl border border-gray-200 focus:border-[#7f2dfb] focus:ring-[#7f2dfb] text-sm"
+											className="w-full px-4 py-2.5 rounded-xl border border-border focus:border-brand focus:ring-brand text-sm"
 											placeholder="مثال: 310xxxxxxx"
 											dir="ltr"
 										/>
@@ -1014,33 +1014,33 @@ export default function ClientsPage() {
 
 									{/* Status */}
 									<div className="space-y-2">
-										<label className="text-sm font-medium text-gray-700">الحالة</label>
+										<label className="text-sm font-medium text-muted-foreground">الحالة</label>
 										<div className="relative">
 											<select
 												name="status"
 												value={formData.status || "active"}
 												onChange={handleInputChange}
-												className="w-full appearance-none px-4 py-2.5 rounded-xl border border-gray-200 focus:border-[#7f2dfb] focus:ring-[#7f2dfb] text-sm bg-white"
+												className="w-full appearance-none px-4 py-2.5 rounded-xl border border-border focus:border-brand focus:ring-brand text-sm bg-surface"
 											>
 												<option value="active">نشط</option>
 												<option value="inactive">غير نشط</option>
 											</select>
-											<ChevronDown className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 pointer-events-none" size={16} />
+											<ChevronDown className="absolute left-3 top-1/2 -translate-y-1/2 text-disabled pointer-events-none" size={16} />
 										</div>
 									</div>
 
 									{/* Address - Optional */}
 									<div className="space-y-2 md:col-span-2">
-										<label className="text-sm font-medium text-gray-700">
-											العنوان <span className="text-gray-400 font-normal">(اختياري)</span>
+										<label className="text-sm font-medium text-muted-foreground">
+											العنوان <span className="text-disabled font-normal">(اختياري)</span>
 										</label>
 										<div className="relative">
-											<MapPin className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400" size={18} />
+											<MapPin className="absolute right-3 top-1/2 -translate-y-1/2 text-disabled" size={18} />
 											<input
 												name="address"
 												value={formData.address || ""}
 												onChange={handleInputChange}
-												className="w-full pr-10 pl-4 py-2.5 rounded-xl border border-gray-200 focus:border-[#7f2dfb] focus:ring-[#7f2dfb] text-sm"
+												className="w-full pr-10 pl-4 py-2.5 rounded-xl border border-border focus:border-brand focus:ring-brand text-sm"
 												placeholder="مثال: الرياض، حي النخيل، شارع الملك فهد"
 											/>
 										</div>
@@ -1048,32 +1048,32 @@ export default function ClientsPage() {
 
 									{/* Notes - Optional */}
 									<div className="space-y-2 md:col-span-2">
-										<label className="text-sm font-medium text-gray-700">
-											ملاحظات <span className="text-gray-400 font-normal">(اختياري)</span>
+										<label className="text-sm font-medium text-muted-foreground">
+											ملاحظات <span className="text-disabled font-normal">(اختياري)</span>
 										</label>
 										<textarea
 											name="notes"
 											value={formData.notes || ""}
 											onChange={handleInputChange}
 											rows={3}
-											className="w-full px-4 py-2.5 rounded-xl border border-gray-200 focus:border-[#7f2dfb] focus:ring-[#7f2dfb] text-sm"
+											className="w-full px-4 py-2.5 rounded-xl border border-border focus:border-brand focus:ring-brand text-sm"
 											placeholder="أي ملاحظات إضافية عن العميل..."
 										/>
 									</div>
 								</div>
 
-								<div className="flex items-center justify-end gap-3 pt-4 border-t border-gray-100">
+								<div className="flex items-center justify-end gap-3 pt-4 border-t border-border">
 									<button
 										type="button"
 										onClick={() => setShowModal(false)}
-										className="px-6 py-2.5 rounded-xl border border-gray-200 text-gray-700 font-medium hover:bg-gray-50 transition-colors text-sm"
+										className="px-6 py-2.5 rounded-xl border border-border text-muted-foreground font-medium hover:bg-surface-2 transition-colors text-sm"
 									>
 										إلغاء
 									</button>
 									<button
 										type="submit"
 										disabled={saving}
-										className="px-6 py-2.5 rounded-xl bg-[#7f2dfb] text-white font-medium hover:bg-[#6a1fd8] shadow-lg shadow-purple-200 transition-colors text-sm flex items-center gap-2"
+										className="px-6 py-2.5 rounded-xl bg-brand text-white font-medium hover:bg-brand-hover shadow-lg shadow-brand transition-colors text-sm flex items-center gap-2"
 									>
 										{saving && <Loader2 size={16} className="animate-spin" />}
 										{saving ? "جاري الحفظ..." : (editingClient ? "حفظ التعديلات" : "إضافة العميل")}
@@ -1095,8 +1095,8 @@ export default function ClientsPage() {
 						<div className="w-16 h-16 bg-red-50 rounded-full flex items-center justify-center mx-auto mb-4">
 							<Trash2 className="w-8 h-8 text-red-500" />
 						</div>
-						<p className="text-gray-600 mb-2">هل أنت متأكد من حذف العميل؟</p>
-						<p className="font-bold text-gray-900 text-lg">{deleteCandidate?.name}</p>
+						<p className="text-muted-foreground mb-2">هل أنت متأكد من حذف العميل؟</p>
+						<p className="font-bold text-foreground text-lg">{deleteCandidate?.name}</p>
 					</div>
 					<DialogFooter className="gap-2 sm:justify-center">
 						<Button
@@ -1127,10 +1127,10 @@ export default function ClientsPage() {
 						<div className="w-16 h-16 bg-red-50 rounded-full flex items-center justify-center mx-auto mb-4">
 							<Trash2 className="w-8 h-8 text-red-500" />
 						</div>
-						<p className="text-gray-600 mb-2">
+						<p className="text-muted-foreground mb-2">
 							هل أنت متأكد من حذف {selectedClientIds.size} عميل؟
 						</p>
-						<p className="text-sm text-gray-500">لا يمكن التراجع عن هذا الإجراء.</p>
+						<p className="text-sm text-subtle">لا يمكن التراجع عن هذا الإجراء.</p>
 					</div>
 					<DialogFooter className="gap-2 sm:justify-center">
 						<Button

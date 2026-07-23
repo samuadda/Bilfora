@@ -22,9 +22,9 @@ export function Logos() {
                 as="h2"
                 animation="blurIn"
                 once={true}
-                className="max-w-2xl text-4xl font-bold md:text-5xl lg:text-6xl text-brand-dark leading-tight"
+                className="max-w-2xl text-4xl font-bold md:text-5xl lg:text-6xl text-brand-hover leading-tight"
             >
-                صُمّم خصيصاً <span className="text-[#7f2dfb]">للمستقلين وأصحاب المشاريع الصغيرة</span>
+                صُمّم خصيصاً <span className="text-brand">للمستقلين وأصحاب المشاريع الصغيرة</span>
             </TextAnimate>
         </div>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
@@ -56,7 +56,7 @@ export function Logos() {
             </m.div>
           ))}
         </div>
-        <p className="text-center text-sm text-gray-400 mt-8">
+        <p className="text-center text-sm text-disabled mt-8">
           سواء كنت في الرياض أو جدة أو أي مكان في العالم العربي
         </p>
       </div>

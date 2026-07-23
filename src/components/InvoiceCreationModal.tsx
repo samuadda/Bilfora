@@ -343,7 +343,7 @@ export default function InvoiceCreationModal({
 						initial={{ opacity: 0 }}
 						animate={{ opacity: 1 }}
 						exit={{ opacity: 0 }}
-						className="fixed inset-0 bg-black/40 backdrop-blur-sm"
+						className="fixed inset-0 bg-overlay backdrop-blur-sm"
 						onClick={closeModal}
 					/>
 					<m.div
@@ -351,10 +351,10 @@ export default function InvoiceCreationModal({
 						animate={{ opacity: 1, scale: 1, y: 0 }}
 						exit={{ opacity: 0, scale: 0.95, y: 20 }}
 						transition={{ duration: 0.2 }}
-						className="bg-white rounded-3xl w-full max-w-5xl max-h-[90vh] flex flex-col shadow-2xl z-10 overflow-hidden"
+						className="bg-surface rounded-3xl w-full max-w-5xl max-h-[90vh] flex flex-col shadow-2xl z-10 overflow-hidden"
 					>
 						{/* Fixed Header */}
-						<div className="flex items-center justify-between p-6 border-b border-gray-100 bg-white">
+						<div className="flex items-center justify-between p-6 border-b border-border bg-surface">
 							<div>
 								<Heading variant="h2">إنشاء فاتورة جديدة</Heading>
 								<Text variant="body-small" color="muted" className="mt-1">
@@ -363,7 +363,7 @@ export default function InvoiceCreationModal({
 							</div>
 							<button
 								onClick={closeModal}
-								className="p-2 hover:bg-gray-100 rounded-full transition-colors text-gray-500 hover:text-gray-900"
+								className="p-2 hover:bg-surface-inset rounded-full transition-colors text-subtle hover:text-foreground"
 							>
 								<X size={24} />
 							</button>
@@ -428,7 +428,7 @@ export default function InvoiceCreationModal({
 								/>
 
 								{/* Payment Method Selector */}
-								<div className="bg-white p-6 rounded-2xl border border-gray-100 shadow-sm">
+								<div className="bg-surface p-6 rounded-2xl border border-border shadow-sm">
 									<Heading variant="h4" className="mb-4">وسيلة الدفع بالفاتورة</Heading>
 									<div className="w-full md:w-1/2">
 										<Select
@@ -472,13 +472,13 @@ export default function InvoiceCreationModal({
 						</div>
 
 						{/* Fixed Footer */}
-						<div className="flex items-center justify-between p-6 border-t border-gray-100 bg-gray-50/50">
+						<div className="flex items-center justify-between p-6 border-t border-border bg-surface-2">
 							<div className="hidden md:block">
 								{invoiceFormData.client_id ? (
 									<Text variant="body-small" color="muted" className="flex items-center gap-2">
 										<User size={16} />
 										جاري إنشاء الفاتورة لـ{" "}
-										<span className="font-semibold text-gray-900">
+										<span className="font-semibold text-foreground">
 											{clients.find((c) => c.id === invoiceFormData.client_id)?.name}
 										</span>
 									</Text>

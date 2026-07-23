@@ -471,8 +471,8 @@ export default function OrdersPage() {
 		return (
 			<div className="flex items-center justify-center min-h-[400px]">
 				<div className="text-center">
-					<Loader2 className="h-8 w-8 animate-spin text-purple-600 mx-auto mb-4" />
-					<p className="text-gray-500">جاري تحميل الطلبات...</p>
+					<Loader2 className="h-8 w-8 animate-spin text-brand mx-auto mb-4" />
+					<p className="text-subtle">جاري تحميل الطلبات...</p>
 				</div>
 			</div>
 		);
@@ -496,13 +496,13 @@ export default function OrdersPage() {
 
 			{/* Stats Cards */}
 			<div className="grid grid-cols-1 md:grid-cols-4 gap-4">
-				<div className="bg-white p-4 rounded-xl border border-gray-200">
+				<div className="bg-surface p-4 rounded-xl border border-border">
 					<div className="flex items-center justify-between">
 						<div>
-							<p className="text-sm text-gray-600">
+							<p className="text-sm text-muted-foreground">
 								إجمالي الطلبات
 							</p>
-							<p className="text-2xl font-bold text-gray-900">
+							<p className="text-2xl font-bold text-foreground">
 								{orders.length}
 							</p>
 						</div>
@@ -512,10 +512,10 @@ export default function OrdersPage() {
 					</div>
 				</div>
 
-				<div className="bg-white p-4 rounded-xl border border-gray-200">
+				<div className="bg-surface p-4 rounded-xl border border-border">
 					<div className="flex items-center justify-between">
 						<div>
-							<p className="text-sm text-gray-600">طلبات معلقة</p>
+							<p className="text-sm text-muted-foreground">طلبات معلقة</p>
 							<p className="text-2xl font-bold text-yellow-600">
 								{
 									orders.filter((o) => o.status === "pending")
@@ -529,10 +529,10 @@ export default function OrdersPage() {
 					</div>
 				</div>
 
-				<div className="bg-white p-4 rounded-xl border border-gray-200">
+				<div className="bg-surface p-4 rounded-xl border border-border">
 					<div className="flex items-center justify-between">
 						<div>
-							<p className="text-sm text-gray-600">
+							<p className="text-sm text-muted-foreground">
 								طلبات مكتملة
 							</p>
 							<p className="text-2xl font-bold text-green-600">
@@ -549,13 +549,13 @@ export default function OrdersPage() {
 					</div>
 				</div>
 
-				<div className="bg-white p-4 rounded-xl border border-gray-200">
+				<div className="bg-surface p-4 rounded-xl border border-border">
 					<div className="flex items-center justify-between">
 						<div>
-							<p className="text-sm text-gray-600">
+							<p className="text-sm text-muted-foreground">
 								إجمالي المبيعات
 							</p>
-							<p className="text-2xl font-bold text-purple-600">
+							<p className="text-2xl font-bold text-brand">
 								{formatCurrency(
 									orders.reduce(
 										(sum, order) =>
@@ -565,8 +565,8 @@ export default function OrdersPage() {
 								)}
 							</p>
 						</div>
-						<div className="p-2 bg-purple-100 rounded-lg">
-							<Download className="w-6 h-6 text-purple-600" />
+						<div className="p-2 bg-brand-soft-2 rounded-lg">
+							<Download className="w-6 h-6 text-brand" />
 						</div>
 					</div>
 				</div>
@@ -575,14 +575,14 @@ export default function OrdersPage() {
 			{/* Header with Add Button */}
 			<div className="flex flex-col md:flex-row gap-4 items-start md:items-center justify-between">
 				<div>
-					<h1 className="text-2xl font-bold text-gray-900">
+					<h1 className="text-2xl font-bold text-foreground">
 						الطلبات
 					</h1>
-					<p className="text-gray-500 mt-1">إدارة طلبات العملاء</p>
+					<p className="text-subtle mt-1">إدارة طلبات العملاء</p>
 				</div>
 				<button
 					onClick={handleAddOrder}
-					className="inline-flex items-center gap-2 px-4 py-2 bg-purple-600 text-white rounded-lg hover:bg-purple-700 active:translate-y-[1px]"
+					className="inline-flex items-center gap-2 px-4 py-2 bg-brand text-white rounded-lg hover:bg-brand active:translate-y-[1px]"
 				>
 					<Plus size={16} />
 					إضافة طلب جديد
@@ -590,12 +590,12 @@ export default function OrdersPage() {
 			</div>
 
 			{/* Filters */}
-			<div className="bg-white p-4 rounded-xl border border-gray-200">
+			<div className="bg-surface p-4 rounded-xl border border-border">
 				<div className="flex flex-col md:flex-row gap-4 items-start md:items-center justify-between">
 					<div className="flex flex-wrap gap-3">
 						<div className="relative">
 							<Search
-								className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400"
+								className="absolute right-3 top-1/2 -translate-y-1/2 text-disabled"
 								size={16}
 							/>
 							<input
@@ -603,12 +603,12 @@ export default function OrdersPage() {
 								placeholder="البحث في الطلبات..."
 								value={searchTerm}
 								onChange={(e) => setSearchTerm(e.target.value)}
-								className="pl-3 pr-9 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-200 w-64"
+								className="pl-3 pr-9 py-2 border border-border-strong rounded-lg focus:outline-none focus:ring-2 focus:ring-brand w-64"
 							/>
 						</div>
 						<button
 							onClick={() => setShowFilters(!showFilters)}
-							className="flex items-center gap-2 px-4 py-2 border border-gray-300 rounded-lg hover:bg-gray-50"
+							className="flex items-center gap-2 px-4 py-2 border border-border-strong rounded-lg hover:bg-surface-2"
 						>
 							<Filter size={16} />
 							<span>تصفية</span>
@@ -657,42 +657,42 @@ export default function OrdersPage() {
 						)}
 					</div>
 
-					<div className="text-sm text-gray-600">
+					<div className="text-sm text-muted-foreground">
 						عرض {filteredOrders.length} من {orders.length} طلب
 					</div>
 				</div>
 			</div>
 
 			{/* Orders Table */}
-			<div className="bg-white rounded-xl border border-gray-200 overflow-hidden">
+			<div className="bg-surface rounded-xl border border-border overflow-hidden">
 				<div className="overflow-x-auto">
 					<table className="w-full">
-						<thead className="bg-gray-50 border-b border-gray-200">
+						<thead className="bg-surface-2 border-b border-border">
 							<tr>
-								<th className="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">
+								<th className="px-6 py-3 text-right text-xs font-medium text-subtle uppercase tracking-wider">
 									رقم الطلب
 								</th>
-								<th className="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">
+								<th className="px-6 py-3 text-right text-xs font-medium text-subtle uppercase tracking-wider">
 									العميل
 								</th>
-								<th className="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">
+								<th className="px-6 py-3 text-right text-xs font-medium text-subtle uppercase tracking-wider">
 									العناصر
 								</th>
-								<th className="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">
+								<th className="px-6 py-3 text-right text-xs font-medium text-subtle uppercase tracking-wider">
 									المبلغ
 								</th>
-								<th className="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">
+								<th className="px-6 py-3 text-right text-xs font-medium text-subtle uppercase tracking-wider">
 									الحالة
 								</th>
-								<th className="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">
+								<th className="px-6 py-3 text-right text-xs font-medium text-subtle uppercase tracking-wider">
 									التاريخ
 								</th>
-								<th className="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">
+								<th className="px-6 py-3 text-right text-xs font-medium text-subtle uppercase tracking-wider">
 									الإجراءات
 								</th>
 							</tr>
 						</thead>
-						<tbody className="bg-white divide-y divide-gray-200">
+						<tbody className="bg-surface divide-y divide-border">
 							{paginatedOrders.map((order) => {
 								const statusInfo = statusConfig[order.status];
 								const StatusIcon = statusInfo.icon;
@@ -700,27 +700,27 @@ export default function OrdersPage() {
 								return (
 									<tr
 										key={order.id}
-										className="hover:bg-gray-50"
+										className="hover:bg-surface-2"
 									>
 										<td className="px-6 py-4 whitespace-nowrap">
-											<div className="text-sm font-medium text-gray-900">
+											<div className="text-sm font-medium text-foreground">
 												{order.order_number}
 											</div>
 										</td>
 										<td className="px-6 py-4 whitespace-nowrap">
 											<div>
-												<div className="text-sm font-medium text-gray-900">
+												<div className="text-sm font-medium text-foreground">
 													{order.client.name}
 												</div>
-												<div className="text-sm text-gray-500">
+												<div className="text-sm text-subtle">
 													{order.client.email}
 												</div>
 											</div>
 										</td>
-										<td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
+										<td className="px-6 py-4 whitespace-nowrap text-sm text-foreground">
 											{order.items.length} عنصر
 										</td>
-										<td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
+										<td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-foreground">
 											{formatCurrency(order.total_amount)}
 										</td>
 										<td className="px-6 py-4 whitespace-nowrap">
@@ -731,7 +731,7 @@ export default function OrdersPage() {
 												{statusInfo.label}
 											</span>
 										</td>
-										<td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+										<td className="px-6 py-4 whitespace-nowrap text-sm text-subtle">
 											{formatDate(order.created_at)}
 										</td>
 										<td className="px-6 py-4 whitespace-nowrap text-sm font-medium">
@@ -740,7 +740,7 @@ export default function OrdersPage() {
 													onClick={() =>
 														handleEditOrder(order)
 													}
-													className="text-gray-600 hover:text-gray-900"
+													className="text-muted-foreground hover:text-foreground"
 													title="تعديل"
 												>
 													<Edit size={16} />
@@ -791,15 +791,15 @@ export default function OrdersPage() {
 
 				{filteredOrders.length === 0 && (
 					<div className="text-center py-12">
-						<div className="text-gray-500 text-lg">
+						<div className="text-subtle text-lg">
 							لا توجد طلبات
 						</div>
-						<p className="text-gray-400 mt-2">
+						<p className="text-disabled mt-2">
 							لم يتم العثور على طلبات تطابق المعايير المحددة
 						</p>
 						<button
 							onClick={handleAddOrder}
-							className="inline-flex items-center gap-2 mt-4 px-4 py-2 bg-purple-600 text-white rounded-lg hover:bg-purple-700"
+							className="inline-flex items-center gap-2 mt-4 px-4 py-2 bg-brand text-white rounded-lg hover:bg-brand"
 						>
 							<Plus size={16} />
 							إضافة طلب جديد
@@ -809,9 +809,9 @@ export default function OrdersPage() {
 
 				{/* Pagination */}
 				{totalPages > 1 && (
-					<div className="p-6 border-t border-gray-100 flex flex-col sm:flex-row items-center justify-between gap-4 bg-gray-50/30">
+					<div className="p-6 border-t border-border flex flex-col sm:flex-row items-center justify-between gap-4 bg-surface-2">
 						<div className="flex items-center gap-2">
-							<span className="text-sm text-gray-600">عدد العناصر في الصفحة:</span>
+							<span className="text-sm text-muted-foreground">عدد العناصر في الصفحة:</span>
 							<Select
 								value={String(pageSize)}
 								onValueChange={(val) => {
@@ -834,18 +834,18 @@ export default function OrdersPage() {
 								type="button"
 								onClick={() => setCurrentPage((p) => Math.max(1, p - 1))}
 								disabled={currentPage === 1}
-								className="p-2 rounded-lg border border-gray-200 hover:bg-white disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
+								className="p-2 rounded-lg border border-border hover:bg-surface disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
 							>
 								<ChevronRight size={18} />
 							</button>
-							<span className="text-sm text-gray-600 px-3">
+							<span className="text-sm text-muted-foreground px-3">
 								صفحة {currentPage} من {totalPages}
 							</span>
 							<button
 								type="button"
 								onClick={() => setCurrentPage((p) => Math.min(totalPages, p + 1))}
 								disabled={currentPage === totalPages}
-								className="p-2 rounded-lg border border-gray-200 hover:bg-white disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
+								className="p-2 rounded-lg border border-border hover:bg-surface disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
 							>
 								<ChevronLeft size={18} />
 							</button>
@@ -856,8 +856,8 @@ export default function OrdersPage() {
 
 			{/* Add/Edit Modal */}
 			{showAddModal && (
-				<div className="fixed inset-0 backdrop-blur-md bg-white/30 flex items-center justify-center p-4 z-50">
-					<div className="bg-white rounded-2xl p-6 w-full max-w-4xl max-h-[90vh] overflow-y-auto shadow-2xl">
+				<div className="fixed inset-0 backdrop-blur-md bg-surface/30 flex items-center justify-center p-4 z-50">
+					<div className="bg-surface rounded-2xl p-6 w-full max-w-4xl max-h-[90vh] overflow-y-auto shadow-2xl">
 						<h2 className="text-xl font-bold mb-4">
 							{editingOrder ? "تعديل الطلب" : "إضافة طلب جديد"}
 						</h2>
@@ -865,14 +865,14 @@ export default function OrdersPage() {
 						<form onSubmit={handleSubmit} className="space-y-4">
 							<div className="grid grid-cols-1 md:grid-cols-2 gap-4">
 								<div>
-									<label className="block text-sm text-gray-600 mb-1">
+									<label className="block text-sm text-muted-foreground mb-1">
 										العميل *
 									</label>
 									<select
 										name="client_id"
 										value={formData.client_id}
 										onChange={handleInputChange}
-										className="w-full rounded-xl border border-gray-200 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-purple-200"
+										className="w-full rounded-xl border border-border px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-brand"
 										required
 									>
 										<option value="">اختر العميل</option>
@@ -887,14 +887,14 @@ export default function OrdersPage() {
 									</select>
 								</div>
 								<div>
-									<label className="block text-sm text-gray-600 mb-1">
+									<label className="block text-sm text-muted-foreground mb-1">
 										الحالة
 									</label>
 									<select
 										name="status"
 										value={formData.status}
 										onChange={handleInputChange}
-										className="w-full rounded-xl border border-gray-200 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-purple-200"
+										className="w-full rounded-xl border border-border px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-brand"
 									>
 										<option value="pending">معلق</option>
 										<option value="processing">
@@ -909,13 +909,13 @@ export default function OrdersPage() {
 							{/* Order Items */}
 							<div>
 								<div className="flex items-center justify-between mb-4">
-									<label className="block text-sm text-gray-600">
+									<label className="block text-sm text-muted-foreground">
 										عناصر الطلب *
 									</label>
 									<button
 										type="button"
 										onClick={addItem}
-										className="text-purple-600 hover:text-purple-700 text-sm"
+										className="text-brand hover:text-brand text-sm"
 									>
 										+ إضافة عنصر
 									</button>
@@ -928,7 +928,7 @@ export default function OrdersPage() {
 											className="grid grid-cols-1 md:grid-cols-4 gap-3 items-end"
 										>
 											<div className="md:col-span-2">
-												<label className="block text-xs text-gray-600 mb-1">
+												<label className="block text-xs text-muted-foreground mb-1">
 													الوصف
 												</label>
 												<input
@@ -940,13 +940,13 @@ export default function OrdersPage() {
 															e.target.value
 														)
 													}
-													className="w-full rounded-xl border border-gray-200 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-purple-200"
+													className="w-full rounded-xl border border-border px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-brand"
 													placeholder="وصف العنصر"
 													required
 												/>
 											</div>
 											<div>
-												<label className="block text-xs text-gray-600 mb-1">
+												<label className="block text-xs text-muted-foreground mb-1">
 													الكمية
 												</label>
 												<input
@@ -962,12 +962,12 @@ export default function OrdersPage() {
 															) || 1
 														)
 													}
-													className="w-full rounded-xl border border-gray-200 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-purple-200"
+													className="w-full rounded-xl border border-border px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-brand"
 													required
 												/>
 											</div>
 											<div>
-												<label className="block text-xs text-gray-600 mb-1">
+												<label className="block text-xs text-muted-foreground mb-1">
 													السعر
 												</label>
 												<div className="flex gap-2">
@@ -986,7 +986,7 @@ export default function OrdersPage() {
 																) || 0
 															)
 														}
-														className="flex-1 rounded-xl border border-gray-200 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-purple-200"
+														className="flex-1 rounded-xl border border-border px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-brand"
 														required
 													/>
 													<button
@@ -1010,7 +1010,7 @@ export default function OrdersPage() {
 							</div>
 
 							<div>
-								<label className="block text-sm text-gray-600 mb-1">
+								<label className="block text-sm text-muted-foreground mb-1">
 									ملاحظات
 								</label>
 								<textarea
@@ -1018,7 +1018,7 @@ export default function OrdersPage() {
 									value={formData.notes}
 									onChange={handleInputChange}
 									rows={3}
-									className="w-full rounded-xl border border-gray-200 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-purple-200"
+									className="w-full rounded-xl border border-border px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-brand"
 									placeholder="ملاحظات إضافية"
 								/>
 							</div>
@@ -1030,14 +1030,14 @@ export default function OrdersPage() {
 										setShowAddModal(false);
 										resetForm();
 									}}
-									className="px-4 py-2 rounded-xl border border-gray-300 text-sm hover:bg-gray-50"
+									className="px-4 py-2 rounded-xl border border-border-strong text-sm hover:bg-surface-2"
 								>
 									إلغاء
 								</button>
 								<button
 									type="submit"
 									disabled={saving}
-									className="px-4 py-2 rounded-xl bg-purple-600 text-white text-sm font-medium hover:bg-purple-700 active:translate-y-[1px] disabled:opacity-50 disabled:cursor-not-allowed flex items-center gap-2"
+									className="px-4 py-2 rounded-xl bg-brand text-white text-sm font-medium hover:bg-brand active:translate-y-[1px] disabled:opacity-50 disabled:cursor-not-allowed flex items-center gap-2"
 								>
 									{saving && (
 										<Loader2

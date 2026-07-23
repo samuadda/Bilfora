@@ -157,17 +157,17 @@ export function InvoiceClientSection({
             <div className="flex items-center justify-between mb-4">
                 <div
                     className={cn(
-                        "flex items-center text-gray-900 font-semibold",
+                        "flex items-center text-foreground font-semibold",
                         layout.gap.tight
                     )}
                 >
-                    <User size={20} className="text-[#7f2dfb]" />
+                    <User size={20} className="text-brand" />
                     <Heading variant="h3-subsection">بيانات العميل</Heading>
                 </div>
                 <button
                     type="button"
                     onClick={toggleNewCustomerForm}
-                    className="text-[#7f2dfb] hover:text-[#6a25d1] text-sm font-medium transition-colors"
+                    className="text-brand hover:text-[#6a25d1] text-sm font-medium transition-colors"
                 >
                     {showNewCustomerForm ? "اختيار عميل موجود" : "+ عميل جديد"}
                 </button>
@@ -201,15 +201,15 @@ export function InvoiceClientSection({
 
                         {/* Client Type Toggle (ZATCA only) */}
                         {IS_ZATCA_ENABLED && (
-                        <div className="bg-gray-100 p-1 rounded-xl flex mb-4">
+                        <div className="bg-surface-inset p-1 rounded-xl flex mb-4">
                             <button
                                 type="button"
                                 onClick={() => setClientType("individual")}
                                 className={cn(
                                     "flex-1 flex items-center justify-center gap-2 py-2 rounded-lg transition-all text-sm font-medium",
                                     !isOrganization
-                                        ? "bg-white shadow-sm text-[#7f2dfb]"
-                                        : "text-gray-500 hover:text-gray-700"
+                                        ? "bg-surface shadow-sm text-brand"
+                                        : "text-subtle hover:text-muted-foreground"
                                 )}
                             >
                                 <User size={16} />
@@ -221,8 +221,8 @@ export function InvoiceClientSection({
                                 className={cn(
                                     "flex-1 flex items-center justify-center gap-2 py-2 rounded-lg transition-all text-sm font-medium",
                                     isOrganization
-                                        ? "bg-white shadow-sm text-[#7f2dfb]"
-                                        : "text-gray-500 hover:text-gray-700"
+                                        ? "bg-surface shadow-sm text-brand"
+                                        : "text-subtle hover:text-muted-foreground"
                                 )}
                             >
                                 <Building2 size={16} />
@@ -250,7 +250,7 @@ export function InvoiceClientSection({
                                 <Field label="رقم الجوال" description="(اختياري)">
                                     <div className="relative">
                                         <Phone
-                                            className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400"
+                                            className="absolute right-3 top-1/2 -translate-y-1/2 text-disabled"
                                             size={16}
                                         />
                                         <Input
@@ -267,7 +267,7 @@ export function InvoiceClientSection({
                                 <Field label="رقم الهاتف" description="(اختياري)">
                                     <div className="relative">
                                         <Phone
-                                            className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400"
+                                            className="absolute right-3 top-1/2 -translate-y-1/2 text-disabled"
                                             size={16}
                                         />
                                         <Input
@@ -283,7 +283,7 @@ export function InvoiceClientSection({
                                 <Field label="البريد الإلكتروني" description="(اختياري)" className="col-span-2">
                                     <div className="relative">
                                         <Mail
-                                            className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400"
+                                            className="absolute right-3 top-1/2 -translate-y-1/2 text-disabled"
                                             size={16}
                                         />
                                         <Input
@@ -315,7 +315,7 @@ export function InvoiceClientSection({
                                                 rows={2}
                                                 value={newCustomerData.address}
                                                 onChange={handleNewCustomerChange}
-                                                className="w-full px-3 py-2 rounded-xl border border-gray-200 focus:border-[#7f2dfb] focus:ring-4 focus:ring-purple-100 transition-all text-sm resize-none"
+                                                className="w-full px-3 py-2 rounded-xl border border-border focus:border-brand focus:ring-4 focus:ring-brand-soft-2 transition-all text-sm resize-none"
                                                 placeholder="المدينة، الحي، الشارع..."
                                             />
                                         </Field>
@@ -329,7 +329,7 @@ export function InvoiceClientSection({
                                                 dir="ltr"
                                                 maxLength={15}
                                             />
-                                            <p className="text-[10px] text-gray-400 mt-1">يجب أن يتكون من 15 رقم ويبدأ وينتهي بـ 3 (إذا وجد)</p>
+                                            <p className="text-[10px] text-disabled mt-1">يجب أن يتكون من 15 رقم ويبدأ وينتهي بـ 3 (إذا وجد)</p>
                                         </Field>
                                     </m.div>
                                 )}

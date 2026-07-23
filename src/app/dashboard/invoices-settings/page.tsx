@@ -6,7 +6,7 @@ import { redirect } from "next/navigation";
 export const dynamic = "force-dynamic";
 
 export const metadata = {
-  title: "إعدادات الفواتير | بيلفورة",
+  title: "إعدادات الفواتير | بلفورا",
   description: "إدارة إعدادات الفواتير والضرائب",
 };
 

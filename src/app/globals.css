@@ -1,281 +1,461 @@
 @import "tailwindcss";
 
 @custom-variant dark (&:is(.dark *));
-@plugin "daisyui";
 
+/* ============================================================
+   Bilfora design tokens — Slate-Teal / Thmanyah
+   Primitive scales + semantic aliases (light). Dark overrides
+   below. Semantic tokens flip by theme; utilities reference them
+   through @theme inline so `bg-brand`, `text-muted-foreground`,
+   etc. respond to light/dark automatically.
+   ============================================================ */
+:root {
+  /* ---------- Primitive scales ---------- */
+  --teal-50:  #eef6f5;
+  --teal-100: #d5e9e7;
+  --teal-200: #aed4cf;
+  --teal-300: #7bb7b0;
+  --teal-400: #47938b;
+  --teal-500: #0f766e;
+  --teal-600: #0c5d57;
+  --teal-700: #0b4a45;
+  --teal-800: #0a3b38;
+  --teal-900: #082e2c;
+  --teal-950: #041b1a;
+
+  --cyan-50:  #ecf5f8;
+  --cyan-100: #d3e9f0;
+  --cyan-300: #79bcd2;
+  --cyan-400: #3f97b4;
+  --cyan-500: #0e7490;
+  --cyan-600: #0b5d74;
+  --cyan-700: #0a4a5d;
+
+  --ink-0:   #ffffff;
+  --ink-50:  #f6f8f8;
+  --ink-100: #eef1f2;
+  --ink-200: #e4e9ea;
+  --ink-300: #cdd5d6;
+  --ink-400: #97a3a5;
+  --ink-500: #6b7679;
+  --ink-600: #586065;
+  --ink-700: #414a4d;
+  --ink-800: #2b3335;
+  --ink-900: #172023;
+  --ink-950: #0c1315;
+
+  --red-50:   #f9eeee;
+  --red-100:  #f4dcdd;
+  --red-500:  #d24a4d;
+  --red-600:  #be3f42;
+  --red-700:  #9d3336;
+
+  --amber-50:  #f8f2e6;
+  --amber-100: #efe1c2;
+  --amber-400: #d9a441;
+  --amber-500: #c08a2a;
+  --amber-600: #9d6f1f;
+
+  --blue-50:  #e8f3f6;
+  --blue-100: #d0e6ed;
+  --blue-500: #0e7490;
+  --blue-600: #0b5d74;
+  --blue-700: #0a4a5d;
+
+  /* ---------- Semantic aliases (LIGHT) ---------- */
+  --brand:            var(--teal-500);
+  --brand-hover:      var(--teal-600);
+  --brand-active:     var(--teal-700);
+  --brand-soft:       var(--teal-50);
+  --brand-soft-2:     var(--teal-100);
+  --brand-ink:        var(--teal-900);
+  --on-brand:         #ffffff;
+  --accent:           var(--cyan-500);
+  --accent-soft:      var(--cyan-50);
+  --on-accent:        #ffffff;
+
+  --bg:               var(--ink-50);
+  --bg-subtle:        var(--ink-100);
+  --surface:          var(--ink-0);
+  --surface-2:        var(--ink-50);
+  --surface-inset:    var(--ink-100);
+  --overlay:          rgba(12, 19, 21, 0.45);
+
+  --text:             var(--ink-900);
+  --text-muted:       var(--ink-600);
+  --text-subtle:      var(--ink-500);
+  --text-disabled:    var(--ink-400);
+  --text-on-dark:     var(--ink-50);
+
+  --border:           var(--ink-200);
+  --border-strong:    var(--ink-300);
+  --ring:             var(--teal-500);
+
+  --success:          var(--teal-500);
+  --success-soft:     var(--teal-50);
+  --success-border:   var(--teal-200);
+
+  --warning:          var(--amber-600);
+  --warning-soft:     var(--amber-50);
+  --warning-border:   var(--amber-100);
+
+  --danger:           var(--red-600);
+  --danger-soft:      var(--red-50);
+  --danger-border:    var(--red-100);
+
+  --info:             var(--cyan-500);
+  --info-soft:        var(--cyan-50);
+  --info-border:      var(--cyan-100);
+
+  --chart-1: #0f766e;
+  --chart-2: #0e7490;
+  --chart-3: #47938b;
+  --chart-4: #3f97b4;
+  --chart-5: #c08a2a;
+
+  /* ---------- Spacing (4px grid) ---------- */
+  --space-0:  0;
+  --space-1:  0.25rem;
+  --space-2:  0.5rem;
+  --space-3:  0.75rem;
+  --space-4:  1rem;
+  --space-5:  1.25rem;
+  --space-6:  1.5rem;
+  --space-8:  2rem;
+  --space-10: 2.5rem;
+  --space-12: 3rem;
+  --space-16: 4rem;
+  --space-20: 5rem;
+  --space-24: 6rem;
+  --space-32: 8rem;
+
+  /* ---------- Motion ---------- */
+  --ease-out:    cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+  --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+  --dur-fast:    120ms;
+  --dur-base:    200ms;
+  --dur-slow:    360ms;
+
+  /* ---------- Layout ---------- */
+  --container:       1200px;
+  --container-wide:  1360px;
+  --container-prose: 720px;
+  --sidebar-w:       264px;
+  --sidebar-collapsed-w: 84px;
+  --header-h:        68px;
+
+  /* ---------- shadcn/ui compatibility remap ----------
+     Keep the shadcn variable NAMES but point them at the new
+     tokens, so every shadcn-consuming component (calendar,
+     chart, popover, combobox, custom-select, sonner) re-themes.
+     These follow the semantic tokens, which flip in dark. */
+  --radius: 0.75rem;
+  --background: var(--bg);
+  --foreground: var(--text);
+  --card: var(--surface);
+  --card-foreground: var(--text);
+  --popover: var(--surface);
+  --popover-foreground: var(--text);
+  --primary: var(--brand);
+  --primary-foreground: var(--on-brand);
+  --secondary: var(--surface-inset);
+  --secondary-foreground: var(--text);
+  --muted: var(--surface-inset);
+  --muted-foreground: var(--text-muted);
+  --accent: var(--surface-inset);          /* shadcn "accent" = subtle hover surface (NOT the cyan brand accent) */
+  --accent-foreground: var(--text);
+  --destructive: var(--danger);
+  --destructive-foreground: #ffffff;
+  --input: var(--border-strong);
+  --sidebar: var(--surface);
+  --sidebar-foreground: var(--text);
+  --sidebar-primary: var(--brand);
+  --sidebar-primary-foreground: var(--on-brand);
+  --sidebar-accent: var(--brand-soft);
+  --sidebar-accent-foreground: var(--brand);
+  --sidebar-border: var(--border);
+  --sidebar-ring: var(--ring);
+
+  /* The design's cyan brand accent, for components that reference it directly
+     (Logo dot, accent buttons). Distinct from shadcn --accent above. */
+  --brand-accent: var(--accent);
+}
+
+/* ============================================================
+   Dark theme
+   ============================================================ */
+.dark,
+[data-theme="dark"] {
+  --brand:            var(--teal-400);
+  --brand-hover:      var(--teal-300);
+  --brand-active:     var(--teal-200);
+  --brand-soft:       rgba(15, 118, 110, 0.16);
+  --brand-soft-2:     rgba(15, 118, 110, 0.26);
+  --brand-ink:        var(--teal-100);
+  --on-brand:         #04120f;
+  --accent:           var(--cyan-400);
+  --accent-soft:      rgba(14, 116, 144, 0.18);
+  --on-accent:        #041016;
+
+  --bg:               var(--ink-950);
+  --bg-subtle:        #0a1214;
+  --surface:          var(--ink-900);
+  --surface-2:        var(--ink-800);
+  --surface-inset:    #131c1f;
+  --overlay:          rgba(3, 7, 8, 0.6);
+
+  --text:             var(--ink-50);
+  --text-muted:       var(--ink-300);
+  --text-subtle:      var(--ink-400);
+  --text-disabled:    var(--ink-600);
+  --text-on-dark:     var(--ink-50);
+
+  --border:           #2a3335;
+  --border-strong:    #3a4548;
+  --ring:             var(--teal-400);
+
+  --success:          var(--teal-400);
+  --success-soft:     rgba(15, 118, 110, 0.17);
+  --success-border:   rgba(71, 147, 139, 0.35);
+
+  --warning:          var(--amber-400);
+  --warning-soft:     rgba(192, 138, 42, 0.16);
+  --warning-border:   rgba(217, 164, 65, 0.3);
+
+  --danger:           #e26467;
+  --danger-soft:      rgba(190, 63, 66, 0.17);
+  --danger-border:    rgba(190, 63, 66, 0.34);
+
+  --info:             #4f9fbc;
+  --info-soft:        rgba(14, 116, 144, 0.17);
+  --info-border:      rgba(14, 116, 144, 0.34);
+
+  --chart-1: #47938b;
+  --chart-2: #3f97b4;
+  --chart-3: #7bb7b0;
+  --chart-4: #79bcd2;
+  --chart-5: #d9a441;
+
+  /* shadcn dark: surfaces sink to ink, everything else follows the tokens */
+  --input: #2a3335;
+}
+
+/* ============================================================
+   Tailwind v4 utility mapping (color — flippable via inline)
+   ============================================================ */
 @theme inline {
-  --radius-sm: calc(var(--radius) - 4px);
-  --radius-md: calc(var(--radius) - 2px);
-  --radius-lg: var(--radius);
-  --radius-xl: calc(var(--radius) + 2px);
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --color-card: var(--card);
-  --color-card-foreground: var(--card-foreground);
-  --color-popover: var(--popover);
-  --color-popover-foreground: var(--popover-foreground);
-  --color-primary: var(--primary);
-  --color-primary-foreground: var(--primary-foreground);
-  --color-secondary: var(--secondary);
-  --color-secondary-foreground: var(--secondary-foreground);
-  --color-muted: var(--muted);
-  --color-muted-foreground: var(--muted-foreground);
-  --color-accent: var(--accent);
-  --color-accent-foreground: var(--accent-foreground);
-  --color-destructive: var(--destructive);
-  --color-border: var(--border);
-  --color-input: var(--input);
-  --color-ring: var(--ring);
+  /* brand */
+  --color-brand:            var(--brand);
+  --color-brand-hover:      var(--brand-hover);
+  --color-brand-active:     var(--brand-active);
+  --color-brand-soft:       var(--brand-soft);
+  --color-brand-soft-2:     var(--brand-soft-2);
+  --color-brand-ink:        var(--brand-ink);
+  --color-on-brand:         var(--on-brand);
+  --color-brand-accent:     var(--brand-accent);
+  --color-brand-accent-soft: var(--accent-soft);
+  --color-on-accent:        var(--on-accent);
+
+  /* surfaces & lines */
+  --color-background:        var(--background);
+  --color-background-subtle: var(--bg-subtle);
+  --color-surface:           var(--surface);
+  --color-surface-2:         var(--surface-2);
+  --color-surface-inset:     var(--surface-inset);
+  --color-overlay:           var(--overlay);
+  --color-border:            var(--border);
+  --color-border-strong:     var(--border-strong);
+  --color-ring:              var(--ring);
+
+  /* shadcn semantic set */
+  --color-foreground:            var(--foreground);
+  --color-card:                  var(--card);
+  --color-card-foreground:       var(--card-foreground);
+  --color-popover:               var(--popover);
+  --color-popover-foreground:    var(--popover-foreground);
+  --color-primary:               var(--primary);
+  --color-primary-foreground:    var(--primary-foreground);
+  --color-secondary:             var(--secondary);
+  --color-secondary-foreground:  var(--secondary-foreground);
+  --color-muted:                 var(--muted);
+  --color-muted-foreground:      var(--muted-foreground);
+  --color-accent:                var(--accent);
+  --color-accent-foreground:     var(--accent-foreground);
+  --color-destructive:           var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-input:                 var(--input);
+
+  /* status trios */
+  --color-success:        var(--success);
+  --color-success-soft:   var(--success-soft);
+  --color-success-border: var(--success-border);
+  --color-warning:        var(--warning);
+  --color-warning-soft:   var(--warning-soft);
+  --color-warning-border: var(--warning-border);
+  --color-danger:         var(--danger);
+  --color-danger-soft:    var(--danger-soft);
+  --color-danger-border:  var(--danger-border);
+  --color-info:           var(--info);
+  --color-info-soft:      var(--info-soft);
+  --color-info-border:    var(--info-border);
+
+  /* charts */
   --color-chart-1: var(--chart-1);
   --color-chart-2: var(--chart-2);
   --color-chart-3: var(--chart-3);
   --color-chart-4: var(--chart-4);
   --color-chart-5: var(--chart-5);
-  --color-sidebar: var(--sidebar);
-  --color-sidebar-foreground: var(--sidebar-foreground);
-  --color-sidebar-primary: var(--sidebar-primary);
+
+  /* sidebar (shadcn) */
+  --color-sidebar:                    var(--sidebar);
+  --color-sidebar-foreground:         var(--sidebar-foreground);
+  --color-sidebar-primary:            var(--sidebar-primary);
   --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
-  --color-sidebar-accent: var(--sidebar-accent);
-  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
-  --color-sidebar-border: var(--sidebar-border);
-  --color-sidebar-ring: var(--sidebar-ring);
-  --color-brand-primary: #7f2dfb;
-  --color-brand-primary-hover: #6a1fd8;
+  --color-sidebar-accent:             var(--sidebar-accent);
+  --color-sidebar-accent-foreground:  var(--sidebar-accent-foreground);
+  --color-sidebar-border:             var(--sidebar-border);
+  --color-sidebar-ring:               var(--sidebar-ring);
+
+  /* primitive scales (kit panels, harmonised status) */
+  --color-teal-50:  var(--teal-50);
+  --color-teal-100: var(--teal-100);
+  --color-teal-200: var(--teal-200);
+  --color-teal-300: var(--teal-300);
+  --color-teal-400: var(--teal-400);
+  --color-teal-500: var(--teal-500);
+  --color-teal-600: var(--teal-600);
+  --color-teal-700: var(--teal-700);
+  --color-teal-800: var(--teal-800);
+  --color-teal-900: var(--teal-900);
+  --color-teal-950: var(--teal-950);
+  --color-cyan-50:  var(--cyan-50);
+  --color-cyan-100: var(--cyan-100);
+  --color-cyan-300: var(--cyan-300);
+  --color-cyan-400: var(--cyan-400);
+  --color-cyan-500: var(--cyan-500);
+  --color-cyan-600: var(--cyan-600);
+  --color-cyan-700: var(--cyan-700);
+  --color-ink-0:   var(--ink-0);
+  --color-ink-50:  var(--ink-50);
+  --color-ink-100: var(--ink-100);
+  --color-ink-200: var(--ink-200);
+  --color-ink-300: var(--ink-300);
+  --color-ink-400: var(--ink-400);
+  --color-ink-500: var(--ink-500);
+  --color-ink-600: var(--ink-600);
+  --color-ink-700: var(--ink-700);
+  --color-ink-800: var(--ink-800);
+  --color-ink-900: var(--ink-900);
+  --color-ink-950: var(--ink-950);
+}
+
+/* ============================================================
+   Tailwind v4 utility mapping (static: fonts, radii, shadows,
+   easing, micro type step, animations) — emits vars to :root.
+   ============================================================ */
+@theme {
+  --font-sans:    var(--font-thmanyah-sans), system-ui, "Segoe UI", Tahoma, sans-serif;
+  --font-serif:   var(--font-thmanyah-serif), Georgia, "Times New Roman", serif;
+  --font-display: var(--font-thmanyah-display), var(--font-thmanyah-serif), Georgia, serif;
+  --font-mono:    ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+
+  --text-2xs: 0.6875rem;
+
+  --radius-xs:   0.375rem;
+  --radius-sm:   0.5rem;
+  --radius-md:   0.75rem;
+  --radius-lg:   1rem;
+  --radius-xl:   1.5rem;
+  --radius-2xl:  2rem;
+  --radius-pill: 999px;
+
+  --shadow-xs:  0 1px 2px rgba(13, 21, 18, 0.05);
+  --shadow-sm:  0 1px 3px rgba(13, 21, 18, 0.07), 0 1px 2px rgba(13, 21, 18, 0.04);
+  --shadow-md:  0 4px 12px rgba(13, 21, 18, 0.08), 0 2px 4px rgba(13, 21, 18, 0.04);
+  --shadow-lg:  0 12px 28px rgba(13, 21, 18, 0.1), 0 4px 10px rgba(13, 21, 18, 0.05);
+  --shadow-xl:  0 24px 56px rgba(13, 21, 18, 0.14), 0 8px 20px rgba(13, 21, 18, 0.06);
+  --shadow-2xl: 0 24px 56px rgba(13, 21, 18, 0.16), 0 10px 24px rgba(13, 21, 18, 0.08);
+  --shadow-brand: 0 10px 26px rgba(15, 118, 110, 0.26);
+  --shadow-focus: 0 0 0 3px rgba(15, 118, 110, 0.22);
+
+  --ease-out:    cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+  --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+
   --animate-shimmer-slide: shimmer-slide var(--speed) ease-in-out infinite alternate;
   --animate-spin-around: spin-around calc(var(--speed) * 2) infinite linear;
-
-  @keyframes shimmer-slide {
-    to {
-      transform: translate(calc(100cqw - 100%), 0);
-    }
-  }
-
-  @keyframes spin-around {
-    0% {
-      transform: translateZ(0) rotate(0);
-    }
-
-    15%,
-    35% {
-      transform: translateZ(0) rotate(90deg);
-    }
-
-    65%,
-    85% {
-      transform: translateZ(0) rotate(270deg);
-    }
-
-    100% {
-      transform: translateZ(0) rotate(360deg);
-    }
-  }
-
   --animate-marquee: marquee var(--duration) infinite linear;
   --animate-marquee-vertical: marquee-vertical var(--duration) linear infinite;
-
-  @keyframes marquee {
-    from {
-      transform: translateX(0);
-    }
-
-    to {
-      transform: translateX(calc(-100% - var(--gap)));
-    }
-  }
-
-  @keyframes marquee-vertical {
-    from {
-      transform: translateY(0);
-    }
-
-    to {
-      transform: translateY(calc(-100% - var(--gap)));
-    }
-  }
-
   --animate-ripple: ripple var(--duration, 2s) ease calc(var(--i, 0)*.2s) infinite;
 
-  @keyframes ripple {
-
-    0%,
-    100% {
-      transform: translate(-50%, -50%) scale(1);
-    }
-
-    50% {
-      transform: translate(-50%, -50%) scale(0.9);
-    }
+  @keyframes shimmer-slide {
+    to { transform: translate(calc(100cqw - 100%), 0); }
   }
-
-  --font-sans: "Inter",
-  ui-sans-serif,
-  system-ui,
-  sans-serif,
-  "Apple Color Emoji",
-  "Segoe UI Emoji",
-  "Segoe UI Symbol",
-  "Noto Color Emoji";
-
-  --font-mono: "Geist Mono",
-  'ui-monospace',
-  'SFMono-Regular',
-  'Menlo',
-  'Monaco',
-  'Consolas',
-  '"Liberation Mono"',
-  '"Courier New"',
-  'monospace';
-
-  --color-destructive-foreground: var(--destructive-foreground);
-
-  --color-danger: var(--danger);
-
-  --color-danger-foreground: var(--danger-foreground);
-
-  --color-danger-border: var(--danger-border);
-
-  --color-warning: var(--warning);
-
-  --color-warning-foreground: var(--warning-foreground);
-
-  --color-warning-border: var(--warning-border);
-
-  --color-info: var(--info);
-
-  --color-info-foreground: var(--info-foreground);
-
-  --color-info-border: var(--info-border);
-
-  --color-success: var(--success);
-
-  --color-success-foreground: var(--success-foreground);
-
-  --color-success-border: var(--success-border);
-
-  --radius-2xl: calc(var(--radius) + 8px);
-
-  --radius-3xl: calc(var(--radius) + 12px);
-
-  --radius-4xl: calc(var(--radius) + 16px)
+  @keyframes spin-around {
+    0% { transform: translateZ(0) rotate(0); }
+    15%, 35% { transform: translateZ(0) rotate(90deg); }
+    65%, 85% { transform: translateZ(0) rotate(270deg); }
+    100% { transform: translateZ(0) rotate(360deg); }
+  }
+  @keyframes marquee {
+    from { transform: translateX(0); }
+    to { transform: translateX(calc(-100% - var(--gap))); }
+  }
+  @keyframes marquee-vertical {
+    from { transform: translateY(0); }
+    to { transform: translateY(calc(-100% - var(--gap))); }
+  }
+  @keyframes ripple {
+    0%, 100% { transform: translate(-50%, -50%) scale(1); }
+    50% { transform: translate(-50%, -50%) scale(0.9); }
+  }
 }
 
-:root {
-  --radius: 0.625rem;
-  --card: oklch(97% 0 0);
-  --card-foreground: oklch(14.5% 0 0);
-  --popover: oklch(97% 0 0);
-  --popover-foreground: oklch(14.5% 0 0);
-  --primary: oklch(14.5% 0 0);
-  --primary-foreground: oklch(98.5% 0 0);
-  --secondary: oklch(92.2% 0 0);
-  --secondary-foreground: oklch(20.5% 0 0);
-  --muted: oklch(92.2% 0 0);
-  --muted-foreground: oklch(43.9% 0 0);
-  --accent: oklch(92.2% 0 0);
-  --accent-foreground: oklch(14.5% 0 0);
-  --destructive: oklch(50.5% 0.213 27.518);
-  --border: oklch(87% 0 0);
-  --input: oklch(97% 0 0);
-  --ring: oklch(70.8% 0 0);
-  --chart-1: oklch(48.8% 0.243 264.376);
-  --chart-2: oklch(52.7% 0.154 150.069);
-  --chart-3: oklch(49.6% 0.265 301.924);
-  --chart-4: oklch(55.3% 0.195 38.402);
-  --chart-5: oklch(51.4% 0.222 16.935);
-  --sidebar: oklch(0.985 0 0);
-  --sidebar-foreground: oklch(0.141 0.005 285.823);
-  --sidebar-primary: oklch(0.21 0.006 285.885);
-  --sidebar-primary-foreground: oklch(0.985 0 0);
-  --sidebar-accent: oklch(0.967 0.001 286.375);
-  --sidebar-accent-foreground: oklch(0.21 0.006 285.885);
-  --sidebar-border: oklch(0.92 0.004 286.32);
-  --sidebar-ring: oklch(0.705 0.015 286.067);
-  --background: oklch(98.5% 0 0);
-  --foreground: oklch(14.5% 0 0);
-  --destructive-foreground: oklch(98.5% 0 0);
-  --danger: oklch(96.6% 0.016 16.278);
-  --danger-foreground: oklch(57.9% 0.237 29.233);
-  --danger-border: oklch(93.3% 0.033 16.63);
-  --warning: oklch(99% 0.016 96.37);
-  --warning-foreground: oklch(66.9% 0.16 56.73);
-  --warning-border: oklch(94.4% 0.078 96.97);
-  --info: oklch(97.4% 0.012 244.25);
-  --info-foreground: oklch(56.2% 0.182 255.12);
-  --info-border: oklch(92.7% 0.032 265.82);
-  --success: oklch(97.9% 0.023 158.94);
-  --success-foreground: oklch(55% 0.165 146.61);
-  --success-border: oklch(94.1% 0.078 158.88);
-}
+/* Brand-glow + focus-ring utilities (opt-in) */
+@utility shadow-brand { box-shadow: var(--shadow-brand); }
+@utility shadow-focus { box-shadow: var(--shadow-focus); }
 
-.dark {
-  --background: oklch(14.5% 0 0);
-  --foreground: oklch(98.5% 0 0);
-  --card: oklch(20.5% 0 0);
-  --card-foreground: oklch(98.5% 0 0);
-  --popover: oklch(20.5% 0 0);
-  --popover-foreground: oklch(98.5% 0 0);
-  --primary: oklch(98.5% 0 0);
-  --primary-foreground: oklch(14.5% 0 0);
-  --secondary: oklch(26.9% 0 0);
-  --secondary-foreground: oklch(97% 0 0);
-  --muted: oklch(26.9% 0 0);
-  --muted-foreground: oklch(70.8% 0 0);
-  --accent: oklch(37.1% 0 0);
-  --accent-foreground: oklch(98.5% 0 0);
-  --destructive: oklch(63.7% 0.237 25.331);
-  --border: oklch(37.1% 0 0);
-  --input: oklch(26.9% 0 0);
-  --ring: oklch(55.6% 0 0);
-  --chart-1: oklch(62.3% 0.214 259.815);
-  /* Vibrant Purple */
-  --chart-2: oklch(72.3% 0.219 149.579);
-  /* Vibrant Green */
-  --chart-3: oklch(62.7% 0.265 303.9);
-  /* Vibrant Orange */
-  --chart-4: oklch(70.5% 0.213 47.604);
-  /* Vibrant Pink */
-  --chart-5: oklch(64.5% 0.246 16.439);
-  /* Vibrant Red/Orange */
-  --sidebar: oklch(0.21 0.006 285.885);
-  --sidebar-foreground: oklch(0.985 0 0);
-  --sidebar-primary: oklch(0.488 0.243 264.376);
-  --sidebar-primary-foreground: oklch(0.985 0 0);
-  --sidebar-accent: oklch(0.274 0.006 286.033);
-  --sidebar-accent-foreground: oklch(0.985 0 0);
-  --sidebar-border: oklch(1 0 0 / 10%);
-  --sidebar-ring: oklch(0.552 0.016 285.938);
-  --destructive-foreground: oklch(98.5% 0 0);
-  --danger: oklch(19.9% 0.063 23.01);
-  --danger-foreground: oklch(79.8% 0.115 17.83);
-  --danger-border: oklch(26.9% 0.102 25.45);
-  --warning: oklch(22.7% 0.05 113.29);
-  --warning-foreground: oklch(86.4% 0.141 92.19);
-  --warning-border: oklch(29.1% 0.063 109.77);
-  --info: oklch(15.6% 0.045 250.71);
-  --info-foreground: oklch(67.5% 0.152 258.33);
-  --info-border: oklch(26.2% 0.052 266.51);
-  --success: oklch(20.9% 0.0487 158.25);
-  --success-foreground: oklch(86.2% 0.169 157.764);
-  --success-border: oklch(31.6% 0.082 152.3);
-}
+/* Text-color utilities without shadcn-name collisions */
+@utility text-subtle { color: var(--text-subtle); }
+@utility text-disabled { color: var(--text-disabled); }
+@utility text-on-dark { color: var(--text-on-dark); }
 
 @layer base {
   * {
     @apply border-border outline-ring/50;
     border-color: var(--border);
-    outline-color: oklch(from var(--ring) l c h / 0.5);
+    outline-color: color-mix(in srgb, var(--ring) 50%, transparent);
     scrollbar-width: thin;
-    scrollbar-color: var(--border) transparent;
+    scrollbar-color: var(--border-strong) transparent;
   }
 
   body {
     @apply bg-background text-foreground;
     background-color: var(--background);
     color: var(--foreground);
+    font-family: var(--font-sans);
     overscroll-behavior: none;
   }
 
-  /* 
+  ::selection {
+    background: var(--brand-soft-2);
+    color: var(--brand-ink);
+  }
+
+  /* Display + editorial helpers (opt-in) */
+  .display {
+    font-family: var(--font-display);
+    font-weight: 900;
+    line-height: 1.12;
+    letter-spacing: -0.01em;
+  }
+  .prose-serif {
+    font-family: var(--font-serif);
+    line-height: 1.8;
+  }
+
+  /*
     FAILSAFE LAYOUT FIX: FORCE SCROLLBAR
     Always show the vertical scrollbar track to prevent layout shifts when modals open.
   */
@@ -287,7 +467,7 @@
     -webkit-tap-highlight-color: transparent;
   }
 
-  /* 
+  /*
     Prevent Radix UI from adding any padding to the body.
     Since the scrollbar is forced visible (even if disabled behind the modal backdrop),
     we DO NOT want to compensate for its "removal".
@@ -298,7 +478,6 @@
     overflow: hidden !important;
     width: 100% !important;
     margin: 0 !important;
-    /* Lock scroll but keep track visible via html */
   }
 
   /* Ensure Fixed Sidebar doesn't jump */
@@ -307,7 +486,7 @@
     right: 0 !important;
   }
 
-  /* Force English/Western numerals on all form inputs */
+  /* Force English/Western numerals on all form inputs (financial correctness) */
   input,
   select,
   textarea,
@@ -319,7 +498,6 @@
   input[type="week"] {
     font-variant-numeric: lining-nums tabular-nums;
     font-feature-settings: "lnum" 1, "tnum" 1;
-    /* Use system UI font to ensure Western numerals display correctly */
     font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
   }
 
@@ -351,7 +529,8 @@
   }
 
   ::-webkit-scrollbar {
-    width: 4px;
+    width: 8px;
+    height: 8px;
   }
 
   ::-webkit-scrollbar-track {
@@ -359,35 +538,32 @@
   }
 
   ::-webkit-scrollbar-thumb {
-    background: var(--border);
-    border-radius: 4px;
+    background: var(--border-strong);
+    border-radius: 999px;
   }
 }
 
 @layer utilities {
-
-  /* ─────────────────────────────────────────────────────────────────────────
-   * .nums-eng - Reusable utility for Western/English numerals
-   * Use on: Date pickers, Price inputs, Phone inputs, Tax fields
-   * ───────────────────────────────────────────────────────────────────────── */
+  /* ─────────────────────────────────────────────────────────────
+   * .nums-eng — Western/English tabular numerals for money, dates,
+   * counts inside RTL text. Digits sit in Thmanyah Sans (lnum), with
+   * a Latin fallback if the feature is unavailable.
+   * ───────────────────────────────────────────────────────────── */
   .nums-eng {
     direction: ltr;
-    /* Crucial for cursor stability in RTL context */
     text-align: right;
-    /* Visually align with RTL labels */
+    unicode-bidi: plaintext;
     font-variant-numeric: tabular-nums lining-nums;
     font-feature-settings: "lnum" 1, "tnum" 1;
-    /* Prioritize Latin fonts for digits */
-    font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    font-family: "Thmanyah Sans", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
   }
 
-  /* Variant for centered numeric inputs (like quantity) */
   .nums-eng-center {
     direction: ltr;
     text-align: center;
     font-variant-numeric: tabular-nums lining-nums;
     font-feature-settings: "lnum" 1, "tnum" 1;
-    font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    font-family: "Thmanyah Sans", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
   }
 
   /* Hide scrollbar for Chrome, Safari and Opera */
@@ -398,9 +574,7 @@
   /* Hide scrollbar for IE, Edge and Firefox */
   .scrollbar-hide {
     -ms-overflow-style: none;
-    /* IE and Edge */
     scrollbar-width: none;
-    /* Firefox */
   }
 }
 
@@ -449,20 +623,20 @@
   }
 
   .print-invoice table thead {
-    background: #7f2dfb !important;
+    background: #0f766e !important;
     -webkit-print-color-adjust: exact;
     print-color-adjust: exact;
     color-adjust: exact;
   }
 
   .print-invoice table th {
-    background: #7f2dfb !important;
+    background: #0f766e !important;
     color: white !important;
     -webkit-print-color-adjust: exact;
     print-color-adjust: exact;
     color-adjust: exact;
     padding: 12px !important;
-    border: 1px solid #6a1fd8 !important;
+    border: 1px solid #0c5d57 !important;
   }
 
   .print-invoice table td {
@@ -477,7 +651,7 @@
   .print-invoice h1,
   .print-invoice h2,
   .print-invoice h3 {
-    color: #012d46 !important;
+    color: #172023 !important;
   }
 
   .print-invoice .totals-section {

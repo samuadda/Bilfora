@@ -4,7 +4,7 @@ import { Code2, Terminal, Zap } from "lucide-react";
 
 export default function ApiPage() {
 	return (
-		<div className="min-h-screen bg-white">
+		<div className="min-h-screen bg-surface">
 			<Navbar />
 			<main className="pt-32 pb-20 px-4 max-w-5xl mx-auto">
 				<div className="text-center mb-16">
@@ -12,36 +12,36 @@ export default function ApiPage() {
 						as="h1"
 						animation="blurIn"
 						once={true}
-						className="text-4xl font-bold md:text-5xl text-[#012d46] mb-6"
+						className="text-4xl font-bold md:text-5xl text-foreground mb-6"
 					>
 						Bilfora API للمطورين
 					</TextAnimate>
-					<p className="text-xl text-gray-600 max-w-2xl mx-auto">
-						اربط أنظمتك بمنصة بِلفورا بسهولة. قريباً ستتمكن من أتمتة إصدار الفواتير بالكامل.
+					<p className="text-xl text-muted-foreground max-w-2xl mx-auto">
+						اربط أنظمتك بمنصة بلفورا بسهولة. قريباً ستتمكن من أتمتة إصدار الفواتير بالكامل.
 					</p>
 				</div>
 
                 <div className="grid md:grid-cols-3 gap-8 mb-16">
-                    <div className="p-6 rounded-2xl bg-slate-50 border border-slate-100 text-center">
-                        <div className="w-12 h-12 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-4 text-[#7f2dfb]">
+                    <div className="p-6 rounded-2xl bg-surface-2 border border-slate-100 text-center">
+                        <div className="w-12 h-12 bg-brand-soft-2 rounded-full flex items-center justify-center mx-auto mb-4 text-brand">
                             <Zap size={24} />
                         </div>
-                        <h3 className="font-bold text-lg mb-2 text-[#012d46]">سريع وموثوق</h3>
-                        <p className="text-gray-500 text-sm">استجابة فائقة السرعة مع توفر 99.9% لضمان استمرارية أعمالك.</p>
+                        <h3 className="font-bold text-lg mb-2 text-foreground">سريع وموثوق</h3>
+                        <p className="text-subtle text-sm">استجابة فائقة السرعة مع توفر 99.9% لضمان استمرارية أعمالك.</p>
                     </div>
-                    <div className="p-6 rounded-2xl bg-slate-50 border border-slate-100 text-center">
+                    <div className="p-6 rounded-2xl bg-surface-2 border border-slate-100 text-center">
                         <div className="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4 text-blue-600">
                             <Code2 size={24} />
                         </div>
-                        <h3 className="font-bold text-lg mb-2 text-[#012d46]">سهل التكامل</h3>
-                        <p className="text-gray-500 text-sm">توثيق شامل SDKs للغات البرمجة الشهيرة لتبدأ في دقائق.</p>
+                        <h3 className="font-bold text-lg mb-2 text-foreground">سهل التكامل</h3>
+                        <p className="text-subtle text-sm">توثيق شامل SDKs للغات البرمجة الشهيرة لتبدأ في دقائق.</p>
                     </div>
-                    <div className="p-6 rounded-2xl bg-slate-50 border border-slate-100 text-center">
+                    <div className="p-6 rounded-2xl bg-surface-2 border border-slate-100 text-center">
                         <div className="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4 text-green-600">
                             <Terminal size={24} />
                         </div>
-                        <h3 className="font-bold text-lg mb-2 text-[#012d46]">بيئة تجريبية</h3>
-                        <p className="text-gray-500 text-sm">بيئة Sandbox كاملة لاختبار تطبيقاتك قبل الإطلاق الحي.</p>
+                        <h3 className="font-bold text-lg mb-2 text-foreground">بيئة تجريبية</h3>
+                        <p className="text-subtle text-sm">بيئة Sandbox كاملة لاختبار تطبيقاتك قبل الإطلاق الحي.</p>
                     </div>
                 </div>
 
@@ -50,16 +50,16 @@ export default function ApiPage() {
                          <h2 className="text-2xl font-bold text-white mb-4">
                             قريباً في 2025
                         </h2>
-                        <p className="text-gray-400 mb-8 max-w-lg mx-auto">
+                        <p className="text-disabled mb-8 max-w-lg mx-auto">
                             نعمل حالياً على بناء أفضل تجربة للمطورين. سجل اهتمامك لتكون أول من يجرب الـ API.
                         </p>
                         <form className="max-w-md mx-auto flex gap-2">
                             <input 
                                 type="email" 
                                 placeholder="بريدك الإلكتروني" 
-                                className="flex-1 px-4 py-3 rounded-lg bg-gray-800 border border-gray-700 text-white focus:outline-none focus:ring-2 focus:ring-[#7f2dfb]"
+                                className="flex-1 px-4 py-3 rounded-lg bg-gray-800 border border-gray-700 text-white focus:outline-none focus:ring-2 focus:ring-brand"
                             />
-                            <button className="px-6 py-3 bg-[#7f2dfb] text-white font-bold rounded-lg hover:bg-purple-700 transition-colors">
+                            <button className="px-6 py-3 bg-brand text-white font-bold rounded-lg hover:bg-brand transition-colors">
                                 إعلامي
                             </button>
                         </form>

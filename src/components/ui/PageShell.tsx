@@ -44,7 +44,7 @@ export function PageShell({
   return (
     <div
       className={cn(
-        "min-h-screen bg-[#f8f9fc]",
+        "min-h-screen bg-background",
         maxWidthClass,
         paddingClass,
         "mx-auto",

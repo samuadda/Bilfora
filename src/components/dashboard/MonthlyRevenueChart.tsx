@@ -18,7 +18,7 @@ interface MonthlyRevenueChartProps {
 const chartConfig = {
   revenue: {
     label: "الإجمالي",
-    color: "#7f2dfb", // Brand Primary
+    color: "var(--brand)", // Brand Primary
   },
   paid: {
     label: "المحصل",

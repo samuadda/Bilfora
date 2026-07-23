@@ -106,7 +106,7 @@ export default async function InvoicePreviewPage(props: {
                         style={{
                             color: "white",
                             textDecoration: "none",
-                            background: "#7f2dfb",
+                            background: "var(--brand)",
                             padding: "8px 12px",
                             borderRadius: 10,
                             fontWeight: 700,

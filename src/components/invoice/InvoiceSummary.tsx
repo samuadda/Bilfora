@@ -34,23 +34,23 @@ export function InvoiceSummary({
     const total = calcTotal(subtotal, vat);
 
     return (
-        <div className="flex flex-col md:flex-row justify-end gap-6 pt-6 border-t border-gray-100">
-            <div className="w-full md:w-80 space-y-3 bg-gray-50 p-6 rounded-2xl border border-gray-100">
+        <div className="flex flex-col md:flex-row justify-end gap-6 pt-6 border-t border-border">
+            <div className="w-full md:w-80 space-y-3 bg-surface-2 p-6 rounded-2xl border border-border">
                 <div className="flex justify-between text-sm items-center">
-                    <span className="text-gray-600">المجموع الفرعي</span>
-                    <Price amount={subtotal} size="sm" className="text-gray-900" />
+                    <span className="text-muted-foreground">المجموع الفرعي</span>
+                    <Price amount={subtotal} size="sm" className="text-foreground" />
                 </div>
                 {invoiceType !== "non_tax" && (
                     <div className="flex justify-between text-sm items-center">
-                        <span className="text-gray-600">
+                        <span className="text-muted-foreground">
                             الضريبة ({taxRate}%)
                         </span>
-                        <Price amount={vat} size="sm" className="text-gray-900" />
+                        <Price amount={vat} size="sm" className="text-foreground" />
                     </div>
                 )}
-                <div className="border-t border-gray-200 pt-3 flex justify-between items-center">
-                    <span className="text-base font-bold text-gray-900">الإجمالي</span>
-                    <Price amount={total} size="lg" className="text-brand-primary" />
+                <div className="border-t border-border pt-3 flex justify-between items-center">
+                    <span className="text-base font-bold text-foreground">الإجمالي</span>
+                    <Price amount={total} size="lg" className="text-brand" />
                 </div>
             </div>
         </div>

@@ -43,7 +43,7 @@ export function InvoiceStandardPDF({
 				<View style={s.header}>
 					<View style={s.logoSection}>
 						<View style={s.logoPlaceholder}>
-							<Text style={s.logoText}>بيلفورة</Text>
+							<Text style={s.logoText}>بلفورا</Text>
 						</View>
 						<Text style={s.companyName}>{safeString(sellerInfo.name)}</Text>
 						<View style={s.companyInfo}>
@@ -242,7 +242,7 @@ export function InvoiceStandardPDF({
 				{/* Footer */}
 				<View style={s.footer}>
 					<Text style={s.footerText}>
-						صُنعت هذه الفاتورة بواسطة منصة بيلفورة - النظام المعتمد لإصدار
+						صُنعت هذه الفاتورة بواسطة منصة بلفورا - النظام المعتمد لإصدار
 						الفواتير الاحترافية.
 					</Text>
 				</View>

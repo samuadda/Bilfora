@@ -1,18 +1,18 @@
 import React from "react";
 
 export const heroWords = [
-    { text: "فواتير", className: "text-[#012d46]" },
-    { text: "احترافية.", className: "text-[#012d46]" },
-    { text: "رائعة.", className: "text-[#012d46]" },
-    { text: "وبدون", className: "text-[#012d46]" },
-    { text: "تعقيد.", className: "text-[#7f2dfb]" },
+    { text: "فواتير", className: "text-foreground" },
+    { text: "احترافية.", className: "text-foreground" },
+    { text: "رائعة.", className: "text-foreground" },
+    { text: "وبدون", className: "text-foreground" },
+    { text: "تعقيد.", className: "text-brand" },
 ];
 
 export const content = [
     {
         title: "فواتير تخلصها في ثواني، مو ساعات",
         description:
-            "لا تضيع وقتك في إدخال البيانات يدوياً كل مرة. بِلفورا يحفظ بيانات عملائك وخدماتك، ويخليك تطلع الفاتورة بضغطة زر. حرفياً.",
+            "لا تضيع وقتك في إدخال البيانات يدوياً كل مرة. بلفورا يحفظ بيانات عملائك وخدماتك، ويخليك تطلع الفاتورة بضغطة زر. حرفياً.",
         content: (
             <div className="flex h-full w-full items-center justify-center bg-[linear-gradient(to_bottom_right,var(--cyan-500),var(--emerald-500))] text-white text-2xl font-bold p-8 text-center rounded-xl shadow-2xl">
                 سرعة خيالية ⚡️
@@ -42,7 +42,7 @@ export const content = [
     {
         title: "واجهة تبيض الوجه قدام عملائك",
         description:
-            "فواتير بتصاميم راقية تدعم لغتك وهويتك. لما ترسل فاتورة من بِلفورا، عميلك بيحس إنه يتعامل مع محترف حقيقي.",
+            "فواتير بتصاميم راقية تدعم لغتك وهويتك. لما ترسل فاتورة من بلفورا، عميلك بيحس إنه يتعامل مع محترف حقيقي.",
         content: (
             <div className="flex h-full w-full items-center justify-center bg-[linear-gradient(to_bottom_right,var(--pink-500),var(--rose-500))] text-white text-2xl font-bold p-8 text-center rounded-xl shadow-2xl">
                 برستيجك محفوظ ✨
@@ -61,7 +61,7 @@ export const reviews = [
     {
         name: "عبدالعزيز الصلي",
         username: "@azzozSelli",
-        body: "كنت شايل هم الفاتورة الإلكترونية، مع بِلفورا الموضوع صار لعبة. سجل خدماتك واضغط طباعة. شكراً لكم!",
+        body: "كنت شايل هم الفاتورة الإلكترونية، مع بلفورا الموضوع صار لعبة. سجل خدماتك واضغط طباعة. شكراً لكم!",
         img: "https://avatar.vercel.sh/jill",
     },
     {
@@ -73,7 +73,7 @@ export const reviews = [
     {
         name: "عمران",
         username: "@umran",
-        body: "خدمة عملاء سريعة ونظام مستقر. بِلفورا حل لي مشكلة المحاسبة بالكامل.",
+        body: "خدمة عملاء سريعة ونظام مستقر. بلفورا حل لي مشكلة المحاسبة بالكامل.",
         img: "https://avatar.vercel.sh/jane",
     },
     {

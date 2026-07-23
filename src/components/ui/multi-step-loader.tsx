@@ -1,6 +1,7 @@
 "use client";
 
 import { cn } from "@/lib/utils";
+import { Logo } from "@/components/brand/Logo";
 import { AnimatePresence, m } from "framer-motion";
 import { useState, useEffect } from "react";
 import { Check, Loader2 } from "lucide-react";
@@ -53,7 +54,7 @@ const LoaderCore = ({
 						transition={{ delay: index * 0.1 }}
 						className={cn(
 							"flex items-center gap-3 p-3 rounded-xl transition-all duration-300",
-							isActive && "bg-white/80 shadow-lg shadow-purple-500/10",
+							isActive && "bg-surface/80 shadow-lg shadow-brand",
 							isComplete && "bg-green-50/80",
 							isPending && "opacity-50"
 						)}
@@ -66,12 +67,12 @@ const LoaderCore = ({
 								<m.div
 									animate={{ rotate: 360 }}
 									transition={{ duration: 1, repeat: Infinity, ease: "linear" }}
-									className="h-8 w-8 rounded-full bg-gradient-to-br from-[#7f2dfb] to-[#6a1fd8] flex items-center justify-center shadow-lg shadow-purple-500/30"
+									className="h-8 w-8 rounded-full bg-gradient-to-br from-brand to-brand-hover flex items-center justify-center shadow-lg shadow-brand"
 								>
 									<Loader2 className="h-4 w-4 text-white" />
 								</m.div>
 							) : (
-								<div className="h-8 w-8 rounded-full bg-gray-200 flex items-center justify-center">
+								<div className="h-8 w-8 rounded-full bg-surface-inset flex items-center justify-center">
 									<div className="h-2 w-2 rounded-full bg-gray-400" />
 								</div>
 							)}
@@ -81,9 +82,9 @@ const LoaderCore = ({
 						<span
 							className={cn(
 								"text-sm font-medium transition-colors",
-								isActive && "text-[#012d46]",
+								isActive && "text-foreground",
 								isComplete && "text-green-700",
-								isPending && "text-gray-400"
+								isPending && "text-disabled"
 							)}
 						>
 							{loadingState.text}
@@ -139,7 +140,7 @@ export const MultiStepLoader = ({
 					className="fixed inset-0 z-[100] flex items-center justify-center backdrop-blur-md"
 				>
 					{/* Gradient Background */}
-					<div className="absolute inset-0 bg-gradient-to-br from-gray-50/95 via-white/95 to-purple-50/95" />
+					<div className="absolute inset-0 bg-gradient-to-br from-surface-2 via-white/95 to-brand-soft/95" />
 					
 					{/* Aurora Effects */}
 					<m.div
@@ -149,7 +150,7 @@ export const MultiStepLoader = ({
 							scale: [1, 1.1, 1],
 						}}
 						transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
-						className="absolute top-1/4 left-1/4 w-[400px] h-[400px] bg-gradient-to-br from-[#7f2dfb]/20 to-transparent rounded-full blur-[100px]"
+						className="absolute top-1/4 left-1/4 w-[400px] h-[400px] bg-gradient-to-br from-brand/20 to-transparent rounded-full blur-[100px]"
 					/>
 					<m.div
 						animate={{
@@ -169,7 +170,7 @@ export const MultiStepLoader = ({
 							animate={{ opacity: 1, y: 0 }}
 							className="text-center mb-8"
 						>
-							<span className="text-2xl font-bold text-[#012d46]">بِلفورا</span>
+							<Logo size={26} color="ink" />
 						</m.div>
 
 						{/* Loading Steps */}
@@ -177,7 +178,7 @@ export const MultiStepLoader = ({
 							initial={{ opacity: 0, scale: 0.95 }}
 							animate={{ opacity: 1, scale: 1 }}
 							transition={{ delay: 0.2 }}
-							className="bg-white/70 backdrop-blur-xl rounded-3xl border border-white/50 p-8 shadow-xl shadow-gray-200/50"
+							className="bg-surface/70 backdrop-blur-xl rounded-3xl border border-white/50 p-8 shadow-xl shadow-gray-200/50"
 						>
 							<LoaderCore loadingStates={loadingStates} value={currentState} />
 						</m.div>
@@ -190,7 +191,7 @@ export const MultiStepLoader = ({
 									className={cn(
 										"h-1.5 rounded-full transition-all duration-300",
 										index <= currentState
-											? "w-6 bg-[#7f2dfb]"
+											? "w-6 bg-brand"
 											: "w-1.5 bg-gray-300"
 									)}
 								/>

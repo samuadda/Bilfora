@@ -699,7 +699,7 @@ function AnalyticsContent() {
 					{/* Search */}
 					<div className="relative w-full md:w-64">
 						<Search
-							className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400"
+							className="absolute right-3 top-1/2 -translate-y-1/2 text-disabled"
 							size={16}
 						/>
 						<input
@@ -707,7 +707,7 @@ function AnalyticsContent() {
 							placeholder="ابحث في التقارير..."
 							value={searchTerm}
 							onChange={(e) => setSearchTerm(e.target.value)}
-							className="w-full rounded-xl border border-gray-200 pl-3 pr-9 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-purple-200"
+							className="w-full rounded-xl border border-border pl-3 pr-9 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-brand"
 						/>
 					</div>
 
@@ -715,7 +715,7 @@ function AnalyticsContent() {
 					<div className="relative w-full md:w-auto" ref={datePickerRef}>
 						<button
 							onClick={() => setShowDatePicker(!showDatePicker)}
-							className="w-full md:w-auto inline-flex items-center justify-between md:justify-start gap-2 rounded-xl bg-white border border-gray-200 text-gray-700 px-4 py-2 text-sm font-medium hover:bg-gray-50 active:translate-y-[1px]"
+							className="w-full md:w-auto inline-flex items-center justify-between md:justify-start gap-2 rounded-xl bg-surface border border-border text-muted-foreground px-4 py-2 text-sm font-medium hover:bg-surface-2 active:translate-y-[1px]"
 						>
 							<div className="flex items-center gap-2">
 								<CalendarRange size={16} />
@@ -725,40 +725,40 @@ function AnalyticsContent() {
 						</button>
 
 						{showDatePicker && (
-							<div className="absolute top-full right-0 mt-2 bg-white border border-gray-200 rounded-xl shadow-lg p-4 z-50 min-w-[320px]">
+							<div className="absolute top-full right-0 mt-2 bg-surface border border-border rounded-xl shadow-lg p-4 z-50 min-w-[320px]">
 								<div className="space-y-4">
-									<h3 className="font-semibold text-gray-900">اختر النطاق الزمني</h3>
+									<h3 className="font-semibold text-foreground">اختر النطاق الزمني</h3>
 									<div className="flex gap-2 flex-wrap">
-										<button onClick={() => setRange(7)} className="px-3 py-1 rounded-lg bg-gray-100 hover:bg-gray-200 text-sm">7 أيام</button>
-										<button onClick={() => setRange(30)} className="px-3 py-1 rounded-lg bg-gray-100 hover:bg-gray-200 text-sm">30 يوماً</button>
-										<button onClick={() => setRange(90)} className="px-3 py-1 rounded-lg bg-gray-100 hover:bg-gray-200 text-sm">3 أشهر</button>
-										<button onClick={() => setRange(180)} className="px-3 py-1 rounded-lg bg-gray-100 hover:bg-gray-200 text-sm">6 أشهر</button>
+										<button onClick={() => setRange(7)} className="px-3 py-1 rounded-lg bg-surface-inset hover:bg-surface-inset text-sm">7 أيام</button>
+										<button onClick={() => setRange(30)} className="px-3 py-1 rounded-lg bg-surface-inset hover:bg-surface-inset text-sm">30 يوماً</button>
+										<button onClick={() => setRange(90)} className="px-3 py-1 rounded-lg bg-surface-inset hover:bg-surface-inset text-sm">3 أشهر</button>
+										<button onClick={() => setRange(180)} className="px-3 py-1 rounded-lg bg-surface-inset hover:bg-surface-inset text-sm">6 أشهر</button>
 									</div>
 									<div className="border-t pt-4">
-										<h4 className="font-medium text-gray-700 mb-3">نطاق مخصص</h4>
+										<h4 className="font-medium text-muted-foreground mb-3">نطاق مخصص</h4>
 										<div className="grid grid-cols-2 gap-3">
 											<div>
-												<label className="block text-sm text-gray-600 mb-1">من</label>
+												<label className="block text-sm text-muted-foreground mb-1">من</label>
 												<input
 													type="date"
 													value={customFrom}
 													onChange={(e) => setCustomFrom(e.target.value)}
-													className="w-full rounded-lg border border-gray-200 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-purple-200"
+													className="w-full rounded-lg border border-border px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-brand"
 												/>
 											</div>
 											<div>
-												<label className="block text-sm text-gray-600 mb-1">إلى</label>
+												<label className="block text-sm text-muted-foreground mb-1">إلى</label>
 												<input
 													type="date"
 													value={customTo}
 													onChange={(e) => setCustomTo(e.target.value)}
-													className="w-full rounded-lg border border-gray-200 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-purple-200"
+													className="w-full rounded-lg border border-border px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-brand"
 												/>
 											</div>
 										</div>
 										<button
 											onClick={setCustomRange}
-											className="mt-3 w-full bg-purple-600 text-white px-4 py-2 rounded-lg hover:bg-purple-700 text-sm font-medium"
+											className="mt-3 w-full bg-brand text-white px-4 py-2 rounded-lg hover:bg-brand text-sm font-medium"
 										>
 											تطبيق
 										</button>
@@ -861,10 +861,10 @@ function AnalyticsContent() {
 			<m.div
 				initial={{ opacity: 0, y: 20 }}
 				animate={{ opacity: 1, y: 0 }}
-				className="bg-white p-8 rounded-3xl border border-gray-100 shadow-sm"
+				className="bg-surface p-8 rounded-3xl border border-border shadow-sm"
 			>
 				<div className="flex items-center justify-between mb-8">
-					<h3 className="text-xl font-bold text-[#012d46]">نمو الإيرادات</h3>
+					<h3 className="text-xl font-bold text-foreground">نمو الإيرادات</h3>
 				</div>
 				<EnhancedChart
 					data={revenueByMonth}
@@ -884,10 +884,10 @@ function AnalyticsContent() {
 					initial={{ opacity: 0, y: 20 }}
 					animate={{ opacity: 1, y: 0 }}
 					transition={{ delay: 0.1 }}
-					className="bg-white p-8 rounded-3xl border border-gray-100 shadow-sm flex flex-col lg:col-span-2"
+					className="bg-surface p-8 rounded-3xl border border-border shadow-sm flex flex-col lg:col-span-2"
 				>
-					<h3 className="text-xl font-bold text-[#012d46] mb-2">الإيرادات الشهرية</h3>
-					<p className="text-sm text-gray-500 mb-8">تطور الإيرادات عبر الأشهر</p>
+					<h3 className="text-xl font-bold text-foreground mb-2">الإيرادات الشهرية</h3>
+					<p className="text-sm text-subtle mb-8">تطور الإيرادات عبر الأشهر</p>
 					<EnhancedChart
 						data={revenueByMonth}
 						dataKey="revenue"
@@ -902,10 +902,10 @@ function AnalyticsContent() {
 					initial={{ opacity: 0, y: 20 }}
 					animate={{ opacity: 1, y: 0 }}
 					transition={{ delay: 0.2 }}
-					className="bg-white p-8 rounded-3xl border border-gray-100 shadow-sm flex flex-col"
+					className="bg-surface p-8 rounded-3xl border border-border shadow-sm flex flex-col"
 				>
-					<h3 className="text-xl font-bold text-[#012d46] mb-2">حالة الفواتير</h3>
-					<p className="text-sm text-gray-500 mb-8">توزيع الفواتير حسب الحالة</p>
+					<h3 className="text-xl font-bold text-foreground mb-2">حالة الفواتير</h3>
+					<p className="text-sm text-subtle mb-8">توزيع الفواتير حسب الحالة</p>
 					<div className="flex-1 min-h-[300px]">
 						<ResponsiveContainer width="100%" height="100%">
 							<PieChart>
@@ -942,7 +942,7 @@ function AnalyticsContent() {
 									height={36}
 									iconType="circle"
 									formatter={(value) => (
-										<span className="text-sm font-medium text-gray-600 mr-2">
+										<span className="text-sm font-medium text-muted-foreground mr-2">
 											{value}
 										</span>
 									)}
@@ -959,9 +959,9 @@ function AnalyticsContent() {
 					initial={{ opacity: 0, y: 20 }}
 					animate={{ opacity: 1, y: 0 }}
 					transition={{ delay: 0.3 }}
-					className="bg-white p-8 rounded-3xl border border-gray-100 shadow-sm"
+					className="bg-surface p-8 rounded-3xl border border-border shadow-sm"
 				>
-					<h3 className="text-xl font-bold text-[#012d46] mb-8">الإيرادات حسب الفئة</h3>
+					<h3 className="text-xl font-bold text-foreground mb-8">الإيرادات حسب الفئة</h3>
 					<RevenueByCategory categories={revenueByCategory} />
 				</m.div>
 			)}
@@ -971,13 +971,13 @@ function AnalyticsContent() {
 				initial={{ opacity: 0, y: 20 }}
 				animate={{ opacity: 1, y: 0 }}
 				transition={{ delay: 0.4 }}
-				className="bg-white p-8 rounded-3xl border border-gray-100 shadow-sm"
+				className="bg-surface p-8 rounded-3xl border border-border shadow-sm"
 			>
 				<div className="flex items-center justify-between mb-6">
-					<h3 className="text-xl font-bold text-[#012d46]">أفضل العملاء</h3>
+					<h3 className="text-xl font-bold text-foreground">أفضل العملاء</h3>
 					<button
 						onClick={() => router.push("/dashboard/analytics/top-customers")}
-						className="text-[#7f2dfb] text-sm font-bold hover:underline"
+						className="text-brand text-sm font-bold hover:underline"
 					>
 						عرض الكل
 					</button>
@@ -987,15 +987,15 @@ function AnalyticsContent() {
 						topClients.map((client, index) => (
 							<div
 								key={index}
-								className="flex items-center justify-between p-4 bg-gray-50/50 rounded-2xl hover:bg-gray-50 transition-colors"
+								className="flex items-center justify-between p-4 bg-surface-2 rounded-2xl hover:bg-surface-2 transition-colors"
 							>
 								<div className="flex items-center gap-4">
 									<div className="w-10 h-10 rounded-full bg-blue-50 text-blue-600 flex items-center justify-center font-bold text-sm">
 										{client.name.charAt(0).toUpperCase()}
 									</div>
 									<div>
-										<p className="font-bold text-gray-900">{client.name}</p>
-										<p className="text-xs text-gray-500 font-medium mt-0.5">
+										<p className="font-bold text-foreground">{client.name}</p>
+										<p className="text-xs text-subtle font-medium mt-0.5">
 											{client.invoiceCount} فاتورة مدفوعة
 										</p>
 									</div>
@@ -1009,8 +1009,8 @@ function AnalyticsContent() {
 						))
 					) : (
 						<div className="text-center py-12">
-							<Users className="w-12 h-12 text-gray-300 mx-auto mb-3" />
-							<p className="text-gray-500 font-medium">لا توجد بيانات كافية</p>
+							<Users className="w-12 h-12 text-disabled mx-auto mb-3" />
+							<p className="text-subtle font-medium">لا توجد بيانات كافية</p>
 						</div>
 					)}
 				</div>

@@ -22,6 +22,11 @@ export * from "./custom-select";
 // Surfaces
 export { Card } from "./Card";
 export { Button } from "./Button";
+export { Badge, invoiceStatusVariant } from "./Badge";
+export type { BadgeVariant } from "./Badge";
+
+// Brand
+export { Logo } from "@/components/brand/Logo";
 
 // Data Display
 export { Price } from "./Price";

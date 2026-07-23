@@ -103,7 +103,7 @@ export default function DashboardDonutChart({
         </ChartContainer>
       </div>
 
-      <div className="mt-6 pt-4 border-t border-gray-100">
+      <div className="mt-6 pt-4 border-t border-border">
         <div className="grid grid-cols-2 gap-3">
           {data.map((item, index) => {
             const percentage =
@@ -115,10 +115,10 @@ export default function DashboardDonutChart({
                   style={{ backgroundColor: item.color }}
                 />
                 <div className="flex-1 min-w-0">
-                  <p className="text-sm font-medium text-gray-700 truncate">
+                  <p className="text-sm font-medium text-muted-foreground truncate">
                     {item.name}
                   </p>
-                  <p className="text-xs text-gray-500">
+                  <p className="text-xs text-subtle">
                     {item.value} ({percentage}%)
                   </p>
                 </div>

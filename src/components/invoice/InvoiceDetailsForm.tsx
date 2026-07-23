@@ -75,12 +75,12 @@ export function InvoiceDetailsForm({
                             <Button
                                 variant="secondary"
                                 className={cn(
-                                    "w-full justify-start text-start font-normal bg-white border border-gray-200 hover:bg-gray-50 text-gray-900 shadow-none flex items-center gap-2 px-4 py-2 text-sm h-auto",
+                                    "w-full justify-start text-start font-normal bg-surface border border-border hover:bg-surface-2 text-foreground shadow-none flex items-center gap-2 px-4 py-2 text-sm h-auto",
                                     !formData.issue_date && "text-muted-foreground",
                                     errors?.issue_date && "border-red-300 bg-red-50 text-red-900"
                                 )}
                             >
-                                <CalendarIcon className="h-4 w-4 text-gray-500" />
+                                <CalendarIcon className="h-4 w-4 text-subtle" />
                                 {formData.issue_date ? format(parseDate(formData.issue_date)!, "dd/MM/yyyy") : <span>اختر تاريخ</span>}
                             </Button>
                         </PopoverTrigger>
@@ -130,12 +130,12 @@ export function InvoiceDetailsForm({
                             <Button
                                 variant="secondary"
                                 className={cn(
-                                    "w-full justify-start text-start font-normal bg-white border border-gray-200 hover:bg-gray-50 text-gray-900 shadow-none flex items-center gap-2 px-4 py-2 text-sm h-auto",
+                                    "w-full justify-start text-start font-normal bg-surface border border-border hover:bg-surface-2 text-foreground shadow-none flex items-center gap-2 px-4 py-2 text-sm h-auto",
                                     !formData.due_date && "text-muted-foreground",
                                     errors?.due_date && "border-red-300 bg-red-50 text-red-900"
                                 )}
                             >
-                                <CalendarIcon className="h-4 w-4 text-gray-500" />
+                                <CalendarIcon className="h-4 w-4 text-subtle" />
                                 {formData.due_date ? format(parseDate(formData.due_date)!, "dd/MM/yyyy") : <span>اختر تاريخ</span>}
                             </Button>
                         </PopoverTrigger>

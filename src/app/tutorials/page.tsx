@@ -7,7 +7,7 @@ export default function TutorialsPage() {
         {
             title: "شرح إنشاء فاتورة جديدة",
             duration: "2:30",
-            thumbnailColor: "bg-purple-100"
+            thumbnailColor: "bg-brand-soft-2"
         },
         {
             title: "إضافة عميل جديد وتعديل بياناته",
@@ -27,7 +27,7 @@ export default function TutorialsPage() {
     ];
 
 	return (
-		<div className="min-h-screen bg-white">
+		<div className="min-h-screen bg-surface">
 			<Navbar />
 			<main className="pt-32 pb-20 px-4 max-w-6xl mx-auto">
 				<div className="text-center mb-16">
@@ -35,12 +35,12 @@ export default function TutorialsPage() {
 						as="h1"
 						animation="blurIn"
 						once={true}
-						className="text-4xl font-bold md:text-5xl text-[#012d46] mb-6"
+						className="text-4xl font-bold md:text-5xl text-foreground mb-6"
 					>
 						الدروس التعليمية
 					</TextAnimate>
-					<p className="text-xl text-gray-600 max-w-2xl mx-auto">
-						تعلم كيف تستفيد من كل ميزات بِلفورا خطوة بخطوة
+					<p className="text-xl text-muted-foreground max-w-2xl mx-auto">
+						تعلم كيف تستفيد من كل ميزات بلفورا خطوة بخطوة
 					</p>
 				</div>
 
@@ -49,13 +49,13 @@ export default function TutorialsPage() {
                         <div key={index} className="group cursor-pointer">
                             <div className={`relative aspect-video ${tutorial.thumbnailColor} rounded-2xl mb-4 overflow-hidden shadow-sm group-hover:shadow-md transition-all`}>
                                 <div className="absolute inset-0 flex items-center justify-center">
-                                    <PlayCircle className="w-16 h-16 text-[#012d46] opacity-80 group-hover:opacity-100 group-hover:scale-110 transition-all" />
+                                    <PlayCircle className="w-16 h-16 text-foreground opacity-80 group-hover:opacity-100 group-hover:scale-110 transition-all" />
                                 </div>
-                                <div className="absolute bottom-3 right-3 bg-black/70 text-white text-xs px-2 py-1 rounded-md">
+                                <div className="absolute bottom-3 right-3 bg-overlay text-white text-xs px-2 py-1 rounded-md">
                                     {tutorial.duration}
                                 </div>
                             </div>
-                            <h3 className="font-bold text-lg text-[#012d46] group-hover:text-[#7f2dfb] transition-colors">
+                            <h3 className="font-bold text-lg text-foreground group-hover:text-brand transition-colors">
                                 {tutorial.title}
                             </h3>
                         </div>

@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import { Logo } from "@/components/brand/Logo";
 import { useState } from "react";
 import { supabase } from "@/lib/supabase";
 import { useRouter } from "next/navigation";
@@ -116,7 +117,7 @@ export default function RegisterPage() {
 	};
 
 	const getPasswordStrength = (password: string) => {
-		if (!password) return { strength: 0, color: "bg-gray-200", text: "" };
+		if (!password) return { strength: 0, color: "bg-surface-inset", text: "" };
 		let score = 0;
 		if (password.length >= 8) score++;
 		if (/[A-Za-z]/.test(password)) score++;
@@ -140,7 +141,7 @@ export default function RegisterPage() {
 				loop={false}
 			/>
 			
-			<div className="min-h-screen bg-gray-50 relative overflow-hidden flex items-center justify-center px-4 py-12">
+			<div className="min-h-screen bg-surface-2 relative overflow-hidden flex items-center justify-center px-4 py-12">
 				{/* Aurora Background - Light Mode */}
 			<div className="absolute inset-0 overflow-hidden">
 				<m.div
@@ -150,7 +151,7 @@ export default function RegisterPage() {
 						scale: [1, 1.1, 1],
 					}}
 					transition={{ duration: 20, repeat: Infinity, ease: "easeInOut" }}
-					className="absolute -top-1/2 -left-1/4 w-[800px] h-[800px] bg-gradient-to-br from-[#7f2dfb]/20 via-purple-400/10 to-transparent rounded-full blur-[120px]"
+					className="absolute -top-1/2 -left-1/4 w-[800px] h-[800px] bg-gradient-to-br from-brand/20 via-brand/10 to-transparent rounded-full blur-[120px]"
 				/>
 				<m.div
 					animate={{
@@ -186,16 +187,16 @@ export default function RegisterPage() {
 				transition={{ duration: 0.5 }}
 				className="relative z-10 w-full max-w-md"
 			>
-				<div className="bg-white/70 backdrop-blur-2xl rounded-3xl border border-white/50 p-8 shadow-xl shadow-gray-200/50">
+				<div className="bg-surface/70 backdrop-blur-2xl rounded-3xl border border-white/50 p-8 shadow-xl shadow-gray-200/50">
 					{/* Tab Toggle */}
 					<div className="flex items-center justify-center mb-8">
-						<div className="bg-gray-100 rounded-full p-1 flex">
-							<span className="px-5 py-2 text-sm font-medium bg-white text-[#012d46] rounded-full shadow-sm">
+						<div className="bg-surface-inset rounded-full p-1 flex">
+							<span className="px-5 py-2 text-sm font-medium bg-surface text-foreground rounded-full shadow-sm">
 								حساب جديد
 							</span>
 							<Link
 								href="/login"
-								className="px-5 py-2 text-sm font-medium text-gray-500 hover:text-gray-700 transition-colors rounded-full"
+								className="px-5 py-2 text-sm font-medium text-subtle hover:text-muted-foreground transition-colors rounded-full"
 							>
 								تسجيل الدخول
 							</Link>
@@ -204,10 +205,10 @@ export default function RegisterPage() {
 
 					{/* Header */}
 					<div className="text-center mb-8">
-						<h1 className="text-2xl font-bold text-[#012d46] mb-2">
+						<h1 className="text-2xl font-bold text-foreground mb-2">
 							أهلاً! خلّنا نبدأ
 						</h1>
-						<p className="text-gray-500 text-sm">
+						<p className="text-subtle text-sm">
 							حسابك المجاني جاهز خلال ثواني
 						</p>
 					</div>
@@ -225,15 +226,15 @@ export default function RegisterPage() {
 
 					<form onSubmit={handleSubmit} className="space-y-4">
                         {/* Account Type Selection */}
-                        <div className="flex bg-gray-100 p-1 rounded-xl mb-6">
+                        <div className="flex bg-surface-inset p-1 rounded-xl mb-6">
                             <button
                                 type="button"
                                 onClick={() => setFormData(prev => ({ ...prev, accountType: "individual" }))}
                                 className={cn(
                                     "flex-1 py-2 text-sm font-medium rounded-lg transition-all flex items-center justify-center gap-2",
                                     formData.accountType === "individual"
-                                        ? "bg-white text-[#7f2dfb] shadow-sm"
-                                        : "text-gray-500 hover:text-gray-700"
+                                        ? "bg-surface text-brand shadow-sm"
+                                        : "text-subtle hover:text-muted-foreground"
                                 )}
                             >
                                 <User size={16} />
@@ -245,8 +246,8 @@ export default function RegisterPage() {
                                 className={cn(
                                     "flex-1 py-2 text-sm font-medium rounded-lg transition-all flex items-center justify-center gap-2",
                                     formData.accountType === "business"
-                                        ? "bg-white text-[#7f2dfb] shadow-sm"
-                                        : "text-gray-500 hover:text-gray-700"
+                                        ? "bg-surface text-brand shadow-sm"
+                                        : "text-subtle hover:text-muted-foreground"
                                 )}
                             >
                                 <Building2 size={16} />
@@ -256,11 +257,11 @@ export default function RegisterPage() {
 
 						{/* Name */}
 						<div>
-							<label htmlFor="fullname" className="block text-sm font-medium text-gray-700 mb-2">
+							<label htmlFor="fullname" className="block text-sm font-medium text-muted-foreground mb-2">
 								الاسم
 							</label>
 							<div className="relative">
-								<User className="absolute right-4 top-1/2 -translate-y-1/2 h-4 w-4 text-gray-400" />
+								<User className="absolute right-4 top-1/2 -translate-y-1/2 h-4 w-4 text-disabled" />
 								<input
 									type="text"
 									id="fullname"
@@ -269,7 +270,7 @@ export default function RegisterPage() {
 									onChange={handleChange}
 									placeholder="اسمك أو اسم منشأتك"
 									className={cn(
-										"block w-full rounded-xl bg-gray-50/80 border border-gray-200 py-4 pr-11 pl-4 text-gray-900 placeholder:text-gray-400 focus:bg-white focus:border-[#7f2dfb] focus:ring-2 focus:ring-[#7f2dfb]/10 focus:outline-none transition-all text-sm leading-relaxed",
+										"block w-full rounded-xl bg-surface-2 border border-border py-4 pr-11 pl-4 text-foreground placeholder:text-disabled focus:bg-surface focus:border-brand focus:ring-2 focus:ring-brand/10 focus:outline-none transition-all text-sm leading-relaxed",
 										errors.fullname && "border-red-300 focus:border-red-500 focus:ring-red-500/10"
 									)}
 								/>
@@ -279,11 +280,11 @@ export default function RegisterPage() {
 
 						{/* Email */}
 						<div>
-							<label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-2">
+							<label htmlFor="email" className="block text-sm font-medium text-muted-foreground mb-2">
 								البريد الإلكتروني
 							</label>
 							<div className="relative">
-								<Mail className="absolute right-4 top-1/2 -translate-y-1/2 h-4 w-4 text-gray-400" />
+								<Mail className="absolute right-4 top-1/2 -translate-y-1/2 h-4 w-4 text-disabled" />
 								<input
 									type="email"
 									id="email"
@@ -292,7 +293,7 @@ export default function RegisterPage() {
 									onChange={handleChange}
 									placeholder="name@example.com"
 									className={cn(
-										"block w-full rounded-xl bg-gray-50/80 border border-gray-200 py-4 pr-11 pl-4 text-gray-900 placeholder:text-gray-400 focus:bg-white focus:border-[#7f2dfb] focus:ring-2 focus:ring-[#7f2dfb]/10 focus:outline-none transition-all text-sm leading-relaxed",
+										"block w-full rounded-xl bg-surface-2 border border-border py-4 pr-11 pl-4 text-foreground placeholder:text-disabled focus:bg-surface focus:border-brand focus:ring-2 focus:ring-brand/10 focus:outline-none transition-all text-sm leading-relaxed",
 										errors.email && "border-red-300 focus:border-red-500 focus:ring-red-500/10"
 									)}
 								/>
@@ -302,11 +303,11 @@ export default function RegisterPage() {
 
 						{/* Password */}
 					<div>
-						<label htmlFor="password" className="block text-sm font-medium text-gray-700 mb-2">
+						<label htmlFor="password" className="block text-sm font-medium text-muted-foreground mb-2">
 							كلمة المرور
 						</label>
 						<div className="relative">
-							<Lock className="absolute right-4 top-1/2 -translate-y-1/2 h-4 w-4 text-gray-400" />
+							<Lock className="absolute right-4 top-1/2 -translate-y-1/2 h-4 w-4 text-disabled" />
 							<input
 								type={showPassword ? "text" : "password"}
 								id="password"
@@ -315,14 +316,14 @@ export default function RegisterPage() {
 								onChange={handleChange}
 								placeholder="8 خانات على الأقل"
 								className={cn(
-									"block w-full rounded-xl bg-gray-50/80 border border-gray-200 py-4 pr-11 pl-11 text-gray-900 placeholder:text-gray-400 placeholder:text-right focus:bg-white focus:border-[#7f2dfb] focus:ring-2 focus:ring-[#7f2dfb]/10 focus:outline-none transition-all text-sm leading-relaxed",
+									"block w-full rounded-xl bg-surface-2 border border-border py-4 pr-11 pl-11 text-foreground placeholder:text-disabled placeholder:text-right focus:bg-surface focus:border-brand focus:ring-2 focus:ring-brand/10 focus:outline-none transition-all text-sm leading-relaxed",
 									errors.password && "border-red-300 focus:border-red-500 focus:ring-red-500/10"
 								)}
 							/>
 							<button
 								type="button"
 								onClick={() => setShowPassword((s) => !s)}
-								className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-600"
+								className="absolute left-4 top-1/2 -translate-y-1/2 text-disabled hover:text-muted-foreground"
 							>
 								{showPassword ? <EyeClosed size={16} /> : <Eye size={16} />}
 							</button>
@@ -335,12 +336,12 @@ export default function RegisterPage() {
 											<div
 												key={level}
 												className={`h-1.5 flex-1 rounded-full transition-colors ${
-													level <= passwordStrength.strength ? passwordStrength.color : "bg-gray-200"
+													level <= passwordStrength.strength ? passwordStrength.color : "bg-surface-inset"
 												}`}
 											/>
 										))}
 									</div>
-									<span className="text-xs text-gray-500">{passwordStrength.text}</span>
+									<span className="text-xs text-subtle">{passwordStrength.text}</span>
 								</div>
 							)}
 							{errors.password && <p className="mt-1.5 text-xs text-red-500 pr-1">{errors.password}</p>}
@@ -352,7 +353,7 @@ export default function RegisterPage() {
 							disabled={isLoading}
 							whileHover={{ scale: 1.01 }}
 							whileTap={{ scale: 0.99 }}
-							className="w-full bg-[#7f2dfb] text-white font-semibold py-3.5 px-4 rounded-xl transition-all disabled:opacity-70 disabled:cursor-not-allowed flex items-center justify-center gap-2 hover:bg-[#6a1fd8] mt-6 shadow-lg shadow-purple-500/20"
+							className="w-full bg-brand text-white font-semibold py-3.5 px-4 rounded-xl transition-all disabled:opacity-70 disabled:cursor-not-allowed flex items-center justify-center gap-2 hover:bg-brand-hover mt-6 shadow-lg shadow-brand"
 						>
 							{isLoading ? (
 								<>
@@ -369,18 +370,18 @@ export default function RegisterPage() {
 					</form>
 
 					{/* Footer */}
-					<p className="text-center text-xs text-gray-400 mt-6">
+					<p className="text-center text-xs text-disabled mt-6">
 						بإنشاء حسابك، أنت توافق على{" "}
-						<Link href="/terms" className="text-gray-600 hover:text-[#7f2dfb] underline">الشروط</Link>
+						<Link href="/terms" className="text-muted-foreground hover:text-brand underline">الشروط</Link>
 						{" "}و{" "}
-						<Link href="/privacy" className="text-gray-600 hover:text-[#7f2dfb] underline">الخصوصية</Link>
+						<Link href="/privacy" className="text-muted-foreground hover:text-brand underline">الخصوصية</Link>
 					</p>
 				</div>
 
 				{/* Logo below card */}
 				<div className="flex items-center justify-center mt-8">
-					<Link href="/" className="flex items-center gap-2 text-gray-400 hover:text-[#7f2dfb] transition-colors">
-						<span className="text-lg font-bold">بِلفورا</span>
+					<Link href="/" className="flex items-center gap-2 text-disabled hover:text-brand transition-colors">
+						<Logo size={22} color="ink" />
 					</Link>
 				</div>
 			</m.div>
@@ -397,10 +398,10 @@ export default function RegisterPage() {
 						>
 							<Check className="w-10 h-10 text-white" />
 						</m.div>
-						<DialogTitle className="text-2xl font-bold text-[#012d46]">
+						<DialogTitle className="text-2xl font-bold text-foreground">
 							تمام!
 						</DialogTitle>
-						<DialogDescription className="text-gray-500">
+						<DialogDescription className="text-subtle">
 							بس فعّل حسابك من الرابط اللي أرسلناه لبريدك
 							<br />
 							وبعدين سجّل دخولك وابدأ!
@@ -414,7 +415,7 @@ export default function RegisterPage() {
 								setShowConfirmModal(false);
 								router.push("/login");
 							}}
-							className="w-full bg-[#7f2dfb] text-white font-bold py-3.5 px-6 rounded-xl hover:bg-[#6a1fd8] transition-colors shadow-lg shadow-purple-500/20"
+							className="w-full bg-brand text-white font-bold py-3.5 px-6 rounded-xl hover:bg-brand-hover transition-colors shadow-lg shadow-brand"
 						>
 							تمام، خلّني أسجّل دخولي
 						</m.button>

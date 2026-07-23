@@ -231,7 +231,7 @@ export function InvoicePDF_Regular({
 				{/* Footer */}
 				<View style={s.footer}>
 					<Text style={s.footerText}>
-						صُنعت هذه الفاتورة بواسطة منصة بيلفورة
+						صُنعت هذه الفاتورة بواسطة منصة بلفورا
 					</Text>
 				</View>
 			</Page>

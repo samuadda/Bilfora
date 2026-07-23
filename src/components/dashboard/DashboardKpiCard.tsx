@@ -25,7 +25,7 @@ export default function DashboardKpiCard({
 	delay = 0,
 }: DashboardKpiCardProps) {
 	const colors = {
-		purple: "bg-purple-50 text-brand-primary",
+		purple: "bg-brand-soft text-brand",
 		blue: "bg-blue-50 text-blue-600",
 		green: "bg-green-50 text-green-600",
 		orange: "bg-orange-50 text-orange-600",
@@ -40,10 +40,10 @@ export default function DashboardKpiCard({
 			initial={{ opacity: 0, y: 20 }}
 			animate={{ opacity: 1, y: 0 }}
 			transition={{ delay, duration: 0.5 }}
-			className="bg-white p-6 rounded-2xl border border-gray-100 shadow-sm hover:shadow-lg hover:border-gray-200 transition-all duration-300 relative overflow-hidden group h-full flex flex-col"
+			className="bg-surface p-6 rounded-2xl border border-border shadow-sm hover:shadow-lg hover:border-border transition-all duration-300 relative overflow-hidden group h-full flex flex-col"
 		>
 			{/* Subtle gradient background */}
-			<div className="absolute top-0 right-0 w-40 h-40 bg-gradient-to-br from-gray-50/30 to-transparent rounded-bl-full -mr-12 -mt-12 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+			<div className="absolute top-0 right-0 w-40 h-40 bg-gradient-to-br from-surface-2 to-transparent rounded-bl-full -mr-12 -mt-12 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
 
 			<div className="flex justify-between items-start mb-5 relative z-10 gap-3 w-full">
 				<div
@@ -75,7 +75,7 @@ export default function DashboardKpiCard({
 							})}%
 						</span>
 						{trend.label && (
-							<span className="text-gray-600 font-normal text-[10px] hidden sm:inline">
+							<span className="text-muted-foreground font-normal text-[10px] hidden sm:inline">
 								{trend.label}
 							</span>
 						)}
@@ -83,10 +83,10 @@ export default function DashboardKpiCard({
 				)}
 			</div>
 			<div className="relative z-10 flex-1 flex flex-col w-full">
-				<p className="text-gray-600 text-sm font-medium mb-2 text-right">
+				<p className="text-muted-foreground text-sm font-medium mb-2 text-right">
 					{title}
 				</p>
-				<h3 className="text-2xl sm:text-3xl font-bold text-gray-900 tracking-tight text-right">
+				<h3 className="text-2xl sm:text-3xl font-bold text-foreground tracking-tight text-right">
 					{value}
 				</h3>
 			</div>

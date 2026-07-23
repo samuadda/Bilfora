@@ -27,7 +27,7 @@ export default function KPICard({
 	delay = 0,
 }: KPICardProps) {
 	const colors = {
-		purple: "bg-purple-50 text-brand-primary",
+		purple: "bg-brand-soft text-brand",
 		blue: "bg-blue-50 text-blue-600",
 		green: "bg-green-50 text-green-600",
 		pink: "bg-pink-50 text-pink-600",
@@ -43,10 +43,10 @@ export default function KPICard({
 			initial={{ opacity: 0, y: 20 }}
 			animate={{ opacity: 1, y: 0 }}
 			transition={{ delay, duration: 0.5 }}
-			className="bg-white p-6 rounded-3xl border border-gray-100 shadow-sm hover:shadow-md transition-all duration-300 relative overflow-hidden group h-full flex flex-col"
+			className="bg-surface p-6 rounded-3xl border border-border shadow-sm hover:shadow-md transition-all duration-300 relative overflow-hidden group h-full flex flex-col"
 		>
 			{/* Subtle gradient background */}
-			<div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-gray-50/50 to-transparent rounded-bl-full -mr-8 -mt-8 opacity-0 group-hover:opacity-100 transition-opacity" />
+			<div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-surface-2 to-transparent rounded-bl-full -mr-8 -mt-8 opacity-0 group-hover:opacity-100 transition-opacity" />
 
 			<div className="flex justify-between items-start mb-4 relative z-10 gap-2 w-full">
 				<div
@@ -73,7 +73,7 @@ export default function KPICard({
 						)}
 						<span className="flex-shrink-0">{Math.abs(trend.value).toFixed(1)}%</span>
 						{trend.label && (
-							<span className="text-gray-500 font-normal mr-1 text-[10px]">
+							<span className="text-subtle font-normal mr-1 text-[10px]">
 								{trend.label}
 							</span>
 						)}
@@ -81,14 +81,14 @@ export default function KPICard({
 				)}
 			</div>
 			<div className="relative z-10 flex-1 flex flex-col w-full">
-				<p className="text-gray-500 text-sm font-medium mb-1 opacity-80 text-right">
+				<p className="text-subtle text-sm font-medium mb-1 opacity-80 text-right">
 					{title}
 				</p>
-				<h3 className="text-3xl font-extrabold text-gray-900 tracking-tight text-right">
+				<h3 className="text-3xl font-extrabold text-foreground tracking-tight text-right">
 					{value}
 				</h3>
 				{subtitle && (
-					<p className="text-xs text-gray-400 mt-1 text-right">{subtitle}</p>
+					<p className="text-xs text-disabled mt-1 text-right">{subtitle}</p>
 				)}
 			</div>
 		</m.div>

@@ -37,7 +37,7 @@ export default function InvoicingSettingsClient({
 		initialSettings?.logo_url ?? null
 	);
 	const [brandColor, setBrandColor] = useState(
-		initialSettings?.brand_color ?? "#7f2dfb"
+		initialSettings?.brand_color ?? "var(--brand)"
 	);
 
 	// Card 2: Banking & Payments
@@ -160,19 +160,19 @@ export default function InvoicingSettingsClient({
 	return (
 		<div className="space-y-6 pb-20">
 			{/* --- Card 1: Brand Identity --- */}
-			<div className="bg-white rounded-2xl border border-gray-100 p-6 shadow-sm">
-				<h2 className="text-lg font-bold text-[#012d46] mb-5 flex items-center gap-2">
-					<Palette className="text-[#7f2dfb]" size={20} />
+			<div className="bg-surface rounded-2xl border border-border p-6 shadow-sm">
+				<h2 className="text-lg font-bold text-foreground mb-5 flex items-center gap-2">
+					<Palette className="text-brand" size={20} />
 					هوية الفاتورة
 				</h2>
 				<div className="grid grid-cols-1 md:grid-cols-2 gap-6">
 					{/* Logo Upload */}
 					<div className="space-y-2">
-						<label className="text-sm font-medium text-gray-700">
+						<label className="text-sm font-medium text-muted-foreground">
 							شعار الفاتورة
 						</label>
 						<div className="flex items-center gap-4">
-							<div className="relative w-16 h-16 rounded-xl overflow-hidden border border-gray-200 bg-gray-50 flex items-center justify-center">
+							<div className="relative w-16 h-16 rounded-xl overflow-hidden border border-border bg-surface-2 flex items-center justify-center">
 								{logoUrl ? (
 									/* eslint-disable-next-line @next/next/no-img-element */
 									<img
@@ -181,10 +181,10 @@ export default function InvoicingSettingsClient({
 										className="object-contain w-full h-full"
 									/>
 								) : (
-									<Building2 className="text-gray-300" size={24} />
+									<Building2 className="text-disabled" size={24} />
 								)}
 							</div>
-							<label className="px-4 py-2 rounded-xl bg-purple-50 text-[#7f2dfb] text-sm font-bold hover:bg-purple-100 cursor-pointer transition-colors">
+							<label className="px-4 py-2 rounded-xl bg-brand-soft text-brand text-sm font-bold hover:bg-brand-soft-2 cursor-pointer transition-colors">
 								رفع صورة
 								<input
 									type="file"
@@ -198,7 +198,7 @@ export default function InvoicingSettingsClient({
 
 					{/* Brand Color */}
 					<div className="space-y-2">
-						<label className="text-sm font-medium text-gray-700">
+						<label className="text-sm font-medium text-muted-foreground">
 							اللون الأساسي للعلامة التجارية
 						</label>
 						<div className="flex items-center gap-3">
@@ -207,16 +207,16 @@ export default function InvoicingSettingsClient({
 									type="color"
 									value={brandColor}
 									onChange={(e) => setBrandColor(e.target.value)}
-									className="w-full h-[4.5rem] rounded-xl border border-gray-200 p-1.5 cursor-pointer bg-white focus:ring-2 focus:ring-[#7f2dfb] focus:border-transparent transition-all"
+									className="w-full h-[4.5rem] rounded-xl border border-border p-1.5 cursor-pointer bg-surface focus:ring-2 focus:ring-brand focus:border-transparent transition-all"
 								/>
 							</div>
-							{brandColor !== "#7f2dfb" && (
+							{brandColor !== "var(--brand)" && (
 								<Button
 									variant="ghost"
 									size="sm"
 									type="button"
-									onClick={() => setBrandColor("#7f2dfb")}
-									className="h-[4.5rem] px-4 text-sm font-medium text-gray-500 hover:bg-gray-100 hover:text-gray-900 border border-gray-200"
+									onClick={() => setBrandColor("var(--brand)")}
+									className="h-[4.5rem] px-4 text-sm font-medium text-subtle hover:bg-surface-inset hover:text-foreground border border-border"
 								>
 									إرجاع اللون الافتراضي
 								</Button>
@@ -228,37 +228,37 @@ export default function InvoicingSettingsClient({
 			</div>
 
 			{/* --- Card 2: Banking & Payments --- */}
-			<div className="bg-white rounded-2xl border border-gray-100 p-6 shadow-sm">
-				<h2 className="text-lg font-bold text-[#012d46] mb-5 flex items-center gap-2">
-					<CreditCard className="text-[#7f2dfb]" size={20} />
+			<div className="bg-surface rounded-2xl border border-border p-6 shadow-sm">
+				<h2 className="text-lg font-bold text-foreground mb-5 flex items-center gap-2">
+					<CreditCard className="text-brand" size={20} />
 					بيانات الدفع
 				</h2>
 				<div className="grid grid-cols-1 md:grid-cols-2 gap-5">
 					<div className="space-y-2">
-						<label className="text-sm font-medium text-gray-700">
+						<label className="text-sm font-medium text-muted-foreground">
 							اسم البنك
 						</label>
 						<div className="relative">
 							<Building2
-								className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400"
+								className="absolute right-3 top-1/2 -translate-y-1/2 text-disabled"
 								size={18}
 							/>
 							<input
 								value={bankName}
 								onChange={(e) => setBankName(e.target.value)}
-								className="w-full rounded-xl border border-gray-200 pr-10 pl-4 py-3 text-sm focus:border-[#7f2dfb] focus:ring-[#7f2dfb] transition-all"
+								className="w-full rounded-xl border border-border pr-10 pl-4 py-3 text-sm focus:border-brand focus:ring-brand transition-all"
 								placeholder="مثال: مصرف الراجحي"
 							/>
 						</div>
 					</div>
 
 					<div className="space-y-2">
-						<label className="text-sm font-medium text-gray-700">
+						<label className="text-sm font-medium text-muted-foreground">
 							رقم الآيبان (IBAN)
 						</label>
 						<div className="relative">
 							<Globe
-								className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400"
+								className="absolute right-3 top-1/2 -translate-y-1/2 text-disabled"
 								size={18}
 							/>
 							<input
@@ -268,7 +268,7 @@ export default function InvoicingSettingsClient({
 									if (val.length <= 24) setIban(val);
 								}}
 								maxLength={24}
-								className="w-full rounded-xl border border-gray-200 pr-10 pl-4 py-3 text-sm focus:border-[#7f2dfb] focus:ring-[#7f2dfb] transition-all uppercase"
+								className="w-full rounded-xl border border-border pr-10 pl-4 py-3 text-sm focus:border-brand focus:ring-brand transition-all uppercase"
 								placeholder="SAxxxxxxxxxxxxxxxxxxxxxx"
 								style={{ direction: "ltr", textAlign: "right" }}
 							/>
@@ -278,26 +278,26 @@ export default function InvoicingSettingsClient({
 
 				<div className="grid grid-cols-1 md:grid-cols-2 gap-5">
 					<div className="space-y-2">
-						<label className="text-sm font-medium text-gray-700">
+						<label className="text-sm font-medium text-muted-foreground">
 							اسم البنك الإضافي 1
 						</label>
 						<div className="relative">
-							<Building2 className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400" size={18} />
+							<Building2 className="absolute right-3 top-1/2 -translate-y-1/2 text-disabled" size={18} />
 							<input
 								value={bankName2}
 								onChange={(e) => setBankName2(e.target.value)}
-								className="w-full rounded-xl border border-gray-200 pr-10 pl-4 py-3 text-sm focus:border-[#7f2dfb] focus:ring-[#7f2dfb] transition-all"
+								className="w-full rounded-xl border border-border pr-10 pl-4 py-3 text-sm focus:border-brand focus:ring-brand transition-all"
 								placeholder="مثال: البنك الأهلي"
 							/>
 						</div>
 					</div>
 
 					<div className="space-y-2">
-						<label className="text-sm font-medium text-gray-700">
+						<label className="text-sm font-medium text-muted-foreground">
 							رقم الآيبان (IBAN) للإضافي 1
 						</label>
 						<div className="relative">
-							<Globe className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400" size={18} />
+							<Globe className="absolute right-3 top-1/2 -translate-y-1/2 text-disabled" size={18} />
 							<input
 								value={iban2}
 								onChange={(e) => {
@@ -305,7 +305,7 @@ export default function InvoicingSettingsClient({
 									if (val.length <= 24) setIban2(val);
 								}}
 								maxLength={24}
-								className="w-full rounded-xl border border-gray-200 pr-10 pl-4 py-3 text-sm focus:border-[#7f2dfb] focus:ring-[#7f2dfb] transition-all uppercase"
+								className="w-full rounded-xl border border-border pr-10 pl-4 py-3 text-sm focus:border-brand focus:ring-brand transition-all uppercase"
 								placeholder="SAxxxxxxxxxxxxxxxxxxxxxx"
 								style={{ direction: "ltr", textAlign: "right" }}
 							/>
@@ -315,26 +315,26 @@ export default function InvoicingSettingsClient({
 
 				<div className="grid grid-cols-1 md:grid-cols-2 gap-5 mt-5">
 					<div className="space-y-2">
-						<label className="text-sm font-medium text-gray-700">
+						<label className="text-sm font-medium text-muted-foreground">
 							اسم البنك الإضافي 2
 						</label>
 						<div className="relative">
-							<Building2 className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400" size={18} />
+							<Building2 className="absolute right-3 top-1/2 -translate-y-1/2 text-disabled" size={18} />
 							<input
 								value={bankName3}
 								onChange={(e) => setBankName3(e.target.value)}
-								className="w-full rounded-xl border border-gray-200 pr-10 pl-4 py-3 text-sm focus:border-[#7f2dfb] focus:ring-[#7f2dfb] transition-all"
+								className="w-full rounded-xl border border-border pr-10 pl-4 py-3 text-sm focus:border-brand focus:ring-brand transition-all"
 								placeholder="مثال: بنك الإنماء"
 							/>
 						</div>
 					</div>
 
 					<div className="space-y-2">
-						<label className="text-sm font-medium text-gray-700">
+						<label className="text-sm font-medium text-muted-foreground">
 							رقم الآيبان (IBAN) للإضافي 2
 						</label>
 						<div className="relative">
-							<Globe className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400" size={18} />
+							<Globe className="absolute right-3 top-1/2 -translate-y-1/2 text-disabled" size={18} />
 							<input
 								value={iban3}
 								onChange={(e) => {
@@ -342,7 +342,7 @@ export default function InvoicingSettingsClient({
 									if (val.length <= 24) setIban3(val);
 								}}
 								maxLength={24}
-								className="w-full rounded-xl border border-gray-200 pr-10 pl-4 py-3 text-sm focus:border-[#7f2dfb] focus:ring-[#7f2dfb] transition-all uppercase"
+								className="w-full rounded-xl border border-border pr-10 pl-4 py-3 text-sm focus:border-brand focus:ring-brand transition-all uppercase"
 								placeholder="SAxxxxxxxxxxxxxxxxxxxxxx"
 								style={{ direction: "ltr", textAlign: "right" }}
 							/>
@@ -352,25 +352,25 @@ export default function InvoicingSettingsClient({
 			</div>
 
 			{/* --- Card 3: Defaults & Numbering --- */}
-			<div className="bg-white rounded-2xl border border-gray-100 p-6 shadow-sm">
-				<h2 className="text-lg font-bold text-[#012d46] mb-5 flex items-center gap-2">
-					<Hash className="text-[#7f2dfb]" size={20} />
+			<div className="bg-surface rounded-2xl border border-border p-6 shadow-sm">
+				<h2 className="text-lg font-bold text-foreground mb-5 flex items-center gap-2">
+					<Hash className="text-brand" size={20} />
 					الإعدادات الافتراضية
 				</h2>
 				<div className="grid grid-cols-1 md:grid-cols-2 gap-5">
 					<div className="space-y-2">
-						<label className="text-sm font-medium text-gray-700">
+						<label className="text-sm font-medium text-muted-foreground">
 							بادئة الفاتورة (Prefix)
 						</label>
 						<div className="relative">
 							<LayoutTemplate
-								className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400"
+								className="absolute right-3 top-1/2 -translate-y-1/2 text-disabled"
 								size={18}
 							/>
 							<input
 								value={prefix}
 								onChange={(e) => setPrefix(e.target.value)}
-								className="w-full rounded-xl border border-gray-200 pr-10 pl-4 py-3 text-sm focus:border-[#7f2dfb] focus:ring-[#7f2dfb] transition-all"
+								className="w-full rounded-xl border border-border pr-10 pl-4 py-3 text-sm focus:border-brand focus:ring-brand transition-all"
 								placeholder="INV-"
 								style={{ direction: "ltr", textAlign: "right" }}
 							/>
@@ -378,33 +378,33 @@ export default function InvoicingSettingsClient({
 					</div>
 
 					<div className="space-y-2">
-						<label className="text-sm font-medium text-gray-700">
+						<label className="text-sm font-medium text-muted-foreground">
 							التسلسل التالي (Next No.)
 						</label>
 						<div className="relative">
 							<Hash
-								className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400"
+								className="absolute right-3 top-1/2 -translate-y-1/2 text-disabled"
 								size={18}
 							/>
 							{/* Placeholder for now found in DB sequence table usually */}
 							<input
 								disabled
 								value={"---"} 
-								className="w-full rounded-xl border border-gray-200 pr-10 pl-4 py-3 text-sm bg-gray-50 text-gray-500 cursor-not-allowed"
+								className="w-full rounded-xl border border-border pr-10 pl-4 py-3 text-sm bg-surface-2 text-subtle cursor-not-allowed"
 							/>
 						</div>
 					</div>
 				</div>
 
 				<div className="mt-5 space-y-2">
-					<label className="text-sm font-medium text-gray-700">
+					<label className="text-sm font-medium text-muted-foreground">
 						ملاحظة تذييل الفاتورة (Footer Note)
 					</label>
 					<textarea
 						rows={2}
 						value={footerNote}
 						onChange={(e) => setFooterNote(e.target.value)}
-						className="w-full rounded-xl border border-gray-200 px-4 py-3 text-sm focus:border-[#7f2dfb] focus:ring-[#7f2dfb] transition-all resize-none"
+						className="w-full rounded-xl border border-border px-4 py-3 text-sm focus:border-brand focus:ring-brand transition-all resize-none"
 						placeholder="مثال: شكراً لتعاملكم معنا..."
 					/>
 				</div>
@@ -415,7 +415,7 @@ export default function InvoicingSettingsClient({
 				<button
 					onClick={handleSave}
 					disabled={isLoading}
-					className="px-8 py-3 rounded-xl bg-[#7f2dfb] text-white text-base font-bold hover:bg-[#6a1fd8] shadow-lg shadow-purple-200 transition-all flex items-center gap-2 disabled:opacity-70 disabled:cursor-not-allowed"
+					className="px-8 py-3 rounded-xl bg-brand text-white text-base font-bold hover:bg-brand-hover shadow-lg shadow-brand transition-all flex items-center gap-2 disabled:opacity-70 disabled:cursor-not-allowed"
 				>
 					{isLoading && <Loader2 className="animate-spin w-4 h-4" />}
 					<Save size={18} />

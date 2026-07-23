@@ -8,7 +8,7 @@ import { Section, Container, Text, Button } from "@/components/ui";
 
 const faqs = [
   {
-    question: "هل بِلفورا مجاني؟",
+    question: "هل بلفورا مجاني؟",
     answer:
       "نعم بلفورا مجاني بشكل كامل ، على الأقل في نسخة التجريبية الحالية :)",
     icon: HelpCircle,
@@ -16,7 +16,7 @@ const faqs = [
   {
     question: "هل الفواتير رسمية؟",
     answer:
-      "نعم، الفواتير الصادرة من بِلفورا مصممة لتكون احترافية وتشمل جميع البيانات الأساسية المتعارف عليها تجارياً، وتصلح للاستخدام الرسمي.",
+      "نعم، الفواتير الصادرة من بلفورا مصممة لتكون احترافية وتشمل جميع البيانات الأساسية المتعارف عليها تجارياً، وتصلح للاستخدام الرسمي.",
     icon: Shield,
   },
   {
@@ -28,7 +28,7 @@ const faqs = [
   {
     question: "كيف يمكنني استلام أموالي؟",
     answer:
-      "بِلفورا يساعدك في إصدار الفاتورة وإرسالها للعميل. الدفع يتم بينك وبين العميل مباشرة عبر وسائل الدفع التي تحددها في الفاتورة (تحويل بنكي، STC Pay، Apple Pay، إلخ). يمكنك أيضاً إضافة رابط دفع في الفاتورة.",
+      "بلفورا يساعدك في إصدار الفاتورة وإرسالها للعميل. الدفع يتم بينك وبين العميل مباشرة عبر وسائل الدفع التي تحددها في الفاتورة (تحويل بنكي، STC Pay، Apple Pay، إلخ). يمكنك أيضاً إضافة رابط دفع في الفاتورة.",
     icon: CreditCard,
   },
   {
@@ -59,13 +59,13 @@ const AccordionItem = ({
   icon: React.ComponentType<{ className?: string }>;
 }) => {
   return (
-    <div className="border-b border-gray-200">
+    <div className="border-b border-border">
       <button
-        className="flex w-full items-center justify-between py-6 text-right text-lg font-medium transition-colors hover:text-brand-primary"
+        className="flex w-full items-center justify-between py-6 text-right text-lg font-medium transition-colors hover:text-brand"
         onClick={onClick}
       >
         <div className="flex items-center gap-3 flex-1">
-          <Icon className="h-5 w-5 text-brand-primary flex-shrink-0" />
+          <Icon className="h-5 w-5 text-brand flex-shrink-0" />
           <span className="text-right">{question}</span>
         </div>
         <m.div
@@ -73,7 +73,7 @@ const AccordionItem = ({
           transition={{ duration: 0.2 }}
           className="flex-shrink-0 mr-2"
         >
-          <ChevronDown className="h-5 w-5 text-gray-500" />
+          <ChevronDown className="h-5 w-5 text-subtle" />
         </m.div>
       </button>
       <AnimatePresence initial={false}>
@@ -104,7 +104,7 @@ export function FAQ() {
             as="h2"
             animation="blurIn"
             once={true}
-            className="text-4xl font-bold tracking-tight text-gray-900 sm:text-5xl"
+            className="text-4xl font-bold tracking-tight text-foreground sm:text-5xl"
           >
             الأسئلة الشائعة
           </TextAnimate>

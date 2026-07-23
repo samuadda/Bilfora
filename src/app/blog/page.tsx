@@ -24,7 +24,7 @@ export default function BlogPage() {
     ];
 
 	return (
-		<div className="min-h-screen bg-white">
+		<div className="min-h-screen bg-surface">
 			<Navbar />
 			<main className="pt-32 pb-20 px-4 max-w-6xl mx-auto">
 				<div className="text-center mb-16">
@@ -32,33 +32,33 @@ export default function BlogPage() {
 						as="h1"
 						animation="blurIn"
 						once={true}
-						className="text-4xl font-bold md:text-5xl text-[#012d46] mb-6"
+						className="text-4xl font-bold md:text-5xl text-foreground mb-6"
 					>
-						مدونة بِلفورا
+						مدونة بلفورا
 					</TextAnimate>
-					<p className="text-xl text-gray-600 max-w-2xl mx-auto">
+					<p className="text-xl text-muted-foreground max-w-2xl mx-auto">
 						أحدث المقالات والنصائح للمستقلين وأصحاب الأعمال
 					</p>
 				</div>
 
                 <div className="grid md:grid-cols-3 gap-8">
                     {posts.map((post, index) => (
-                        <article key={index} className="flex flex-col bg-white border border-gray-100 rounded-2xl overflow-hidden hover:shadow-lg transition-shadow cursor-pointer">
-                            <div className="h-48 bg-gray-200 w-full animate-pulse">
+                        <article key={index} className="flex flex-col bg-surface border border-border rounded-2xl overflow-hidden hover:shadow-lg transition-shadow cursor-pointer">
+                            <div className="h-48 bg-surface-inset w-full animate-pulse">
                                 {/* Placeholder for blog image */}
-                                <div className="w-full h-full bg-gradient-to-br from-purple-100 to-indigo-100 flex items-center justify-center text-gray-400">
+                                <div className="w-full h-full bg-gradient-to-br from-brand-soft-2 to-indigo-100 flex items-center justify-center text-disabled">
                                     صورة المقال
                                 </div>
                             </div>
                             <div className="p-6 flex-1 flex flex-col">
-                                <div className="text-xs font-semibold text-[#7f2dfb] mb-2">{post.category}</div>
-                                <h3 className="text-xl font-bold text-[#012d46] mb-3 hover:text-[#7f2dfb] transition-colors">
+                                <div className="text-xs font-semibold text-brand mb-2">{post.category}</div>
+                                <h3 className="text-xl font-bold text-foreground mb-3 hover:text-brand transition-colors">
                                     {post.title}
                                 </h3>
-                                <p className="text-gray-600 text-sm leading-relaxed mb-4 flex-1">
+                                <p className="text-muted-foreground text-sm leading-relaxed mb-4 flex-1">
                                     {post.excerpt}
                                 </p>
-                                <div className="text-gray-400 text-xs mt-auto pt-4 border-t border-gray-100">
+                                <div className="text-disabled text-xs mt-auto pt-4 border-t border-border">
                                     {post.date}
                                 </div>
                             </div>

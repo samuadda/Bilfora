@@ -25,14 +25,14 @@ const methodLabels: Record<string, string> = {
 
 export function InvoicePaymentsList({ payments }: InvoicePaymentsListProps) {
     if (payments.length === 0) {
-        return <div className="text-sm text-gray-500 text-center py-4">لا توجد دفعات مسجلة</div>;
+        return <div className="text-sm text-subtle text-center py-4">لا توجد دفعات مسجلة</div>;
     }
 
     return (
-        <div className="border border-gray-200 rounded-lg overflow-hidden bg-white">
+        <div className="border border-border rounded-lg overflow-hidden bg-surface">
             <div className="overflow-x-auto">
                 <table className="w-full text-sm text-right">
-                    <thead className="bg-gray-50 text-gray-700 font-medium border-b border-gray-200">
+                    <thead className="bg-surface-2 text-muted-foreground font-medium border-b border-border">
                         <tr>
                             <th className="px-4 py-3 text-right">التاريخ</th>
                             <th className="px-4 py-3 text-right">المبلغ</th>
@@ -41,20 +41,20 @@ export function InvoicePaymentsList({ payments }: InvoicePaymentsListProps) {
                             <th className="px-4 py-3 text-right">ملاحظات</th>
                         </tr>
                     </thead>
-                    <tbody className="divide-y divide-gray-100">
+                    <tbody className="divide-y divide-border">
                         {payments.map((payment) => (
-                            <tr key={payment.id} className="hover:bg-gray-50">
+                            <tr key={payment.id} className="hover:bg-surface-2">
                                 <td className="px-4 py-3 whitespace-nowrap">{formatDate(payment.payment_date)}</td>
-                                <td className="px-4 py-3 font-bold text-gray-900">{formatCurrency(payment.amount)}</td>
+                                <td className="px-4 py-3 font-bold text-foreground">{formatCurrency(payment.amount)}</td>
                                 <td className="px-4 py-3">
-                                    <span className="inline-flex items-center px-2 py-1 rounded-md text-xs font-medium bg-gray-100 text-gray-700">
+                                    <span className="inline-flex items-center px-2 py-1 rounded-md text-xs font-medium bg-surface-inset text-muted-foreground">
                                         {methodLabels[payment.payment_method] || payment.payment_method}
                                     </span>
                                 </td>
-                                <td className="px-4 py-3 text-gray-500 text-xs">
+                                <td className="px-4 py-3 text-subtle text-xs">
                                     {payment.reference_number || "—"}
                                 </td>
-                                <td className="px-4 py-3 text-gray-500 text-xs max-w-[200px] truncate" title={payment.notes || ""}>
+                                <td className="px-4 py-3 text-subtle text-xs max-w-[200px] truncate" title={payment.notes || ""}>
                                     {payment.notes || "—"}
                                 </td>
                             </tr>

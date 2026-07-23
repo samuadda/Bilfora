@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect, Suspense } from "react";
+import { Logo } from "@/components/brand/Logo";
 import { useRouter, useSearchParams } from "next/navigation";
 import { supabase } from "@/lib/supabase";
 import { DotPattern } from "@/components/landing-page/dot-pattern";
@@ -138,7 +139,7 @@ function ResetPasswordContent() {
 	};
 
 	const getPasswordStrength = (password: string) => {
-		if (!password) return { strength: 0, color: "bg-gray-200", text: "" };
+		if (!password) return { strength: 0, color: "bg-surface-inset", text: "" };
 
 		let score = 0;
 		if (password.length >= 8) score++;
@@ -169,8 +170,8 @@ function ResetPasswordContent() {
 					)}
 				/>
 				<div className="text-center relative z-10">
-					<div className="w-8 h-8 border-2 border-purple-600 border-t-transparent rounded-full animate-spin mx-auto mb-4"></div>
-					<p className="text-gray-600">جاري التحقق من الجلسة...</p>
+					<div className="w-8 h-8 border-2 border-brand border-t-transparent rounded-full animate-spin mx-auto mb-4"></div>
+					<p className="text-muted-foreground">جاري التحقق من الجلسة...</p>
 				</div>
 			</div>
 		);
@@ -206,13 +207,13 @@ function ResetPasswordContent() {
 					<h2 className="text-xl font-bold text-red-600 mb-2">
 						رابط غير صالح
 					</h2>
-					<p className="text-gray-600 mb-6">
+					<p className="text-muted-foreground mb-6">
 						رابط إعادة تعيين كلمة المرور غير صالح أو منتهي الصلاحية.
 						يرجى طلب رابط جديد.
 					</p>
 					<button
 						onClick={() => router.push("/login")}
-						className="px-6 py-2 bg-purple-600 text-white rounded-lg hover:bg-purple-700"
+						className="px-6 py-2 bg-brand text-white rounded-lg hover:bg-brand"
 					>
 						العودة لتسجيل الدخول
 					</button>
@@ -231,18 +232,16 @@ function ResetPasswordContent() {
 					"absolute inset-0 [mask-image:linear-gradient(to_bottom_right,white,transparent,transparent)]"
 				)}
 			/>
-			<div className="relative w-full max-w-md mx-auto px-4 py-6 sm:px-6 sm:py-8 shadow-lg rounded-2xl sm:rounded-3xl bg-white z-10">
+			<div className="relative w-full max-w-md mx-auto px-4 py-6 sm:px-6 sm:py-8 shadow-lg rounded-2xl sm:rounded-3xl bg-surface z-10">
 				<div className="w-full">
 					<h1 className="text-lg sm:text-xl font-bold flex items-center justify-center gap-2 mb-4">
-						<span className="text-2xl sm:text-3xl font-black text-[#7f2dfb] tracking-tight">
-							بِلفورا
-						</span>
+						<Logo size={28} />
 					</h1>
 
 					<h2 className="text-xl font-bold text-center mb-2">
 						إعادة تعيين كلمة المرور
 					</h2>
-					<p className="text-sm text-gray-600 text-center mb-6">
+					<p className="text-sm text-muted-foreground text-center mb-6">
 						أدخل كلمة مرور جديدة
 					</p>
 
@@ -260,7 +259,7 @@ function ResetPasswordContent() {
 						<div className="mb-4">
 							<label
 								htmlFor="password"
-								className="font-semibold text-xs sm:text-sm text-gray-600 pb-1 block"
+								className="font-semibold text-xs sm:text-sm text-muted-foreground pb-1 block"
 							>
 								كلمة المرور الجديدة
 							</label>
@@ -281,7 +280,7 @@ function ResetPasswordContent() {
 									onClick={() =>
 										setShowPassword(!showPassword)
 									}
-									className="absolute inset-y-0 right-2 flex items-center text-xs sm:text-sm text-gray-500 hover:text-gray-700"
+									className="absolute inset-y-0 right-2 flex items-center text-xs sm:text-sm text-subtle hover:text-muted-foreground"
 									disabled={isLoading}
 								>
 									{showPassword ? (
@@ -303,7 +302,7 @@ function ResetPasswordContent() {
 													className={`h-1 w-6 sm:w-8 rounded-full ${level <=
 														passwordStrength.strength
 														? passwordStrength.color
-														: "bg-gray-200"
+														: "bg-surface-inset"
 														}`}
 												/>
 											))}
@@ -336,7 +335,7 @@ function ResetPasswordContent() {
 						<div className="mb-6">
 							<label
 								htmlFor="confirmPassword"
-								className="font-semibold text-xs sm:text-sm text-gray-600 pb-1 block"
+								className="font-semibold text-xs sm:text-sm text-muted-foreground pb-1 block"
 							>
 								تأكيد كلمة المرور
 							</label>
@@ -363,7 +362,7 @@ function ResetPasswordContent() {
 											!showConfirmPassword
 										)
 									}
-									className="absolute inset-y-0 right-2 flex items-center text-xs sm:text-sm text-gray-500 hover:text-gray-700"
+									className="absolute inset-y-0 right-2 flex items-center text-xs sm:text-sm text-subtle hover:text-muted-foreground"
 									disabled={isLoading}
 								>
 									{showConfirmPassword ? (
@@ -386,7 +385,7 @@ function ResetPasswordContent() {
 							disabled={isLoading}
 							className={`w-full text-white rounded-lg px-3 py-2.5 text-xs sm:text-sm font-semibold transition duration-100 flex items-center justify-center gap-2 ${isLoading
 								? "bg-gray-400 cursor-not-allowed"
-								: "bg-[#7f2dfb] hover:bg-violet-400"
+								: "bg-brand hover:bg-violet-400"
 								}`}
 						>
 							{isLoading ? (
@@ -411,10 +410,10 @@ export default function ResetPasswordPage() {
 	return (
 		<Suspense
 			fallback={
-				<div className="min-h-screen w-full flex items-center justify-center bg-white">
+				<div className="min-h-screen w-full flex items-center justify-center bg-surface">
 					<div className="text-center">
-						<Loader2 className="h-8 w-8 animate-spin text-[#7f2dfb] mx-auto mb-2" />
-						<p className="text-gray-500">جاري التحميل...</p>
+						<Loader2 className="h-8 w-8 animate-spin text-brand mx-auto mb-2" />
+						<p className="text-subtle">جاري التحميل...</p>
 					</div>
 				</div>
 			}

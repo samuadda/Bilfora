@@ -20,7 +20,7 @@ interface DashboardRevenueChartProps {
 const chartConfig = {
   revenue: {
     label: "الإجمالي",
-    color: "#7f2dfb",
+    color: "var(--brand)",
   },
 } satisfies ChartConfig;
 

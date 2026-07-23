@@ -1,6 +1,6 @@
 export const INVOICE_TOKENS = {
-    primary: "#7f2dfb",
-    textDark: "#012d46",
+    primary: "#0f766e",
+    textDark: "#082e2c",
     textGray: "#4b5563",
     border: "#e5e7eb",
     bgSoft: "#f9fafb",
@@ -10,10 +10,10 @@ export const INVOICE_TOKENS = {
     pageMaxWidth: 900,
     headings: {
         h1: { size: "2rem", weight: 800 },
-        h3: { size: "15px", weight: 600, color: "#7f2dfb" },
+        h3: { size: "15px", weight: 600, color: "#0f766e" },
     },
     table: {
-        headerBg: "#7f2dfb",
+        headerBg: "#0f766e",
         headerColor: "#ffffff",
         cellPadding: "10px",
     },

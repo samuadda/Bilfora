@@ -52,7 +52,7 @@ import { IS_ZATCA_ENABLED } from "@/config/features";
 const statusConfig = {
 	draft: {
 		label: "مسودة",
-		color: "bg-gray-100 text-gray-600 border-gray-200",
+		color: "bg-surface-inset text-muted-foreground border-border",
 		icon: FileText,
 	},
 	sent: {
@@ -641,7 +641,7 @@ function InvoicesContent() {
 				<div className={cn("flex flex-col lg:flex-row items-start lg:items-center justify-between", layout.gap.standard)}>
 					<div className="relative w-full lg:w-96">
 						<Search
-							className="absolute right-4 top-1/2 -translate-y-1/2 text-gray-400"
+							className="absolute right-4 top-1/2 -translate-y-1/2 text-disabled"
 							size={20}
 						/>
 						<Input
@@ -649,7 +649,7 @@ function InvoicesContent() {
 							placeholder="البحث برقم الفاتورة، اسم العميل..."
 							value={searchTerm}
 							onChange={(e) => setSearchTerm(e.target.value)}
-							className="pr-12 bg-gray-50"
+							className="pr-12 bg-surface-2"
 						/>
 					</div>
 
@@ -790,35 +790,35 @@ function InvoicesContent() {
 			<Card padding="none" className="overflow-hidden">
 				<div className="overflow-x-auto">
 					<table className="w-full">
-						<thead className="bg-gray-50/50 border-b border-gray-100">
+						<thead className="bg-surface-2 border-b border-border">
 							<tr>
 								<th className="px-4 py-4 text-center w-12">
 									<button
 										type="button"
 										onClick={toggleSelectAll}
-										className="p-1 hover:bg-gray-200 rounded transition-colors"
+										className="p-1 hover:bg-surface-inset rounded transition-colors"
 										title="تحديد الكل"
 									>
 										{allSelected ? (
-											<Check className="w-5 h-5 text-[#7f2dfb]" />
+											<Check className="w-5 h-5 text-brand" />
 										) : (
-											<div className="w-5 h-5 border-2 border-gray-300 rounded" />
+											<div className="w-5 h-5 border-2 border-border-strong rounded" />
 										)}
 									</button>
 								</th>
-								<th className="px-6 py-4 text-right text-xs font-bold text-gray-500 uppercase tracking-wider">
+								<th className="px-6 py-4 text-right text-xs font-bold text-subtle uppercase tracking-wider">
 									رقم الفاتورة
 								</th>
                                 {IS_ZATCA_ENABLED && (
-								<th className="px-6 py-4 text-right text-xs font-bold text-gray-500 uppercase tracking-wider">
+								<th className="px-6 py-4 text-right text-xs font-bold text-subtle uppercase tracking-wider">
 									النوع (Beta)
 								</th>
                                 )}
-								<th className="px-6 py-4 text-right text-xs font-bold text-gray-500 uppercase tracking-wider">
+								<th className="px-6 py-4 text-right text-xs font-bold text-subtle uppercase tracking-wider">
 									العميل
 								</th>
 								<th
-									className="px-6 py-4 text-right text-xs font-bold text-gray-500 uppercase tracking-wider cursor-pointer hover:bg-gray-100 transition-colors"
+									className="px-6 py-4 text-right text-xs font-bold text-subtle uppercase tracking-wider cursor-pointer hover:bg-surface-inset transition-colors"
 									onClick={() => handleSort("amount")}
 								>
 									<div className="flex items-center justify-end gap-1">
@@ -827,21 +827,21 @@ function InvoicesContent() {
 											(sortDirection === "asc" ? (
 												<ArrowUp
 													size={14}
-													className="text-[#7f2dfb]"
+													className="text-brand"
 												/>
 											) : (
 												<ArrowDown
 													size={14}
-													className="text-[#7f2dfb]"
+													className="text-brand"
 												/>
 											))}
 									</div>
 								</th>
-								<th className="px-6 py-4 text-right text-xs font-bold text-gray-500 uppercase tracking-wider">
+								<th className="px-6 py-4 text-right text-xs font-bold text-subtle uppercase tracking-wider">
 									الحالة
 								</th>
 								<th
-									className="px-6 py-4 text-right text-xs font-bold text-gray-500 uppercase tracking-wider cursor-pointer hover:bg-gray-100 transition-colors"
+									className="px-6 py-4 text-right text-xs font-bold text-subtle uppercase tracking-wider cursor-pointer hover:bg-surface-inset transition-colors"
 									onClick={() => handleSort("issue_date")}
 								>
 									<div className="flex items-center justify-end gap-1">
@@ -850,18 +850,18 @@ function InvoicesContent() {
 											(sortDirection === "asc" ? (
 												<ArrowUp
 													size={14}
-													className="text-[#7f2dfb]"
+													className="text-brand"
 												/>
 											) : (
 												<ArrowDown
 													size={14}
-													className="text-[#7f2dfb]"
+													className="text-brand"
 												/>
 											))}
 									</div>
 								</th>
 								<th
-									className="px-6 py-4 text-right text-xs font-bold text-gray-500 uppercase tracking-wider cursor-pointer hover:bg-gray-100 transition-colors"
+									className="px-6 py-4 text-right text-xs font-bold text-subtle uppercase tracking-wider cursor-pointer hover:bg-surface-inset transition-colors"
 									onClick={() => handleSort("due_date")}
 								>
 									<div className="flex items-center justify-end gap-1">
@@ -870,22 +870,22 @@ function InvoicesContent() {
 											(sortDirection === "asc" ? (
 												<ArrowUp
 													size={14}
-													className="text-[#7f2dfb]"
+													className="text-brand"
 												/>
 											) : (
 												<ArrowDown
 													size={14}
-													className="text-[#7f2dfb]"
+													className="text-brand"
 												/>
 											))}
 									</div>
 								</th>
-								<th className="px-6 py-4 text-right text-xs font-bold text-gray-500 uppercase tracking-wider">
+								<th className="px-6 py-4 text-right text-xs font-bold text-subtle uppercase tracking-wider">
 									الإجراءات
 								</th>
 							</tr>
 						</thead>
-						<tbody className="divide-y divide-gray-50">
+						<tbody className="divide-y divide-border">
 							{paginatedInvoices.map((invoice, i) => {
 								const statusInfo = statusConfig[invoice.status];
 								const StatusIcon = statusInfo.icon;
@@ -905,8 +905,8 @@ function InvoicesContent() {
 										transition={{ delay: i * 0.05 }}
 										key={invoice.id}
 										className={cn(
-											"group hover:bg-gray-50/50 transition-colors",
-											isSelected && "bg-purple-50/50"
+											"group hover:bg-surface-2 transition-colors",
+											isSelected && "bg-brand-soft/50"
 										)}
 									>
 										<td className="px-4 py-4 text-center">
@@ -915,18 +915,18 @@ function InvoicesContent() {
 												onClick={() =>
 													toggleSelect(invoice.id)
 												}
-												className="p-1 hover:bg-gray-200 rounded transition-colors"
+												className="p-1 hover:bg-surface-inset rounded transition-colors"
 											>
 												{isSelected ? (
-													<Check className="w-5 h-5 text-[#7f2dfb]" />
+													<Check className="w-5 h-5 text-brand" />
 												) : (
-													<div className="w-5 h-5 border-2 border-gray-300 rounded" />
+													<div className="w-5 h-5 border-2 border-border-strong rounded" />
 												)}
 											</button>
 										</td>
 										<td className="px-6 py-4 whitespace-nowrap">
 											<div className="flex flex-col gap-1">
-												<span className="font-bold text-[#012d46]">
+												<span className="font-bold text-foreground">
 													{invoice.invoice_number}
 												</span>
 												<div className="flex gap-1 flex-wrap">
@@ -946,8 +946,8 @@ function InvoicesContent() {
 															invoiceType === "standard_tax"
 																? "bg-blue-100 text-blue-700 border-blue-200"
 																: invoiceType === "simplified_tax"
-																	? "bg-purple-100 text-purple-700 border-purple-200"
-																	: "bg-gray-100 text-gray-700 border-gray-200";
+																	? "bg-brand-soft-2 text-brand border-brand"
+																	: "bg-surface-inset text-muted-foreground border-border";
 														return (
 															<span className={`inline-flex items-center px-2 py-0.5 rounded text-xs font-medium border ${badgeClass}`}>
 																{label === "فاتورة ضريبية" ? "ضريبية" : label === "فاتورة ضريبية مبسطة" ? "مبسطة" : "غير ضريبية"}
@@ -959,17 +959,17 @@ function InvoicesContent() {
 										</td>
 										<td className="px-6 py-4 whitespace-nowrap">
 											<div className="flex flex-col">
-												<span className="font-medium text-gray-900">
+												<span className="font-medium text-foreground">
 													{invoice.client.name}
 												</span>
-												<span className="text-xs text-gray-500">
+												<span className="text-xs text-subtle">
 													{invoice.client.email ||
 														"-"}
 												</span>
 											</div>
 										</td>
 										<td className="px-6 py-4 whitespace-nowrap">
-											<Price amount={invoice.total_amount} size="sm" className="font-bold text-gray-900" />
+											<Price amount={invoice.total_amount} size="sm" className="font-bold text-foreground" />
 										</td>
 										<td className="px-6 py-4 whitespace-nowrap">
 											<div className="flex flex-col gap-1">
@@ -996,19 +996,19 @@ function InvoicesContent() {
 												</span>
 											</div>
 										</td>
-										<td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+										<td className="px-6 py-4 whitespace-nowrap text-sm text-subtle">
 											<div className="flex items-center gap-2">
 												<Calendar
 													size={14}
-													className="text-gray-400"
+													className="text-disabled"
 												/>
 												<div className="flex flex-col gap-0.5">
-													<span className="font-semibold text-gray-900">
+													<span className="font-semibold text-foreground">
 														{formatDate(
 															invoice.created_at
 														)}
 													</span>
-													<span className="text-gray-500 text-xs">
+													<span className="text-subtle text-xs">
 														{convertToHijri(invoice.created_at).formattedHijri}
 													</span>
 												</div>
@@ -1016,12 +1016,12 @@ function InvoicesContent() {
 										</td>
 										<td className="px-6 py-4 whitespace-nowrap">
 											<div className="flex flex-col gap-1">
-												<span className="text-sm font-semibold text-gray-900">
+												<span className="text-sm font-semibold text-foreground">
 													{formatDate(
 														invoice.due_date
 													)}
 												</span>
-												<span className="text-gray-500 text-xs">
+												<span className="text-subtle text-xs">
 													{convertToHijri(invoice.due_date).formattedHijri}
 												</span>
 												{dueDateInfo && (
@@ -1044,7 +1044,7 @@ function InvoicesContent() {
 															`/dashboard/invoices/${invoice.id}`
 														)
 													}
-													className="p-2 text-gray-400 hover:text-[#7f2dfb] hover:bg-purple-50 rounded-lg transition-colors"
+													className="p-2 text-disabled hover:text-brand hover:bg-brand-soft rounded-lg transition-colors"
 													title="عرض التفاصيل"
 												>
 													<Eye size={18} />
@@ -1052,7 +1052,7 @@ function InvoicesContent() {
 												<button
 													onClick={() => handleDuplicate(invoice.id, invoice.invoice_number)}
 													disabled={!!duplicatingId}
-													className="p-2 text-gray-400 hover:text-blue-600 hover:bg-blue-50 rounded-lg transition-colors disabled:opacity-50"
+													className="p-2 text-disabled hover:text-blue-600 hover:bg-blue-50 rounded-lg transition-colors disabled:opacity-50"
 													title="نسخ الفاتورة"
 												>
 													{duplicatingId === invoice.id ? (
@@ -1069,7 +1069,7 @@ function InvoicesContent() {
 																"sent"
 															)
 														}
-														className="p-2 text-gray-400 hover:text-blue-600 hover:bg-blue-50 rounded-lg transition-colors"
+														className="p-2 text-disabled hover:text-blue-600 hover:bg-blue-50 rounded-lg transition-colors"
 														title="إرسال"
 													>
 														<Send size={18} />
@@ -1086,7 +1086,7 @@ function InvoicesContent() {
 																		"paid"
 																	)
 																}
-																className="p-2 text-gray-400 hover:text-green-600 hover:bg-green-50 rounded-lg transition-colors"
+																className="p-2 text-disabled hover:text-green-600 hover:bg-green-50 rounded-lg transition-colors"
 																title="تحديد كمدفوعة"
 															>
 																<CheckCircle
@@ -1100,7 +1100,7 @@ function InvoicesContent() {
 																		"cancelled"
 																	)
 																}
-																className="p-2 text-gray-400 hover:text-red-600 hover:bg-red-50 rounded-lg transition-colors"
+																className="p-2 text-disabled hover:text-red-600 hover:bg-red-50 rounded-lg transition-colors"
 																title="إلغاء الفاتورة"
 															>
 																<XCircle
@@ -1116,7 +1116,7 @@ function InvoicesContent() {
 																invoice
 															)
 														}
-														className="p-2 text-gray-400 hover:text-red-600 hover:bg-red-50 rounded-lg transition-colors"
+														className="p-2 text-disabled hover:text-red-600 hover:bg-red-50 rounded-lg transition-colors"
 														title="حذف"
 													>
 														<Trash2 size={18} />
@@ -1133,8 +1133,8 @@ function InvoicesContent() {
 
 				{filteredInvoices.length === 0 && (
 					<div className="flex flex-col items-center justify-center py-16 text-center">
-						<div className="w-20 h-20 bg-gray-50 rounded-full flex items-center justify-center mb-4">
-							<FileText className="w-10 h-10 text-gray-300" />
+						<div className="w-20 h-20 bg-surface-2 rounded-full flex items-center justify-center mb-4">
+							<FileText className="w-10 h-10 text-disabled" />
 						</div>
 						<Heading variant="h3-subsection">
 							لا توجد فواتير
@@ -1156,9 +1156,9 @@ function InvoicesContent() {
 
 				{/* Pagination */}
 				{totalPages > 1 && (
-					<div className="p-6 border-t border-gray-100 flex flex-col sm:flex-row items-center justify-between gap-4 bg-gray-50/30">
+					<div className="p-6 border-t border-border flex flex-col sm:flex-row items-center justify-between gap-4 bg-surface-2">
 						<div className="flex items-center gap-2">
-							<span className="text-sm text-gray-600">
+							<span className="text-sm text-muted-foreground">
 								عدد العناصر في الصفحة:
 							</span>
 							<Select
@@ -1185,11 +1185,11 @@ function InvoicesContent() {
 									setCurrentPage((p) => Math.max(1, p - 1))
 								}
 								disabled={currentPage === 1}
-								className="p-2 rounded-lg border border-gray-200 hover:bg-white disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
+								className="p-2 rounded-lg border border-border hover:bg-surface disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
 							>
 								<ChevronRight size={18} />
 							</button>
-							<span className="text-sm text-gray-600 px-3">
+							<span className="text-sm text-muted-foreground px-3">
 								صفحة {currentPage} من {totalPages}
 							</span>
 							<button
@@ -1200,7 +1200,7 @@ function InvoicesContent() {
 									)
 								}
 								disabled={currentPage === totalPages}
-								className="p-2 rounded-lg border border-gray-200 hover:bg-white disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
+								className="p-2 rounded-lg border border-border hover:bg-surface disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
 							>
 								<ChevronLeft size={18} />
 							</button>
@@ -1221,13 +1221,13 @@ function InvoicesContent() {
 			>
 				<DialogContent className="rounded-3xl p-8">
 					<DialogHeader className="mb-4">
-						<DialogTitle className="text-2xl font-bold text-center text-[#012d46]">
+						<DialogTitle className="text-2xl font-bold text-center text-foreground">
 							حذف الفاتورة؟
 						</DialogTitle>
 					</DialogHeader>
-					<p className="text-center text-gray-600 mb-8">
+					<p className="text-center text-muted-foreground mb-8">
 						هل أنت متأكد من أنك تريد حذف الفاتورة رقم{" "}
-						<span className="font-bold text-gray-900">
+						<span className="font-bold text-foreground">
 							{deleteCandidate?.invoice_number}
 						</span>
 						؟
@@ -1237,7 +1237,7 @@ function InvoicesContent() {
 					<DialogFooter className="flex gap-3 sm:justify-center">
 						<button
 							onClick={() => setDeleteCandidate(null)}
-							className="flex-1 py-3 rounded-xl border border-gray-200 text-gray-700 font-medium hover:bg-gray-50 transition-colors"
+							className="flex-1 py-3 rounded-xl border border-border text-muted-foreground font-medium hover:bg-surface-2 transition-colors"
 						>
 							إلغاء
 						</button>
@@ -1260,11 +1260,11 @@ function InvoicesContent() {
 			>
 				<DialogContent className="rounded-3xl p-8">
 					<DialogHeader className="mb-4">
-						<DialogTitle className="text-2xl font-bold text-center text-[#012d46]">
+						<DialogTitle className="text-2xl font-bold text-center text-foreground">
 							حذف الفواتير المحددة؟
 						</DialogTitle>
 					</DialogHeader>
-					<p className="text-center text-gray-600 mb-8">
+					<p className="text-center text-muted-foreground mb-8">
 						هل أنت متأكد من أنك تريد حذف {selectedInvoiceIds.size}{" "}
 						فاتورة؟
 						<br />
@@ -1273,7 +1273,7 @@ function InvoicesContent() {
 					<DialogFooter className="flex gap-3 sm:justify-center">
 						<button
 							onClick={() => setShowBulkDeleteDialog(false)}
-							className="flex-1 py-3 rounded-xl border border-gray-200 text-gray-700 font-medium hover:bg-gray-50 transition-colors"
+							className="flex-1 py-3 rounded-xl border border-border text-muted-foreground font-medium hover:bg-surface-2 transition-colors"
 						>
 							إلغاء
 						</button>
@@ -1314,7 +1314,7 @@ function StatsCard({
 	isWarning,
 }: StatsCardProps) {
 	const colors = {
-		purple: "bg-purple-50 text-[#7f2dfb]",
+		purple: "bg-brand-soft text-brand",
 		blue: "bg-blue-50 text-blue-600",
 		green: "bg-green-50 text-green-600",
 		orange: "bg-orange-50 text-orange-600",

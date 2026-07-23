@@ -63,10 +63,10 @@ export const ElegantFeatures = ({ content }: { content: ContentItem[] }) => {
 								onMouseEnter={() => setActiveIndex(index)}
 								className={cn(
 									"w-full text-right rounded-2xl border px-5 py-4 sm:px-6 sm:py-5 transition-all duration-200 flex items-start gap-4",
-									"bg-white hover:bg-slate-50",
+									"bg-surface hover:bg-surface-2",
 									isActive
 										? "border-transparent shadow-md ring-2 ring-offset-2 ring-offset-gray-50 ring-cyan-400/80"
-										: "border-gray-200"
+										: "border-border"
 								)}
 							>
 								<div
@@ -113,7 +113,7 @@ export const ElegantFeatures = ({ content }: { content: ContentItem[] }) => {
 					</div>
 
 					<div className="relative z-10 flex flex-col gap-6 text-white">
-						<div className="inline-flex h-14 w-14 items-center justify-center rounded-2xl bg-white/15 backdrop-blur-sm shadow-lg">
+						<div className="inline-flex h-14 w-14 items-center justify-center rounded-2xl bg-surface/15 backdrop-blur-sm shadow-lg">
 							{activeFeature?.icon}
 						</div>
 						<div className="space-y-3">
@@ -127,7 +127,7 @@ export const ElegantFeatures = ({ content }: { content: ContentItem[] }) => {
 
 						<div className="mt-4 flex items-center gap-3">
 							<Link href="/register">
-								<button className="inline-flex items-center justify-center rounded-full bg-white px-6 py-2.5 text-sm sm:text-base font-semibold text-slate-900 shadow-md hover:shadow-lg hover:-translate-y-0.5 transition-all">
+								<button className="inline-flex items-center justify-center rounded-full bg-surface px-6 py-2.5 text-sm sm:text-base font-semibold text-slate-900 shadow-md hover:shadow-lg hover:-translate-y-0.5 transition-all">
 									ابدأ الآن
 									<ArrowLeft className="mr-2 h-4 w-4" />
 								</button>

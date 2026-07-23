@@ -161,7 +161,7 @@ export const premiumStyles = StyleSheet.create({
 	invoiceTitle: {
 		fontSize: 24,
 		fontWeight: "bold",
-		color: "#012d46",
+		color: "#082e2c",
 		marginBottom: 4,
 		textAlign: "left", // Visually Left side
 	},
@@ -256,7 +256,7 @@ export const premiumStyles = StyleSheet.create({
 	},
 	tableHeader: {
 		flexDirection: "row-reverse", // Col 1 (Rightmost) -> Col N (Leftmost)
-		backgroundColor: "#012d46",
+		backgroundColor: "#082e2c",
 		paddingVertical: 10,
 		paddingHorizontal: 12,
 		alignItems: "center",
@@ -374,7 +374,7 @@ export const premiumStyles = StyleSheet.create({
 	finalTotalValue: {
 		fontSize: 12,
 		fontWeight: "bold",
-		color: "#012d46",
+		color: "#082e2c",
 		textAlign: "left",
 	},
 	

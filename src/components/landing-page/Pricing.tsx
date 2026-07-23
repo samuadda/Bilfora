@@ -41,27 +41,27 @@ export function Pricing() {
         >
           <Card
             padding="xlarge"
-            className="relative ring-2 ring-[#7f2dfb]"
+            className="relative ring-2 ring-brand"
           >
             {/* Badge */}
-            <div className="absolute top-0 -translate-y-1/2 left-1/2 -translate-x-1/2 px-4 py-1.5 text-sm font-semibold text-white bg-[#7f2dfb] rounded-full">
+            <div className="absolute top-0 -translate-y-1/2 left-1/2 -translate-x-1/2 px-4 py-1.5 text-sm font-semibold text-white bg-brand rounded-full">
               الخطة الوحيدة
             </div>
 
             <div className="text-center pt-2">
               {/* Icon */}
-              <div className="inline-flex items-center justify-center h-14 w-14 rounded-2xl bg-purple-50 mb-4">
-                <Zap className="h-7 w-7 text-[#7f2dfb]" />
+              <div className="inline-flex items-center justify-center h-14 w-14 rounded-2xl bg-brand-soft mb-4">
+                <Zap className="h-7 w-7 text-brand" />
               </div>
               
               {/* Title */}
-              <Heading variant="h3" className="text-[#012d46]">
+              <Heading variant="h3" className="text-foreground">
                 كل شي مفتوح
               </Heading>
               
               {/* Price */}
               <div className="mt-4 flex items-baseline justify-center gap-2">
-                <span className="text-5xl font-bold text-[#012d46]">0</span>
+                <span className="text-5xl font-bold text-foreground">0</span>
                 <Text variant="body-small" color="muted" className="font-medium">
                   ريال / للأبد
                 </Text>
@@ -80,7 +80,7 @@ export function Pricing() {
             </Link>
 
             {/* Features */}
-            <div className="mt-8 pt-6 border-t border-gray-100">
+            <div className="mt-8 pt-6 border-t border-border">
               <ul role="list" className="space-y-3">
                 {features.map((feature, index) => (
                   <m.li
@@ -92,7 +92,7 @@ export function Pricing() {
                     className="flex gap-x-3"
                   >
                     <Check
-                      className="h-5 w-5 flex-none text-[#7f2dfb]"
+                      className="h-5 w-5 flex-none text-brand"
                       aria-hidden="true"
                     />
                     <Text variant="body-small" color="muted">{feature}</Text>

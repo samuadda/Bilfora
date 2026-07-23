@@ -85,8 +85,8 @@ export function PaymentRecordingModal({
     return (
         <Dialog.Root open={isOpen} onOpenChange={onClose}>
             <Dialog.Portal>
-                <Dialog.Overlay className="fixed inset-0 bg-black/50 z-50 animate-in fade-in-0" />
-                <Dialog.Content className="fixed left-[50%] top-[50%] z-50 grid w-full max-w-lg translate-x-[-50%] translate-y-[-50%] gap-4 border bg-white p-6 shadow-lg duration-200 sm:rounded-lg animate-in fade-in-0 zoom-in-95">
+                <Dialog.Overlay className="fixed inset-0 bg-overlay z-50 animate-in fade-in-0" />
+                <Dialog.Content className="fixed left-[50%] top-[50%] z-50 grid w-full max-w-lg translate-x-[-50%] translate-y-[-50%] gap-4 border bg-surface p-6 shadow-lg duration-200 sm:rounded-lg animate-in fade-in-0 zoom-in-95">
                     <div className="flex flex-col space-y-1.5 text-center sm:text-right">
                         <Dialog.Title className="text-lg font-semibold leading-none tracking-tight">
                             تسجيل دفعة جديدة

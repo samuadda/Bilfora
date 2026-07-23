@@ -153,9 +153,9 @@ export default function FAQPage() {
 	};
 
 	return (
-		<div className="min-h-screen bg-white relative overflow-hidden">
+		<div className="min-h-screen bg-surface relative overflow-hidden">
 			{/* subtle shiny gradient from bottom right */}
-			<div className="absolute bottom-0 right-0 w-[800px] h-[800px] bg-gradient-to-tl from-[#7f2dfb]/30 via-[#ff6b9d]/20 to-transparent blur-3xl rounded-full opacity-70 pointer-events-none" />
+			<div className="absolute bottom-0 right-0 w-[800px] h-[800px] bg-gradient-to-tl from-brand/30 via-[#ff6b9d]/20 to-transparent blur-3xl rounded-full opacity-70 pointer-events-none" />
 			<DotPattern className="absolute inset-0 opacity-[0.04]" />
 			<SimpleNavbar />
 
@@ -167,13 +167,13 @@ export default function FAQPage() {
 					transition={{ duration: 0.6 }}
 					className="max-w-4xl mx-auto"
 				>
-					<div className="inline-flex items-center justify-center w-16 h-16 bg-[#7f2dfb]/10 rounded-full mb-6">
-						<HelpCircle className="w-8 h-8 text-[#7f2dfb]" />
+					<div className="inline-flex items-center justify-center w-16 h-16 bg-brand/10 rounded-full mb-6">
+						<HelpCircle className="w-8 h-8 text-brand" />
 					</div>
-					<h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
+					<h1 className="text-4xl md:text-5xl font-bold text-foreground mb-4">
 						الأسئلة الشائعة
 					</h1>
-					<p className="text-xl text-gray-600 max-w-2xl mx-auto leading-relaxed">
+					<p className="text-xl text-muted-foreground max-w-2xl mx-auto leading-relaxed">
 						إجابات على أكثر الأسئلة شيوعاً حول نظام إدارة الفواتير
 					</p>
 				</m.div>
@@ -192,7 +192,7 @@ export default function FAQPage() {
 						placeholder="ابحث عن سؤالك..."
 						value={searchTerm}
 						onChange={(e) => setSearchTerm(e.target.value)}
-						className="w-full max-w-md mb-6 rounded-full px-4 py-2 bg-gray-50 border border-gray-200 text-gray-800 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-[#7f2dfb]/40 text-center"
+						className="w-full max-w-md mb-6 rounded-full px-4 py-2 bg-surface-2 border border-border text-foreground placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-brand/40 text-center"
 					/>
 
 					<div className="flex flex-wrap justify-center gap-3">
@@ -204,8 +204,8 @@ export default function FAQPage() {
 								}
 								className={`flex items-center gap-2 px-4 py-2 rounded-full font-medium transition-all duration-200 ${
 									selectedCategory === category.value
-										? "bg-[#7f2dfb] text-white shadow-lg"
-										: "bg-gray-100 text-gray-700 hover:bg-gray-200"
+										? "bg-brand text-white shadow-lg"
+										: "bg-surface-inset text-muted-foreground hover:bg-surface-inset"
 								}`}
 							>
 								{category.icon}
@@ -228,7 +228,7 @@ export default function FAQPage() {
 						className="max-w-4xl mx-auto"
 					>
 						{filteredFAQs.length === 0 && (
-							<div className="text-center text-gray-500 py-10">
+							<div className="text-center text-subtle py-10">
 								<p>لا توجد أسئلة مطابقة حالياً.</p>
 							</div>
 						)}
@@ -244,7 +244,7 @@ export default function FAQPage() {
 								}}
 								className="mb-4"
 							>
-								<div className="bg-white border border-gray-200 rounded-2xl shadow-sm overflow-hidden">
+								<div className="bg-surface border border-border rounded-2xl shadow-sm overflow-hidden">
 									<button
 										onClick={() => toggleItem(faq.id)}
 										aria-expanded={openItems.includes(
@@ -252,17 +252,17 @@ export default function FAQPage() {
 										)}
 										aria-controls={`faq-answer-${faq.id}`}
 										id={`faq-question-${faq.id}`}
-										className="w-full px-6 py-4 text-right flex items-center justify-between hover:bg-gray-50 transition-all duration-200"
+										className="w-full px-6 py-4 text-right flex items-center justify-between hover:bg-surface-2 transition-all duration-200"
 									>
 										<div className="flex items-center gap-3">
-											<div className="text-[#7f2dfb]">
+											<div className="text-brand">
 												{faq.icon}
 											</div>
-											<span className="text-gray-900 font-semibold text-lg">
+											<span className="text-foreground font-semibold text-lg">
 												{faq.question}
 											</span>
 										</div>
-										<div className="text-gray-600">
+										<div className="text-muted-foreground">
 											{openItems.includes(faq.id) ? (
 												<ChevronUp className="w-5 h-5" />
 											) : (
@@ -290,7 +290,7 @@ export default function FAQPage() {
 												className="overflow-hidden"
 											>
 												<div className="px-6 pb-4">
-													<p className="text-gray-700 leading-relaxed">
+													<p className="text-muted-foreground leading-relaxed">
 														{faq.answer}
 													</p>
 												</div>
@@ -312,29 +312,29 @@ export default function FAQPage() {
 					transition={{ duration: 0.6, delay: 0.6 }}
 					className="max-w-4xl mx-auto text-center"
 				>
-					<div className="bg-gradient-to-r from-[#7f2dfb]/10 to-[#ff6b9d]/10 border border-gray-100 rounded-3xl p-8 md:p-12 shadow-sm">
-						<h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+					<div className="bg-gradient-to-r from-brand/10 to-[#ff6b9d]/10 border border-border rounded-3xl p-8 md:p-12 shadow-sm">
+						<h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
 							لم تجد إجابة لسؤالك؟
 						</h2>
-						<p className="text-xl text-gray-600 mb-8">
+						<p className="text-xl text-muted-foreground mb-8">
 							فريق الدعم الفني جاهز لمساعدتك في أي وقت
 						</p>
 						<div className="flex flex-col sm:flex-row gap-4 justify-center">
 							<Link href="/contact">
 								<MainButton
 									text="تواصل معنا"
-									bgColor="bg-[#7f2dfb]"
+									bgColor="bg-brand"
 									textColor="text-white"
-									hoverBgColor="hover:bg-[#6a1fd8]"
+									hoverBgColor="hover:bg-brand-hover"
 									className="text-lg px-8 py-3"
 								/>
 							</Link>
 							<Link href="/dashboard">
 								<MainButton
 									text="جرب النظام"
-									bgColor="bg-gray-100"
-									textColor="text-[#012d46]"
-									hoverBgColor="hover:bg-gray-200"
+									bgColor="bg-surface-inset"
+									textColor="text-foreground"
+									hoverBgColor="hover:bg-surface-inset"
 									className="text-lg px-8 py-3"
 								/>
 							</Link>

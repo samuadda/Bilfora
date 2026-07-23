@@ -19,13 +19,13 @@ export default function ConfirmedPage() {
 			<h1 className="text-2xl font-bold text-green-600">
 				🎉 تم تفعيل الحساب بنجاح
 			</h1>
-			<p className="text-gray-600 mt-2">
+			<p className="text-muted-foreground mt-2">
 				جاري تحويلك لصفحة تسجيل الدخول خلال ثوانٍ...
 			</p>
-			<p className="text-sm text-gray-400 mt-1">
+			<p className="text-sm text-disabled mt-1">
 				إذا لم يتم التحويل تلقائيًا،{" "}
 				<span
-					className="underline cursor-pointer text-purple-600"
+					className="underline cursor-pointer text-brand"
 					onClick={() => router.push("/login")}
 				>
 					اضغط هنا

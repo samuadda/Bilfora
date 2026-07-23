@@ -1,22 +1,15 @@
 import type { Metadata } from "next";
-import { Vazirmatn } from "next/font/google";
 import Script from "next/script";
 import "./globals.css";
+import { thmanyahSans, thmanyahSerifText, thmanyahSerifDisplay } from "@/lib/fonts";
 import { Toaster } from "@/components/ui/sonner";
 import { ThemeProvider } from "@/components/theme-provider";
 import QueryProvider from "@/components/providers/QueryProvider";
 import { MotionProvider } from "@/components/providers/MotionProvider";
 import { Analytics } from "@vercel/analytics/react"
 
-const vazirmatn = Vazirmatn({
-	subsets: ["arabic"],
-	weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
-	variable: "--font-vazirmatn",
-	display: "swap",
-});
-
 export const metadata: Metadata = {
-	title: "بيلفورة",
+	title: "بلفورا",
 	description: "فواتير احترافية جذابة وسريعة.",
 	icons: {
 		icon: [
@@ -34,8 +27,13 @@ export default function RootLayout({
 	children: React.ReactNode;
 }>) {
 	return (
-		<html lang="ar" dir="rtl" className="scroll-smooth" suppressHydrationWarning>
-			<body className={`${vazirmatn.className} font-sans antialiased`}>
+		<html
+			lang="ar"
+			dir="rtl"
+			className={`scroll-smooth ${thmanyahSans.variable} ${thmanyahSerifText.variable} ${thmanyahSerifDisplay.variable}`}
+			suppressHydrationWarning
+		>
+			<body className="font-sans antialiased">
 				<ThemeProvider
 					attribute="class"
 					defaultTheme="light"

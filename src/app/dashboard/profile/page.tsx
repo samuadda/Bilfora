@@ -415,10 +415,10 @@ export default function ProfilePage() {
 			<m.div
 				initial={{ opacity: 0, y: 20 }}
 				animate={{ opacity: 1, y: 0 }}
-				className="bg-white rounded-3xl border border-gray-100 p-6 md:p-8 shadow-sm flex flex-col md:flex-row items-center gap-6 md:justify-between"
+				className="bg-surface rounded-3xl border border-border p-6 md:p-8 shadow-sm flex flex-col md:flex-row items-center gap-6 md:justify-between"
 			>
 				<div className="flex items-center gap-6 w-full md:w-auto">
-					<div className="relative w-24 h-24 rounded-full overflow-hidden border-2 border-white shadow-lg bg-gray-50">
+					<div className="relative w-24 h-24 rounded-full overflow-hidden border-2 border-white shadow-lg bg-surface-2">
 						<Image
 							src={profile?.avatar_url || "/symbol-shadowNoBg.png"}
 							alt="Avatar"
@@ -426,7 +426,7 @@ export default function ProfilePage() {
 							sizes="96px"
 							className="object-cover"
 						/>
-						<div className="absolute inset-0 bg-black/30 opacity-0 hover:opacity-100 transition-opacity flex items-center justify-center">
+						<div className="absolute inset-0 bg-overlay opacity-0 hover:opacity-100 transition-opacity flex items-center justify-center">
 							<label className="cursor-pointer text-white flex flex-col items-center">
 								<Camera size={20} />
 								<span className="text-[10px] font-bold mt-1">تغيير</span>
@@ -450,16 +450,16 @@ export default function ProfilePage() {
 							<p className="mt-2 text-sm text-red-600 font-medium">{avatarError}</p>
 						)}
 						<div className="mt-3 max-w-[200px]">
-							<div className="flex justify-between text-xs text-gray-500 mb-1">
+							<div className="flex justify-between text-xs text-subtle mb-1">
 								<span>اكتمال الملف</span>
-								<span className="font-bold text-[#7f2dfb]">{completionPercent}%</span>
+								<span className="font-bold text-brand">{completionPercent}%</span>
 							</div>
-							<div className="h-2 bg-gray-100 rounded-full overflow-hidden">
+							<div className="h-2 bg-surface-inset rounded-full overflow-hidden">
 								<m.div
 									initial={{ width: 0 }}
 									animate={{ width: `${completionPercent}%` }}
 									transition={{ duration: 1, ease: "easeOut" }}
-									className="h-full bg-gradient-to-r from-[#7f2dfb] to-purple-400"
+									className="h-full bg-gradient-to-r from-brand to-brand"
 								/>
 							</div>
 						</div>
@@ -476,7 +476,7 @@ export default function ProfilePage() {
 							a.click();
 							URL.revokeObjectURL(url);
 						}}
-						className="px-4 py-2.5 rounded-xl border border-gray-200 text-gray-700 text-sm font-bold hover:bg-gray-50 transition-colors w-full md:w-auto"
+						className="px-4 py-2.5 rounded-xl border border-border text-muted-foreground text-sm font-bold hover:bg-surface-2 transition-colors w-full md:w-auto"
 					>
 						تصدير البيانات
 					</button>
@@ -495,58 +495,58 @@ export default function ProfilePage() {
 					{/* Personal info */}
 					<form
 						onSubmit={handleSavePersonalInfo}
-						className="bg-white rounded-3xl border border-gray-100 p-6 md:p-8 shadow-sm"
+						className="bg-surface rounded-3xl border border-border p-6 md:p-8 shadow-sm"
 					>
-						<h2 className="text-xl font-bold text-[#012d46] mb-6 flex items-center gap-2">
-							<User className="text-[#7f2dfb]" size={24} />
+						<h2 className="text-xl font-bold text-foreground mb-6 flex items-center gap-2">
+							<User className="text-brand" size={24} />
 							المعلومات الشخصية
 						</h2>
 						<div className="grid grid-cols-1 md:grid-cols-2 gap-6">
 							<div className="space-y-2">
-								<label className="block text-sm font-medium text-gray-700">
+								<label className="block text-sm font-medium text-muted-foreground">
 									الاسم الكامل *
 								</label>
 								<div className="relative">
 									<User
-										className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400"
+										className="absolute right-3 top-1/2 -translate-y-1/2 text-disabled"
 										size={18}
 									/>
 									<input
 										name="full_name"
 										value={formData.full_name}
 										onChange={handleInputChange}
-										className="w-full rounded-xl border border-gray-200 pr-10 pl-4 py-3 text-sm focus:border-[#7f2dfb] focus:ring-[#7f2dfb] transition-all"
+										className="w-full rounded-xl border border-border pr-10 pl-4 py-3 text-sm focus:border-brand focus:ring-brand transition-all"
 										placeholder="أدخل اسمك"
 										required
 									/>
 								</div>
 							</div>
 							<div className="space-y-2">
-								<label className="block text-sm font-medium text-gray-700">
+								<label className="block text-sm font-medium text-muted-foreground">
 									رقم الجوال *
 								</label>
 								<div className="relative">
 									<Phone
-										className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400"
+										className="absolute right-3 top-1/2 -translate-y-1/2 text-disabled"
 										size={18}
 									/>
 									<input
 										name="phone"
 										value={formData.phone}
 										onChange={handleInputChange}
-										className="w-full rounded-xl border border-gray-200 pr-10 pl-4 py-3 text-sm focus:border-[#7f2dfb] focus:ring-[#7f2dfb] transition-all"
+										className="w-full rounded-xl border border-border pr-10 pl-4 py-3 text-sm focus:border-brand focus:ring-brand transition-all"
 										placeholder="9665xxxxxxxx"
 										required
 									/>
 								</div>
 							</div>
 							<div className="space-y-2">
-								<label className="block text-sm font-medium text-gray-700">
+								<label className="block text-sm font-medium text-muted-foreground">
 									تاريخ الميلاد *
 								</label>
 								<div className="relative">
 									<Calendar
-										className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400"
+										className="absolute right-3 top-1/2 -translate-y-1/2 text-disabled"
 										size={18}
 									/>
 									<input
@@ -554,13 +554,13 @@ export default function ProfilePage() {
 										type="date"
 										value={formData.dob}
 										onChange={handleInputChange}
-										className="w-full rounded-xl border border-gray-200 pr-10 pl-4 py-3 text-sm focus:border-[#7f2dfb] focus:ring-[#7f2dfb] transition-all"
+										className="w-full rounded-xl border border-border pr-10 pl-4 py-3 text-sm focus:border-brand focus:ring-brand transition-all"
 										required
 									/>
 								</div>
 							</div>
 							<div className="space-y-2">
-								<label className="block text-sm font-medium text-gray-700">
+								<label className="block text-sm font-medium text-muted-foreground">
 									الجنس
 								</label>
 								<div className="relative">
@@ -572,7 +572,7 @@ export default function ProfilePage() {
 											setSuccess(null);
 										}}
 									>
-										<SelectTrigger className="w-full h-11 bg-white border-gray-200">
+										<SelectTrigger className="w-full h-11 bg-surface border-border">
 											<SelectValue placeholder="اختر الجنس" />
 										</SelectTrigger>
 										<SelectContent>
@@ -583,7 +583,7 @@ export default function ProfilePage() {
 								</div>
 							</div>
 							<div className="space-y-2">
-								<label className="block text-sm font-medium text-gray-700">
+								<label className="block text-sm font-medium text-muted-foreground">
 									نوع الحساب *
 								</label>
 								<div className="relative">
@@ -595,7 +595,7 @@ export default function ProfilePage() {
 											setSuccess(null);
 										}}
 									>
-										<SelectTrigger className="w-full h-11 bg-white border-gray-200">
+										<SelectTrigger className="w-full h-11 bg-surface border-border">
 											<SelectValue />
 										</SelectTrigger>
 										<SelectContent>
@@ -610,7 +610,7 @@ export default function ProfilePage() {
 							<button
 								type="submit"
 								disabled={saving}
-								className="px-6 py-2.5 rounded-xl bg-[#7f2dfb] text-white text-sm font-bold hover:bg-[#6a1fd8] shadow-lg shadow-purple-200 transition-all flex items-center gap-2"
+								className="px-6 py-2.5 rounded-xl bg-brand text-white text-sm font-bold hover:bg-brand-hover shadow-lg shadow-brand transition-all flex items-center gap-2"
 							>
 								{saving ? <Loader2 size={18} className="animate-spin" /> : <Save size={18} />}
 								حفظ المعلومات
@@ -621,45 +621,45 @@ export default function ProfilePage() {
 					{/* Business info */}
 					<form
 						onSubmit={handleSaveBusinessInfo}
-						className="bg-white rounded-3xl border border-gray-100 p-6 md:p-8 shadow-sm"
+						className="bg-surface rounded-3xl border border-border p-6 md:p-8 shadow-sm"
 					>
-						<h2 className="text-xl font-bold text-[#012d46] mb-6 flex items-center gap-2">
-							<Building2 className="text-[#7f2dfb]" size={24} />
+						<h2 className="text-xl font-bold text-foreground mb-6 flex items-center gap-2">
+							<Building2 className="text-brand" size={24} />
 							المعلومات التجارية
 						</h2>
 						<div className="grid grid-cols-1 md:grid-cols-2 gap-6">
 							<div className="space-y-2">
-								<label className="block text-sm font-medium text-gray-700">
+								<label className="block text-sm font-medium text-muted-foreground">
 									اسم الشركة
 								</label>
 								<div className="relative">
 									<Building2
-										className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400"
+										className="absolute right-3 top-1/2 -translate-y-1/2 text-disabled"
 										size={18}
 									/>
 									<input
 										name="company_name"
 										value={formData.company_name}
 										onChange={handleInputChange}
-										className="w-full rounded-xl border border-gray-200 pr-10 pl-4 py-3 text-sm focus:border-[#7f2dfb] focus:ring-[#7f2dfb] transition-all"
+										className="w-full rounded-xl border border-border pr-10 pl-4 py-3 text-sm focus:border-brand focus:ring-brand transition-all"
 										placeholder="اسم الشركة"
 									/>
 								</div>
 							</div>
 							<div className="space-y-2">
-								<label className="block text-sm font-medium text-gray-700">
+								<label className="block text-sm font-medium text-muted-foreground">
 									{IS_ZATCA_ENABLED ? "الرقم الضريبي" : "السجل التجاري"}
 								</label>
 								<div className="relative">
 									<Building2
-										className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400"
+										className="absolute right-3 top-1/2 -translate-y-1/2 text-disabled"
 										size={18}
 									/>
 									<input
 										name="tax_number"
 										value={formData.tax_number}
 										onChange={handleInputChange}
-										className="w-full rounded-xl border border-gray-200 pr-10 pl-4 py-3 text-sm focus:border-[#7f2dfb] focus:ring-[#7f2dfb] transition-all"
+										className="w-full rounded-xl border border-border pr-10 pl-4 py-3 text-sm focus:border-brand focus:ring-brand transition-all"
 										placeholder={IS_ZATCA_ENABLED ? "3xxxxxxxxxxxxx3" : "1010xxxxxx"}
 									/>
 								</div>
@@ -669,7 +669,7 @@ export default function ProfilePage() {
 							<button
 								type="submit"
 								disabled={saving}
-								className="px-6 py-2.5 rounded-xl bg-[#7f2dfb] text-white text-sm font-bold hover:bg-[#6a1fd8] shadow-lg shadow-purple-200 transition-all flex items-center gap-2"
+								className="px-6 py-2.5 rounded-xl bg-brand text-white text-sm font-bold hover:bg-brand-hover shadow-lg shadow-brand transition-all flex items-center gap-2"
 							>
 								{saving ? <Loader2 size={18} className="animate-spin" /> : <Save size={18} />}
 								حفظ
@@ -680,40 +680,40 @@ export default function ProfilePage() {
 					{/* Address */}
 					<form
 						onSubmit={handleSaveAddress}
-						className="bg-white rounded-3xl border border-gray-100 p-6 md:p-8 shadow-sm"
+						className="bg-surface rounded-3xl border border-border p-6 md:p-8 shadow-sm"
 					>
-						<h2 className="text-xl font-bold text-[#012d46] mb-6 flex items-center gap-2">
-							<MapPin className="text-[#7f2dfb]" size={24} />
+						<h2 className="text-xl font-bold text-foreground mb-6 flex items-center gap-2">
+							<MapPin className="text-brand" size={24} />
 							العنوان
 						</h2>
 						<div className="grid grid-cols-1 md:grid-cols-2 gap-6">
 							<div className="space-y-2">
-								<label className="block text-sm font-medium text-gray-700">
+								<label className="block text-sm font-medium text-muted-foreground">
 									المدينة
 								</label>
 								<div className="relative">
 									<MapPin
-										className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400"
+										className="absolute right-3 top-1/2 -translate-y-1/2 text-disabled"
 										size={18}
 									/>
 									<input
 										name="city"
 										value={formData.city}
 										onChange={handleInputChange}
-										className="w-full rounded-xl border border-gray-200 pr-10 pl-4 py-3 text-sm focus:border-[#7f2dfb] focus:ring-[#7f2dfb] transition-all"
+										className="w-full rounded-xl border border-border pr-10 pl-4 py-3 text-sm focus:border-brand focus:ring-brand transition-all"
 										placeholder="الرياض"
 									/>
 								</div>
 							</div>
 							<div className="md:col-span-2 space-y-2">
-								<label className="block text-sm font-medium text-gray-700">
+								<label className="block text-sm font-medium text-muted-foreground">
 									العنوان التفصيلي
 								</label>
 								<input
 									name="address"
 									value={formData.address}
 									onChange={handleInputChange}
-									className="w-full rounded-xl border border-gray-200 px-4 py-3 text-sm focus:border-[#7f2dfb] focus:ring-[#7f2dfb] transition-all"
+									className="w-full rounded-xl border border-border px-4 py-3 text-sm focus:border-brand focus:ring-brand transition-all"
 									placeholder="اسم الشارع، رقم المبنى، الحي"
 								/>
 							</div>
@@ -722,7 +722,7 @@ export default function ProfilePage() {
 							<button
 								type="submit"
 								disabled={saving}
-								className="px-6 py-2.5 rounded-xl bg-[#7f2dfb] text-white text-sm font-bold hover:bg-[#6a1fd8] shadow-lg shadow-purple-200 transition-all flex items-center gap-2"
+								className="px-6 py-2.5 rounded-xl bg-brand text-white text-sm font-bold hover:bg-brand-hover shadow-lg shadow-brand transition-all flex items-center gap-2"
 							>
 								{saving ? <Loader2 size={18} className="animate-spin" /> : <Save size={18} />}
 								حفظ العنوان
@@ -732,9 +732,9 @@ export default function ProfilePage() {
 
 					{/* Email & Password */}
 					<div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-						<form onSubmit={handleEmailUpdate} className="bg-white rounded-3xl border border-gray-100 p-6 md:p-8 shadow-sm">
-							<h2 className="text-lg font-bold text-[#012d46] mb-6 flex items-center gap-2">
-								<Mail className="text-[#7f2dfb]" size={20} />
+						<form onSubmit={handleEmailUpdate} className="bg-surface rounded-3xl border border-border p-6 md:p-8 shadow-sm">
+							<h2 className="text-lg font-bold text-foreground mb-6 flex items-center gap-2">
+								<Mail className="text-brand" size={20} />
 								البريد الإلكتروني
 							</h2>
 							{emailError && (
@@ -749,22 +749,22 @@ export default function ProfilePage() {
 							)}
 							<div className="space-y-4">
 								<div className="space-y-2">
-									<label className="block text-sm font-medium text-gray-700">البريد الجديد</label>
+									<label className="block text-sm font-medium text-muted-foreground">البريد الجديد</label>
 									<input
 										value={emailInput}
 										onChange={(e) => setEmailInput(e.target.value)}
-										className="w-full rounded-xl border border-gray-200 px-4 py-3 text-sm focus:border-[#7f2dfb] focus:ring-[#7f2dfb] transition-all"
+										className="w-full rounded-xl border border-border px-4 py-3 text-sm focus:border-brand focus:ring-brand transition-all"
 										type="email"
 										required
 										disabled={emailSaving}
 										placeholder="example@domain.com"
 									/>
-									<p className="text-xs text-gray-500">سيتم إرسال رابط تأكيد إلى البريد الجديد</p>
+									<p className="text-xs text-subtle">سيتم إرسال رابط تأكيد إلى البريد الجديد</p>
 								</div>
 								<button
 									type="submit"
 									disabled={emailSaving}
-									className="w-full py-2.5 rounded-xl bg-[#7f2dfb] text-white text-sm font-bold hover:bg-[#6a1fd8] shadow-lg shadow-purple-200 transition-all flex items-center justify-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed"
+									className="w-full py-2.5 rounded-xl bg-brand text-white text-sm font-bold hover:bg-brand-hover shadow-lg shadow-brand transition-all flex items-center justify-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed"
 								>
 									{emailSaving ? (
 										<>
@@ -781,9 +781,9 @@ export default function ProfilePage() {
 							</div>
 						</form>
 
-						<form onSubmit={handlePasswordChange} className="bg-white rounded-3xl border border-gray-100 p-6 md:p-8 shadow-sm">
-							<h2 className="text-lg font-bold text-[#012d46] mb-6 flex items-center gap-2">
-								<Building2 className="text-[#7f2dfb]" size={20} />
+						<form onSubmit={handlePasswordChange} className="bg-surface rounded-3xl border border-border p-6 md:p-8 shadow-sm">
+							<h2 className="text-lg font-bold text-foreground mb-6 flex items-center gap-2">
+								<Building2 className="text-brand" size={20} />
 								تغيير كلمة المرور
 							</h2>
 							{passwordError && (
@@ -799,36 +799,36 @@ export default function ProfilePage() {
 							)}
 							<div className="space-y-4">
 								<div className="space-y-2">
-									<label className="block text-sm font-medium text-gray-700">كلمة المرور الحالية</label>
+									<label className="block text-sm font-medium text-muted-foreground">كلمة المرور الحالية</label>
 									<input
 										type="password"
 										value={passwords.current}
 										onChange={(e) => setPasswords(p => ({ ...p, current: e.target.value }))}
-										className="w-full rounded-xl border border-gray-200 px-4 py-3 text-sm focus:border-[#7f2dfb] focus:ring-[#7f2dfb] transition-all"
+										className="w-full rounded-xl border border-border px-4 py-3 text-sm focus:border-brand focus:ring-brand transition-all"
 										required
 										disabled={passwordSaving}
 									/>
 								</div>
 								<div className="space-y-2">
-									<label className="block text-sm font-medium text-gray-700">الجديدة</label>
+									<label className="block text-sm font-medium text-muted-foreground">الجديدة</label>
 									<input
 										type="password"
 										value={passwords.newPass}
 										onChange={(e) => setPasswords(p => ({ ...p, newPass: e.target.value }))}
-										className="w-full rounded-xl border border-gray-200 px-4 py-3 text-sm focus:border-[#7f2dfb] focus:ring-[#7f2dfb] transition-all"
+										className="w-full rounded-xl border border-border px-4 py-3 text-sm focus:border-brand focus:ring-brand transition-all"
 										required
 										disabled={passwordSaving}
 										placeholder="8 أحرف على الأقل، حرف ورقم"
 									/>
-									<p className="text-xs text-gray-500">يجب أن تكون 8 خانات على الأقل، وتحتوي على حرف ورقم على الأقل</p>
+									<p className="text-xs text-subtle">يجب أن تكون 8 خانات على الأقل، وتحتوي على حرف ورقم على الأقل</p>
 								</div>
 								<div className="space-y-2">
-									<label className="block text-sm font-medium text-gray-700">تأكيد الجديدة</label>
+									<label className="block text-sm font-medium text-muted-foreground">تأكيد الجديدة</label>
 									<input
 										type="password"
 										value={passwords.confirm}
 										onChange={(e) => setPasswords(p => ({ ...p, confirm: e.target.value }))}
-										className="w-full rounded-xl border border-gray-200 px-4 py-3 text-sm focus:border-[#7f2dfb] focus:ring-[#7f2dfb] transition-all"
+										className="w-full rounded-xl border border-border px-4 py-3 text-sm focus:border-brand focus:ring-brand transition-all"
 										required
 										disabled={passwordSaving}
 									/>
@@ -836,7 +836,7 @@ export default function ProfilePage() {
 								<button
 									type="submit"
 									disabled={passwordSaving}
-									className="w-full py-2.5 rounded-xl bg-[#7f2dfb] text-white text-sm font-bold hover:bg-[#6a1fd8] shadow-lg shadow-purple-200 transition-all flex items-center justify-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed"
+									className="w-full py-2.5 rounded-xl bg-brand text-white text-sm font-bold hover:bg-brand-hover shadow-lg shadow-brand transition-all flex items-center justify-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed"
 								>
 									{passwordSaving ? (
 										<>
@@ -863,52 +863,52 @@ export default function ProfilePage() {
 					className="space-y-6"
 				>
 					{/* Profile info summary */}
-					<div className="bg-white rounded-3xl border border-gray-100 p-6 shadow-sm sticky top-6">
-						<h3 className="text-lg font-bold text-[#012d46] mb-4">
+					<div className="bg-surface rounded-3xl border border-border p-6 shadow-sm sticky top-6">
+						<h3 className="text-lg font-bold text-foreground mb-4">
 							ملخص المعلومات
 						</h3>
 						<div className="space-y-4 text-sm">
 							<div className="flex justify-between items-center py-2 border-b border-gray-50">
-								<span className="text-gray-500">الاسم</span>
-								<span className="font-bold text-gray-900">
+								<span className="text-subtle">الاسم</span>
+								<span className="font-bold text-foreground">
 									{profile?.full_name || "غير محدد"}
 								</span>
 							</div>
 							<div className="flex justify-between items-center py-2 border-b border-gray-50">
-								<span className="text-gray-500">الجوال</span>
-								<span className="font-bold text-gray-900" style={{ direction: "ltr" }}>
+								<span className="text-subtle">الجوال</span>
+								<span className="font-bold text-foreground" style={{ direction: "ltr" }}>
 									{profile?.phone || "غير محدد"}
 								</span>
 							</div>
 							<div className="flex justify-between items-center py-2 border-b border-gray-50">
-								<span className="text-gray-500">
+								<span className="text-subtle">
 									نوع الحساب
 								</span>
-								<span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-purple-50 text-[#7f2dfb]">
+								<span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-brand-soft text-brand">
 									{profile?.account_type === "business" ? "مؤسسة" : "فرد"}
 								</span>
 							</div>
 							{profile?.company_name && (
 								<div className="flex justify-between items-center py-2 border-b border-gray-50">
-									<span className="text-gray-500">
+									<span className="text-subtle">
 										الشركة
 									</span>
-									<span className="font-bold text-gray-900">
+									<span className="font-bold text-foreground">
 										{profile?.company_name}
 									</span>
 								</div>
 							)}
 							{profile?.city && (
 								<div className="flex justify-between items-center py-2 border-b border-gray-50">
-									<span className="text-gray-500">
+									<span className="text-subtle">
 										المدينة
 									</span>
-									<span className="font-bold text-gray-900">
+									<span className="font-bold text-foreground">
 										{profile?.city}
 									</span>
 								</div>
 							)}
-							<div className="pt-4 text-xs text-gray-400 text-center">
+							<div className="pt-4 text-xs text-disabled text-center">
 								آخر تحديث: {new Date().toLocaleDateString("en-GB")}
 							</div>
 						</div>

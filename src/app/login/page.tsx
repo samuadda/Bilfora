@@ -1,6 +1,7 @@
 "use client";
 
 import { supabasePersistent } from "@/lib/supabase-clients";
+import { Logo } from "@/components/brand/Logo";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
 import { cn } from "@/lib/utils";
@@ -190,7 +191,7 @@ function LoginContent() {
 				loop={false}
 			/>
 			
-			<div className="min-h-screen bg-gray-50 relative overflow-hidden flex items-center justify-center px-4 py-12">
+			<div className="min-h-screen bg-surface-2 relative overflow-hidden flex items-center justify-center px-4 py-12">
 				{/* Aurora Background */}
 			<div className="absolute inset-0 overflow-hidden">
 				<m.div
@@ -200,7 +201,7 @@ function LoginContent() {
 						scale: [1, 1.1, 1],
 					}}
 					transition={{ duration: 20, repeat: Infinity, ease: "easeInOut" }}
-					className="absolute -top-1/2 -left-1/4 w-[800px] h-[800px] bg-gradient-to-br from-[#7f2dfb]/20 via-purple-400/10 to-transparent rounded-full blur-[120px]"
+					className="absolute -top-1/2 -left-1/4 w-[800px] h-[800px] bg-gradient-to-br from-brand/20 via-brand/10 to-transparent rounded-full blur-[120px]"
 				/>
 				<m.div
 					animate={{
@@ -236,17 +237,17 @@ function LoginContent() {
 				transition={{ duration: 0.5 }}
 				className="relative z-10 w-full max-w-md"
 			>
-				<div className="bg-white/70 backdrop-blur-2xl rounded-3xl border border-white/50 p-8 shadow-xl shadow-gray-200/50">
+				<div className="bg-surface/70 backdrop-blur-2xl rounded-3xl border border-white/50 p-8 shadow-xl shadow-gray-200/50">
 					{/* Tab Toggle */}
 					<div className="flex items-center justify-center mb-8">
-						<div className="bg-gray-100 rounded-full p-1 flex">
+						<div className="bg-surface-inset rounded-full p-1 flex">
 							<Link
 								href="/register"
-								className="px-5 py-2 text-sm font-medium text-gray-500 hover:text-gray-700 transition-colors rounded-full"
+								className="px-5 py-2 text-sm font-medium text-subtle hover:text-muted-foreground transition-colors rounded-full"
 							>
 								حساب جديد
 							</Link>
-							<span className="px-5 py-2 text-sm font-medium bg-white text-[#012d46] rounded-full shadow-sm">
+							<span className="px-5 py-2 text-sm font-medium bg-surface text-foreground rounded-full shadow-sm">
 								تسجيل الدخول
 							</span>
 						</div>
@@ -254,10 +255,10 @@ function LoginContent() {
 
 					{/* Header */}
 					<div className="text-center mb-8">
-						<h1 className="text-2xl font-bold text-[#012d46] mb-2">
+						<h1 className="text-2xl font-bold text-foreground mb-2">
 							أهلاً من جديد!
 						</h1>
-						<p className="text-gray-500 text-sm">
+						<p className="text-subtle text-sm">
 							سجّل دخولك وكمّل شغلك
 						</p>
 					</div>
@@ -302,11 +303,11 @@ function LoginContent() {
 					<form onSubmit={handleSubmit} className="space-y-4" style={{ pointerEvents: isRedirecting ? 'none' : 'auto', opacity: isRedirecting ? 0.6 : 1 }}>
 						{/* Email */}
 						<div>
-							<label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-2">
+							<label htmlFor="email" className="block text-sm font-medium text-muted-foreground mb-2">
 								البريد الإلكتروني
 							</label>
 							<div className="relative">
-								<Mail className="absolute right-4 top-1/2 -translate-y-1/2 h-4 w-4 text-gray-400" />
+								<Mail className="absolute right-4 top-1/2 -translate-y-1/2 h-4 w-4 text-disabled" />
 								<input
 									type="email"
 									id="email"
@@ -315,7 +316,7 @@ function LoginContent() {
 									onChange={(e) => handleInputChange("email", e.target.value)}
 									placeholder="name@example.com"
 									className={cn(
-										"block w-full rounded-xl bg-gray-50/80 border border-gray-200 py-4 pr-11 pl-4 text-gray-900 placeholder:text-gray-400 focus:bg-white focus:border-[#7f2dfb] focus:ring-2 focus:ring-[#7f2dfb]/10 focus:outline-none transition-all text-sm leading-relaxed",
+										"block w-full rounded-xl bg-surface-2 border border-border py-4 pr-11 pl-4 text-foreground placeholder:text-disabled focus:bg-surface focus:border-brand focus:ring-2 focus:ring-brand/10 focus:outline-none transition-all text-sm leading-relaxed",
 										emailError && "border-red-300 focus:border-red-500 focus:ring-red-500/10"
 									)}
 								/>
@@ -325,11 +326,11 @@ function LoginContent() {
 
 						{/* Password */}
 						<div>
-							<label htmlFor="password" className="block text-sm font-medium text-gray-700 mb-2">
+							<label htmlFor="password" className="block text-sm font-medium text-muted-foreground mb-2">
 								كلمة المرور
 							</label>
 							<div className="relative">
-								<Lock className="absolute right-4 top-1/2 -translate-y-1/2 h-4 w-4 text-gray-400" />
+								<Lock className="absolute right-4 top-1/2 -translate-y-1/2 h-4 w-4 text-disabled" />
 								<input
 									type={showPassword ? "text" : "password"}
 									id="password"
@@ -338,14 +339,14 @@ function LoginContent() {
 									onChange={(e) => handleInputChange("password", e.target.value)}
 									placeholder="••••••••"
 									className={cn(
-										"block w-full rounded-xl bg-gray-50/80 border border-gray-200 py-4 pr-11 pl-11 text-gray-900 placeholder:text-gray-400 focus:bg-white focus:border-[#7f2dfb] focus:ring-2 focus:ring-[#7f2dfb]/10 focus:outline-none transition-all text-sm leading-relaxed",
+										"block w-full rounded-xl bg-surface-2 border border-border py-4 pr-11 pl-11 text-foreground placeholder:text-disabled focus:bg-surface focus:border-brand focus:ring-2 focus:ring-brand/10 focus:outline-none transition-all text-sm leading-relaxed",
 										passwordError && "border-red-300 focus:border-red-500 focus:ring-red-500/10"
 									)}
 								/>
 								<button
 									type="button"
 									onClick={() => setShowPassword(!showPassword)}
-									className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-600"
+									className="absolute left-4 top-1/2 -translate-y-1/2 text-disabled hover:text-muted-foreground"
 								>
 									{showPassword ? <EyeClosed size={16} /> : <Eye size={16} />}
 								</button>
@@ -358,7 +359,7 @@ function LoginContent() {
 							<button
 								type="button"
 								onClick={() => setShowForgotPassword(true)}
-								className="text-sm font-medium text-[#7f2dfb] hover:text-[#6a1fd8]"
+								className="text-sm font-medium text-brand hover:text-brand-hover"
 							>
 								نسيت كلمة السر؟
 							</button>
@@ -370,7 +371,7 @@ function LoginContent() {
 							disabled={isLoading || isRedirecting}
 							whileHover={{ scale: 1.01 }}
 							whileTap={{ scale: 0.99 }}
-							className="w-full bg-[#7f2dfb] text-white font-semibold py-3.5 px-4 rounded-xl transition-all disabled:opacity-70 disabled:cursor-not-allowed flex items-center justify-center gap-2 hover:bg-[#6a1fd8] mt-6 shadow-lg shadow-purple-500/20"
+							className="w-full bg-brand text-white font-semibold py-3.5 px-4 rounded-xl transition-all disabled:opacity-70 disabled:cursor-not-allowed flex items-center justify-center gap-2 hover:bg-brand-hover mt-6 shadow-lg shadow-brand"
 						>
 							{isLoading ? (
 								<>
@@ -387,9 +388,9 @@ function LoginContent() {
 					</form>
 
 					{/* Footer */}
-					<p className="text-center text-xs text-gray-400 mt-6">
+					<p className="text-center text-xs text-disabled mt-6">
 						ما عندك حساب؟{" "}
-						<Link href="/register" className="text-[#7f2dfb] hover:underline font-medium">
+						<Link href="/register" className="text-brand hover:underline font-medium">
 							ابدأهي مجاناً
 						</Link>
 					</p>
@@ -397,29 +398,29 @@ function LoginContent() {
 
 				{/* Logo below card */}
 				<div className="flex items-center justify-center mt-8">
-					<Link href="/" className="flex items-center gap-2 text-gray-400 hover:text-[#7f2dfb] transition-colors">
-						<span className="text-lg font-bold">بِلفورا</span>
+					<Link href="/" className="flex items-center gap-2 text-disabled hover:text-brand transition-colors">
+						<Logo size={22} color="ink" />
 					</Link>
 				</div>
 			</m.div>
 
 			{/* Forgot Password Modal */}
 			{showForgotPassword && (
-				<div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/50 backdrop-blur-sm">
+				<div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-overlay backdrop-blur-sm">
 					<m.div
 						initial={{ opacity: 0, scale: 0.95 }}
 						animate={{ opacity: 1, scale: 1 }}
-						className="bg-white rounded-2xl p-6 w-full max-w-md shadow-2xl relative"
+						className="bg-surface rounded-2xl p-6 w-full max-w-md shadow-2xl relative"
 					>
 						<button
 							onClick={() => setShowForgotPassword(false)}
-							className="absolute top-4 left-4 text-gray-400 hover:text-gray-600"
+							className="absolute top-4 left-4 text-disabled hover:text-muted-foreground"
 						>
 							✕
 						</button>
 
-						<h3 className="text-xl font-bold text-[#012d46] mb-2">نسيت كلمة السر؟</h3>
-						<p className="text-sm text-gray-600 mb-6">
+						<h3 className="text-xl font-bold text-foreground mb-2">نسيت كلمة السر؟</h3>
+						<p className="text-sm text-muted-foreground mb-6">
 							عادي! اكتب بريدك وبنرسل لك رابط تعيد فيه تعيينها.
 						</p>
 
@@ -429,7 +430,7 @@ function LoginContent() {
 									<Check className="w-6 h-6 text-green-600" />
 								</div>
 								<h4 className="text-green-700 font-bold mb-2">تمام!</h4>
-								<p className="text-sm text-gray-500 mb-6">
+								<p className="text-sm text-subtle mb-6">
 									أرسلنا الرابط لـ {resetEmail}. شيّك بريدك (والمهملات بعد!).
 								</p>
 								<button
@@ -438,7 +439,7 @@ function LoginContent() {
 										setResetSuccess(false);
 										setResetEmail("");
 									}}
-									className="w-full py-2 bg-[#7f2dfb] text-white rounded-xl font-medium hover:bg-[#6a1fd8]"
+									className="w-full py-2 bg-brand text-white rounded-xl font-medium hover:bg-brand-hover"
 								>
 									حسناً
 								</button>
@@ -446,17 +447,17 @@ function LoginContent() {
 						) : (
 							<form onSubmit={handleForgotPassword}>
 								<div className="mb-4">
-									<label htmlFor="resetEmail" className="block text-sm font-medium text-gray-700 mb-2">
+									<label htmlFor="resetEmail" className="block text-sm font-medium text-muted-foreground mb-2">
 										البريد الإلكتروني
 									</label>
 									<div className="relative">
-										<Mail className="absolute right-4 top-1/2 -translate-y-1/2 h-4 w-4 text-gray-400" />
+										<Mail className="absolute right-4 top-1/2 -translate-y-1/2 h-4 w-4 text-disabled" />
 										<input
 											type="email"
 											id="resetEmail"
 											value={resetEmail}
 											onChange={(e) => handleInputChange("resetEmail", e.target.value)}
-											className="block w-full rounded-xl bg-gray-50/80 border border-gray-200 py-3.5 pr-11 pl-4 text-gray-900 placeholder:text-gray-400 focus:bg-white focus:border-[#7f2dfb] focus:ring-2 focus:ring-[#7f2dfb]/10 focus:outline-none transition-all text-sm"
+											className="block w-full rounded-xl bg-surface-2 border border-border py-3.5 pr-11 pl-4 text-foreground placeholder:text-disabled focus:bg-surface focus:border-brand focus:ring-2 focus:ring-brand/10 focus:outline-none transition-all text-sm"
 											placeholder="name@example.com"
 										/>
 									</div>
@@ -469,14 +470,14 @@ function LoginContent() {
 									<button
 										type="button"
 										onClick={() => setShowForgotPassword(false)}
-										className="flex-1 py-2.5 border border-gray-300 text-gray-700 font-medium rounded-xl hover:bg-gray-50"
+										className="flex-1 py-2.5 border border-border-strong text-muted-foreground font-medium rounded-xl hover:bg-surface-2"
 									>
 										خلاص
 									</button>
 									<button
 										type="submit"
 										disabled={isResetting}
-										className="flex-1 py-2.5 bg-[#7f2dfb] text-white font-medium rounded-xl hover:bg-[#6a1fd8] flex items-center justify-center gap-2"
+										className="flex-1 py-2.5 bg-brand text-white font-medium rounded-xl hover:bg-brand-hover flex items-center justify-center gap-2"
 									>
 										{isResetting ? (
 											<>
@@ -502,10 +503,10 @@ export default function LoginForm() {
 	return (
 		<Suspense
 			fallback={
-				<div className="min-h-screen w-full flex items-center justify-center bg-gray-50">
+				<div className="min-h-screen w-full flex items-center justify-center bg-surface-2">
 					<div className="text-center">
-						<Loader2 className="h-8 w-8 animate-spin text-[#7f2dfb] mx-auto mb-2" />
-						<p className="text-gray-500">جاري التحميل...</p>
+						<Loader2 className="h-8 w-8 animate-spin text-brand mx-auto mb-2" />
+						<p className="text-subtle">جاري التحميل...</p>
 					</div>
 				</div>
 			}

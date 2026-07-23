@@ -39,7 +39,7 @@ export function Field({
         </Label>
       )}
       {description && (
-        <p className="text-xs text-gray-500">{description}</p>
+        <p className="text-xs text-subtle">{description}</p>
       )}
       {children}
       {error && (

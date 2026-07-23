@@ -152,7 +152,7 @@ export default function DashboardPage() {
 							</div>
 							<div className={cn("flex items-center text-xs", layout.gap.standard)}>
 								<div className={cn("flex items-center", layout.gap.tight)}>
-									<div className="w-2 h-2 rounded-full bg-[#7f2dfb]"></div>
+									<div className="w-2 h-2 rounded-full bg-brand"></div>
 									<Text variant="body-xs" color="muted">الإجمالي</Text>
 								</div>
 								<div className={cn("flex items-center", layout.gap.tight)}>
@@ -164,7 +164,7 @@ export default function DashboardPage() {
 						{dailyRevenue.length > 0 ? (
 							<MonthlyRevenueChart data={dailyRevenue} />
 						) : (
-							<div className="h-[280px] flex items-center justify-center text-gray-400">
+							<div className="h-[280px] flex items-center justify-center text-disabled">
 								<Text variant="body-small">لا توجد بيانات لهذا الشهر</Text>
 							</div>
 						)}
@@ -180,10 +180,10 @@ export default function DashboardPage() {
 					<Card hover>
 						<Heading variant="h3-subsection" className="mb-5">ملخص سريع</Heading>
 						<div className={layout.stack.standard}>
-							<div className="flex items-center justify-between p-3 bg-purple-50 rounded-xl border border-purple-100 hover:bg-purple-100 transition-colors group">
+							<div className="flex items-center justify-between p-3 bg-brand-soft rounded-xl border border-brand-soft-2 hover:bg-brand-soft-2 transition-colors group">
 								<div className={cn("flex items-center", layout.gap.standard)}>
-									<div className="p-2 bg-purple-100 rounded-lg group-hover:scale-105 transition-transform">
-										<FileText className="text-[#7f2dfb]" size={18} strokeWidth={2.5} />
+									<div className="p-2 bg-brand-soft-2 rounded-lg group-hover:scale-105 transition-transform">
+										<FileText className="text-brand" size={18} strokeWidth={2.5} />
 									</div>
 									<Text variant="body-small" className="font-medium">عدد الفواتير</Text>
 								</div>
@@ -245,9 +245,9 @@ export default function DashboardPage() {
 				className="flex justify-center pt-2"
 			>
 				<Link href={analyticsUrl}>
-					<button className="relative group bg-white border border-purple-100 hover:border-purple-200 shadow-sm hover:shadow-md hover:shadow-purple-100/30 text-gray-600 hover:text-purple-700 px-8 py-3.5 rounded-2xl transition-all duration-300 flex items-center gap-3">
+					<button className="relative group bg-surface border border-brand-soft-2 hover:border-brand shadow-sm hover:shadow-md hover:shadow-brand text-muted-foreground hover:text-brand px-8 py-3.5 rounded-2xl transition-all duration-300 flex items-center gap-3">
 						<span className="font-medium">عرض التحليلات التفصيلية</span>
-						<div className="w-8 h-8 rounded-full bg-purple-50 flex items-center justify-center group-hover:bg-purple-100 group-hover:text-purple-700 transition-colors duration-300">
+						<div className="w-8 h-8 rounded-full bg-brand-soft flex items-center justify-center group-hover:bg-brand-soft-2 group-hover:text-brand transition-colors duration-300">
 							<ArrowRight size={16} className="group-hover:-translate-x-0.5 transition-transform" />
 						</div>
 					</button>

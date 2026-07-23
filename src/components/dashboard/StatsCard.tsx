@@ -15,7 +15,7 @@ interface StatsCardProps {
 
 export function StatsCard({ title, value, icon: Icon, trend, color, delay = 0, isWarning }: StatsCardProps) {
     const colors = {
-        purple: "bg-purple-50 text-brand-primary",
+        purple: "bg-brand-soft text-brand",
         blue: "bg-blue-50 text-blue-600",
         green: "bg-green-50 text-green-600",
         orange: "bg-orange-50 text-orange-600",
@@ -36,7 +36,7 @@ export function StatsCard({ title, value, icon: Icon, trend, color, delay = 0, i
                     isWarning && "border-orange-200 bg-orange-50/30"
                 )}
             >
-                <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-gray-50 to-transparent rounded-bl-full -mr-8 -mt-8 opacity-50 transition-transform group-hover:scale-110" />
+                <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-surface-2 to-transparent rounded-bl-full -mr-8 -mt-8 opacity-50 transition-transform group-hover:scale-110" />
 
                 <div className="flex justify-between items-start mb-6 relative">
                     <div className={cn("p-4 rounded-2xl shadow-sm transition-transform group-hover:scale-105 duration-300", colors[color])}>

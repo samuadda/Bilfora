@@ -1,12 +1,10 @@
 /**
- * UI Design Tokens
- * 
- * Centralized design tokens based on the best existing patterns in the codebase.
- * These tokens represent the "elite" design patterns found in:
- * - Landing page (src/app/page.tsx)
- * - Dashboard pages (src/app/dashboard/page.tsx)
- * - Invoice pages (src/app/dashboard/invoices/page.tsx)
- * - Modal components (src/components/InvoiceCreationModal.tsx)
+ * UI Design Tokens — Bilfora (Slate-Teal / Thmanyah)
+ *
+ * Centralized className tokens routed through the semantic CSS variables
+ * defined in globals.css (brand teal, ink neutrals, ink-tinted shadows,
+ * pill buttons, soft radii). Everything here themes automatically in
+ * light and dark because the utilities resolve CSS custom properties.
  */
 
 // ============================================================================
@@ -14,48 +12,41 @@
 // ============================================================================
 
 export const layout = {
-  // Container max widths
   container: {
     full: "max-w-7xl", // Landing page sections
     content: "max-w-6xl", // Content pages
     dashboard: "max-w-[1600px]", // Dashboard container
   },
 
-  // Horizontal padding (responsive)
   paddingX: {
     mobile: "px-4",
     tablet: "sm:px-6",
     desktop: "lg:px-8",
-    // Combined pattern (most common)
     responsive: "px-4 sm:px-6 lg:px-8",
   },
 
-  // Section vertical spacing
   section: {
-    small: "py-12", // Small sections (trust signals, logos)
-    medium: "py-16", // Medium sections
-    standard: "py-20", // Standard sections
-    large: "py-24", // Large sections (most common for major content blocks)
-    xlarge: "py-32", // Extra large sections (pricing, hero)
-    // Responsive pattern
-    responsive: "py-16 md:py-24", // Standard responsive pattern
+    small: "py-12",
+    medium: "py-16",
+    standard: "py-20",
+    large: "py-24",
+    xlarge: "py-32",
+    responsive: "py-16 md:py-24",
   },
 
-  // Gap spacing (for grids and flex containers)
   gap: {
-    tight: "gap-3", // Tight spacing
-    standard: "gap-4", // Standard spacing (most common)
-    medium: "gap-5", // Medium spacing
-    large: "gap-6", // Large spacing (common in dashboards)
-    xlarge: "gap-8", // Extra large spacing
+    tight: "gap-3",
+    standard: "gap-4",
+    medium: "gap-5",
+    large: "gap-6",
+    xlarge: "gap-8",
   },
 
-  // Stack spacing (vertical spacing between children)
   stack: {
     tight: "space-y-2",
     standard: "space-y-4",
-    medium: "space-y-6", // Common in forms
-    large: "space-y-8", // Large forms, sections
+    medium: "space-y-6",
+    large: "space-y-8",
   },
 } as const;
 
@@ -64,65 +55,58 @@ export const layout = {
 // ============================================================================
 
 export const surface = {
-  // Border radius
+  // Border radius — design scale: md=12 inputs, lg=16 cards, xl=24 modals
   radius: {
-    small: "rounded-xl", // Inputs, small cards
-    medium: "rounded-2xl", // Standard cards (most common)
-    large: "rounded-3xl", // Feature cards, modals, large cards
+    small: "rounded-md", // Inputs, small cards
+    medium: "rounded-lg", // Standard cards
+    large: "rounded-xl", // Feature cards, modals
     full: "rounded-full", // Buttons, badges
   },
 
-  // Borders
   border: {
-    subtle: "border border-gray-100", // Light, subtle (default)
-    standard: "border border-gray-200", // More visible
-    // Colored variants
-    purple: "border-purple-100",
-    blue: "border-blue-100",
-    green: "border-green-100",
-    orange: "border-orange-100",
-    red: "border-red-100",
+    subtle: "border border-border",
+    standard: "border border-border-strong",
+    brand: "border-brand-soft-2",
+    blue: "border-info-border",
+    green: "border-success-border",
+    orange: "border-warning-border",
+    red: "border-danger-border",
   },
 
-  // Shadows
   shadow: {
-    none: "", // No shadow
-    subtle: "shadow-sm", // Default cards
-    medium: "shadow-md", // Hover states
-    large: "shadow-lg", // Elevated cards
-    xlarge: "shadow-xl", // Modals, CTAs
-    xxlarge: "shadow-2xl", // Hero elements
-    // Colored shadows
-    purple: "shadow-lg shadow-purple-200", // Branded buttons
+    none: "",
+    subtle: "shadow-sm",
+    medium: "shadow-md",
+    large: "shadow-lg",
+    xlarge: "shadow-xl",
+    xxlarge: "shadow-2xl",
+    brand: "shadow-brand", // Branded (teal) glow for primary CTAs
   },
 
-  // Card padding
   padding: {
     small: "p-4",
-    standard: "p-5 sm:p-6", // Responsive (most common)
+    standard: "p-5 sm:p-6",
     large: "p-6",
     xlarge: "p-8",
   },
 
-  // Card backgrounds
   background: {
-    default: "bg-white",
-    subtle: "bg-gray-50/50",
-    muted: "bg-gray-50",
-    // Accent backgrounds
-    purple: "bg-purple-50",
-    blue: "bg-blue-50",
-    green: "bg-green-50",
-    orange: "bg-orange-50",
-    red: "bg-red-50",
-    indigo: "bg-indigo-50",
+    default: "bg-surface",
+    subtle: "bg-surface-2",
+    muted: "bg-surface-inset",
+    brand: "bg-brand-soft",
+    purple: "bg-brand-soft", // legacy alias → teal
+    blue: "bg-info-soft",
+    green: "bg-success-soft",
+    orange: "bg-warning-soft",
+    red: "bg-danger-soft",
+    indigo: "bg-brand-soft",
   },
 
-  // Complete card style (combines above)
   card: {
-    default: "bg-white rounded-2xl border border-gray-100 shadow-sm p-5 sm:p-6",
-    elevated: "bg-white/80 backdrop-blur-md rounded-2xl border border-white/50 shadow-xl p-5 sm:p-6",
-    hover: "hover:shadow-md transition-all duration-300",
+    default: "bg-surface rounded-lg border border-border shadow-sm p-5 sm:p-6",
+    elevated: "bg-surface rounded-lg border border-transparent shadow-lg p-5 sm:p-6",
+    hover: "hover:shadow-md hover:border-border-strong transition-all duration-200",
   },
 } as const;
 
@@ -131,50 +115,46 @@ export const surface = {
 // ============================================================================
 
 export const typography = {
-  // Heading sizes
   heading: {
     h1: {
-      hero: "text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-bold", // Landing hero
-      page: "text-3xl font-bold text-[#012d46]", // Dashboard/page titles
+      hero: "text-5xl sm:text-6xl md:text-7xl font-black", // Landing hero (Thmanyah Display via font-display)
+      page: "text-3xl font-bold text-foreground", // Dashboard/page titles
     },
     h2: {
-      section: "text-4xl md:text-5xl font-bold text-[#012d46]", // Section titles
-      page: "text-2xl md:text-3xl font-bold text-[#012d46]", // Page subsections
+      section: "text-4xl md:text-5xl font-bold text-foreground",
+      page: "text-2xl md:text-3xl font-bold text-foreground",
     },
     h3: {
-      card: "text-2xl font-bold", // Card titles
-      subsection: "text-lg font-bold", // Subsections
+      card: "text-2xl font-bold",
+      subsection: "text-lg font-bold",
     },
     h4: {
       default: "text-base font-semibold",
     },
   },
 
-  // Body text sizes
   body: {
-    large: "text-lg", // Descriptions, hero text
-    standard: "text-base", // Default body
-    small: "text-sm", // Labels, metadata
-    xs: "text-xs", // Badges, timestamps
+    large: "text-lg",
+    standard: "text-base",
+    small: "text-sm",
+    xs: "text-xs",
   },
 
-  // Text colors
   color: {
-    primary: "text-gray-900", // Headings, important text
-    secondary: "text-gray-700", // Body text
-    muted: "text-gray-500", // Descriptions, metadata
-    light: "text-gray-400", // Icons, placeholders
-    brand: "text-[#012d46]", // Primary brand color for headings
-    accent: "text-[#7f2dfb]", // Purple accent
+    primary: "text-foreground", // Headings, important text
+    secondary: "text-muted-foreground", // Body text
+    muted: "text-subtle", // Descriptions, metadata
+    light: "text-disabled", // Icons, placeholders
+    brand: "text-foreground", // Heading color (was navy)
+    accent: "text-brand", // Teal accent
   },
 
-  // Font weights
   weight: {
-    normal: "", // Default
-    medium: "font-medium", // Labels, emphasis
-    semibold: "font-semibold", // Subheadings
-    bold: "font-bold", // Headings, important values
-    extrabold: "font-extrabold", // Hero text
+    normal: "",
+    medium: "font-medium",
+    semibold: "font-semibold",
+    bold: "font-bold",
+    extrabold: "font-extrabold",
   },
 } as const;
 
@@ -183,106 +163,98 @@ export const typography = {
 // ============================================================================
 
 export const interactive = {
-  // Button sizes
   button: {
     size: {
-      sm: "px-3 py-1.5 text-sm",
-      md: "px-6 py-3 text-base", // Standard
+      sm: "px-4 py-1.5 text-sm",
+      md: "px-6 py-3 text-base",
       lg: "px-8 py-4 text-lg",
-      icon: "p-2", // Icon-only buttons
+      icon: "p-2",
     },
     radius: {
-      default: "rounded-xl",
+      default: "rounded-full", // Buttons are pills in this system
       pill: "rounded-full",
     },
   },
 
-  // Button variants
   buttonVariant: {
-    primary: "bg-brand-primary text-white hover:bg-brand-primary-hover",
-    secondary: "border border-gray-200 text-gray-700 hover:bg-gray-50",
-    ghost: "text-gray-700 hover:bg-gray-100",
-    danger: "bg-red-600 text-white hover:bg-red-700",
+    primary: "bg-brand text-on-brand shadow-brand hover:bg-brand-hover active:translate-y-px",
+    secondary: "border border-border-strong text-foreground hover:bg-surface-2 hover:border-brand hover:text-brand",
+    ghost: "text-foreground hover:bg-brand-soft hover:text-brand",
+    danger: "bg-danger text-white hover:opacity-90",
   },
 
-  // Input styles
   input: {
-    base: "w-full rounded-xl border border-gray-200 px-4 py-2 text-sm",
-    focus: "focus:outline-none focus:border-[#7f2dfb] focus:ring-2 focus:ring-[#7f2dfb]/20",
-    disabled: "disabled:bg-gray-100 disabled:cursor-not-allowed",
-    // Complete input style
-    default: "w-full rounded-xl border border-gray-200 px-4 py-2 text-sm focus:outline-none focus:border-[#7f2dfb] focus:ring-2 focus:ring-[#7f2dfb]/20",
+    base: "w-full rounded-md border border-border-strong bg-surface px-4 py-2 text-sm",
+    focus: "focus:outline-none focus:border-brand focus:shadow-focus",
+    disabled: "disabled:bg-surface-inset disabled:cursor-not-allowed",
+    default:
+      "w-full rounded-md border border-border-strong bg-surface px-4 py-2 text-sm focus:outline-none focus:border-brand focus:shadow-focus disabled:bg-surface-inset disabled:cursor-not-allowed",
   },
 
-  // Select/Dropdown styles (same as input)
   select: {
-    base: "w-full appearance-none rounded-xl border border-gray-200 px-4 py-2 text-sm bg-white",
-    focus: "focus:outline-none focus:border-[#7f2dfb] focus:ring-2 focus:ring-[#7f2dfb]/20",
-    // Complete select style
-    default: "w-full appearance-none rounded-xl border border-gray-200 px-4 py-2 text-sm bg-white focus:outline-none focus:border-[#7f2dfb] focus:ring-2 focus:ring-[#7f2dfb]/20",
+    base: "w-full appearance-none rounded-md border border-border-strong px-4 py-2 text-sm bg-surface",
+    focus: "focus:outline-none focus:border-brand focus:shadow-focus",
+    default:
+      "w-full appearance-none rounded-md border border-border-strong px-4 py-2 text-sm bg-surface focus:outline-none focus:border-brand focus:shadow-focus",
   },
 
-  // Focus ring (for accessibility)
-  focusRing: "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#7f2dfb]/20 focus-visible:ring-offset-2",
+  focusRing: "focus-visible:outline-none focus-visible:shadow-focus",
 } as const;
 
 // ============================================================================
-// COLOR TOKENS
+// COLOR TOKENS (raw hex for JS/inline/chart usage)
 // ============================================================================
 
 export const colors = {
-  // Brand colors
   brand: {
-    primary: "#7f2dfb", // Purple
-    primaryHover: "#6a1fd8", // Purple hover
-    dark: "#012d46", // Dark blue for headings
-    background: "#f8f9fc", // Dashboard background
+    primary: "#0f766e", // Teal
+    primaryHover: "#0c5d57", // Teal hover
+    dark: "#172023", // Ink — headings / dark text
+    background: "#f6f8f8", // App background
   },
 
-  // Status colors
   status: {
     success: {
-      bg: "bg-green-50",
-      text: "text-green-600",
-      border: "border-green-100",
-      hover: "hover:bg-green-100",
+      bg: "bg-success-soft",
+      text: "text-success",
+      border: "border-success-border",
+      hover: "hover:bg-teal-100",
     },
     warning: {
-      bg: "bg-orange-50",
-      text: "text-orange-600",
-      border: "border-orange-100",
-      hover: "hover:bg-orange-100",
+      bg: "bg-warning-soft",
+      text: "text-warning",
+      border: "border-warning-border",
+      hover: "hover:bg-amber-100",
     },
     error: {
-      bg: "bg-red-50",
-      text: "text-red-600",
-      border: "border-red-100",
+      bg: "bg-danger-soft",
+      text: "text-danger",
+      border: "border-danger-border",
       hover: "hover:bg-red-100",
     },
     info: {
-      bg: "bg-blue-50",
-      text: "text-blue-600",
-      border: "border-blue-100",
-      hover: "hover:bg-blue-100",
+      bg: "bg-info-soft",
+      text: "text-info",
+      border: "border-info-border",
+      hover: "hover:bg-cyan-100",
     },
-    purple: {
-      bg: "bg-purple-50",
-      text: "text-[#7f2dfb]",
-      border: "border-purple-100",
-      hover: "hover:bg-purple-100",
+    brand: {
+      bg: "bg-brand-soft",
+      text: "text-brand",
+      border: "border-brand-soft-2",
+      hover: "hover:bg-brand-soft-2",
     },
   },
 
-  // Gray scale
   gray: {
-    900: "text-gray-900", // Primary text
-    700: "text-gray-700", // Secondary text
-    600: "text-gray-600", // Muted text
-    500: "text-gray-500", // Light muted
-    400: "text-gray-400", // Icons, placeholders
-    200: "border-gray-200", // Borders
-    100: "border-gray-100", // Subtle borders
-    50: "bg-gray-50", // Backgrounds
+    900: "text-foreground",
+    700: "text-muted-foreground",
+    600: "text-muted-foreground",
+    500: "text-subtle",
+    400: "text-disabled",
+    200: "border-border-strong",
+    100: "border-border",
+    50: "bg-surface-inset",
   },
 } as const;
 
@@ -291,21 +263,11 @@ export const colors = {
 // ============================================================================
 
 export const breakpoints = {
-  // When to use responsive variants
   rules: {
-    // Padding: Always use responsive pattern for containers
     containerPadding: "px-4 sm:px-6 lg:px-8",
-
-    // Section spacing: Use responsive for major sections
     sectionSpacing: "py-16 md:py-24",
-
-    // Card padding: Use responsive for cards
     cardPadding: "p-5 sm:p-6",
-
-    // Typography: Use responsive for hero/landing headings
     headingResponsive: "text-4xl md:text-5xl",
-
-    // Grids: Use responsive columns
     gridResponsive: "grid-cols-1 md:grid-cols-2 lg:grid-cols-3",
   },
 } as const;
@@ -314,24 +276,15 @@ export const breakpoints = {
 // HELPER FUNCTIONS
 // ============================================================================
 
-/**
- * Combine tokens into a complete className string
- */
 export function combineTokens(...tokens: string[]): string {
   return tokens.filter(Boolean).join(" ");
 }
 
-/**
- * Get complete card className
- */
 export function getCardClass(variant: "default" | "elevated" = "default", withHover = true): string {
   const base = variant === "elevated" ? surface.card.elevated : surface.card.default;
   return withHover ? `${base} ${surface.card.hover}` : base;
 }
 
-/**
- * Get complete button className
- */
 export function getButtonClass(
   variant: keyof typeof interactive.buttonVariant = "primary",
   size: keyof typeof interactive.button.size = "md",
@@ -345,17 +298,10 @@ export function getButtonClass(
   );
 }
 
-/**
- * Get complete input className
- */
 export function getInputClass(): string {
   return interactive.input.default;
 }
 
-/**
- * Get complete select className
- */
 export function getSelectClass(): string {
   return interactive.select.default;
 }
-

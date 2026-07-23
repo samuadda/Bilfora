@@ -25,14 +25,14 @@ export function SidebarLogoutModal({
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
                         exit={{ opacity: 0 }}
-                        className="absolute inset-0 bg-black/40 backdrop-blur-sm"
+                        className="absolute inset-0 bg-overlay backdrop-blur-sm"
                         onClick={onClose}
                     />
                     <m.div
                         initial={{ opacity: 0, scale: 0.95, y: 10 }}
                         animate={{ opacity: 1, scale: 1, y: 0 }}
                         exit={{ opacity: 0, scale: 0.95, y: 10 }}
-                        className={`relative bg-white w-full max-w-sm ${surface.radius.large} ${surface.shadow.xxlarge} p-8 overflow-hidden`}
+                        className={`relative bg-surface w-full max-w-sm ${surface.radius.large} ${surface.shadow.xxlarge} p-8 overflow-hidden`}
                     >
                         <div className="absolute top-0 right-0 w-full h-2 bg-gradient-to-l from-red-500 to-orange-500" />
 
@@ -40,17 +40,17 @@ export function SidebarLogoutModal({
                             <LogOut className={`${colors.status.error.text} w-8 h-8 ml-1`} />
                         </div>
 
-                        <h3 className="text-xl font-bold text-gray-900 text-center mb-2">
+                        <h3 className="text-xl font-bold text-foreground text-center mb-2">
                             هل تود المغادرة؟
                         </h3>
-                        <p className="text-gray-500 text-center mb-8 leading-relaxed">
-                            سيتم تسجيل خروجك من حسابك في بِلفورا. يمكنك دائمًا العودة لاحقًا.
+                        <p className="text-subtle text-center mb-8 leading-relaxed">
+                            سيتم تسجيل خروجك من حسابك في بلفورا. يمكنك دائمًا العودة لاحقًا.
                         </p>
 
                         <div className="flex items-center gap-3">
                             <button
                                 onClick={onClose}
-                                className={`flex-1 ${interactive.button.size.md} ${interactive.button.radius.default} ${surface.border.standard} text-gray-700 font-medium hover:bg-gray-50 hover:border-gray-300 transition-all`}
+                                className={`flex-1 ${interactive.button.size.md} ${interactive.button.radius.default} ${surface.border.standard} text-muted-foreground font-medium hover:bg-surface-2 hover:border-border-strong transition-all`}
                             >
                                 البقاء
                             </button>
