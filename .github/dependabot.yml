@@ -27,6 +27,12 @@ updates:
           - "@sentry/*"
       dev-dependencies:
         dependency-type: "development"
+    ignore:
+      # eslint 10 / typescript 7 majors aren't supported by eslint-config-next yet
+      - dependency-name: "eslint"
+        update-types: ["version-update:semver-major"]
+      - dependency-name: "typescript"
+        update-types: ["version-update:semver-major"]
     labels:
       - "dependencies"
 
