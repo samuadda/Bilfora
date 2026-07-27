@@ -14,7 +14,7 @@ export const content = [
         description:
             "لا تضيع وقتك في إدخال البيانات يدوياً كل مرة. بلفورا يحفظ بيانات عملائك وخدماتك، ويخليك تطلع الفاتورة بضغطة زر. حرفياً.",
         content: (
-            <div className="flex h-full w-full items-center justify-center bg-[linear-gradient(to_bottom_right,var(--cyan-500),var(--emerald-500))] text-white text-2xl font-bold p-8 text-center rounded-xl shadow-2xl">
+            <div className="flex h-full w-full items-center justify-center bg-[linear-gradient(to_bottom_right,var(--teal-500),var(--cyan-500))] text-white text-2xl font-bold p-8 text-center rounded-xl shadow-2xl">
                 سرعة خيالية ⚡️
             </div>
         ),
@@ -24,7 +24,7 @@ export const content = [
         description:
             "تابع حالة الفواتير (مسددة، مستحقة، ملغاة) في مكان واحد. اعرف مين دفع ومين باقي عليه، وحافظ على تدفقك المالي بسهولة.",
         content: (
-            <div className="flex h-full w-full items-center justify-center bg-[linear-gradient(to_bottom_right,var(--orange-500),var(--yellow-500))] text-white text-2xl font-bold p-8 text-center rounded-xl shadow-2xl">
+            <div className="flex h-full w-full items-center justify-center bg-[linear-gradient(to_bottom_right,var(--amber-500),var(--amber-400))] text-white text-2xl font-bold p-8 text-center rounded-xl shadow-2xl">
                 احترافي ومنظم ✅
             </div>
         ),
@@ -34,7 +34,7 @@ export const content = [
         description:
             "لوحة تحكم تعطيك الزبدة: مين سدد؟ مين تأخر؟ وكم دخلك هذا الشهر؟ كل شي واضح قدامك عشان تركز في شغلك وتكبر تجارتك.",
         content: (
-            <div className="flex h-full w-full items-center justify-center bg-[linear-gradient(to_bottom_right,var(--blue-500),var(--indigo-500))] text-white text-2xl font-bold p-8 text-center rounded-xl shadow-2xl">
+            <div className="flex h-full w-full items-center justify-center bg-[linear-gradient(to_bottom_right,var(--cyan-500),var(--teal-500))] text-white text-2xl font-bold p-8 text-center rounded-xl shadow-2xl">
                 تحكم كامل 📊
             </div>
         ),
@@ -44,7 +44,7 @@ export const content = [
         description:
             "فواتير بتصاميم راقية تدعم لغتك وهويتك. لما ترسل فاتورة من بلفورا، عميلك بيحس إنه يتعامل مع محترف حقيقي.",
         content: (
-            <div className="flex h-full w-full items-center justify-center bg-[linear-gradient(to_bottom_right,var(--pink-500),var(--rose-500))] text-white text-2xl font-bold p-8 text-center rounded-xl shadow-2xl">
+            <div className="flex h-full w-full items-center justify-center bg-[linear-gradient(to_bottom_right,var(--red-500),var(--amber-500))] text-white text-2xl font-bold p-8 text-center rounded-xl shadow-2xl">
                 برستيجك محفوظ ✨
             </div>
         ),

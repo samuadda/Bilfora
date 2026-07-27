@@ -271,7 +271,7 @@ function ResetPasswordContent() {
 									onChange={(e) =>
 										setPassword(e.target.value)
 									}
-									className="border rounded-lg px-3 py-2 mt-1 text-xs sm:text-sm w-full focus:outline-none focus:ring-2 focus:ring-violet-300 pr-10"
+									className="border rounded-lg px-3 py-2 mt-1 text-xs sm:text-sm w-full focus:outline-none focus:ring-2 focus:ring-brand pr-10"
 									placeholder="أدخل كلمة المرور الجديدة"
 									disabled={isLoading}
 								/>
@@ -351,7 +351,7 @@ function ResetPasswordContent() {
 									onChange={(e) =>
 										setConfirmPassword(e.target.value)
 									}
-									className="border rounded-lg px-3 py-2 mt-1 text-xs sm:text-sm w-full focus:outline-none focus:ring-2 focus:ring-violet-300 pr-10"
+									className="border rounded-lg px-3 py-2 mt-1 text-xs sm:text-sm w-full focus:outline-none focus:ring-2 focus:ring-brand pr-10"
 									placeholder="أعد إدخال كلمة المرور"
 									disabled={isLoading}
 								/>
@@ -385,7 +385,7 @@ function ResetPasswordContent() {
 							disabled={isLoading}
 							className={`w-full text-white rounded-lg px-3 py-2.5 text-xs sm:text-sm font-semibold transition duration-100 flex items-center justify-center gap-2 ${isLoading
 								? "bg-gray-400 cursor-not-allowed"
-								: "bg-brand hover:bg-violet-400"
+								: "bg-brand hover:bg-brand-hover"
 								}`}
 						>
 							{isLoading ? (

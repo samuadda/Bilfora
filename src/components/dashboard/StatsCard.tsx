@@ -20,7 +20,7 @@ export function StatsCard({ title, value, icon: Icon, trend, color, delay = 0, i
         green: "bg-green-50 text-green-600",
         orange: "bg-orange-50 text-orange-600",
         red: "bg-red-50 text-red-600",
-        indigo: "bg-indigo-50 text-indigo-600",
+        indigo: "bg-cyan-50 text-cyan-600",
     };
 
     return (

@@ -30,10 +30,10 @@ export default function KPICard({
 		purple: "bg-brand-soft text-brand",
 		blue: "bg-blue-50 text-blue-600",
 		green: "bg-green-50 text-green-600",
-		pink: "bg-pink-50 text-pink-600",
+		pink: "bg-red-50 text-red-600",
 		orange: "bg-orange-50 text-orange-600",
 		red: "bg-red-50 text-red-600",
-		indigo: "bg-indigo-50 text-indigo-600",
+		indigo: "bg-cyan-50 text-cyan-600",
 	};
 
 	const isPositive = trend ? trend.value >= 0 : null;

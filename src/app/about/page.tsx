@@ -51,12 +51,12 @@ export default function AboutPage() {
 						initial={{ opacity: 0, y: 20 }}
 						animate={{ opacity: 1, y: 0 }}
 						transition={{ duration: 0.5, delay: 0.3 }}
-						className="relative overflow-hidden rounded-3xl bg-gradient-to-br from-brand via-indigo-600 to-slate-900 p-8 md:p-10 text-right text-white shadow-2xl"
+						className="relative overflow-hidden rounded-3xl bg-gradient-to-br from-brand via-cyan-600 to-ink-950 p-8 md:p-10 text-right text-white shadow-2xl"
 					>
 						<div className="absolute inset-0 opacity-20 bg-[radial-gradient(circle_at_top,_white,transparent_60%),radial-gradient(circle_at_bottom,_black,transparent_60%)]" />
 						<div className="relative space-y-6">
 							<div className="inline-flex items-center gap-3 rounded-full bg-surface/10 px-4 py-1 text-xs font-medium backdrop-blur">
-								<span className="h-2 w-2 rounded-full bg-emerald-400 animate-pulse" />
+								<span className="h-2 w-2 rounded-full bg-teal-300 animate-pulse" />
 								<span>رأيت المشكلة بنفسي</span>
 							</div>
 							
@@ -117,7 +117,7 @@ export default function AboutPage() {
 							initial={{ opacity: 0, y: 20 }}
 							animate={{ opacity: 1, y: 0 }}
 							transition={{ duration: 0.5, delay: 0.5 }}
-							className="rounded-2xl border border-border bg-gradient-to-b from-white to-surface-2 p-6 hover:shadow-lg hover:border-brand-soft-2 transition-all"
+							className="rounded-2xl border border-border bg-gradient-to-b from-surface to-surface-2 p-6 hover:shadow-lg hover:border-brand-soft-2 transition-all"
 						>
 							<div className="h-12 w-12 rounded-xl bg-brand-soft-2 flex items-center justify-center mb-4">
 								<Zap className="h-6 w-6 text-brand" />
@@ -135,10 +135,10 @@ export default function AboutPage() {
 							initial={{ opacity: 0, y: 20 }}
 							animate={{ opacity: 1, y: 0 }}
 							transition={{ duration: 0.5, delay: 0.6 }}
-							className="rounded-2xl border border-border bg-gradient-to-b from-white to-surface-2 p-6 hover:shadow-lg hover:border-brand-soft-2 transition-all"
+							className="rounded-2xl border border-border bg-gradient-to-b from-surface to-surface-2 p-6 hover:shadow-lg hover:border-brand-soft-2 transition-all"
 						>
-							<div className="h-12 w-12 rounded-xl bg-emerald-100 flex items-center justify-center mb-4">
-								<HeartHandshake className="h-6 w-6 text-emerald-600" />
+							<div className="h-12 w-12 rounded-xl bg-teal-100 flex items-center justify-center mb-4">
+								<HeartHandshake className="h-6 w-6 text-teal-600" />
 							</div>
 							<h4 className="mb-2 text-lg font-bold text-foreground">
 								دعم حقيقي من شخص حقيقي
@@ -153,7 +153,7 @@ export default function AboutPage() {
 							initial={{ opacity: 0, y: 20 }}
 							animate={{ opacity: 1, y: 0 }}
 							transition={{ duration: 0.5, delay: 0.7 }}
-							className="rounded-2xl border border-border bg-gradient-to-b from-white to-surface-2 p-6 hover:shadow-lg hover:border-brand-soft-2 transition-all"
+							className="rounded-2xl border border-border bg-gradient-to-b from-surface to-surface-2 p-6 hover:shadow-lg hover:border-brand-soft-2 transition-all"
 						>
 							<div className="h-12 w-12 rounded-xl bg-amber-100 flex items-center justify-center mb-4">
 								<Sparkles className="h-6 w-6 text-amber-600" />

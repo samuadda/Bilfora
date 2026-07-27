@@ -31,7 +31,7 @@ export default function TermsPage() {
 					initial={{ opacity: 0, y: 20 }}
 					animate={{ opacity: 1, y: 0 }}
 					transition={{ delay: 0.1 }}
-					className="bg-gradient-to-r from-blue-50 to-indigo-50 rounded-2xl p-6 mb-10 border border-blue-100"
+					className="bg-gradient-to-r from-cyan-50 to-teal-50 rounded-2xl p-6 mb-10 border border-cyan-100"
 				>
 					<div className="flex items-start gap-4">
 						<Handshake className="h-6 w-6 text-blue-600 flex-shrink-0 mt-1" />

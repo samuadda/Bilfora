@@ -8,10 +8,10 @@ import { TextAnimate } from "@/components/landing-page/text-animate";
 
 export function Logos() {
   const audiences = [
-    { icon: Palette, title: "مصممين", subtitle: "جرافيك • UI/UX", color: "from-amber-50 to-orange-50", textColor: "text-orange-500", badgeColor: "bg-orange-100 text-orange-700" },
-    { icon: Code, title: "مطورين", subtitle: "ويب • تطبيقات", color: "from-indigo-50 to-blue-50", textColor: "text-indigo-500", badgeColor: "bg-indigo-100 text-indigo-700" },
-    { icon: TrendingUp, title: "مستشارين", subtitle: "إدارة • تسويق", color: "from-emerald-50 to-green-50", textColor: "text-emerald-500", badgeColor: "bg-emerald-100 text-emerald-700" },
-    { icon: Calculator, title: "محاسبين", subtitle: "مستقلين", color: "from-pink-50 to-rose-50", textColor: "text-pink-500", badgeColor: "bg-pink-100 text-pink-700" },
+    { icon: Palette, title: "مصممين", subtitle: "جرافيك • UI/UX", color: "from-amber-50 to-amber-100", textColor: "text-amber-600", badgeColor: "bg-amber-100 text-amber-700" },
+    { icon: Code, title: "مطورين", subtitle: "ويب • تطبيقات", color: "from-cyan-50 to-cyan-100", textColor: "text-cyan-600", badgeColor: "bg-cyan-100 text-cyan-700" },
+    { icon: TrendingUp, title: "مستشارين", subtitle: "إدارة • تسويق", color: "from-teal-50 to-teal-100", textColor: "text-teal-600", badgeColor: "bg-teal-100 text-teal-700" },
+    { icon: Calculator, title: "محاسبين", subtitle: "مستقلين", color: "from-red-50 to-orange-50", textColor: "text-red-500", badgeColor: "bg-red-100 text-red-600" },
   ];
 
   return (
@@ -44,7 +44,7 @@ export function Logos() {
                       {item.subtitle}
                     </span>
                 </div>
-                <h3 className="text-2xl font-bold text-slate-800">
+                <h3 className="text-2xl font-bold text-ink-900">
                   {item.title}
                 </h3>
               </div>

@@ -159,7 +159,7 @@ export const MultiStepLoader = ({
 							scale: [1, 1.15, 1],
 						}}
 						transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
-						className="absolute bottom-1/4 right-1/4 w-[300px] h-[300px] bg-gradient-to-tl from-pink-300/20 to-transparent rounded-full blur-[80px]"
+						className="absolute bottom-1/4 right-1/4 w-[300px] h-[300px] bg-gradient-to-tl from-teal-300/20 to-transparent rounded-full blur-[80px]"
 					/>
 
 					{/* Content */}

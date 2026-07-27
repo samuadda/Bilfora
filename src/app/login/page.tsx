@@ -210,7 +210,7 @@ function LoginContent() {
 						scale: [1, 1.2, 1],
 					}}
 					transition={{ duration: 25, repeat: Infinity, ease: "easeInOut" }}
-					className="absolute -bottom-1/4 -right-1/4 w-[600px] h-[600px] bg-gradient-to-tl from-pink-300/20 via-rose-200/10 to-transparent rounded-full blur-[100px]"
+					className="absolute -bottom-1/4 -right-1/4 w-[600px] h-[600px] bg-gradient-to-tl from-teal-300/20 via-cyan-200/10 to-transparent rounded-full blur-[100px]"
 				/>
 				<m.div
 					animate={{
@@ -226,7 +226,7 @@ function LoginContent() {
 						y: [0, 20, 0],
 					}}
 					transition={{ duration: 15, repeat: Infinity, ease: "easeInOut" }}
-					className="absolute bottom-1/3 left-1/3 w-[300px] h-[300px] bg-gradient-to-tr from-violet-200/20 to-transparent rounded-full blur-[60px]"
+					className="absolute bottom-1/3 left-1/3 w-[300px] h-[300px] bg-gradient-to-tr from-cyan-200/20 to-transparent rounded-full blur-[60px]"
 				/>
 			</div>
 

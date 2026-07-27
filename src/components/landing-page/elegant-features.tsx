@@ -24,10 +24,10 @@ interface Feature extends ContentItem {
 }
 
 const gradients = [
-	"from-cyan-500 to-emerald-500",
-	"from-orange-500 to-yellow-500",
-	"from-blue-500 to-indigo-500",
-	"from-pink-500 to-rose-500",
+	"from-teal-500 to-cyan-500",
+	"from-amber-500 to-amber-400",
+	"from-cyan-600 to-teal-600",
+	"from-red-500 to-orange-500",
 ];
 
 const icons = [
@@ -103,7 +103,7 @@ export const ElegantFeatures = ({ content }: { content: ContentItem[] }) => {
 					transition={{ duration: 0.35, ease: "easeOut" }}
 					className={cn(
 						"relative rounded-3xl bg-gradient-to-br p-8 sm:p-10 md:p-12 shadow-2xl overflow-hidden",
-						activeFeature?.gradient || "from-cyan-500 to-emerald-500"
+						activeFeature?.gradient || "from-teal-500 to-cyan-500"
 					)}
 				>
 					{/* Grid background */}

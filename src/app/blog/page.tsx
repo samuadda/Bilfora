@@ -46,7 +46,7 @@ export default function BlogPage() {
                         <article key={index} className="flex flex-col bg-surface border border-border rounded-2xl overflow-hidden hover:shadow-lg transition-shadow cursor-pointer">
                             <div className="h-48 bg-surface-inset w-full animate-pulse">
                                 {/* Placeholder for blog image */}
-                                <div className="w-full h-full bg-gradient-to-br from-brand-soft-2 to-indigo-100 flex items-center justify-center text-disabled">
+                                <div className="w-full h-full bg-gradient-to-br from-brand-soft-2 to-cyan-100 flex items-center justify-center text-disabled">
                                     صورة المقال
                                 </div>
                             </div>

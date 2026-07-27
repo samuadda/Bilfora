@@ -31,7 +31,7 @@ export default function PrivacyPage() {
 					initial={{ opacity: 0, y: 20 }}
 					animate={{ opacity: 1, y: 0 }}
 					transition={{ delay: 0.1 }}
-					className="bg-gradient-to-r from-brand-soft to-indigo-50 rounded-2xl p-6 mb-10 border border-brand-soft-2"
+					className="bg-gradient-to-r from-brand-soft to-cyan-50 rounded-2xl p-6 mb-10 border border-brand-soft-2"
 				>
 					<div className="flex items-start gap-4">
 						<Heart className="h-6 w-6 text-brand flex-shrink-0 mt-1" />
