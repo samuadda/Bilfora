@@ -25,6 +25,8 @@ interface PriceProps {
     className?: string;
     /** Show the currency icon (default: true) */
     showIcon?: boolean;
+    /** Number of decimal places (default: 2) */
+    decimals?: number;
 }
 
 const sizeClasses = {
@@ -55,11 +57,12 @@ export function Price({
     size = "md",
     className,
     showIcon = true,
+    decimals = 2,
 }: PriceProps) {
-    // Format number with 2 decimal places using English digits
+    // Format number with English digits
     const formattedAmount = new Intl.NumberFormat("en-US", {
-        minimumFractionDigits: 2,
-        maximumFractionDigits: 2,
+        minimumFractionDigits: decimals,
+        maximumFractionDigits: decimals,
     }).format(amount);
 
     return (

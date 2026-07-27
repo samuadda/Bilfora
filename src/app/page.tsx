@@ -1,5 +1,5 @@
 import { Metadata } from "next";
-import LandingPageClient from "@/components/landing-page/LandingPageClient";
+import MarketingLanding from "@/components/landing-page/MarketingLanding";
 
 /**
  * Landing page metadata for SEO optimization.
@@ -32,5 +32,5 @@ export const metadata: Metadata = {
  * Metadata is exported for SEO while the interactive parts are client-rendered.
  */
 export default function Home() {
-	return <LandingPageClient />;
+	return <MarketingLanding />;
 }
