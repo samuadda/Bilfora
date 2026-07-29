@@ -3,18 +3,18 @@
 import Link from "next/link";
 import { Button } from "@/components/ui/Button";
 import { Logo } from "@/components/brand/Logo";
-import { ThemeToggle } from "@/components/ThemeToggle";
 import { ChevronLeft } from "lucide-react";
 import { m } from "framer-motion";
 import { NavigationMenu } from "@/components/landing-page/MobileMenu";
 
+/* Hash targets match the section ids rendered by MarketingLanding. */
 const NavItems = [
-	{ name: "الرئيسية", href: "/#home" },
+	{ name: "الرئيسية", href: "/" },
 	{ name: "المميزات", href: "/#features" },
-	{ name: "كيف يعمل", href: "/#how-to" },
+	{ name: "كيف يعمل", href: "/#how" },
 	{ name: "الأسعار", href: "/#pricing" },
 	{ name: "من نحن", href: "/about" },
-	{ name: "الأسئلة الشائعة", href: "/#faq" },
+	{ name: "الأسئلة الشائعة", href: "/faq" },
 ];
 
 const Navbar = () => {
@@ -51,7 +51,6 @@ const Navbar = () => {
 					</ul>
 				</div>
 				<div className="flex items-center gap-3">
-					<ThemeToggle className="hidden md:inline-flex" />
 					<Link
 						href="/login"
 						className="hidden items-center gap-1 text-sm font-medium text-muted-foreground hover:text-brand transition-colors lg:flex"

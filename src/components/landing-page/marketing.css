@@ -6,23 +6,15 @@
 .wrap { max-width: var(--container); margin: 0 auto; padding: 0 24px; }
 .mktg section { position: relative; }
 
-/* Nav */
-.lnav { position: sticky; top: 0; z-index: 30; background: color-mix(in oklab, var(--bg) 80%, transparent); backdrop-filter: blur(10px); border-bottom: 1px solid var(--border); }
-.lnav__in { display: flex; align-items: center; justify-content: space-between; height: 70px; }
-.lnav__links { display: flex; gap: 28px; }
-.lnav__links a { color: var(--text-muted); font-weight: 500; font-size: 15px; text-decoration: none; }
-.lnav__links a:hover { color: var(--brand); text-decoration: none; }
-.lnav__cta { display: flex; align-items: center; gap: 10px; }
-
-/* Hero */
-.hero { padding: 76px 0 64px; text-align: center; overflow: hidden; }
+/* Hero — top padding clears the site-wide fixed <Navbar /> (~70px). */
+.hero { padding: 146px 0 64px; text-align: center; overflow: hidden; }
 .hero__badge { display: inline-flex; align-items: center; gap: 7px; }
 .hero h1 { font-family: var(--font-display); font-weight: 900; font-size: clamp(40px, 6vw, 76px); line-height: 1.08; letter-spacing: -0.01em; margin: 22px auto 0; max-width: 15ch; }
 .hero h1 .accent { color: var(--brand); }
 .hero__sub { font-size: 19px; color: var(--text-muted); line-height: 1.7; max-width: 52ch; margin: 22px auto 0; }
 .hero__actions { display: flex; gap: 12px; justify-content: center; margin-top: 32px; flex-wrap: wrap; }
 .hero__note { margin-top: 16px; font-size: 13px; color: var(--text-subtle); }
-.hero__glow { position: absolute; width: 720px; height: 480px; border-radius: 999px; background: radial-gradient(circle, var(--brand-soft-2), transparent 66%); top: -120px; left: 50%; transform: translateX(-50%); z-index: -1; pointer-events: none; }
+.hero__glow { position: absolute; width: 720px; height: 480px; border-radius: 999px; background: radial-gradient(circle, var(--brand-soft-2), transparent 66%); top: -50px; left: 50%; transform: translateX(-50%); z-index: -1; pointer-events: none; }
 
 /* Preview mock */
 .heromock { margin: 48px auto 0; max-width: 940px; }
@@ -95,7 +87,6 @@
 .foot__bottom { margin-top: 36px; padding-top: 20px; border-top: 1px solid var(--border); color: var(--text-subtle); font-size: 13px; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 10px; }
 
 @media (max-width: 860px) {
-  .lnav__links { display: none; }
   .features, .steps, .pricing { grid-template-columns: 1fr; }
   .heromock__body { grid-template-columns: 1fr; }
   .mockkpis { grid-template-columns: 1fr 1fr; }

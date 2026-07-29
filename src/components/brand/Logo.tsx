@@ -1,13 +1,16 @@
 import * as React from "react";
+import { LogoSymbol } from "./LogoSymbol";
 
 /**
- * Bilfora logo — a type-only Arabic wordmark (بلفورا) set in Thmanyah Serif
- * Display. There is no drawn symbol. An optional cyan accent dot adds the
- * brand's quiet "energetic" spark. All colors resolve from CSS tokens, so the
- * mark themes itself in light and dark.
+ * Bilfora logo — the isometric block symbol paired with the Arabic wordmark
+ * (بلفورا) set in Thmanyah Serif Display. All colors resolve from CSS tokens,
+ * so a token change re-themes the mark everywhere.
+ *
+ * Use `variant="symbol"` where there is no room for type (collapsed sidebar,
+ * app icons); the other variants render symbol + wordmark.
  */
 
-export type LogoVariant = "wordmark" | "lockup" | "stacked";
+export type LogoVariant = "wordmark" | "lockup" | "stacked" | "symbol";
 export type LogoColor = "brand" | "ink" | "onDark" | "mono";
 
 export interface LogoProps extends React.HTMLAttributes<HTMLSpanElement> {
@@ -15,27 +18,59 @@ export interface LogoProps extends React.HTMLAttributes<HTMLSpanElement> {
   color?: LogoColor;
   /** Font size in px that drives the whole mark's scale. */
   size?: number;
-  /** Show the accent dot after the wordmark. */
+  /** Show the accent dot after the wordmark. Off by default — the symbol carries the accent. */
   dot?: boolean;
+  /** Render the block symbol alongside the wordmark. */
+  symbol?: boolean;
 }
 
-const PALETTES: Record<LogoColor, { word: string; sub: string; dot: string }> = {
-  brand: { word: "var(--brand)", sub: "var(--text-muted)", dot: "var(--accent)" },
-  ink: { word: "var(--text)", sub: "var(--text-muted)", dot: "var(--accent)" },
-  onDark: { word: "var(--text-on-dark)", sub: "rgba(255,255,255,.6)", dot: "var(--accent)" },
-  mono: { word: "currentColor", sub: "currentColor", dot: "currentColor" },
+const PALETTES: Record<LogoColor, { word: string; sub: string; dot: string; mark: string }> = {
+  brand: { word: "var(--brand)", sub: "var(--text-muted)", dot: "var(--accent)", mark: "var(--brand)" },
+  ink: { word: "var(--text)", sub: "var(--text-muted)", dot: "var(--accent)", mark: "var(--brand)" },
+  onDark: { word: "var(--text-on-dark)", sub: "rgba(255,255,255,.6)", dot: "var(--accent)", mark: "var(--text-on-dark)" },
+  mono: { word: "currentColor", sub: "currentColor", dot: "currentColor", mark: "currentColor" },
 };
 
 export function Logo({
   variant = "wordmark",
   color = "brand",
   size = 32,
-  dot = true,
+  dot = false,
+  symbol = true,
   className,
   style,
   ...rest
 }: LogoProps) {
   const palette = PALETTES[color] ?? PALETTES.brand;
+
+  /* Thin strokes vanish below ~24px, so scale the weight up as the mark shrinks. */
+  const markSize = size * 0.95;
+  const mark = (
+    <LogoSymbol
+      size={markSize}
+      weight={markSize < 24 ? 4 : 2.5}
+      style={{ color: palette.mark, flexShrink: 0 }}
+      aria-hidden="true"
+    />
+  );
+
+  if (variant === "symbol") {
+    return (
+      <span
+        className={className}
+        style={{ display: "inline-flex", alignItems: "center", ...style }}
+        {...rest}
+      >
+        <LogoSymbol
+          size={size}
+          weight={size < 24 ? 4 : 2.5}
+          style={{ color: palette.mark }}
+          role="img"
+          aria-label="بلفورا"
+        />
+      </span>
+    );
+  }
 
   const word = (
     <span
@@ -71,9 +106,10 @@ export function Logo({
     return (
       <span
         className={className}
-        style={{ display: "inline-flex", alignItems: "baseline", gap: size * 0.32, fontSize: size, ...style }}
+        style={{ display: "inline-flex", alignItems: "center", gap: size * 0.32, fontSize: size, ...style }}
         {...rest}
       >
+        {symbol && mark}
         {word}
         <span
           style={{
@@ -97,6 +133,7 @@ export function Logo({
         style={{ display: "inline-flex", flexDirection: "column", alignItems: "center", gap: size * 0.08, fontSize: size, ...style }}
         {...rest}
       >
+        {symbol && mark}
         {word}
         <span
           style={{
@@ -115,7 +152,12 @@ export function Logo({
   }
 
   return (
-    <span className={className} style={{ display: "inline-flex", fontSize: size, ...style }} {...rest}>
+    <span
+      className={className}
+      style={{ display: "inline-flex", alignItems: "center", gap: size * 0.26, fontSize: size, ...style }}
+      {...rest}
+    >
+      {symbol && mark}
       {word}
     </span>
   );

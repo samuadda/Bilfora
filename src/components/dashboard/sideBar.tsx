@@ -24,7 +24,6 @@ import { m, AnimatePresence } from "framer-motion";
 import { cn } from "@/lib/utils";
 
 import { Logo } from "@/components/brand/Logo";
-import { ThemeToggle } from "@/components/ThemeToggle";
 import { useSidebar } from "./sidebar/SidebarContext";
 import { SidebarLogoutModal } from "./sidebar/SidebarLogoutModal";
 import { SidebarNavItem } from "./sidebar/SidebarNavItem";
@@ -139,7 +138,7 @@ export default function Sidebar() {
 							className="flex flex-col items-center gap-1 group w-full"
 							title="توسيع القائمة"
 						>
-							<span className="text-2xl font-black text-brand" style={{ fontFamily: "var(--font-display)" }}>ب</span>
+							<Logo variant="symbol" size={26} />
 							<ChevronLeft size={14} className="text-disabled group-hover:text-brand transition-colors animate-pulse" />
 						</button>
 					) : (
@@ -217,10 +216,6 @@ export default function Sidebar() {
 
 				{/* Footer Actions */}
 				<div className="border-t border-border px-4 py-4 bg-surface-2 mt-auto space-y-1">
-					{/* Theme toggle */}
-					<div className={cn(isCollapsed && "flex justify-center")}>
-						<ThemeToggle showLabel={!isCollapsed} />
-					</div>
 					{/* Logout */}
 					<button
 						onClick={() => setIsLogoutOpen(true)}

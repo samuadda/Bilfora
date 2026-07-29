@@ -1,15 +1,20 @@
 @import "tailwindcss";
 
+/* Bilfora is light-only. Tailwind's built-in `dark` variant would otherwise
+   follow the OS `prefers-color-scheme`, so it is redefined here to key off a
+   `.dark` class that is never applied — any stray `dark:` utility stays inert. */
 @custom-variant dark (&:is(.dark *));
 
 /* ============================================================
    Bilfora design tokens — Slate-Teal / Thmanyah
-   Primitive scales + semantic aliases (light). Dark overrides
-   below. Semantic tokens flip by theme; utilities reference them
-   through @theme inline so `bg-brand`, `text-muted-foreground`,
-   etc. respond to light/dark automatically.
+   Primitive scales + semantic aliases. The app renders in a
+   single light theme; utilities reference these tokens through
+   @theme inline so `bg-brand`, `text-muted-foreground`, etc.
+   all resolve from one place.
    ============================================================ */
 :root {
+  color-scheme: light;
+
   /* ---------- Primitive scales ---------- */
   --teal-50:  #eef6f5;
   --teal-100: #d5e9e7;
@@ -149,7 +154,7 @@
      Keep the shadcn variable NAMES but point them at the new
      tokens, so every shadcn-consuming component (calendar,
      chart, popover, combobox, custom-select, sonner) re-themes.
-     These follow the semantic tokens, which flip in dark. */
+     These follow the semantic tokens above. */
   --radius: 0.75rem;
   --background: var(--bg);
   --foreground: var(--text);
@@ -180,65 +185,6 @@
   /* The design's cyan brand accent, for components that reference it directly
      (Logo dot, accent buttons). Distinct from shadcn --accent above. */
   --brand-accent: var(--accent);
-}
-
-/* ============================================================
-   Dark theme
-   ============================================================ */
-.dark,
-[data-theme="dark"] {
-  --brand:            var(--teal-400);
-  --brand-hover:      var(--teal-300);
-  --brand-active:     var(--teal-200);
-  --brand-soft:       rgba(15, 118, 110, 0.16);
-  --brand-soft-2:     rgba(15, 118, 110, 0.26);
-  --brand-ink:        var(--teal-100);
-  --on-brand:         #04120f;
-  --accent:           var(--cyan-400);
-  --accent-soft:      rgba(14, 116, 144, 0.18);
-  --on-accent:        #041016;
-
-  --bg:               var(--ink-950);
-  --bg-subtle:        #0a1214;
-  --surface:          var(--ink-900);
-  --surface-2:        var(--ink-800);
-  --surface-inset:    #131c1f;
-  --overlay:          rgba(3, 7, 8, 0.6);
-
-  --text:             var(--ink-50);
-  --text-muted:       var(--ink-300);
-  --text-subtle:      var(--ink-400);
-  --text-disabled:    var(--ink-600);
-  --text-on-dark:     var(--ink-50);
-
-  --border:           #2a3335;
-  --border-strong:    #3a4548;
-  --ring:             var(--teal-400);
-
-  --success:          var(--teal-400);
-  --success-soft:     rgba(15, 118, 110, 0.17);
-  --success-border:   rgba(71, 147, 139, 0.35);
-
-  --warning:          var(--amber-400);
-  --warning-soft:     rgba(192, 138, 42, 0.16);
-  --warning-border:   rgba(217, 164, 65, 0.3);
-
-  --danger:           #e26467;
-  --danger-soft:      rgba(190, 63, 66, 0.17);
-  --danger-border:    rgba(190, 63, 66, 0.34);
-
-  --info:             #4f9fbc;
-  --info-soft:        rgba(14, 116, 144, 0.17);
-  --info-border:      rgba(14, 116, 144, 0.34);
-
-  --chart-1: #47938b;
-  --chart-2: #3f97b4;
-  --chart-3: #7bb7b0;
-  --chart-4: #79bcd2;
-  --chart-5: #d9a441;
-
-  /* shadcn dark: surfaces sink to ink, everything else follows the tokens */
-  --input: #2a3335;
 }
 
 /* ============================================================

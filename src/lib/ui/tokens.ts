@@ -3,8 +3,8 @@
  *
  * Centralized className tokens routed through the semantic CSS variables
  * defined in globals.css (brand teal, ink neutrals, ink-tinted shadows,
- * pill buttons, soft radii). Everything here themes automatically in
- * light and dark because the utilities resolve CSS custom properties.
+ * pill buttons, soft radii). Everything here follows a token change
+ * automatically because the utilities resolve CSS custom properties.
  */
 
 // ============================================================================

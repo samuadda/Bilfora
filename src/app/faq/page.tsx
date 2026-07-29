@@ -15,7 +15,7 @@ import {
 import Link from "next/link";
 import MainButton from "@/components/MainButton";
 import { DotPattern } from "@/components/landing-page/dot-pattern";
-import SimpleNavbar from "@/components/landing-page/SimpleNavbar";
+import Navbar from "@/components/landing-page/Navbar";
 
 interface FAQItem {
 	id: number;
@@ -157,10 +157,10 @@ export default function FAQPage() {
 			{/* subtle shiny gradient from bottom right */}
 			<div className="absolute bottom-0 right-0 w-[800px] h-[800px] bg-gradient-to-tl from-brand/30 via-[#ff6b9d]/20 to-transparent blur-3xl rounded-full opacity-70 pointer-events-none" />
 			<DotPattern className="absolute inset-0 opacity-[0.04]" />
-			<SimpleNavbar />
+			<Navbar />
 
 			{/* Header */}
-			<div className="relative z-10 pt-24 pb-16 px-4 sm:px-6 lg:px-8 text-center">
+			<div className="relative z-10 pt-32 pb-16 px-4 sm:px-6 lg:px-8 text-center">
 				<m.div
 					initial={{ opacity: 0, y: 20 }}
 					animate={{ opacity: 1, y: 0 }}

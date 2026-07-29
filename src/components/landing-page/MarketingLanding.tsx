@@ -11,6 +11,7 @@ import {
   Check,
 } from "lucide-react";
 import { Logo } from "@/components/brand/Logo";
+import Navbar from "@/components/landing-page/Navbar";
 import { Button } from "@/components/ui/Button";
 import { Badge, type BadgeVariant } from "@/components/ui/Badge";
 import { Card } from "@/components/ui/Card";
@@ -43,27 +44,7 @@ const MOCK_ROWS: Array<[string, BadgeVariant]> = [
 export default function MarketingLanding() {
   return (
     <div className="mktg">
-      {/* Nav */}
-      <nav className="lnav">
-        <div className="wrap lnav__in">
-          <Link href="/" aria-label="بلفورا">
-            <Logo size={26} />
-          </Link>
-          <div className="lnav__links">
-            <a href="#features">المزايا</a>
-            <a href="#how">كيف يعمل</a>
-            <a href="#pricing">الأسعار</a>
-          </div>
-          <div className="lnav__cta">
-            <Link href="/login">
-              <Button variant="ghost" size="sm">تسجيل الدخول</Button>
-            </Link>
-            <Link href="/register">
-              <Button size="sm">ابدأ مجاناً</Button>
-            </Link>
-          </div>
-        </div>
-      </nav>
+      <Navbar />
 
       {/* Hero */}
       <section className="hero">

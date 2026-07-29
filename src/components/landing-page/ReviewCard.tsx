@@ -18,10 +18,7 @@ export const ReviewCard = ({
         <figure
             className={cn(
                 "relative h-full w-64 cursor-pointer overflow-hidden rounded-xl border p-4",
-                // light styles
-                "border-gray-950/[.1] bg-gray-950/[.01] hover:bg-gray-950/[.05]",
-                // dark styles
-                "dark:border-gray-50/[.1] dark:bg-surface-2/[.10] dark:hover:bg-surface-2/[.15]"
+                "border-gray-950/[.1] bg-gray-950/[.01] hover:bg-gray-950/[.05]"
             )}
         >
             <div className="flex flex-row items-center gap-2">
@@ -33,10 +30,10 @@ export const ReviewCard = ({
                     src={img}
                 />
                 <div className="flex flex-col">
-                    <figcaption className="text-sm font-medium dark:text-white">
+                    <figcaption className="text-sm font-medium">
                         {name}
                     </figcaption>
-                    <p className="text-xs font-medium dark:text-white/40">
+                    <p className="text-xs font-medium text-muted-foreground">
                         {username}
                     </p>
                 </div>
