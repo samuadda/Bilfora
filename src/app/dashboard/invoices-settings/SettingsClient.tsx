@@ -63,20 +63,6 @@ export default function SettingsClient({ initialSettings }: SettingsClientProps)
 	const [primaryColor, setPrimaryColor] = useState("var(--brand)");
 	const [qrValue, setQrValue] = useState(""); // This is typically generated, not saved as value?
 
-	const onLogoChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-		const file = e.target.files?.[0];
-		if (file) {
-			const url = URL.createObjectURL(file);
-			setBusinessLogo(url);
-			// TODO: Implement actual upload to Supabase Storage
-			toast({
-				title: "تنبيه",
-				description: "رفع الشعار غير مفعل حالياً، سيتم عرضه محلياً فقط",
-				variant: "destructive"
-			});
-		}
-	};
-
 	const handleSave = async () => {
 		setIsLoading(true);
 		try {
@@ -196,15 +182,15 @@ export default function SettingsClient({ initialSettings }: SettingsClientProps)
 									<Building2 className="text-disabled" size={24} />
 								)}
 							</div>
-							<label className="px-4 py-2 rounded-xl bg-brand-soft text-brand text-sm font-bold hover:bg-brand-soft-2 cursor-pointer transition-colors">
-								رفع شعار
-								<input
-									type="file"
-									accept="image/*"
-									onChange={onLogoChange}
-									className="hidden"
-								/>
-							</label>
+							{/* Upload needs a storage bucket and a logo_url column that do not
+							    exist yet. Shown as unavailable rather than accepting a file
+							    and silently dropping it after the session ends. */}
+							<div className="flex flex-col gap-1">
+								<span className="px-4 py-2 rounded-xl bg-surface-inset text-disabled text-sm font-bold cursor-not-allowed select-none w-fit">
+									رفع شعار
+								</span>
+								<span className="text-xs text-subtle">قريباً</span>
+							</div>
 						</div>
 					</div>
 				</div>
