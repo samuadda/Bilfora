@@ -2,11 +2,11 @@
 
 /* Bilfora is light-only. Tailwind's built-in `dark` variant would otherwise
    follow the OS `prefers-color-scheme`, so it is redefined here to key off a
-   `.dark` class that is never applied — any stray `dark:` utility stays inert. */
+   `.dark` class that is never applied, so any stray `dark:` utility stays inert. */
 @custom-variant dark (&:is(.dark *));
 
 /* ============================================================
-   Bilfora design tokens — Slate-Teal / Thmanyah
+   Bilfora design tokens: Slate-Teal / Thmanyah
    Primitive scales + semantic aliases. The app renders in a
    single light theme; utilities reference these tokens through
    @theme inline so `bg-brand`, `text-muted-foreground`, etc.
@@ -188,7 +188,7 @@
 }
 
 /* ============================================================
-   Tailwind v4 utility mapping (color — flippable via inline)
+   Tailwind v4 utility mapping (color, flippable via inline)
    ============================================================ */
 @theme inline {
   /* brand */
@@ -298,7 +298,7 @@
 
 /* ============================================================
    Tailwind v4 utility mapping (static: fonts, radii, shadows,
-   easing, micro type step, animations) — emits vars to :root.
+   easing, micro type step, animations). Emits vars to :root.
    ============================================================ */
 @theme {
   --font-sans:    var(--font-thmanyah-sans), system-ui, "Segoe UI", Tahoma, sans-serif;
@@ -491,7 +491,7 @@
 
 @layer utilities {
   /* ─────────────────────────────────────────────────────────────
-   * .nums-eng — Western/English tabular numerals for money, dates,
+   * .nums-eng: Western/English tabular numerals for money, dates,
    * counts inside RTL text. Digits sit in Thmanyah Sans (lnum), with
    * a Latin fallback if the feature is unavailable.
    * ───────────────────────────────────────────────────────────── */

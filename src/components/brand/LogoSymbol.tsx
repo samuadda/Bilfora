@@ -1,7 +1,7 @@
 import * as React from "react";
 
 /**
- * Bilfora symbol — an isometric stack of stroked blocks reading as layered
+ * Bilfora symbol: an isometric stack of stroked blocks reading as layered
  * documents/invoices. Drawn in outline only, so it stays legible from favicon
  * size up to hero size.
  *

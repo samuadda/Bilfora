@@ -563,7 +563,7 @@ function InvoicesContent() {
 					color="green"
 				/>
 				<StatsCard
-					title="مستحق خلال ٧ أيام"
+					title="مستحق خلال 7 أيام"
 					value={<Price amount={stats.dueIn7DaysAmount} size="lg" />}
 					icon={Calendar}
 					color="indigo"

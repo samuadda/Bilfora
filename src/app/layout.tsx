@@ -7,7 +7,7 @@ import QueryProvider from "@/components/providers/QueryProvider";
 import { MotionProvider } from "@/components/providers/MotionProvider";
 import { Analytics } from "@vercel/analytics/react"
 
-/* Icons are picked up from the app/ file conventions — icon.svg, favicon.ico
+/* Icons are picked up from the app/ file conventions: icon.svg, favicon.ico
    and apple-icon.png. Declaring `icons` here would override those. */
 export const metadata: Metadata = {
 	title: "بلفورا",

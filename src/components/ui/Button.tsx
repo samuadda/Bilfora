@@ -42,7 +42,7 @@ const sizes: Record<ButtonSize, string> = {
 };
 
 /**
- * Button — pill-shaped, brand-teal fill with a soft glow, tactile press.
+ * Button: pill-shaped, brand-teal fill with a soft glow, tactile press.
  *
  * ```tsx
  * <Button variant="primary">أنشئ فاتورة</Button>

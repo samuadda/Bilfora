@@ -60,7 +60,7 @@ const zatcaFormSchema = z.discriminatedUnion("client_type", [
 
 export const clientFormSchema = IS_ZATCA_ENABLED ? zatcaFormSchema : simpleSchema;
 
-// Concrete type for useForm — covers all possible fields across both schemas
+// Concrete type for useForm, covers all possible fields across both schemas
 export type ClientFormData = {
 	client_type: "individual" | "organization";
 	name: string;

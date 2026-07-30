@@ -29,7 +29,7 @@ const variants: Record<BadgeVariant, string> = {
 };
 
 /**
- * Badge — pill status chip (soft bg + text + border trio). Used for invoice
+ * Badge: pill status chip (soft bg + text + border trio). Used for invoice
  * states and other inline status labels.
  */
 export function Badge({ children, variant = "neutral", dot = false, className, ...props }: BadgeProps) {

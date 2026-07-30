@@ -1,7 +1,7 @@
 import localFont from "next/font/local";
 
 /**
- * Thmanyah typeface family (ثمانية) — self-hosted.
+ * Thmanyah typeface family (ثمانية), self-hosted.
  * - Sans:          UI, body, labels, data (the workhorse)
  * - Serif Text:    editorial / long-form reading (blog, articles)
  * - Serif Display: hero headlines, big numbers, the logo wordmark

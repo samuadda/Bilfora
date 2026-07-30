@@ -181,7 +181,7 @@ export function InvoiceDetailsForm({
                 </Select>
             </Field>
 
-            {/* Tax Rate (ZATCA only — Simple Mode forces 0%) */}
+            {/* Tax Rate (ZATCA only, Simple Mode forces 0%) */}
             {IS_ZATCA_ENABLED && (
             <Field label="معدل الضريبة (%)" error={errors?.tax_rate}>
                 <Input

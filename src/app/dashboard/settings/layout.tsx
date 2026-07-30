@@ -34,7 +34,7 @@ export default function SettingsLayout({ children }: { children: React.ReactNode
 
 			{/* 2-column layout */}
 			<div className="flex flex-col md:flex-row gap-6">
-				{/* Right column — Tab Navigation (RTL, so this appears on the right) */}
+				{/* Right column: Tab Navigation (RTL, so this appears on the right) */}
 				<m.nav
 					initial={{ opacity: 0, x: 20 }}
 					animate={{ opacity: 1, x: 0 }}
@@ -91,7 +91,7 @@ export default function SettingsLayout({ children }: { children: React.ReactNode
 					</div>
 				</m.nav>
 
-				{/* Left column — Content */}
+				{/* Left column: Content */}
 				<m.div
 					initial={{ opacity: 0, y: 20 }}
 					animate={{ opacity: 1, y: 0 }}

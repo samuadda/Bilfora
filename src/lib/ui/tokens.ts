@@ -1,5 +1,5 @@
 /**
- * UI Design Tokens — Bilfora (Slate-Teal / Thmanyah)
+ * UI Design Tokens: Bilfora (Slate-Teal / Thmanyah)
  *
  * Centralized className tokens routed through the semantic CSS variables
  * defined in globals.css (brand teal, ink neutrals, ink-tinted shadows,
@@ -55,7 +55,7 @@ export const layout = {
 // ============================================================================
 
 export const surface = {
-  // Border radius — design scale: md=12 inputs, lg=16 cards, xl=24 modals
+  // Border radius, design scale: md=12 inputs, lg=16 cards, xl=24 modals
   radius: {
     small: "rounded-md", // Inputs, small cards
     medium: "rounded-lg", // Standard cards
@@ -209,7 +209,7 @@ export const colors = {
   brand: {
     primary: "#0f766e", // Teal
     primaryHover: "#0c5d57", // Teal hover
-    dark: "#172023", // Ink — headings / dark text
+    dark: "#172023", // Ink, headings / dark text
     background: "#f6f8f8", // App background
   },
 

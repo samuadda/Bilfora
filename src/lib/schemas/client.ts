@@ -48,7 +48,7 @@ export const organizationClientSchema = baseClientSchema.extend({
             (val) => !val || ZATCA_TAX_NUMBER_REGEX.test(val),
             "الرقم الضريبي لازم يكون 15 رقم ويبدأ وينتهي بـ 3"
         ),
-    address: z.string().min(5, "العنوان الوطني مطلوب للمنشآت — اكتب عنوان مختصر"),
+    address: z.string().min(5, "العنوان الوطني مطلوب للمنشآت، اكتب عنوان مختصر"),
 });
 
 // ── Simple Beta Schema (no ZATCA) ───────────────────────────────────────────

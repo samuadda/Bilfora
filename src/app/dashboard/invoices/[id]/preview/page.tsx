@@ -81,7 +81,7 @@ export default async function InvoicePreviewPage(props: {
                 }}
             >
                 <div style={{ fontWeight: 700 }}>
-                    Invoice Preview — {invoice.invoice_number}
+                    Invoice Preview: {invoice.invoice_number}
                 </div>
 
                 <div style={{ display: "flex", gap: 8 }}>

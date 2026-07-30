@@ -22,7 +22,7 @@ export const createClient = async () => {
 					try {
 						cookieStore.set(name, value, options);
 					} catch {
-						// Expected in Server Components — cookies are read-only
+						// Expected in Server Components, cookies are read-only
 					}
 				});
 			},

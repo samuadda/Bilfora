@@ -6,7 +6,7 @@ import { cn } from "@/lib/utils";
  * @deprecated Use `Button` from `@/components/ui/Button` directly.
  * Kept as a thin compatibility wrapper so existing landing/marketing call
  * sites render the rebranded pill button. The legacy color props
- * (bgColor/hoverBgColor/textColor/shadowColor) are ignored — colour now
+ * (bgColor/hoverBgColor/textColor/shadowColor) are ignored, colour now
  * comes from the brand token system.
  */
 interface MainButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {

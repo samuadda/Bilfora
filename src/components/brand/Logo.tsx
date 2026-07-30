@@ -2,7 +2,7 @@ import * as React from "react";
 import { LogoSymbol } from "./LogoSymbol";
 
 /**
- * Bilfora logo — the isometric block symbol paired with the Arabic wordmark
+ * Bilfora logo: the isometric block symbol paired with the Arabic wordmark
  * (بلفورا) set in Thmanyah Serif Display. All colors resolve from CSS tokens,
  * so a token change re-themes the mark everywhere.
  *
@@ -18,7 +18,7 @@ export interface LogoProps extends React.HTMLAttributes<HTMLSpanElement> {
   color?: LogoColor;
   /** Font size in px that drives the whole mark's scale. */
   size?: number;
-  /** Show the accent dot after the wordmark. Off by default — the symbol carries the accent. */
+  /** Show the accent dot after the wordmark. Off by default, since the symbol carries the accent. */
   dot?: boolean;
   /** Render the block symbol alongside the wordmark. */
   symbol?: boolean;
