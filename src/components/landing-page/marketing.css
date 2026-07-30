@@ -1,4 +1,4 @@
-/* Bilfora marketing landing — ported from the design kit (ui_kits/marketing/landing.css).
+/* Bilfora marketing landing, ported from the design kit (ui_kits/marketing/landing.css).
    Uses the design-system tokens defined globally in app/globals.css. */
 .mktg { background: var(--bg); color: var(--text); font-family: var(--font-sans); }
 .mktg .ic { display: inline-flex; align-items: center; justify-content: center; flex-shrink: 0; }
@@ -6,11 +6,13 @@
 .wrap { max-width: var(--container); margin: 0 auto; padding: 0 24px; }
 .mktg section { position: relative; }
 
-/* Hero — top padding clears the site-wide fixed <Navbar /> (~70px). */
+/* Hero. Top padding clears the site-wide fixed <Navbar /> (~70px). */
 .hero { padding: 146px 0 64px; text-align: center; overflow: hidden; }
 .hero__badge { display: inline-flex; align-items: center; gap: 7px; }
-.hero h1 { font-family: var(--font-display); font-weight: 900; font-size: clamp(40px, 6vw, 76px); line-height: 1.08; letter-spacing: -0.01em; margin: 22px auto 0; max-width: 15ch; }
-.hero h1 .accent { color: var(--brand); }
+.hero h1 { font-family: var(--font-display); font-weight: 900; font-size: clamp(38px, 5.4vw, 66px); line-height: 1.18; letter-spacing: -0.01em; margin: 22px auto 0; max-width: 20ch; }
+/* inline-block keeps the teal phrase whole, so the headline breaks at the
+   comma instead of stranding a word from it on the line above. */
+.hero h1 .accent { color: var(--brand); display: inline-block; }
 .hero__sub { font-size: 19px; color: var(--text-muted); line-height: 1.7; max-width: 52ch; margin: 22px auto 0; }
 .hero__actions { display: flex; gap: 12px; justify-content: center; margin-top: 32px; flex-wrap: wrap; }
 .hero__note { margin-top: 16px; font-size: 13px; color: var(--text-subtle); }
@@ -36,10 +38,27 @@
 
 /* Section header */
 .sec { padding: 80px 0; }
+.sec--tight { padding: 56px 0; }
 .sechead { text-align: center; max-width: 60ch; margin: 0 auto 48px; }
 .sechead .eyebrow { color: var(--brand); font-weight: 700; font-size: 14px; letter-spacing: .02em; }
 .sechead h2 { font-family: var(--font-display); font-weight: 900; font-size: clamp(30px, 4vw, 46px); line-height: 1.15; margin: 10px 0 0; }
 .sechead p { color: var(--text-muted); font-size: 17px; margin-top: 14px; line-height: 1.7; }
+
+/* Problem. Deliberately flatter than the feature cards so the page reads
+   as tension first, relief second. */
+.problems { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+.prob { padding: 4px 8px; text-align: center; }
+.prob__icon { width: 42px; height: 42px; border-radius: 999px; background: var(--surface-inset); color: var(--text-subtle); display: inline-flex; align-items: center; justify-content: center; margin-bottom: 14px; }
+.prob h3 { font-size: 18px; font-weight: 700; margin: 0; }
+.prob p { color: var(--text-muted); font-size: 15px; line-height: 1.65; margin-top: 8px; }
+
+/* Objection handling */
+.faqs { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px 40px; max-width: 940px; margin: 0 auto; }
+.faqq h3 { font-size: 17px; font-weight: 700; margin: 0; }
+.faqq p { color: var(--text-muted); font-size: 15px; line-height: 1.7; margin-top: 8px; }
+.faqs__more { text-align: center; margin-top: 40px; }
+.faqs__more a { display: inline-flex; align-items: center; gap: 6px; color: var(--brand); font-weight: 700; font-size: 15px; text-decoration: none; }
+.faqs__more a:hover { color: var(--brand-hover); }
 
 /* Features */
 .features { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
@@ -76,6 +95,7 @@
 .cta h2 { color: #fff; font-family: var(--font-display); font-weight: 900; font-size: clamp(30px, 4vw, 46px); position: relative; margin: 0; }
 .cta p { color: rgba(255,255,255,.72); font-size: 17px; margin: 14px auto 28px; max-width: 46ch; position: relative; }
 .cta__actions { position: relative; display: flex; gap: 12px; justify-content: center; }
+.cta__note { position: relative; margin-top: 18px; font-size: 13px; color: rgba(255,255,255,.55); }
 
 /* Footer */
 .foot { border-top: 1px solid var(--border); padding: 48px 0 36px; }
@@ -87,7 +107,7 @@
 .foot__bottom { margin-top: 36px; padding-top: 20px; border-top: 1px solid var(--border); color: var(--text-subtle); font-size: 13px; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 10px; }
 
 @media (max-width: 860px) {
-  .features, .steps, .pricing { grid-template-columns: 1fr; }
+  .features, .steps, .pricing, .problems, .faqs { grid-template-columns: 1fr; }
   .heromock__body { grid-template-columns: 1fr; }
   .mockkpis { grid-template-columns: 1fr 1fr; }
 }
