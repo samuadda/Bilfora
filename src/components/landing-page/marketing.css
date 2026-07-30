@@ -82,8 +82,17 @@
 .plan__desc { color: var(--text-muted); font-size: 14px; min-height: 40px; }
 .plan__feats { list-style: none; padding: 0; margin: 18px 0; display: flex; flex-direction: column; gap: 11px; flex: 1; }
 .plan__feats li { display: flex; align-items: center; gap: 9px; font-size: 14px; color: var(--text); }
+/* Roadmap column: muted so it never reads as available today. */
+.plan__feats--soon li { color: var(--text-subtle); }
+.plan__feats--soon li svg { color: var(--text-disabled); }
 .plan__feats .ic { color: var(--brand); }
 .plan--featured { position: relative; }
+.plan__flag { margin-bottom: 12px; }
+/* Keep the three cards' names on one baseline despite the extra badge row. */
+.plan:not(.plan--featured) .plan__name { margin-top: 34px; }
+@media (max-width: 860px) {
+  .plan:not(.plan--featured) .plan__name { margin-top: 0; }
+}
 
 /* Testimonial + CTA */
 .quote { text-align: center; max-width: 40ch; margin: 0 auto; }

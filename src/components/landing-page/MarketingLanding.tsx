@@ -23,33 +23,35 @@ import "./marketing.css";
 
 /* Each pain mirrors how the customer describes it, not how we'd label it. */
 const PROBLEMS = [
-  { Icon: Clock, title: "ساعة على كل فاتورة", body: "تفتح الإكسل، تعدّل قالب قديم، تحسب الضريبة بيدك، وتتأكد مرتين قبل ما ترسل." },
+  { Icon: Clock, title: "ساعة على كل فاتورة", body: "تفتح الإكسل، تعدّل قالب قديم، تعيد كتابة بيانات العميل، وتتأكد مرتين قبل ما ترسل." },
   { Icon: Repeat, title: "تسأل عن فلوسك بنفسك", body: "ما تدري مين دفع ومين تأخر، فتفتح المحادثات القديمة وتذكّر العميل بنفسك." },
-  { Icon: FileWarning, title: "وفاتورتك ناقصة نظامياً", body: "رقم ضريبي، رمز QR، تفاصيل تطلبها هيئة الزكاة والضريبة. غلطة وحدة تكلّفك." },
+  { Icon: FileWarning, title: "وكل فاتورة بشكل مختلف", body: "ترقيم يدوي، قالب تعدّله كل مرة، وملفات متفرقة على جهازك. فاتورتك تعكس شغلك." },
 ];
 
-/* Titles say what it is, bodies say what it means for the customer. */
+/* Titles say what it is, bodies say what it means for the customer.
+   Every line here maps to something that ships today. */
 const FEATURES = [
-  { Icon: FileText, title: "فواتير جاهزة نظامياً", body: "ضريبية أو مبسطة أو إشعار دائن، بقالب عربي مرتب. اختر النوع وبلفورا يكمّل الباقي." },
+  { Icon: FileText, title: "فاتورة مرتبة في دقيقة", body: "اختر العميل، اكتب البنود، والإجمالي ينحسب وحده. بقالب عربي نظيف بدل قوالب الإكسل." },
   { Icon: Wallet, title: "تعرف مين دفع ومين لأ", body: "كل فاتورة لها حالة واضحة: مدفوعة، مرسلة، أو متأخرة. سجّل الدفعة وتتحدث الحالة وحدها.", accent: true },
   { Icon: BarChart3, title: "دخلك أمامك بالأرقام", body: "كم دخّلت هذا الشهر، وكم باقي لك عند العملاء. لوحة واحدة بدل ما تجمع الأرقام بنفسك." },
   { Icon: Users, title: "عملاؤك محفوظون", body: "بيانات العميل تنحفظ أول مرة فقط. الفاتورة الجاية تجهز باختيار اسمه، وسجله كامل قدامك." },
-  { Icon: ShieldCheck, title: "متوافقة مع فاتورة", body: "رمز QR وترميز TLV والحقول التي تطلبها هيئة الزكاة والضريبة، محسوبة في كل فاتورة." },
+  { Icon: ShieldCheck, title: "ترقيم وحفظ تلقائي", body: "كل فاتورة تاخذ رقمها بالتسلسل وتنحفظ في حسابك، بدل ملفات متفرقة على جهازك." },
   { Icon: Download, title: "PDF يشبه فاتورتك", body: "صدّر بضغطة، والملف يطلع بنفس التصميم الذي تشوفه على الشاشة. جاهز للإرسال أو الطباعة." },
 ];
 
 const STEPS = [
-  { n: "1", t: "سجّل بياناتك مرة", p: "اسم منشأتك ورقمك الضريبي وشعارك. دقيقة واحدة، وما تعيدها مرة ثانية." },
-  { n: "2", t: "أصدر الفاتورة", p: "اختر العميل واكتب البنود. الضريبة والإجمالي ورمز QR تنحسب تلقائياً." },
-  { n: "3", t: "استلم مستحقاتك", p: "أرسل الفاتورة، وتابع حالتها من اللوحة بدل ما تسأل العميل." },
+  { n: "1", t: "سجّل بياناتك مرة", p: "اسم منشأتك وبيانات التواصل. دقيقة واحدة، وما تعيدها مرة ثانية." },
+  { n: "2", t: "أصدر الفاتورة", p: "اختر العميل واكتب البنود. الترقيم والإجمالي يجهزون تلقائياً." },
+  { n: "3", t: "استلم مستحقاتك", p: "نزّل الفاتورة PDF وأرسلها لعميلك، وتابع حالتها من اللوحة بدل ما تسأله." },
 ];
 
-/* Answers are drawn from the full FAQ page so the two never contradict. */
+/* Answers are drawn from the full FAQ page so the two never contradict,
+   and every one of them describes behaviour that exists today. */
 const OBJECTIONS = [
-  { q: "فواتيري متوافقة مع هيئة الزكاة والضريبة؟", a: "نعم. كل فاتورة تصدر برمز QR وترميز TLV والحقول النظامية المطلوبة، بدون ما تضبط شيء بنفسك." },
+  { q: "كيف أرسل الفاتورة لعميلي؟", a: "تنزّلها PDF بضغطة وترسلها بالطريقة اللي تناسبك: واتساب، بريد، أو طباعة. الإرسال المباشر من داخل بلفورا قيد العمل." },
   { q: "أقدر أستخدمه من الجوال؟", a: "نعم. بلفورا يشتغل من المتصفح على الجوال والتابلت والحاسب، وتقدر تصدر فاتورة وأنت خارج المكتب." },
-  { q: "بياناتي وبيانات عملائي آمنة؟", a: "بياناتك مشفّرة في النقل والتخزين، وما نشاركها مع أحد. حسابك وحده يوصل لفواتيرك." },
-  { q: "أقدر أجرب قبل ما أدفع؟", a: "الخطة المجانية مفتوحة بدون بطاقة ائتمانية، وتقدر ترقّي أو توقف في أي وقت." },
+  { q: "بياناتي وبيانات عملائي آمنة؟", a: "بياناتك مشفّرة في النقل والتخزين، وكل حساب يشوف فواتيره هو فقط. ما نشاركها مع أحد." },
+  { q: "كم يكلفني؟", a: "بلفورا مجاني بالكامل حالياً بدون بطاقة ائتمانية. لو صار فيه خطط مدفوعة لاحقاً، ننبّهك قبلها." },
 ];
 
 const MOCK_BARS = [52, 64, 58, 78, 72, 90, 84, 100];
@@ -70,13 +72,13 @@ export default function MarketingLanding() {
         <div className="hero__glow" />
         <div className="wrap">
           <div className="hero__badge">
-            <Badge variant="brand" dot>جديد · تصدير متوافق مع ZATCA</Badge>
+            <Badge variant="brand" dot>مجاني بالكامل خلال فترة الإطلاق</Badge>
           </div>
           <h1>
-            أصدر فاتورة نظامية في دقيقة، <span className="accent">بدل ساعة في الإكسل</span>
+            أصدر فاتورتك في دقيقة، <span className="accent">بدل ساعة في الإكسل</span>
           </h1>
           <p className="hero__sub">
-            بلفورا يكتب فاتورتك بالعربية، يحسب الضريبة، ويجهّز رمز QR المطلوب من هيئة الزكاة والضريبة. وبعد ما ترسلها، تعرف من اللوحة مين دفع ومين تأخر.
+            بلفورا يكتب فاتورتك بالعربية، يحفظ عملاءك وبنودك، ويطلّعها PDF مرتب جاهز للإرسال. وبعد ما ترسلها، تعرف من اللوحة مين دفع ومين تأخر.
           </p>
           <div className="hero__actions">
             <Link href="/register">
@@ -86,7 +88,7 @@ export default function MarketingLanding() {
               <Button size="lg" variant="secondary"><Play size={16} /> شوف كيف يشتغل</Button>
             </a>
           </div>
-          <div className="hero__note">بدون بطاقة ائتمانية · الخطة المجانية مفتوحة دائماً</div>
+          <div className="hero__note">بدون بطاقة ائتمانية · فواتير وعملاء بلا حد</div>
 
           {/* Product preview mock */}
           <div className="heromock">
@@ -200,49 +202,50 @@ export default function MarketingLanding() {
         <div className="wrap">
           <div className="sechead">
             <span className="eyebrow">أسعار واضحة</span>
-            <h2>ابدأ مجاناً، وارقِ لما يكبر شغلك</h2>
-            <p>كل الخطط تصدر فواتير نظامية. الفرق في الحجم والأدوات.</p>
+            <h2>مجاني بالكامل، بلا حدود</h2>
+            <p>بلفورا في فترة الإطلاق، وكل ما تشوفه هنا مفتوح لك بدون بطاقة ائتمانية.</p>
           </div>
           <div className="pricing">
             <Card padding="large" hover={false} className="plan">
-              <div className="plan__name">مجاني</div>
+              <div className="plan__name">الفوترة</div>
               <div className="plan__price"><Price amount={0} decimals={0} /><small>/ شهرياً</small></div>
-              <div className="plan__desc">تجرب بلفورا على شغل حقيقي</div>
+              <div className="plan__desc">كل ما تحتاجه لإصدار فواتيرك</div>
               <ul className="plan__feats">
-                <li><Check className="text-brand" size={17} />5 فواتير شهرياً</li>
-                <li><Check className="text-brand" size={17} />عميل واحد</li>
+                <li><Check className="text-brand" size={17} />فواتير بلا حد</li>
+                <li><Check className="text-brand" size={17} />عملاء بلا حد</li>
+                <li><Check className="text-brand" size={17} />ترقيم تلقائي متسلسل</li>
                 <li><Check className="text-brand" size={17} />تصدير PDF</li>
               </ul>
-              <Link href="/register"><Button variant="secondary" block>ابدأ مجاناً</Button></Link>
+              <Link href="/register"><Button variant="secondary" block>ابدأ الآن</Button></Link>
             </Card>
 
             <Card padding="large" hover={false} variant="elevated" className="plan plan--featured">
-              <div style={{ position: "absolute", top: 16, insetInlineStart: 16 }}>
-                <Badge variant="solid">الأنسب للمستقلين</Badge>
-              </div>
-              <div className="plan__name">احترافي</div>
-              <div className="plan__price" style={{ color: "var(--brand)" }}><Price amount={49} decimals={0} /><small>/ شهرياً</small></div>
-              <div className="plan__desc">لمن الفوترة جزء من دخله الشهري</div>
+              {/* In flow rather than absolutely positioned, so it cannot collide
+                  with a long plan name the way a corner badge did. */}
+              <div className="plan__flag"><Badge variant="solid">مجاني الآن</Badge></div>
+              <div className="plan__name">المتابعة والتحليلات</div>
+              <div className="plan__price" style={{ color: "var(--brand)" }}><Price amount={0} decimals={0} /><small>/ شهرياً</small></div>
+              <div className="plan__desc">تعرف وين فلوسك بدون جداول جانبية</div>
               <ul className="plan__feats">
-                <li><Check className="text-brand" size={17} />فواتير وعملاء بلا حد</li>
-                <li><Check className="text-brand" size={17} />تحليلات مفصلة لدخلك</li>
-                <li><Check className="text-brand" size={17} />رمز QR للسداد</li>
-                <li><Check className="text-brand" size={17} />تصدير Excel و PDF</li>
+                <li><Check className="text-brand" size={17} />حالة كل فاتورة وسجل الدفعات</li>
+                <li><Check className="text-brand" size={17} />لوحة إيرادات ومستحقات</li>
+                <li><Check className="text-brand" size={17} />أبرز العملاء والمنتجات</li>
+                <li><Check className="text-brand" size={17} />تصدير التقارير Excel</li>
               </ul>
-              <Link href="/register"><Button block>جرب الاحترافي</Button></Link>
+              <Link href="/register"><Button block>ابدأ الآن</Button></Link>
             </Card>
 
             <Card padding="large" hover={false} className="plan">
-              <div className="plan__name">أعمال</div>
-              <div className="plan__price"><Price amount={149} decimals={0} /><small>/ شهرياً</small></div>
-              <div className="plan__desc">لفريق يصدر فواتير بأكثر من يد</div>
-              <ul className="plan__feats">
-                <li><Check className="text-brand" size={17} />كل مزايا الاحترافي</li>
-                <li><Check className="text-brand" size={17} />مستخدمون متعددون بصلاحيات</li>
-                <li><Check className="text-brand" size={17} />تكامل ZATCA كامل</li>
-                <li><Check className="text-brand" size={17} />دعم بأولوية</li>
+              <div className="plan__name">قيد العمل</div>
+              <div className="plan__price"><Price amount={0} decimals={0} /><small>/ شهرياً</small></div>
+              <div className="plan__desc">اللي نشتغل عليه بعدين</div>
+              <ul className="plan__feats plan__feats--soon">
+                <li><Check size={17} />إرسال الفاتورة بالبريد مباشرة</li>
+                <li><Check size={17} />قوالب تصميم متعددة</li>
+                <li><Check size={17} />مستخدمون متعددون بصلاحيات</li>
+                <li><Check size={17} />ربط API</li>
               </ul>
-              <Link href="/contact"><Button variant="secondary" block>تواصل معنا</Button></Link>
+              <Link href="/contact"><Button variant="secondary" block>اقترح ميزة</Button></Link>
             </Card>
           </div>
         </div>
@@ -285,7 +288,7 @@ export default function MarketingLanding() {
         <div className="wrap">
           <div className="cta">
             <h2>فاتورتك الجاية تاخذ دقيقة</h2>
-            <p>سجّل بياناتك مرة، وخلّ بلفورا يتكفّل بالضريبة والتنسيق والمتابعة.</p>
+            <p>سجّل بياناتك مرة، وخلّ بلفورا يتكفّل بالترقيم والتنسيق والمتابعة.</p>
             <div className="cta__actions">
               <Link href="/register">
                 <Button size="lg">أنشئ فاتورتك الأولى مجاناً<ArrowLeft size={18} /></Button>

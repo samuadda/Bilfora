@@ -1,3 +1,4 @@
+import Link from "next/link";
 import Navbar from "@/components/landing-page/Navbar";
 import { TextAnimate } from "@/components/landing-page/text-animate";
 import { Code2, Terminal, Zap } from "lucide-react";
@@ -17,7 +18,7 @@ export default function ApiPage() {
 						Bilfora API للمطورين
 					</TextAnimate>
 					<p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-						اربط أنظمتك بمنصة بلفورا بسهولة. قريباً ستتمكن من أتمتة إصدار الفواتير بالكامل.
+						نخطط لواجهة برمجية تتيح لك أتمتة إصدار الفواتير من أنظمتك. العمل عليها لم يبدأ بعد، وهذي الصفحة لتسجيل اهتمامك.
 					</p>
 				</div>
 
@@ -27,42 +28,41 @@ export default function ApiPage() {
                             <Zap size={24} />
                         </div>
                         <h3 className="font-bold text-lg mb-2 text-foreground">سريع وموثوق</h3>
-                        <p className="text-subtle text-sm">استجابة فائقة السرعة مع توفر 99.9% لضمان استمرارية أعمالك.</p>
+                        <p className="text-subtle text-sm">إصدار فاتورة وجلب حالتها من نظامك مباشرة، بدون فتح اللوحة.</p>
                     </div>
                     <div className="p-6 rounded-2xl bg-surface-2 border border-slate-100 text-center">
                         <div className="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4 text-blue-600">
                             <Code2 size={24} />
                         </div>
                         <h3 className="font-bold text-lg mb-2 text-foreground">سهل التكامل</h3>
-                        <p className="text-subtle text-sm">توثيق شامل SDKs للغات البرمجة الشهيرة لتبدأ في دقائق.</p>
+                        <p className="text-subtle text-sm">واجهة REST بمفاتيح خاصة بحسابك، مع توثيق عربي واضح.</p>
                     </div>
                     <div className="p-6 rounded-2xl bg-surface-2 border border-slate-100 text-center">
                         <div className="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4 text-green-600">
                             <Terminal size={24} />
                         </div>
                         <h3 className="font-bold text-lg mb-2 text-foreground">بيئة تجريبية</h3>
-                        <p className="text-subtle text-sm">بيئة Sandbox كاملة لاختبار تطبيقاتك قبل الإطلاق الحي.</p>
+                        <p className="text-subtle text-sm">بيئة تجريبية تختبر فيها قبل ما تشغّلها على فواتيرك الحقيقية.</p>
                     </div>
                 </div>
 
                 <div className="bg-[#0f172a] rounded-2xl p-8 md:p-12 overflow-hidden relative">
                     <div className="relative z-10 text-center">
                          <h2 className="text-2xl font-bold text-white mb-4">
-                            قريباً في 2025
+                            على خارطة الطريق
                         </h2>
                         <p className="text-disabled mb-8 max-w-lg mx-auto">
-                            نعمل حالياً على بناء أفضل تجربة للمطورين. سجل اهتمامك لتكون أول من يجرب الـ API.
+                            لو الـ API يهمك، راسلنا وقل لنا وش تحتاج تربطه. نبني حسب ما نسمع منكم.
                         </p>
-                        <form className="max-w-md mx-auto flex gap-2">
-                            <input 
-                                type="email" 
-                                placeholder="بريدك الإلكتروني" 
-                                className="flex-1 px-4 py-3 rounded-lg bg-gray-800 border border-gray-700 text-white focus:outline-none focus:ring-2 focus:ring-brand"
-                            />
-                            <button className="px-6 py-3 bg-brand text-white font-bold rounded-lg hover:bg-brand transition-colors">
-                                إعلامي
-                            </button>
-                        </form>
+                        {/* Was an email capture form with no submit handler, so it
+                            silently discarded every address. Points at the contact
+                            page, which actually delivers. */}
+                        <Link
+                            href="/contact"
+                            className="inline-block px-6 py-3 bg-brand text-white font-bold rounded-lg hover:bg-brand-hover transition-colors"
+                        >
+                            سجّل اهتمامك
+                        </Link>
                     </div>
                     
                     {/* Abstract Code decoration */}
